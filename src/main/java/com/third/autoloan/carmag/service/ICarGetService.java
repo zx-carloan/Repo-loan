@@ -13,5 +13,5 @@ public interface ICarGetService {
 	 */
 	public List<CarInfoBean> getCarInfoByOrderId(Long id);
 	
-	public RoleBean getCarInfoById(Long id);
+	public CarInfoBean getCarInfoById(Long id);
 }

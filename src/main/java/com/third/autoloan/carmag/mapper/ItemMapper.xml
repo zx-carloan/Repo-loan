@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.third.autoloan.carmag.mapper.ItemMapper">
+ 
+ 	<select id="getCarInfoBeanById" parameterType="long" resultMap="itemMap">
+		select * from t_item where fk_carInfo_id = #{id}
+	</select>
+	
+	<resultMap id="itemMap" type="ItemBean">
+		<id property="id" column="id"></id>
+		<result property="name" column="name"></result>
+		<result property="number" column="number"></result>
+	</resultMap>
+	
+	
+ </mapper>

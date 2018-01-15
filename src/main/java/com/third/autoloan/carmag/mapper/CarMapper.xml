@@ -7,18 +7,46 @@
 		select * from t_carinfo where id = #{id}
 	</select>
 	
-	<select id="getRoleBeanById" parameterType="long" resultMap="roleMap">
-		select * from t_role where id = #{id}
+	<select id="getCarInfoBeanByOrderId" parameterType="long" resultMap="carMap">
+		select * from t_carinfo where fk_order_id = #{id}
 	</select>
-	
-	<resultMap id="roleMap" type="RoleBean">
-		<id property="id" column="id"></id>
-		<result property="role" column="role"></result>
-	</resultMap>
-	
 	<resultMap id="carMap" type="CarInfoBean">
 		<id property="id" column="id"></id>
+		<result property="otherAttachment" column="otherAttachment"></result>
+		<result property="sali" column="sali"></result>
+		<result property="carPic" column="carPic"></result>
+		<result property="commerceinsurance" column="commerceinsurance"></result>
+		<result property="carAsseceForm" column="carAsseceForm"></result>
+		<result property="carRegisterForm" column="carRegisterForm"></result>
+		<result property="drivingLisense" column="drivingLisense"></result>
+		<result property="carId" column="carId"></result>
+		<result property="brand" column="brand"></result>
+		<result property="engineId" column="engineId"></result>
+		<result property="color" column="color"></result>
+		<result property="registerDate" column="registerDate"></result>
+		<result property="annualInspection" column="annualInspection"></result>
 		<result property="vin" column="vin"></result>
+		<result property="assessmentPrice" column="assessmentPrice"></result>
+		<result property="xkm" column="xkm"></result>
+		<result property="getID" column="getID"></result>
+		<result property="getAfford" column="getAfford"></result>
+		<result property="getSali" column="getSali"></result>
+		<result property="getKey" column="getKey"></result>
+		<result property="keyNumber" column="keyNumber"></result>
+		<result property="getRegisterLicense" column="getRegisterLicense"></result>
+		<result property="getInsurance" column="getInsurance"></result>
+		<result property="getDrivingLicense" column="getDrivingLicense"></result>
+		<result property="getOriginalInvoice" column="getOriginalInvoice"></result>
+		<result property="getTaxCertificate" column="getTaxCertificate"></result>
+		<result property="getImportCertificate" column="getImportCertificate"></result>
+		<collection property="itemList" ofType="ItemBean" select="com.third.autoloan.carmag.mapper.ItemMapper.getCarInfoBeanById" column="id"></collection>
+		
 	</resultMap>
+	
+	<!-- <resultMap id="itemMap" type="ItemBean">
+		<id property="id" column="id"></id>
+		<result property="name" column="name"></result>
+		<result property="number" column="number"></result>
+	</resultMap> -->
  
  </mapper>

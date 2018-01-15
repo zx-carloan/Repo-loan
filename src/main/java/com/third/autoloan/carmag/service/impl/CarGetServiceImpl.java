@@ -19,13 +19,11 @@ public class CarGetServiceImpl implements ICarGetService {
 	@Override
 	public List<CarInfoBean> getCarInfoByOrderId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return carMapper.getCarInfoBeanByOrderId(id);
 	}
 
-	@Override
-	public RoleBean getCarInfoById(Long id) {
-		
-		return carMapper.getRoleBeanById(id);
+	public CarInfoBean getCarInfoById(Long id) {
+		return carMapper.getCarInfoBeanById(id);
 	}
 
 }

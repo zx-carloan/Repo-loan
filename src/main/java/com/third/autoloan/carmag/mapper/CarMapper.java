@@ -1,14 +1,15 @@
 package com.third.autoloan.carmag.mapper;
 
-import org.springframework.stereotype.Component;
+import java.util.List;
+
 
 import com.third.autoloan.beans.CarInfoBean;
-import com.third.autoloan.beans.RoleBean;
 
 public interface CarMapper {
 	
+	//根据Id查询对应的车辆信息
 	public CarInfoBean getCarInfoBeanById(Long id);
 	
-	public RoleBean getRoleBeanById(Long id);
-	
+	//根据orderId查询对应的车辆信息
+	public List<CarInfoBean> getCarInfoBeanByOrderId(Long id);
 }
