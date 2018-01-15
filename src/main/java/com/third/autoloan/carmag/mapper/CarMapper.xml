@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.third.autoloan.carmag.mapper.CarMapper">
+ 	
+ 	<select id="getCarInfoBeanById" parameterType="long" resultMap="carMap">
+		select * from t_carinfo where id = #{id}
+	</select>
+	
+	<select id="getRoleBeanById" parameterType="long" resultMap="roleMap">
+		select * from t_role where id = #{id}
+	</select>
+	
+	<resultMap id="roleMap" type="RoleBean">
+		<id property="id" column="id"></id>
+		<result property="role" column="role"></result>
+	</resultMap>
+	
+	<resultMap id="carMap" type="CarInfoBean">
+		<id property="id" column="id"></id>
+		<result property="vin" column="vin"></result>
+	</resultMap>
+ 
+ </mapper>
