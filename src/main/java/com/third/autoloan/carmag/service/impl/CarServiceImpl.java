@@ -9,7 +9,7 @@ import com.third.autoloan.carmag.repository.ICarServiceRepository;
 import com.third.autoloan.carmag.service.ICarService;
 
 @Service
-public class CarServiceImpl implements ICarService{
+public class CarServiceImpl implements ICarService{ 
 
 	@Resource
 	private ICarServiceRepository iCarServiceRepository;

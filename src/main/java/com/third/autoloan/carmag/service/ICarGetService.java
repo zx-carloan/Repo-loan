@@ -11,7 +11,7 @@ public interface ICarGetService {
 	/***
 	 * 根据订单的id查询车辆集合
 	 */
-	public List<CarInfoBean> getCarInfoByOrderId(Long id);
+	public List<CarInfoBean> getCarInfoByOrderId(Long id); 
 	
 	public CarInfoBean getCarInfoById(Long id);
 }

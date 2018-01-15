@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.third.autoloan.beans.CarInfoBean;
 
-public interface ICarServiceRepository extends JpaRepository<CarInfoBean, Long>{
+public interface ICarServiceRepository extends JpaRepository<CarInfoBean, Long>{ 
 
 }

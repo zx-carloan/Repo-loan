@@ -12,7 +12,7 @@ import com.third.autoloan.carmag.mapper.CarMapper;
 import com.third.autoloan.carmag.service.ICarGetService;
 
 @Service
-public class CarGetServiceImpl implements ICarGetService {
+public class CarGetServiceImpl implements ICarGetService { 
 
 	@Resource
 	private CarMapper carMapper;

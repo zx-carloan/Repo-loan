@@ -8,8 +8,8 @@ import com.third.autoloan.beans.CarInfoBean;
 public interface CarMapper {
 	
 	//根据Id查询对应的车辆信息
-	public CarInfoBean getCarInfoBeanById(Long id);
+	public CarInfoBean getCarInfoBeanById(Long id); 
 	
-	//根据orderId查询对应的车辆信息
+	//根据orderId查询对应的车辆信息1
 	public List<CarInfoBean> getCarInfoBeanByOrderId(Long id);
 }

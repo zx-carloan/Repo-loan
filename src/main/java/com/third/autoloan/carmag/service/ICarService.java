@@ -6,7 +6,7 @@ import com.third.autoloan.beans.CarInfoBean;
 public interface ICarService {
 	
 	/***
-	 * 添加车辆信息到数据库中
+	 * 添加车辆信息到数据库中1 
 	 * @param car
 	 */
 	public void addCarInfo(CarInfoBean car);
