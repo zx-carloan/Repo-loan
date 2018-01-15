@@ -14,7 +14,7 @@
 		<junit.version>4.12</junit.version>
 		<ehcache.version>2.10.3</ehcache.version>
 		<log4j.version>1.2.17</log4j.version>
-		<mysql.version>5.1.37</mysql.version>
+		<mysql.version>5.1.40</mysql.version>
 		<druid.version>1.0.27</druid.version>
 		<aspectjweaver.version>1.8.10</aspectjweaver.version>
 		<quartz.version>2.2.3</quartz.version>
