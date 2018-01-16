@@ -6,8 +6,8 @@ import com.third.autoloan.beans.UserBean;
 public interface IUserDao {
 
 	/**
-	 * 查询全部用户
+	 * 根据账号密码查询用户
 	 * @return
 	 */
-	public UserBean getUser();
+	public UserBean getUser(UserBean user);
 }

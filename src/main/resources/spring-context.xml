@@ -33,7 +33,7 @@
 	<context:property-placeholder location="classpath:mysql.properties"
 		ignore-unresolvable="true" />
 
-	
+	 <aop:aspectj-autoproxy proxy-target-class="true"/> 
 	<!-- 配置mybatis的dbcp数据源 -->
 	<bean id="dataSourceForMybatis" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">

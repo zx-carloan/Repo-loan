@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,8 +27,7 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 8642749152565278400L;
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;//id
 	@Column(length=20)
 	private String userName;//真实姓名

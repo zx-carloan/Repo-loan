@@ -28,11 +28,6 @@ public interface IUserSevice {
 	public void updateUserInfo(UserBean user);
 	
 	
-	/**
-	 * 登录
-	 * @param user
-	 * @return
-	 */
-	public boolean isUser(UserBean user); 
+
 
 }

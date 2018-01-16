@@ -1,6 +1,5 @@
 package com.third.autoloan.usermag.service;
 
-import java.util.List;
 
 import com.third.autoloan.beans.UserBean;
 
@@ -11,8 +10,9 @@ import com.third.autoloan.beans.UserBean;
  */
 public interface IUserGetService {
 	/**
-	 * 查询全部用户
+	 * 判断是否有该用户登录
+	 * @param user
 	 * @return
 	 */
-	public List<UserBean> listUserInfo();
+	public boolean isUser(UserBean user); ;
 }
