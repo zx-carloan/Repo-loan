@@ -41,6 +41,13 @@ public class ItemBean implements Serializable {
 	@JoinColumn(name="fk_carInfo_id")
 	private CarInfoBean carInfo;
 	
+	
+	public CarInfoBean getCarInfo() {
+		return carInfo;
+	}
+	public void setCarInfo(CarInfoBean carInfo) {
+		this.carInfo = carInfo;
+	}
 	public ItemBean() {
 		super();
 		// TODO Auto-generated constructor stub
