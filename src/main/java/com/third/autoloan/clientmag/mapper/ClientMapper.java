@@ -54,7 +54,7 @@ public interface ClientMapper {
 
 		@Result(property="contactorList",javaType=Set.class,column="id",many=@Many(select="com.third.autoloan.clientmag.mapper.ClientMapper.findContactorById"))
 	})
-	@Select("select * from t_client c where c.id=#{id} ")
+	@Select("select * from t_client c where c.id=#{id}  ")
 	public ClientBean getClientInfoByOrderId(long id);
 	
 	
