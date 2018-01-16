@@ -5,16 +5,28 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.mapping.FetchType;
 
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.ContactorBean;
+import com.third.autoloan.beans.OrderBean;
 
 
 public interface ClientMapper {
+	
+	@Results({
+		@Result(id=true,property="id",column="id",javaType=Integer.class),
+		@Result(property="client",javaType=ClientBean.class,column="fk_client_id",one=@One(fetchType=FetchType.LAZY,select="getClientInfoByClientId"))
+	})
+	
+	@Select("select * from t_order o where o.id=#{id}")
+	public OrderBean getClientInfoByOrderId(long id);
+	
 	
 	@Results({
 		@Result(id=true,property="id",column="id",javaType=Integer.class),
@@ -55,7 +67,7 @@ public interface ClientMapper {
 		@Result(property="contactorList",javaType=Set.class,column="id",many=@Many(select="com.third.autoloan.clientmag.mapper.ClientMapper.findContactorById"))
 	})
 	@Select("select * from t_client c where c.id=#{id}  ")
-	public ClientBean getClientInfoByOrderId(long id);
+	public ClientBean getClientInfoByClientId(long id);
 	
 	
 	

@@ -432,7 +432,8 @@ public class ClientBean implements Serializable {
 				+ companyType + ", loanPurpose=" + loanPurpose + ", salary=" + salary + ", maxAffordable="
 				+ maxAffordable + ", maxPaybackTime=" + maxPaybackTime + ", minLoan=" + minLoan + ", maxLoan=" + maxLoan
 				+ ", sourceOfInfo=" + sourceOfInfo + ", saler=" + saler + ", valuer=" + valuer + ", applyDate="
-				+ applyDate + "]";
+				+ applyDate + ", iDPic=" + iDPic + ", applicationForm=" + applicationForm + ", contactorList="
+				+ contactorList + "]";
 	}
 
 	

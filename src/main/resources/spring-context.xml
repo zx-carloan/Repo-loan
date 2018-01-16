@@ -34,13 +34,14 @@
 		ignore-unresolvable="true" />
 
 	 <aop:aspectj-autoproxy proxy-target-class="true"/> 
+	 
 	<!-- 配置mybatis的dbcp数据源 -->
 	<bean id="dataSourceForMybatis" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${mysql.driverClassName}"></property>
 		<property name="url" value="${mysql.url}"></property>
-		<property name="username" value="${mysql.username}"></property>
-		<property name="password" value="${mysql.password}"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="mYspl"></property>
 		<property name="initialSize" value="15"></property><!-- 初始连接数 -->
 		<property name="maxActive" value="50"></property><!-- 最大连接数 -->
 		<property name="minIdle" value="10"></property><!-- 最小空闲数 -->
@@ -75,8 +76,8 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${mysql.driverClassName}"></property>
 		<property name="jdbcUrl" value="${mysql.url}"></property>
-		<property name="user" value="${mysql.username}"></property>
-		<property name="password" value="${mysql.password}"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="mYspl"></property>
 		<!-- 池启动时尝试获取的连接数。应该在minPoolSize和 maxPoolSize之间 -->
 		<property name="initialPoolSize" value="15"></property>
 		<!-- 最少连接数，默认是：3 -->

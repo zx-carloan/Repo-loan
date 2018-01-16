@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.clientmag.dao.IClientGetDao;
+import com.third.autoloan.clientmag.mapper.ClientMapper;
 import com.third.autoloan.clientmag.service.IClientGetService;
 import com.third.autoloan.clientmag.service.IClientService;
 import com.third.autoloan.clientmag.service.impl.ClientGetServiceImpl;
@@ -22,6 +24,9 @@ public class ClientTest {
 	
 	@Resource
 	private IClientService clientServiceImpl;
+	
+	@Resource
+	private ClientMapper cm ;
 	
 /*	@Test
 	public void add() {
@@ -53,11 +58,13 @@ public class ClientTest {
 		
 	}*/
 	
-/*	
+	
 	@Test
 	public void find() {
-		 
-		System.out.println(clientGetServiceImpl.getClientInfoByOrderId(1));
-	}*/
+		ClientBean clientBean = clientGetServiceImpl.getClientInfoByOrderId(1);
+//		clientBean=cm.getClientInfoByClientId(clientBean.getId());
+		System.out.println(clientBean);
+		System.out.println(clientGetServiceImpl);
+	}
 	
 }

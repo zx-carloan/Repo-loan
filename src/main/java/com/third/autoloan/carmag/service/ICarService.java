@@ -15,7 +15,7 @@ public interface ICarService {
 	 * 根据车辆的id删除车辆信息
 	 * @param carId
 	 */
-	public void deletCarInfo(Long carId);
+	public void deleteCarInfo(CarInfoBean carInfoBean);
 	
 	/***
 	 * 更新车辆信息

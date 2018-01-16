@@ -23,7 +23,8 @@ public class ClientGetDaoImpl implements IClientGetDao {
 	 * @return 返回客户基本信息
 	 */
 	public ClientBean getClientInfoByOrderId(long id) {
-		return cm.getClientInfoByOrderId(id);
+		
+		return cm.getClientInfoByClientId(cm.getClientInfoByOrderId(id).getClient().getId());
 		
 	}
 	
