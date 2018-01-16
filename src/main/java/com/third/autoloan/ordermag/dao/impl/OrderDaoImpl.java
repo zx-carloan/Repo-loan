@@ -14,7 +14,6 @@ import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.ordermag.dao.OrderDao;
 import com.third.autoloan.ordermag.mapper.OrderMapper;
-import com.third.autoloan.util.SessionUtils;
 
 @Repository
 public class OrderDaoImpl implements OrderDao{
