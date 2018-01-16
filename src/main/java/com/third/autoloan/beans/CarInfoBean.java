@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,8 +31,8 @@ public class CarInfoBean implements Serializable {
 	
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="hibernate.strategy", strategy="identity")
-	@GeneratedValue(generator="hibernate.strategy")
+	//@GenericGenerator(name="hibernate.strategy", strategy="identity")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	// 机动车辆号牌
@@ -101,7 +102,7 @@ public class CarInfoBean implements Serializable {
 	private OrderBean order;
 	
 	//车内物品列表
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="carInfo")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<ItemBean> itemList;
 	

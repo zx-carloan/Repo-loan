@@ -19,15 +19,15 @@ public class CarServiceImpl implements ICarService{
 	}
 
 	@Override
-	public void deletCarInfo(Long carId) {
-		// TODO Auto-generated method stub
-		
+	public void updateCarInfo(CarInfoBean car) {
+		iCarServiceRepository.saveAndFlush(car);
 	}
 
 	@Override
-	public void updateCarInfo(CarInfoBean car) {
+	public void deleteCarInfo(CarInfoBean carInfoBean) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("业务层拿到的carinfoBean是"+carInfoBean);
+		iCarServiceRepository.delete(carInfoBean);
 	}
 
 }
