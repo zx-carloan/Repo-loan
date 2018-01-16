@@ -1,4 +1,4 @@
-package com.third.autoloan.ordermag.mapper;
+package com.third.autoloan.ordermag.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -13,9 +13,7 @@ import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 
-
-
-public interface OrderMapper {
+public interface OrderDao {
 	/**
 	 * 车贷录入业务列表的分页查询
 	 * @param map

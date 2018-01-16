@@ -16,6 +16,7 @@ public class IdentityDaoImpl implements IidentityDao{
 	public IdentityBean getIdentityInfoByIdentityNum(String identity) {
 		// TODO Auto-generated method stub
 		return identityDao.getIdentityInfoByIdentityNum(identity);
+		
 	}
 
 }

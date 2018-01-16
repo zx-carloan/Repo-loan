@@ -18,7 +18,8 @@ public interface IidentityDao {
 	 * @param identity
 	 */
 	@ResultType(value = IdentityBean.class)
-	@Select("SELECT id AS id,name AS name,gender AS gender,ethnic,birthday,address,identity,administration,issueDate,expireDate FROM t_identity WHERE identity=#{identity};")
+	@Select("SELECT id AS id,name AS name,gender AS gender,ethnic,birthday,address,identity,administration,issueDate,expireDate "
+			+ " FROM t_identity WHERE identity=#{identity};")
 	public IdentityBean getIdentityInfoByIdentityNum(@Param("identity")String identity);
 	
 }

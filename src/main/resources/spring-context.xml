@@ -33,22 +33,14 @@
 	<context:property-placeholder location="classpath:mysql.properties"
 		ignore-unresolvable="true" />
 
-	<!-- 配置ehcahe -->
-	<!-- <cache:annotation-driven cache-manager="cacheManager" />
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
-		p:cache-manager-ref="ehcache" />
-
-	<bean id="ehcache"
-		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-		p:config-location="classpath:ehcache.xml" /> -->
 	
 	<!-- 配置mybatis的dbcp数据源 -->
 	<bean id="dataSourceForMybatis" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
-		<property name="url" value="${jdbc.url}"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="199362315"></property>
+		<property name="driverClassName" value="${mysql.driverClassName}"></property>
+		<property name="url" value="${mysql.url}"></property>
+		<property name="username" value="${mysql.username}"></property>
+		<property name="password" value="${mysql.password}"></property>
 		<property name="initialSize" value="15"></property><!-- 初始连接数 -->
 		<property name="maxActive" value="50"></property><!-- 最大连接数 -->
 		<property name="minIdle" value="10"></property><!-- 最小空闲数 -->
@@ -75,16 +67,16 @@
 	</bean>
 	
 		<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-			<property name="basePackage" value="com.third.autoloan.carmag.mapper"></property>
+			<property name="basePackage" value="com.third.autoloan"></property>
 			<property name="sqlSessionFactoryBeanName" value="sessionFactoryForMybatis"></property>
 		</bean>
 	
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${jdbc.driverClassName}"></property>
-		<property name="jdbcUrl" value="${jdbc.url}"></property>
-		<property name="user" value="root"></property>
-		<property name="password" value="199362315"></property>
+		<property name="driverClass" value="${mysql.driverClassName}"></property>
+		<property name="jdbcUrl" value="${mysql.url}"></property>
+		<property name="user" value="${mysql.username}"></property>
+		<property name="password" value="${mysql.password}"></property>
 		<!-- 池启动时尝试获取的连接数。应该在minPoolSize和 maxPoolSize之间 -->
 		<property name="initialPoolSize" value="15"></property>
 		<!-- 最少连接数，默认是：3 -->
@@ -105,6 +97,7 @@
 		<property name="checkoutTimeout" value="5000"></property>
 		<!-- 每次获取新连接时，用于数据库校验连接是否可用 -->
 		<property name="preferredTestQuery" value="select now() from dual"></property>
+		
 	</bean>
 
 	<bean id="sessionFactory" factory-bean="localEntityManagerFactoryBean"
@@ -127,7 +120,7 @@
         		<props>
         			<prop key="hibernate.show_sql">true</prop>
         			<prop key="hibernate.format_sql">true</prop>
-        			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+        			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
         		</props>
         	</property>
         </bean>

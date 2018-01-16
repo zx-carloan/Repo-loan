@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,8 +28,8 @@ public class IdentityBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	//@GenericGenerator(name="id.strategy", strategy="identity")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(length=20)
 	private String name;//姓名
