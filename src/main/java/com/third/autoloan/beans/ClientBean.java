@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,8 +29,7 @@ public class ClientBean implements Serializable {
 
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
 	// 申请人姓名
@@ -134,7 +134,7 @@ public class ClientBean implements Serializable {
 	
 	
 	//联系人列表
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="clientBean")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<ContactorBean> contactorList;
 	public ClientBean() {

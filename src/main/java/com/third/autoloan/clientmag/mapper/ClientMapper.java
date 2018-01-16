@@ -19,7 +19,7 @@ public interface ClientMapper {
 	@Results({
 		@Result(id=true,property="id",column="id",javaType=Integer.class),
 		@Result(property="name",column="name",javaType=String.class),
-		@Result(property="education",column="education",javaType=String.class),
+		@Result(property="education",column="education",javaType=Integer.class),
 		@Result(property="cellphone",column="cellphone",javaType=String.class),
 		@Result(property="address",column="address",javaType=String.class),
 		@Result(property="tel",column="tel",javaType=String.class),
@@ -45,7 +45,7 @@ public interface ClientMapper {
 		@Result(property="maxPaybackTime",column="maxPaybackTime",javaType=Integer.class),
 		@Result(property="minLoan",column="minLoan",javaType=Double.class),
 		@Result(property="maxLoan",column="maxLoan",javaType=Double.class),
-		@Result(property="sourceOfInfo",column="sourceOfInfo",javaType=String.class),
+		@Result(property="sourceOfInfo",column="sourceOfInfo",javaType=Integer.class),
 		@Result(property="saler",column="saler",javaType=String.class),
 		@Result(property="valuer",column="valuer",javaType=String.class),
 		@Result(property="applyDate",column="applyDate",javaType=Date.class),

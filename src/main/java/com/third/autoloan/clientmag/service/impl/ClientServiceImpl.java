@@ -33,6 +33,7 @@ public class ClientServiceImpl implements IClientService {
 	public void updateClient(ClientBean client) {
 		// TODO Auto-generated method stub
 		
+		
 		clientRepository.saveAndFlush(client);
 
 	}
