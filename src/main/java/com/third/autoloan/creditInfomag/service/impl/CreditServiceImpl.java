@@ -23,7 +23,6 @@ public class CreditServiceImpl implements ICreditService {
 	@Override
 	public void updeteCreditInfo(CreditInfoBean creditInfo, long id) {
 		// TODO Auto-generated method stub
-		creditRepository.saveAndFlush(entity)
 	}
 
 }
