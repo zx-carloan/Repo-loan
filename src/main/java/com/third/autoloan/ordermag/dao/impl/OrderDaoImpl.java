@@ -34,19 +34,19 @@ public class OrderDaoImpl implements IOrderDao{
 	@Override
 	public List<CarInfoBean> listCarInfo(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderMapper.listCarInfo(id);
 	}
 
 	@Override
 	public ClientBean getClientInfoByOrderId(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderMapper.getClientInfoByOrderId(id);
 	}
 
 	@Override
 	public ClientBean getCreditInfoByOrderId(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderMapper.getCreditInfoByOrderId(id);
 	}
 
 }

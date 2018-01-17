@@ -120,16 +120,22 @@
 		</form>
 	</div>
 
+
 	<table class="easyui-datagrid" style="width: 100%; height: 200px"
 		data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 		<thead>
 			<tr>
-				<th data-options="field:'id',checkbox:true,width:20,sortable:'true"></th>
-				<th data-options="field:'order',width:20,align:'center',sortable:'true">序号</th>
-				<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true">合同编号</th>
-				<th data-options="field:'borrower',width:20,align:'center',sortable:'true">借款人</th>
-				<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true">身份证号</th>
-				<th data-options="field:'loanDate',width:20,align:'center',sortable:'true">分公司</th>
+				<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
+				<th
+					data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
+				<th
+					data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+				<th
+					data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+				<th
+					data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
+				<th
+					data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
 			</tr>
 		</thead>
 		<tbody>
