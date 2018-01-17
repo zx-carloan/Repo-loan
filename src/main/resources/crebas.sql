@@ -354,4 +354,5 @@ create table t_user_role
    roleId               bigint comment '角色id',
    primary key (id)
 );
-
+ALTER TABLE t_order ADD signDate DATE;
+ALTER TABLE t_order ADD timeStarting DATE;
