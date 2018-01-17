@@ -59,7 +59,9 @@ public class ContractBean implements Serializable {
 	private String carParkingPic;//车辆入库照片（非必要）
 	@Column(length=200)
 	private String printedForm;//机打申请表
-	
+	//签约日
+	@Column(length=30)
+	private Date signDate;
 	@OneToOne(fetch=FetchType.LAZY,mappedBy="contract")
 	@Cascade(value= {CascadeType.ALL})
 	private OrderBean order;//订单表
@@ -177,10 +179,22 @@ public class ContractBean implements Serializable {
 	public void setOrder(OrderBean order) {
 		this.order = order;
 	}
+	
+	public Date getSignDate() {
+		return signDate;
+	}
+	public void setSignDate(Date signDate) {
+		this.signDate = signDate;
+	}
 	@Override
 	public String toString() {
 		return "ContractBean [id=" + id + ", amount=" + amount + ", payDate=" + payDate + ", bank=" + bank
-				+ ", bankAccount=" + bankAccount + ", bankBranch=" + bankBranch + "]";
+				+ ", bankAccount=" + bankAccount + ", bankBranch=" + bankBranch + ", bankCard=" + bankCard
+				+ ", loanContract=" + loanContract + ", authorizationDeductletter=" + authorizationDeductletter
+				+ ", authorisationLetter=" + authorisationLetter + ", repaymentSchedule=" + repaymentSchedule
+				+ ", supplementalAgreement=" + supplementalAgreement + ", repurchaseContracts=" + repurchaseContracts
+				+ ", carAuthorisationLetter=" + carAuthorisationLetter + ", carMortgagePic=" + carMortgagePic
+				+ ", carParkingPic=" + carParkingPic + ", printedForm=" + printedForm + ", signDate=" + signDate + "]";
 	}
 	
 	

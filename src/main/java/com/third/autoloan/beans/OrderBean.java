@@ -14,12 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.OptimisticLockType;
+import org.hibernate.annotations.OptimisticLocking;
 //订单类
 @Entity 
 @Table(name="t_order")
+@OptimisticLocking(type=OptimisticLockType.VERSION)
 public class OrderBean {
 
 	@Id
@@ -96,9 +100,7 @@ public class OrderBean {
 	//审核人的用户名
 	@Column(length=30)
 	private String auditor;
-	//签约日
-	@Column(length=30)
-	private Date signDate;
+
 	//进件时间
 	@Column
 	private Date timeStarting;
@@ -108,6 +110,10 @@ public class OrderBean {
 	//复审日期
 	@Column
 	private Date review;
+	
+	//复审日期
+    @Version
+	private String version;
 	
 	public OrderBean() {
 		super();
@@ -256,13 +262,6 @@ public class OrderBean {
 		this.manager = manager;
 	}
 
-	public Date getSignDate() {
-		return signDate;
-	}
-
-	public void setSignDate(Date signDate) {
-		this.signDate = signDate;
-	}
     
 	public Date getTimeStarting() {
 		return timeStarting;
@@ -297,9 +296,11 @@ public class OrderBean {
 				+ ", loanStatus=" + loanStatus + ", submenuStatus=" + submenuStatus + ", manager=" + manager
 				+ ", product=" + product + ", submit=" + submit + ", contract=" + contract + ", carList=" + carList
 				+ ", identity=" + identity + ", creditInfo=" + creditInfo + ", company=" + company + ", auditor="
-				+ auditor + ", signDate=" + signDate + ", timeStarting=" + timeStarting + ", getMoneyTime="
-				+ getMoneyTime + ", review=" + review + "]";
+				+ auditor + ", timeStarting=" + timeStarting + ", getMoneyTime=" + getMoneyTime + ", review=" + review
+				+ ", version=" + version + "]";
 	}
+
+	
 
 	
 
