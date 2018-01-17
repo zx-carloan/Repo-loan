@@ -111,9 +111,9 @@ public class OrderBean {
 	@Column
 	private Date review;
 	
-	//复审日期
+	//版本控制
     @Version
-	private String version;
+	private Integer version;
 	
 	public OrderBean() {
 		super();
@@ -287,6 +287,16 @@ public class OrderBean {
 
 	public void setReview(Date review) {
 		this.review = review;
+	}
+	
+	
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 	@Override
