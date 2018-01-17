@@ -191,6 +191,7 @@ create table t_contract
    bank                 varchar(30) comment '放款/还款银行',
    bankAccount          varchar(30) comment '放款/还款账户',
    bankBranch           varchar(50) comment '放款/还款银行支行',
+   signDate   date comment '签约时间',
    primary key (id)
 );
 
@@ -303,6 +304,9 @@ create table t_order
    fk_company_id        bigint,
    auditor              varchar(30),
    manager              varchar(20),
+   timeStarting    date, comment '进件时间',
+   review  date,comment '复审日期',
+   version   int,
    primary key (id)
 );
 
@@ -355,6 +359,3 @@ create table t_user_role
    primary key (id)
 );
 
-ALTER TABLE t_order ADD timeStarting DATE;
-ALTER TABLE t_order DROP COLUMN signDate;
-ALTER TABLE t_contract ADD COLUMN signDate DATE;
