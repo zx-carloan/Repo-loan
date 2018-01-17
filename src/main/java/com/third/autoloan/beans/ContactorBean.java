@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 //联系人类
 @Entity 
 @Table(name="t_contactor")

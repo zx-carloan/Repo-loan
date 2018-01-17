@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 
 //身份信息类
 @Entity 
@@ -28,7 +27,6 @@ public class IdentityBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="id")
-	//@GenericGenerator(name="id.strategy", strategy="identity")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(length=20)
@@ -53,6 +51,8 @@ public class IdentityBean implements Serializable {
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="identity")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<OrderBean> orderList;//该身份证信息下的客户订单集合
+	
+	
 	public IdentityBean() {
 		super();
 		// TODO Auto-generated constructor stub

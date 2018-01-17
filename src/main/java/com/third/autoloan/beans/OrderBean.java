@@ -25,7 +25,6 @@ public class OrderBean {
 
 	@Id
 	@Column(name="id")
-	/*@GenericGenerator(name="id.strategy", strategy="identity")*/
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	// 合同编号
@@ -74,7 +73,7 @@ public class OrderBean {
 	@JoinColumn(name="fk_contract_id")
 	private ContractBean contract;
 	//车辆的集合
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="order")
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="orderBean")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<CarInfoBean> carList;
 	

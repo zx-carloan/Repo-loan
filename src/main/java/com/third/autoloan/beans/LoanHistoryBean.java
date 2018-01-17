@@ -6,14 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 
 //历史信贷类
 @Entity 
@@ -26,14 +26,13 @@ public class LoanHistoryBean implements Serializable {
 	private static final long serialVersionUID = -5570199603063790960L;
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(length=20)
 	private String loanType;//贷款类型
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@Cascade(value= {CascadeType.ALL})
 	@JoinColumn(name="fk_indentity_id")
 	private IdentityBean identityBean;//身份信息

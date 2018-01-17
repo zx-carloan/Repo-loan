@@ -5,10 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 //产品类
 @Entity 
@@ -20,8 +20,7 @@ public class ProductBean implements Serializable {
 	private static final long serialVersionUID = -8642837018440388332L;
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(length=20)
@@ -30,6 +29,7 @@ public class ProductBean implements Serializable {
 	private String periods;//期数
 	@Column(length=50)
 	private String accrual;//利息
+	
 	public ProductBean() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 
 //车内物品类
 @Entity 
@@ -27,8 +26,6 @@ public class ItemBean implements Serializable {
 	private static final long serialVersionUID = -5791690366808603545L;
 	@Id
 	@Column(name="id")
-	//@GenericGenerator(name="id.strategy", strategy="identity")
-	//@GeneratedValue(generator="id.strategy")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	

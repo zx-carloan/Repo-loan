@@ -3,8 +3,6 @@ package com.third.autoloan.beans;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 //日志类
 public class LogBean implements Serializable {

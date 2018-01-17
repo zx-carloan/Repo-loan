@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -137,6 +138,11 @@ public class ClientBean implements Serializable {
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="clientBean")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<ContactorBean> contactorList;
+	
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="client")
+	@Cascade(value= {CascadeType.ALL})
+	private OrderBean orderBean;
+	
 	public ClientBean() {
 		super();
 	}

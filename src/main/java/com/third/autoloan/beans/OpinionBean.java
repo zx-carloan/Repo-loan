@@ -6,13 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 //意见类
 @Entity 
 @Table(name="t_opinion")
@@ -25,8 +25,7 @@ public class OpinionBean implements Serializable {
 	private static final long serialVersionUID = -1923338609883998647L;
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	@Column
@@ -43,6 +42,7 @@ public class OpinionBean implements Serializable {
 	@OneToOne(fetch=FetchType.LAZY,mappedBy="opinion")
 	@Cascade(value= {CascadeType.ALL})
 	private OrderBean order;//订单对象
+	
 	public OpinionBean() {
 		super();
 		// TODO Auto-generated constructor stub

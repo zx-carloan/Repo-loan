@@ -4,10 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 
 //客户信用信息类
@@ -45,6 +49,10 @@ public class CreditInfoBean implements Serializable {
 	@Column
 	private boolean hasCreditCard;// 有无信用卡
 
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="creditinfo")
+	@Cascade(value= {CascadeType.ALL})
+	private OrderBean orderBean;
+	
 	public CreditInfoBean() {
 		super();
 		// TODO Auto-generated constructor stub
