@@ -17,8 +17,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
-
 //车辆信息表
 @Entity 
 @Table(name="t_carinfo")
@@ -31,7 +29,6 @@ public class CarInfoBean implements Serializable {
 	
 	@Id
 	@Column(name="id")
-	//@GenericGenerator(name="hibernate.strategy", strategy="identity")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
@@ -128,6 +125,10 @@ public class CarInfoBean implements Serializable {
 	@Column(length=200)
 	private String otherAttachment;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@Cascade(value= {CascadeType.ALL})
+	@JoinColumn(name="fk_order_id")
+	private OrderBean orderBean;
 	
 	public CarInfoBean() {
 		super();
