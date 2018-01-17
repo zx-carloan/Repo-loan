@@ -356,3 +356,5 @@ create table t_user_role
 );
 ALTER TABLE  t_contract ADD signDate DATE;
 ALTER TABLE t_order ADD timeStarting DATE;
+ALTER TABLE t_order ADD getMoneyTime DATE;
+
