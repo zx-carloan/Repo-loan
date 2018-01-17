@@ -37,7 +37,7 @@ public interface IOrderDao {
 	 * companyName 分公司名
 	 * @return 车贷录入业务列表的总行数 
 	 */
-	public int getTotalOrderNumByMap(Map<String,String> map);
+	public int getTotalOrderNumByMap(Map map);
 	
 	/**
 	 * 得到订单车辆信息

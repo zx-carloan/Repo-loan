@@ -24,7 +24,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	@Resource
 	private OrderGetMapper orderGetMapper;
 	@Override
-	public PageBean getOrderPageByMap(Map<String,String> map, PageBean pageBean) {
+	public PageBean getOrderPageByMap(Map map, PageBean pageBean) {
 		// TODO Auto-generated method stub
 		
 		return null;
@@ -74,7 +74,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	}
 
 	@Override
-	public PageBean getLoanPage(Map<String,String> map) {
+	public PageBean getLoanPage(Map map) {
 		// TODO Auto-generated method stub
 		List<OrderBean> list=orderGetMapper.getLoanPage(map);
 		PageBean page=new PageBean();
@@ -83,7 +83,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	}
 
 	@Override
-	public PageBean getSubmenuPage(Map<String,String> map) {
+	public PageBean getSubmenuPage(Map map) {
 		// TODO Auto-generated method stub
 		List<OrderBean> list=orderGetMapper.getSubmenuPage(map);
 		PageBean page=new PageBean();
@@ -92,7 +92,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	}
 
 	@Override
-	public PageBean getProcedurePageBean(Map<String,String> map) {
+	public PageBean getProcedurePageBean(Map map) {
 		// TODO Auto-generated method stub
 		List<OrderBean> list=orderGetMapper.getProcedurePageBean(map);
 		PageBean page=new PageBean();

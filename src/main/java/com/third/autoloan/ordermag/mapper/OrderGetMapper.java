@@ -23,7 +23,7 @@ public interface OrderGetMapper {
 	 * sort  排序条件
 	 * order按照谁排序
 	 */
-	public PageBean getOrderPageByMap(Map<String,String> map,PageBean pageBean);
+	public PageBean getOrderPageByMap(Map map,PageBean pageBean);
 
 	/**
 	 * 得到订单车辆信息
@@ -86,19 +86,19 @@ public interface OrderGetMapper {
 	 * loanStatus 放款状态
 	 * @return
 	 */
-	public List<OrderBean> getLoanPage(Map<String,String> map);
+	public List<OrderBean> getLoanPage(Map map);
 	
 	/**
 	 *得到 分单业务列表
 	 * @param map
 	 * @return
 	 */
-	public List<OrderBean> getSubmenuPage(Map<String,String>map);
+	public List<OrderBean> getSubmenuPage(Map map);
 	
 	/**
 	 * 得到车贷进度业务列表
 	 * @param map
 	 * @return
 	 */
-	public List<OrderBean> getProcedurePageBean(Map<String,String> map);
+	public List<OrderBean> getProcedurePageBean(Map map);
 }

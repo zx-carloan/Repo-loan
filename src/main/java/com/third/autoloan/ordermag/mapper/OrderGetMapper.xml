@@ -44,7 +44,6 @@
  	     <result property="contractNumber" column="contractNumber" />
  	     <result property="returnOpinion" column="returnOpinion" />
  	     <result property="manager" column="manager" />
- 	     <result property="signDate" column="signDate" />
  	     <result property="loanStatus" column="loanStatus" />
  	    
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
@@ -60,6 +59,7 @@
  	       <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
  	        <result property="payDate" column="payDate" />
  	        <result property="amount" column="amount" />
+ 	        <result property="signDate" column="signDate" />
  	      </association>
  	      <association property="opinion" javaType="com.third.autoloan.beans.OpinionBean">
  	        <result property="loanTime" column="loanTime" />

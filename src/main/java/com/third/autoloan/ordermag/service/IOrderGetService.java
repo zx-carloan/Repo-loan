@@ -26,7 +26,7 @@ public interface IOrderGetService {
 	 * sort  排序条件
 	 * order按照谁排序
 	 */
-	public PageBean getOrderPageByMap(Map<String,String> map,PageBean pageBean);
+	public PageBean getOrderPageByMap(Map map,PageBean pageBean);
 
 	/**
 	 * 得到订单车辆信息
@@ -82,19 +82,19 @@ public interface IOrderGetService {
 	 * @param map 条件
 	 * @return
 	 */
-	public PageBean getLoanPage(Map<String,String> map);
+	public PageBean getLoanPage(Map map);
 	
 	/**
 	 *得到 分单业务列表
 	 * @param map
 	 * @return
 	 */
-	public PageBean getSubmenuPage(Map<String,String> map);
+	public PageBean getSubmenuPage(Map map);
 	
 	/**
 	 * 得到车贷进度业务列表
 	 * @param map
 	 * @return
 	 */
-	public PageBean getProcedurePageBean(Map<String,String> map);
+	public PageBean getProcedurePageBean(Map map);
  }

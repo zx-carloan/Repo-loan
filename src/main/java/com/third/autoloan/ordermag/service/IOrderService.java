@@ -33,7 +33,12 @@ public interface IOrderService {
 	 * 
 	 * @param orderBean 
 	 */
-	public void updeteOrderInfo(OrderBean orderBean);
+	public void updateOrderInfo(OrderBean orderBean);
+	/***
+	 * 查询订单信息
+	 * @param id
+	 */
+	public void getOrderById(long id);
 
 	/**
 	 * 打印合同

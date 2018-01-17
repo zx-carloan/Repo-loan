@@ -29,7 +29,7 @@ public interface OrderMapper {
 	 */
 
 	
-	public List<OrderBean> getOrderListByMap(Map<String,String> map);
+	public List<OrderBean> getOrderListByMap(Map map);
 	/**
 	 * 查询车贷录入业务列表的总数 
 	 * @param map

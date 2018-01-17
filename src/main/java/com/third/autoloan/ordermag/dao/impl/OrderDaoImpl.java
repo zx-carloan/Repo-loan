@@ -20,13 +20,13 @@ public class OrderDaoImpl implements IOrderDao{
 	private OrderMapper orderMapper;
 	
 	@Override
-	public List<OrderBean> getOrderListByMap(Map<String,String> map) {
+	public List<OrderBean> getOrderListByMap(Map map) {
 		// TODO Auto-generated method stub
 		return orderMapper.getOrderListByMap(map);
 	}
 
 	@Override
-	public int getTotalOrderNumByMap(Map<String,String> map) {
+	public int getTotalOrderNumByMap(Map map) {
 		// TODO Auto-generated method stub
 		return orderMapper.getTotalOrderNumByMap(map);
 	}
