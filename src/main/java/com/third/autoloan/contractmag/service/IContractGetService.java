@@ -1,8 +1,11 @@
 package com.third.autoloan.contractmag.service;
 
+
 import com.third.autoloan.beans.ContractBean;
 
 //签约信息查询接口
+
+
 public interface IContractGetService {
 
 	/***
@@ -10,5 +13,5 @@ public interface IContractGetService {
 	 * @param orderId
 	 * @return
 	 */
-	public ContractBean getContractByOrderBean(Long orderId);
+	public ContractBean getContractByOrderId(Long orderId);
 }

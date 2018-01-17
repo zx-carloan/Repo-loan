@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 签约  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.third.autoloan.contractmag.mapper.ContractMapper">
+	 <select id="getContractByOrderId" parameterType="long" resultMap="ContractMap">
+             select * from t_contract where id=#{id}
+        </select>
+	<resultMap id="ContractMap" type="ContractBean"> 
+		<id property="id" column="id"></id>
+		<result property="carParkingPic " column="carParkingPic "></result>
+		<result property="carMortgagePic" column="carMortgagePic"></result>
+		<result property="carAuthorisationLetter" column="carAuthorisationLetter"></result>
+		<result property="repurchaseContracts" column="repurchaseContracts"></result>
+		<result property="supplementalAgreement" column="supplementalAgreement"></result>
+		<result property="repaymentSchedule" column="repaymentSchedule"></result>
+		<result property="authorisationLetter" column="authorisationLetter"></result>
+		<result property="authorizationDeductletter" column="authorizationDeductletter"></result>
+		<result property="loanContract" column="loanContract"></result>
+		<result property="printedForm" column="printedForm"></result>
+		<result property="bankCard" column="bankCard"></result>
+		<result property="amount" column="amount"></result>
+		<result property="payDate" column="payDate"></result>
+		<result property="bank" column="bank"></result>
+		<result property="bankAccount" column="bankAccount"></result>
+		<result property="bankBranch" column="bankBranch"></result>
+	</resultMap> 
+</mapper>

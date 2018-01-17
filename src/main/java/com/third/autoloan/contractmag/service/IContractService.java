@@ -9,7 +9,7 @@ public interface IContractService {
 	 * @param contractBean   封装签约信息到对象
 	 * @param id 所对所对订单的id
 	 */
-	public void saveContractInfo(ContractBean contractBean,long id);
+	public void saveContractInfo(ContractBean contractBean);
 	
 	/***
 	 * 修改签约信息
