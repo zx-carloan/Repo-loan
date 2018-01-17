@@ -6,13 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 
 //客户信用信息类
 @Entity 
@@ -25,8 +25,7 @@ public class CreditInfoBean implements Serializable {
 	private static final long serialVersionUID = 10104863683329256L;
 	@Id
 	@Column(name="id")
-	@GenericGenerator(name="id.strategy", strategy="identity")
-	@GeneratedValue(generator="id.strategy")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column
 	private boolean hasHouse;// 有无房产
@@ -49,7 +48,7 @@ public class CreditInfoBean implements Serializable {
 	@Column
 	private boolean hasCreditCard;// 有无信用卡
 
-	@OneToOne(fetch=FetchType.LAZY,mappedBy="creditinfo")
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="creditInfo")
 	@Cascade(value= {CascadeType.ALL})
 	private OrderBean orderBean;
 	

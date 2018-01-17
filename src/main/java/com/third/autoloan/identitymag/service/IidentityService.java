@@ -3,7 +3,7 @@ package com.third.autoloan.identitymag.service;
 import com.third.autoloan.beans.IdentityBean;
 
 /**
- * @author 省份证信息管理
+ * @author 身份证信息管理
  * @version 1.0
  * @created 12-一月-2018 上午 9:58:17
  */
