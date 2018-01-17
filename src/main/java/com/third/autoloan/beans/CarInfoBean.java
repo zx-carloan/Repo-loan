@@ -125,10 +125,6 @@ public class CarInfoBean implements Serializable {
 	@Column(length=200)
 	private String otherAttachment;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@Cascade(value= {CascadeType.ALL})
-	@JoinColumn(name="fk_order_id")
-	private OrderBean orderBean;
 	
 	public CarInfoBean() {
 		super();
