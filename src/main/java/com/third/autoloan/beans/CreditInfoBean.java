@@ -153,4 +153,14 @@ public class CreditInfoBean implements Serializable {
 				+ ", hasOtheLoan=" + hasOtheLoan + ", hasCreditCard=" + hasCreditCard + "]";
 	}
 
+	public OrderBean getOrderBean() {
+		return orderBean;
+	}
+
+	public void setOrderBean(OrderBean orderBean) {
+		this.orderBean = orderBean;
+	}
+	
+	
+
 }

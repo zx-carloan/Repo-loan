@@ -9,7 +9,7 @@ public interface ICreditService {
 	  * @param creditInfo 封装客户信用信息
 	  * @param id 所对订单的id
 	 */
-		public void saveCreditInfo(CreditInfoBean creditInfo,long id );
+		public void saveCreditInfo(CreditInfoBean creditInfo);
 		
 		/**
 		 * 修改客户信用信息
