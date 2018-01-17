@@ -30,7 +30,9 @@
 	</context:component-scan>
 	
 	<!-- 开启springmvc注解支持 -->
-	<mvc:annotation-driven conversion-service="converterFactory" />
+	<mvc:annotation-driven conversion-service="converterFactory">
+</mvc:annotation-driven>
+	
 	
 	<!-- 开启springmvc注解支持之后，
 	不需要再配置HandleMapping，HandleAdapter，因为默认会采用：

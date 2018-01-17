@@ -3,7 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户登录</title>
-<link href="static/css/login.css" rel="stylesheet" type="text/css" />
+<link href="static/css/login.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="static/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/login.js"></script>
+
+
 </head>
 <body>
 
@@ -18,12 +22,12 @@
 		      <div id="center_left"></div>
 			  <div id="center_middle">
 			       <div id="user">用  户
-			         <input type="text" value=""/>
+			         <input id="name" type="text" value=""/>
 			       </div>
 				   <div id="password">密   码
-				     <input type="password"  value=""/>
+				     <input id="pwd" type="password"  value=""/>
 				   </div>
-				   <div id="btn"><a href="jsp/Interface.jsp">登录</a><a href="#">清空</a></div>
+				   <div id="btn"><a id="login1" href="javascript:void(0)">登录</a><a href="javascript:void(0)">清空</a></div>
 			  
 			  </div>
 			  <div id="center_right"></div>		 
