@@ -12,6 +12,8 @@
 	<!-- 开启springmvc容器的自动扫描功能，默认情况下：会扫描@Controller，@Service,@Repository,@Component,
 	但是springmvc容器，只需要管理WEB层的组件，需要将@Service,@Repository过滤掉
 	 -->
+	 	<mvc:resources location="/static/**" mapping="/static"></mvc:resources>
+	 
 	<context:component-scan base-package="com.third.autoloan">
 	
 		<!-- 在自动扫描过滤中，如果扫描到使用了@Service，@Repository的JAVA类，
