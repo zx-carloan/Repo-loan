@@ -17,16 +17,19 @@ public class CreditServiceImpl implements ICreditService {
 	private CreditRepository creditRepository;
 
 
+	@Resource
+	private ClientMapper clientMapper;
+	
 	@Override
-	public void saveCreditInfo(CreditInfoBean creditInfo) {
-
+	public void saveCreditInfo(CreditInfoBean creditInfo,long id) {
+		OrderBean orderBean =clientMapper.getClientInfoByOrderId(id);
+		creditInfo.setOrderBean(orderBean);
 		creditRepository.save(creditInfo);
 
 	}
 
 	@Override
 	public void updeteCreditInfo(CreditInfoBean creditInfo, long id) {
-		// TODO Auto-generated method stub
 		OrderBean bean = clientMapper.getClientInfoByOrderId(id);
 		creditInfo.setOrderBean(bean);
 		creditRepository.saveAndFlush(creditInfo);
