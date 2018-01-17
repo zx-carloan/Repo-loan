@@ -354,7 +354,7 @@ create table t_user_role
    roleId               bigint comment '角色id',
    primary key (id)
 );
-ALTER TABLE  t_contract ADD signDate DATE;
-ALTER TABLE t_order ADD timeStarting DATE;
-ALTER TABLE t_order ADD getMoneyTime DATE;
 
+ALTER TABLE t_order ADD timeStarting DATE;
+ALTER TABLE t_order DROP COLUMN signDate;
+ALTER TABLE t_contract ADD COLUMN signDate DATE;
