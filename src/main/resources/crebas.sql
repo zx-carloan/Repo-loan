@@ -304,8 +304,8 @@ create table t_order
    fk_company_id        bigint,
    auditor              varchar(30),
    manager              varchar(20),
-   timeStarting    date, comment '进件时间',
-   review  date,comment '复审日期',
+   timeStarting    date comment '进件时间',
+   review  date comment '复审日期',
    version   int,
    primary key (id)
 );
