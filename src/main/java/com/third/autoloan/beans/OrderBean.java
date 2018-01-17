@@ -72,7 +72,7 @@ public class OrderBean {
 	@JoinColumn(name="fk_contract_id")
 	private ContractBean contract;
 	//车辆的集合
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="orderBean")
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="order")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<CarInfoBean> carList;
 	
