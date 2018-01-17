@@ -37,10 +37,10 @@
 	<filter>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
-		<!-- <init-param>
+		<init-param>
 			<param-name>sessionFactoryBean</param-name>
 			<param-value>localEntityManagerFactoryBean</param-value>
-		</init-param> -->
+		</init-param>
 	</filter>
 
 	<filter-mapping>
