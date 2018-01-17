@@ -1,5 +1,6 @@
 package com.third.autoloan.beans;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ public class OrderBean {
 
 	@Id
 	@Column(name="id")
+	/*@GenericGenerator(name="id.strategy", strategy="identity")*/
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	// 合同编号
@@ -67,13 +69,12 @@ public class OrderBean {
 	@Column
 	private int submit;//0表示提交，1表示保存
 	//订单对应的签约表
-	
 	@OneToOne(fetch=FetchType.LAZY)
 	@Cascade(value= {CascadeType.ALL})
 	@JoinColumn(name="fk_contract_id")
 	private ContractBean contract;
 	//车辆的集合
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="orderBean")
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="order")
 	@Cascade(value= {CascadeType.ALL})
 	private Set<CarInfoBean> carList;
 	
@@ -95,6 +96,19 @@ public class OrderBean {
 	//审核人的用户名
 	@Column(length=30)
 	private String auditor;
+	//签约日
+	@Column(length=30)
+	private Date signDate;
+	//进件时间
+	@Column
+	private Date timeStarting;
+	//还款时间
+	@Column
+	private Date getMoneyTime;
+	//复审日期
+	@Column
+	private Date review;
+	
 	public OrderBean() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -232,13 +246,68 @@ public class OrderBean {
 	public void setAuditor(String auditor) {
 		this.auditor = auditor;
 	}
+	
+
+	public String getManager() {
+		return manager;
+	}
+
+	public void setManager(String manager) {
+		this.manager = manager;
+	}
+
+	public Date getSignDate() {
+		return signDate;
+	}
+
+	public void setSignDate(Date signDate) {
+		this.signDate = signDate;
+	}
+    
+	public Date getTimeStarting() {
+		return timeStarting;
+	}
+
+	public void setTimeStarting(Date timeStarting) {
+		this.timeStarting = timeStarting;
+	}
+	
+	
+
+	public Date getGetMoneyTime() {
+		return getMoneyTime;
+	}
+
+	public void setGetMoneyTime(Date getMoneyTime) {
+		this.getMoneyTime = getMoneyTime;
+	}
+
+	public Date getReview() {
+		return review;
+	}
+
+	public void setReview(Date review) {
+		this.review = review;
+	}
 
 	@Override
 	public String toString() {
 		return "OrderBean [id=" + id + ", contractNumber=" + contractNumber + ", returnOpinion=" + returnOpinion
-				+ ", opinion=" + opinion + ", status=" + status
-				+ ", rollback=" + rollback + ", loanStatus=" + loanStatus + ", submenuStatus=" + submenuStatus + "]"+ "auditor" + auditor;
+				+ ", client=" + client + ", opinion=" + opinion + ", status=" + status + ", rollback=" + rollback
+				+ ", loanStatus=" + loanStatus + ", submenuStatus=" + submenuStatus + ", manager=" + manager
+				+ ", product=" + product + ", submit=" + submit + ", contract=" + contract + ", carList=" + carList
+				+ ", identity=" + identity + ", creditInfo=" + creditInfo + ", company=" + company + ", auditor="
+				+ auditor + ", signDate=" + signDate + ", timeStarting=" + timeStarting + ", getMoneyTime="
+				+ getMoneyTime + ", review=" + review + "]";
 	}
+
+	
+
+	
+
+	
+
+	
 
 	
 
