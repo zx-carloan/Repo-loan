@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.third.autoloan.creditInfomag.mapper.CreditGetMaaper">
+
+	<select id="getCreditInfoByOrderId" parameterType="long" resultMap="creditMap">
+		SELECT * FROM t_order AS o LEFT JOIN t_creditinfo AS c ON o.`fk_credit_id`=c.`id`  WHERE o.`id`=#{id}
+	</select>
+
+	<resultMap id="creditMap" type="com.third.autoloan.beans.CreditInfoBean">
+		<id property="id" column="id"></id>
+		<result property="hasHouse" column="hasHouse"></result>
+		<result property="hasHouseLoan" column="hasHouseLoan"></result>
+		<result property="hasCar" column="hasCar"></result>
+		<result property="hasCarLoan" column="hasCarLoan"></result>
+		<result property="maxOverdueMonth" column="maxOverdueMonth"></result>
+		<result property="maxOverdueNum" column="maxOverdueNum"></result>
+		<result property="creditUsageRate" column="creditUsageRate"></result>
+		<result property="enquiriesNumber" column="enquiriesNumber"></result>
+		<result property="hasOtheLoan" column="hasOtheLoan"></result>
+		<result property="hasCreditCard" column="hasCreditCard"></result>
+	</resultMap>
+</mapper>

@@ -1,9 +1,8 @@
-package com.third.autoloan.creditInfomag.service;
+package com.third.autoloan.creditInfomag.dao;
 
 import com.third.autoloan.beans.CreditInfoBean;
 
-//信用信息查询业务层
-public interface ICreditGetService {
+public interface ICreditGetDao {
 
 	/**
 	 * 得到客户信用信息
@@ -12,5 +11,4 @@ public interface ICreditGetService {
 	 * @return 返回客户信用信息
 	 */
 	public CreditInfoBean getCreditInfoByOrderId(long id);
-	
 }
