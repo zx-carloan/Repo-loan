@@ -6,7 +6,6 @@ import java.util.Map;
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.ContractBean;
-import com.third.autoloan.beans.CreditInfoBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 
@@ -27,7 +26,7 @@ public interface IOrderGetService {
 	 * sort  排序条件
 	 * order按照谁排序
 	 */
-	public PageBean getOrderPageByMap(Map map,PageBean pageBean);
+	public PageBean getOrderPageByMap(Map<String,String> map,PageBean pageBean);
 
 	/**
 	 * 得到订单车辆信息
@@ -83,19 +82,19 @@ public interface IOrderGetService {
 	 * @param map 条件
 	 * @return
 	 */
-	public PageBean getLoanPage(Map map);
+	public PageBean getLoanPage(Map<String,String> map);
 	
 	/**
 	 *得到 分单业务列表
 	 * @param map
 	 * @return
 	 */
-	public PageBean getSubmenuPage(Map map);
+	public PageBean getSubmenuPage(Map<String,String> map);
 	
 	/**
 	 * 得到车贷进度业务列表
 	 * @param map
 	 * @return
 	 */
-	public PageBean getProcedurePageBean(Map map);
+	public PageBean getProcedurePageBean(Map<String,String> map);
  }

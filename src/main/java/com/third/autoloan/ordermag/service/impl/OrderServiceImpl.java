@@ -42,7 +42,7 @@ public class OrderServiceImpl implements IOrderService{
 	}
 
 	@Override
-	public Map countContract(long id) {
+	public Map<String,String> countContract(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

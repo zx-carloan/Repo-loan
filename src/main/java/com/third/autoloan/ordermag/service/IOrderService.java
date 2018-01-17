@@ -2,13 +2,7 @@ package com.third.autoloan.ordermag.service;
 
 import java.util.Map;
 
-import com.third.autoloan.beans.CarInfoBean;
-import com.third.autoloan.beans.ClientBean;
-import com.third.autoloan.beans.ContractBean;
-import com.third.autoloan.beans.CreditInfoBean;
-import com.third.autoloan.beans.OpinionBean;
 import com.third.autoloan.beans.OrderBean;
-import com.third.autoloan.beans.PageBean;
 
 /**
  * @author 订单写
@@ -50,7 +44,7 @@ public interface IOrderService {
 	 * 还款试算
 	 * @param id 所对所对订单的id
 	 */
-	public Map countContract(long id);
+	public Map<String,String> countContract(long id);
 	
 
 }

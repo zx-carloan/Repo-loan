@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.third.autoloan.beans.CarInfoBean;
@@ -21,13 +20,13 @@ public class OrderDaoImpl implements IOrderDao{
 	private OrderMapper orderMapper;
 	
 	@Override
-	public List<OrderBean> getOrderListByMap(Map map) {
+	public List<OrderBean> getOrderListByMap(Map<String,String> map) {
 		// TODO Auto-generated method stub
 		return orderMapper.getOrderListByMap(map);
 	}
 
 	@Override
-	public int getTotalOrderNumByMap(Map map) {
+	public int getTotalOrderNumByMap(Map<String,String> map) {
 		// TODO Auto-generated method stub
 		return orderMapper.getTotalOrderNumByMap(map);
 	}

@@ -40,21 +40,6 @@
 		<property name="url" value="${mysql.url}"></property>
 		<property name="username" value="${mysql.username}"></property>
 		<property name="password" value="${mysql.password}"></property>
-		<property name="initialSize" value="15"></property><!-- 初始连接数 -->
-		<property name="maxActive" value="50"></property><!-- 最大连接数 -->
-		<property name="minIdle" value="10"></property><!-- 最小空闲数 -->
-		<property name="maxIdle" value="20"></property><!-- 最大空闲数 -->
-		<property name="removeAbandonedTimeout" value="10"></property>
-		<!-- 超时时间10秒 -->
-		<property name="defaultAutoCommit" value="false"></property>
-		<property name="removeAbandoned" value="true"></property><!-- 是否回收超时连接 -->
-		<property name="maxWait" value="1000"></property><!-- 单位毫秒，超时等待时间 -->
-		<!-- 连接被抛弃时是否打印输出到日志中 -->
-		<property name="logAbandoned" value="true" />
-		<!-- 每次空闲连接被回收时，需要检查的连接数量 -->
-		<property name="numTestsPerEvictionRun" value="15" />
-		<!-- 验证查询，获取当前连接数据库的时间 -->
-		<property name="validationQuery" value="SELECT NOW() FROM DUAL"></property>
 	</bean>
 
 	<!-- 配置mybatis的sessionFactory -->
@@ -76,27 +61,6 @@
 		<property name="jdbcUrl" value="${mysql.url}"></property>
 		<property name="user" value="${mysql.username}"></property>
 		<property name="password" value="${mysql.password}"></property>
-		<!-- 池启动时尝试获取的连接数。应该在minPoolSize和 maxPoolSize之间 -->
-		<property name="initialPoolSize" value="15"></property>
-		<!-- 最少连接数，默认是：3 -->
-		<property name="minPoolSize" value="15"></property>
-		<!-- 最大连接数，默认是：15 -->
-		<property name="maxPoolSize" value="50"></property>
-		<!-- 当连接池中，连接不充足时，需要再次获取的连接数量 -->
-		<property name="acquireIncrement" value="5"></property>
-		<!-- 设置连接池中，可以缓存的最大预编译对象的个数 -->
-		<property name="maxStatements" value="200"></property>
-		<!-- 设置连接池中，空闲连接允许存在的最大时间，单位是秒 -->
-		<property name="maxIdleTime" value="60"></property>
-		<!-- 设置连接池中，间隔多长时间，检测1次空闲连接，单位是：秒 -->
-		<property name="idleConnectionTestPeriod" value="30"></property>
-		<!-- 设置连接池中，如果连接断开，或者是连接创建不成功的时候，重复获取连接的次数 -->
-		<property name="acquireRetryAttempts" value="30"></property>
-		<!-- 当应用程序通过getConnect()获取不到连接时，需要等待的最长时间，单位是：毫秒，如果设置 为0，表示无限期等待 -->
-		<property name="checkoutTimeout" value="5000"></property>
-		<!-- 每次获取新连接时，用于数据库校验连接是否可用 -->
-		<property name="preferredTestQuery" value="select now() from dual"></property>
-
 	</bean>
 
 	<bean class="com.third.autoloan.util.InstantiationTracingBeanPostProcessor" />

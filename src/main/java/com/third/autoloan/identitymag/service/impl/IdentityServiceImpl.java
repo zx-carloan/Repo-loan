@@ -2,7 +2,6 @@ package com.third.autoloan.identitymag.service.impl;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.third.autoloan.beans.IdentityBean;

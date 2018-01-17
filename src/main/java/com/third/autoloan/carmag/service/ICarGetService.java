@@ -3,7 +3,6 @@ package com.third.autoloan.carmag.service;
 import java.util.List;
 
 import com.third.autoloan.beans.CarInfoBean;
-import com.third.autoloan.beans.RoleBean;
 
 //车辆信息查询业务层
 public interface ICarGetService {

@@ -1,6 +1,5 @@
 package com.third.autoloan.clientmag.dao;
 
-import java.util.List;
 
 import com.third.autoloan.beans.ClientBean;
 

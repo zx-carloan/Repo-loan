@@ -1,6 +1,5 @@
 package com.third.autoloan.clientmag.service;
 
-import java.util.List;
 
 import com.third.autoloan.beans.ClientBean;
 

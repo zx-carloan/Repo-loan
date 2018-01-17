@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.third.autoloan.beans.CarInfoBean;
-import com.third.autoloan.beans.RoleBean;
 import com.third.autoloan.carmag.mapper.CarMapper;
 import com.third.autoloan.carmag.service.ICarGetService;
 

@@ -3,12 +3,6 @@ package com.third.autoloan.ordermag.mapper;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.One;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
@@ -35,7 +29,7 @@ public interface OrderMapper {
 	 */
 
 	
-	public List<OrderBean> getOrderListByMap(Map map);
+	public List<OrderBean> getOrderListByMap(Map<String,String> map);
 	/**
 	 * 查询车贷录入业务列表的总数 
 	 * @param map
@@ -44,7 +38,7 @@ public interface OrderMapper {
 	 * companyName 分公司名
 	 * @return 车贷录入业务列表的总行数 
 	 */
-	public int getTotalOrderNumByMap(Map map);
+	public int getTotalOrderNumByMap(Map<String,String> map);
 	
 	/**
 	 * 得到订单车辆信息

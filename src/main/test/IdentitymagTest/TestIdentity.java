@@ -8,9 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.third.autoloan.beans.IdentityBean;
-import com.third.autoloan.identitymag.dao.IidentityDao;
 import com.third.autoloan.identitymag.service.IidentityService;
-import com.third.autoloan.identitymag.service.impl.IdentityServiceImpl;
 
 @RunWith(value=SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"classpath:applicationContext.xml"})
