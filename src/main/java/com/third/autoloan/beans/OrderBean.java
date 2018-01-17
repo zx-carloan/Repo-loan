@@ -81,11 +81,13 @@ public class OrderBean {
 	@Cascade(value= {CascadeType.ALL})
 	@JoinColumn(name="fk_identiry_id")
 	private IdentityBean identity;
+	
 	//客户信用信息
 	@OneToOne(fetch=FetchType.LAZY)
 	@Cascade(value= {CascadeType.ALL})
 	@JoinColumn(name="fk_credit_id")
 	private CreditInfoBean creditInfo;
+	
 	//订单所属的公司
 	@OneToOne(fetch=FetchType.LAZY)
 	@Cascade(value= {CascadeType.ALL})
