@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/static/js/bootstrap.min.js"></script>
+<style type="text/css">
+	
+</style>
 </head>
 <body>
 
@@ -50,10 +53,10 @@
 			data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 			<thead>
 				<tr>
-					<th data-options="field:'order',width:20,align:'center'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center'">姓名</th>
-					<th data-options="field:'borrower',width:20,align:'center'">性别</th>
-					<th data-options="field:'identityNumber',width:20,align:'center'">身份证号</th>
+					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">姓名</th>
+					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">性别</th>
+					<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -82,7 +85,7 @@
 		$(function() {
 			/* 定义一个数组用于接收得到的下标 */
 			var id = new Array();
-			$("table").datagrid({
+			$(".easyui-datagrid").datagrid({
 				onClickRow : function(rowIndex, rowData) {
 					id.push(rowIndex);
 					for (var i = 0; i < id.length; i++) {

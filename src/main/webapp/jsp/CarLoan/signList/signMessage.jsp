@@ -240,14 +240,14 @@
 		<thead>
 			<tr>
 
-				<th data-options="field:'order',width:20,align:'center'">序号</th>
-				<th data-options="field:'contractorNumber',width:20,align:'center'">合同编号</th>
-				<th data-options="field:'borrower',width:20,align:'center'">借款人</th>
-				<th data-options="field:'identityNumber',width:20,align:'center'">期数</th>
-				<th data-options="field:'loanDate',width:20,align:'center'">期初本金</th>
-				<th data-options="field:'SignDate',width:20,align:'center'">剩余本金</th>
-				<th data-options="field:'sumPrice',width:20,align:'center'">结清还服务费</th>
-				<th data-options="field:'actualPrice',width:20,align:'center'">提前结清金额</th>
+				<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
+				<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+				<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+				<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">期数</th>
+				<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">期初本金</th>
+				<th data-options="field:'SignDate',width:20,align:'center',sortable:'true'">剩余本金</th>
+				<th data-options="field:'sumPrice',width:20,align:'center',sortable:'true'">结清还服务费</th>
+				<th data-options="field:'actualPrice',width:20,align:'center',sortable:'true'">提前结清金额</th>
 
 			</tr>
 		</thead>

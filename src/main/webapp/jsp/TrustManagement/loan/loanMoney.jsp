@@ -34,7 +34,7 @@
 		$(function() {
 			/* 定义一个数组用于接收得到的下标 */
 			var id = new Array();
-			$("table").datagrid({
+			$(".easyui-datagrid").datagrid({
 				onClickRow : function(rowIndex, rowData) {
 					id.push(rowIndex);
 					for (var i = 0; i < id.length; i++) {
@@ -145,18 +145,18 @@
 			data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20"></th>
-					<th data-options="field:'order',width:20,align:'center'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center'">借款人</th>
-					<th data-options="field:'identityNumber',width:20,align:'center'">身份证号</th>
-					<th data-options="field:'loanDate',width:20,align:'center'">约定放贷日</th>
-					<th data-options="field:'SignDate',width:20,align:'center'">签约日</th>
-					<th data-options="field:'sumPrice',width:20,align:'center'">合同额</th>
-					<th data-options="field:'actualPrice',width:20,align:'center'">实际放款额</th>
-					<th data-options="field:'num',width:20,align:'center'">借款期数</th>
-					<th data-options="field:'branch',width:20,align:'center'">分公司</th>
-					<th data-options="field:'status',width:20,align:'center'">放款状态</th>
+					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
+					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+					<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
+					<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">约定放贷日</th>
+					<th data-options="field:'SignDate',width:20,align:'center',sortable:'true'">签约日</th>
+					<th data-options="field:'sumPrice',width:20,align:'center',sortable:'true'">合同额</th>
+					<th data-options="field:'actualPrice',width:20,align:'center',sortable:'true'">实际放款额</th>
+					<th data-options="field:'num',width:20,align:'center',sortable:'true'">借款期数</th>
+					<th data-options="field:'branch',width:20,align:'center',sortable:'true'">分公司</th>
+					<th data-options="field:'status',width:20,align:'center',sortable:'true'">放款状态</th>
 
 
 				</tr>

@@ -59,12 +59,12 @@
 			data-options="url:'#',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20"></th>
-					<th data-options="field:'order',width:20,align:'center'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center'">借款人</th>
-					<th data-options="field:'manager',width:20,align:'center'">业务经理</th>
-					<th data-options="field:'company.name',width:20,align:'center'">分公司</th>
+					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
+					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
 
 				</tr>
 			</thead>

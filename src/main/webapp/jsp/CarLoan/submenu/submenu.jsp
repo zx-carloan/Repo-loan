@@ -64,19 +64,19 @@
 			data-options="url:'#',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20"></th>
-					<th data-options="field:'order',width:20,align:'center'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center'">借款人</th>
-					<th data-options="field:'identityNumber',width:20,align:'center'">身份证号</th>
-					<th data-options="field:'cellphone',width:20,align:'center'">借款人手机号码</th>
-					<th data-options="field:'manager',width:20,align:'center'">业务经理</th>
-					<th data-options="field:'company.name',width:20,align:'center'">分公司</th>
-					<th data-options="field:'product.name',width:20,align:'center'">产品名称</th>
-					<th data-options="field:'num',width:20,align:'center'">借款期数</th>
-					<th data-options="field:'date',width:20,align:'center'">进件时间</th>
-					<th data-options="field:'status',width:20,align:'center'">状态</th>
-					<th data-options="field:'auditor',width:20,align:'center'">审核人</th>
+					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
+					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+					<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
+					<th data-options="field:'cellphone',width:20,align:'center',sortable:'true'">借款人手机号码</th>
+					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
+					<th data-options="field:'product.name',width:20,align:'center',sortable:'true'">产品名称</th>
+					<th data-options="field:'num',width:20,align:'center',sortable:'true'">借款期数</th>
+					<th data-options="field:'date',width:20,align:'center',sortable:'true'">进件时间</th>
+					<th data-options="field:'status',width:20,align:'center',sortable:'true'">状态</th>
+					<th data-options="field:'auditor',width:20,align:'center',sortable:'true'">审核人</th>
 
 				</tr>
 			</thead>
