@@ -7,7 +7,6 @@ public interface ICreditGetService {
 
 	/**
 	 * 得到客户信用信息
-	 *
 	 * @param id 所对订单的ID
 	 * @return 返回客户信用信息
 	 */

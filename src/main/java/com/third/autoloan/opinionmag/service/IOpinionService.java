@@ -15,7 +15,7 @@ public interface IOpinionService {
 	 * 修改评论意见
 	 * @param opinionBean
 	 */
-	public void updeteOpinionInfoById(OpinionBean opinionBean);
+	public void updateOpinionInfoById(OpinionBean opinionBean);
 	
 	/***
 	 * 根据id删除综合意见信息
