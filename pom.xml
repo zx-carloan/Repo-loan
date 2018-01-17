@@ -181,7 +181,7 @@
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-all</artifactId>
 			<version>${shiro.version}</version>
-		</dependency>
+		</dependency> 
 
 		<!-- commons-logging -->
 		<dependency>
