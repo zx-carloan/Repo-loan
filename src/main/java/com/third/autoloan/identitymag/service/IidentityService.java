@@ -29,6 +29,11 @@ public interface IidentityService {
 	 * @param identity
 	 */
 	public void saveIdentityInfo(IdentityBean identity);
+	/***
+	 * 通过id查找查找身份证信息
+	 * @param id
+	 */
+	public IdentityBean findIdentityById(long id);
 	
 
 }

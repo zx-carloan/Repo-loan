@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.third.autoloan.beans.CreditInfoBean;
+import com.third.autoloan.clientmag.mapper.ClientMapper;
 import com.third.autoloan.creditInfomag.service.ICreditService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,16 +17,14 @@ public class creditTest {
 
 	@Resource(name="creditServiceImpl")
 	private ICreditService creditService;
-	
+	@Resource
+	private ClientMapper clientMapper;
+
 	@Test
 	public void saveCreditInfo() {
 		CreditInfoBean bean=new CreditInfoBean();
-		bean.setEnquiriesNumber(1);
-		bean.setHasCar(false);
-		bean.setHasHouse(false);	
-		creditService.saveCreditInfo(bean, 1l);
-		System.out.println(bean);
-		
+	
+		System.out.println(clientMapper.getClientInfoByOrderId(1));
 	}
 	
 }

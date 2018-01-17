@@ -36,4 +36,10 @@ public class IdentityServiceImpl implements IidentityService{
 		identityRepository.saveAndFlush(identity);
 	}
 
+	@Override
+	public IdentityBean findIdentityById(long id) {
+		// TODO Auto-generated method stub
+		return identityRepository.getOne(id);
+	}
+
 }
