@@ -139,7 +139,11 @@
 				//$("#myp").text(msg);
 				var type = json.data.forecast[0].type;//获取天气状况
 				var date = new Date();
-				var currenttime = date.getHours()+':'+date.getMinutes();//获取当前时间
+				var hh = date.getHours();
+				if(hh<10){
+					hh = "0" + hh;
+				}
+				var currenttime = hh+':'+date.getMinutes();//获取当前时间
 				var sunset = json.data.forecast[0].sunset;//获取当天的日落时间
 				var sunrise = json.data.forecast[0].sunrise;//获取日出时间
 				var notice = json.data.forecast[0].ganmao;								
