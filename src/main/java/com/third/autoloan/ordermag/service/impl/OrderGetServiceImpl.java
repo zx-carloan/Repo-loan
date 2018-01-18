@@ -21,10 +21,21 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	private IOrderDao orderDaoImpl;
 	
 	@Override
-	public PageBean getOrderPageByMap(Map map, PageBean pageBean) {
-		// TODO Auto-generated method stub
+	public PageBean getOrderPageByMap(Map<String,String> map) {
 		
-		return null;
+		List<OrderBean> list =orderDaoImpl.getOrderListByMap(map);
+		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
+		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	total = orderDaoImpl.getTotalOrderNumByMap(map);
+		
+		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
+		map.put("index", pageBean.getIndex()+"");
+		
+		pageBean.setRows(list);
+		pageBean.setPageSize(pageSize);
+		pageBean.setTotal(total);
+
+		return pageBean;
 	}
 
 

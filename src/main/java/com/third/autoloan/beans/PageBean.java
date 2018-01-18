@@ -7,10 +7,10 @@ public class PageBean {
 	private int pageSize;//每页显示的行数
 	private int index;//从数据库哪一行开始获取数据
 	private long total;//总行数
-	private long totalPage;
-	private String sort;
-	private String order;
-	private List<?> rows;
+	private long totalPage; //总页数
+	private String sort; //排序方式
+	private String order;//分组方式
+	private List<?> rows;//数据
 	public PageBean() {
 		super();
 		// TODO Auto-generated constructor stub

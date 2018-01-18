@@ -16,15 +16,9 @@ public class UserGetServiceImpl implements IUserGetService {
 	private IUserDao userDaoImpl;
 	
 	@Override
-	public boolean isUser(UserBean user) {
+	public UserBean getUser(UserBean user) {
 		// TODO Auto-generated method stub
 		UserBean userBean = userDaoImpl.getUser(user);
-		
-		boolean boo = false;
-		if(null!=userBean) {
-			boo = true;
-		}
-		return boo;
+		return userBean;
 	}
-
 }

@@ -29,7 +29,7 @@ private IUserGetService userGetServiceImpl;
 		String str = "我不是信息";
 		if(null!=user.getLoginName()||null!=user.getPassword()) {
 			//数据库中是否有该账户
-			if( userGetServiceImpl.isUser(user)) {
+			if( userGetServiceImpl.getUser(user)!=null) {
 				System.out.println("进来了");
 				str="/aotoloan/jsp/Interface.jsp";
 			}else {

@@ -31,17 +31,22 @@ public class OrderDaoImpl implements IOrderDao{
 
 	@Override
 	public List<CarInfoBean> listCarInfo(long id) {
+
 		return orderMapper.listCarInfo(id);
 	}
 
 	@Override
 	public ClientBean getClientInfoByOrderId(long id) {
+
 		return orderMapper.getClientInfoByOrderId(id);
 	}
 
 	@Override
+
 	public OrderBean getOrderInfoById(long id) {
 		return orderMapper.getOrderInfoById(id);
+
+
 	}
 
 	@Override
