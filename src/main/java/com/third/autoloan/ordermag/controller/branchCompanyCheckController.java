@@ -27,18 +27,18 @@ public class branchCompanyCheckController {
 	private Logger log=Logger.getLogger(this.getClass());
 	
 	@RequestMapping(value="/page")
-	public @ResponseBody PageBean getBranchCompanyDate(Map<String,String> map) {
+	public @ResponseBody PageBean getBranchCompanyDate(@RequestParam Map<String,String> map) {
 		 
 		PageBean page=null;
 		 System.out.println("map="+map);
-		/*try {
+		try {
 			  page=orderGetServiceImpl.getOrderPageByMap(map);
 		} catch (Exception e) {
 			// TODO: handle exception
 			log.error("UserController-----------getUsersByQueryParams()", e);
 		}  
 	   System.out.println(page);
-	   log.info(page);*/
+	   log.info(page);
 	   return page;
 	}
 	
