@@ -17,20 +17,16 @@ public class UserServiceImpl implements IUserSevice {
 	
 	@Override
 	public void deleteUserInfo(Long userId) {
-		// TODO Auto-generated method stub
-
 		userRepository.delete(userId);
 	}
 
 	@Override
 	public void saveUserInfo(UserBean user) {
-		// TODO Auto-generated method stub
 		userRepository.save(user);
 	}
 
 	@Override
 	public void updateUserInfo(UserBean user) {
-		// TODO Auto-generated method stub
 		userRepository.saveAndFlush(user);
 	}
 
