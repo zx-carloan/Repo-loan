@@ -63,11 +63,17 @@
 			<thead>
 				<tr>
 					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+					<th data-options="field:'id',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'client',width:20,align:'center',sortable:'true',
+						formatter: function(client){
+						return client.name;
+					}">借款人</th>
 					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
-					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
+					<th data-options="field:'company',width:20,align:'center',sortable:'true',
+					formatter: function(client){
+						return client.name;
+					}">分公司</th>
 				</tr>
 			</thead>
 		</table>
