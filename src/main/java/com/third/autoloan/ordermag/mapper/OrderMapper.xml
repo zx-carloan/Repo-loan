@@ -32,13 +32,16 @@
  	     <result property="contractNumber" column="contractNumber" />
  	     <result property="returnOpinion" column="returnOpinion" />
  	     <result property="manager" column="manager" />
+ 	     
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
  	      </association>
+ 	      
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <result property="name" column="name" />
  	        <result property="hq" column="hq" />
  	      </association>
+ 	      
  	</resultMap>
  	<!--查询车贷录入业务列表的总数   -->
  	<select id="getTotalOrderNumByMap" parameterType="java.util.Map"  resultType="java.lang.Integer">
@@ -195,6 +198,7 @@
         <result property="carPic" column="carPic" />
         <result property="sali" column="otherAttachment" />
         <result property="otherAttachment" column="sali" />
+        
         <association property="order" javaType="com.third.autoloan.beans.OrderBean">
              <id property="id" column="id"></id>
              <result property="contractNumber" column="contractNumber" />
@@ -207,6 +211,7 @@
              <result property="manager" column="manager" />
              <result property="submit" column="submit" />
         </association>
+        
          <collection property="itemList" ofType="com.third.autoloan.beans.ItemBean">
              <id property="id" column="id"></id>
              <result property="name" column="name" />
@@ -468,21 +473,6 @@
  	      </association>
  	</resultMap>
  
- <!--查询车贷录入业务列表的总数   -->
- 	<select id="getTotalOrderNumByMap" parameterType="java.util.Map"  resultType="java.lang.Integer">
- 	    select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
- 	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
-        <if test="contractNumber!=null">
-            and o.contractNumber like '%${contractNumber}%'
-        </if>
-        <if test="loanName!=mull">
-            and  c.name like '%${loanName}%'
-        </if>
-        <if test="companyName!=null">
-            and  co.name like '%${companyName}%' and co.hq=1 
-        </if>
- 	</select>
- 
  
  </mapper>

@@ -15,7 +15,7 @@ import com.third.autoloan.ordermag.dao.IOrderDao;
 import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderGetService;
 
-@Service
+@Service("orderGetServiceImpl")
 public class OrderGetServiceImpl implements IOrderGetService {
 
 	@Resource

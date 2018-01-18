@@ -11,7 +11,7 @@ import com.third.autoloan.identitymag.service.IidentityService;
 import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderService;
 
-@Service
+@Service("orderServiceImpl")
 public class OrderServiceImpl implements IOrderService{
 	
 	@Resource
