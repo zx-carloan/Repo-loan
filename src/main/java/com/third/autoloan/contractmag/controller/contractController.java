@@ -25,7 +25,7 @@ public class contractController {
 	@RequestMapping("/query" )
 	public @ResponseBody PageBean getContractByQueryParams(@RequestParam Map<String,String> map) {
 		 PageBean page=orderServiceImpl.getOrderPageByMap(map);
-
+		 System.out.println(page);
 	   return page;
 		
 	}

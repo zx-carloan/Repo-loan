@@ -36,7 +36,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
-		
+
 		List<OrderBean> list =orderDaoImpl.getOrderListByMap(map);
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);

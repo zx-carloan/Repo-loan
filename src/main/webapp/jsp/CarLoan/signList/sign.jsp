@@ -71,8 +71,8 @@
 					}">借款人</th>
 					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
 					<th data-options="field:'company',width:20,align:'center',sortable:'true',
-					formatter: function(client){
-						return client.name;
+					formatter: function(company){
+						return company.name;
 					}">分公司</th>
 				</tr>
 			</thead>
