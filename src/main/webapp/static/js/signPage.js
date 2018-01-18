@@ -1,4 +1,8 @@
-$('#signBtn').click(function(){
+
+
+$(function(){
+	
+	$('#signBtn').click(function(){
 		var rows = $('#tt').datagrid('getSelections');
 		var row = $('#tt').datagrid('getSelected');
 		var url='jsp/CarLoan/signList/signMessage.jsp';
@@ -63,3 +67,20 @@ function back() {
 		href : "jsp/CarLoan/signList/signMessage.jsp"
 	});
 }
+
+$("#query").click(function(){
+	$('#tt').datagrid('load',datas ());
+});
+
+function datas (){
+	var contratorNum = $('#contratorNum').val();
+	var borrower = $('#borrower').val();
+	var loanStatus = $('#loanStatus').val();
+	var datas = {contratorNum:contratorNum,borrower:borrower,loanStatus:loanStatus};
+	console.log(datas);
+	return datas;
+}
+
+
+});
+

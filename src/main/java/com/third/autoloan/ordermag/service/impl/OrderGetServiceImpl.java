@@ -31,6 +31,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		List<OrderBean> list =orderDaoImpl.getOrderListByMap(map);
 		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
 		int pageSize =Integer.parseInt(map.get("pageSize"));
+		
 		int	total = orderDaoImpl.getTotalOrderNumByMap(map);
 		
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));

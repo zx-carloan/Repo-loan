@@ -59,7 +59,7 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'#',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
+			data-options="url:'contract/query',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
 					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
@@ -68,27 +68,8 @@
 					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
 					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
 					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
-
 				</tr>
 			</thead>
-			<tbody>
-				<tr id="1">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
-				<tr id="2">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
-			</tbody>
 		</table>
 	</div>
 
