@@ -7,8 +7,6 @@ import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 
-
-
 public interface OrderMapper {
 	
 	/**
