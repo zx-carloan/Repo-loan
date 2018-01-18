@@ -24,6 +24,7 @@ public class branchCompanyCheckController {
 	//如果不加会报错
 	@Resource(name="orderGetServiceImpl")
 	private IOrderGetService orderGetServiceImpl;
+	
 	private Logger log=Logger.getLogger(this.getClass());
 	
 	@RequestMapping(value="/page")
