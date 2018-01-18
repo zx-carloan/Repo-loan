@@ -29,7 +29,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	public PageBean getOrderPageByMap(Map<String,String> map) {
 		
 		List<OrderBean> list =orderDaoImpl.getOrderListByMap(map);
-		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
+		int	pageNumber=Integer.parseInt(map.get("index"));
 		int pageSize =Integer.parseInt(map.get("pageSize"));
 		
 		int	total = orderDaoImpl.getTotalOrderNumByMap(map);

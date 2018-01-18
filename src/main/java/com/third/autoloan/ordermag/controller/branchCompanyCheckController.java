@@ -32,8 +32,10 @@ public class branchCompanyCheckController {
 		 
 		PageBean page=null;
 		 System.out.println("map="+map);
-	
-			  page=orderGetServiceImpl.getOrderPageByMap(map);
+	     Map<String,String> map1=new HashMap<String,String>();
+	     map1.put("index", map.get("page"));
+	     map1.put("pageSize", map.get("rows"));
+			  page=orderGetServiceImpl.getOrderPageByMap(map1);
 		
 	   System.out.println(page);
 	   log.info(page);
