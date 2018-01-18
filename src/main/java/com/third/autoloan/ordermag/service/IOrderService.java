@@ -39,17 +39,6 @@ public interface IOrderService {
 	 * @param id
 	 */
 	public OrderBean getOrderById(long id);
-
-	/**
-	 * 打印合同
-	 * @param id 所对所对订单的id
-	 */
-	public void printContract(long id);
-	/**
-	 * 还款试算
-	 * @param id 所对所对订单的id
-	 */
-	public Map<String,String> countContract(long id);
 	
 
 }

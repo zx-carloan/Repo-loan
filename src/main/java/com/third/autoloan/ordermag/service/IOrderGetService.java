@@ -47,13 +47,6 @@ public interface IOrderGetService {
 	 * @param id 所对订单的ID
 	 */
 	public OrderBean getOrderInfoById(long id);
-	
-	/**
-	 * 判读当前订单信息是提交还是保留状态
-	 * @param id 所对订单的ID
-	 * @return 返回 0 表示保留  ;1 表示提交
-	 */
-	public  int  getSubmitInfoByOrderId(long id);
 		
 	
 	/**

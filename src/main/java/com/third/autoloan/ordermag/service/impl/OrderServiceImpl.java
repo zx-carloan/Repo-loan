@@ -17,6 +17,7 @@ public class OrderServiceImpl implements IOrderService{
 	
 	@Resource
 	private OrderRepository orderRepository;
+	
 	@Resource
 	private IidentityService identityServiceImpl;
 
@@ -47,17 +48,6 @@ public class OrderServiceImpl implements IOrderService{
 		
 	}
 
-	@Override
-	public void printContract(long id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Map<String,String> countContract(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public OrderBean getOrderById(long id) {

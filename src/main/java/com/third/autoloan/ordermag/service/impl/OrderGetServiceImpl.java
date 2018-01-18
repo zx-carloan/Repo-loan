@@ -11,7 +11,9 @@ import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
+import com.third.autoloan.identitymag.service.IidentityService;
 import com.third.autoloan.ordermag.dao.IOrderDao;
+import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderGetService;
 
 @Service
@@ -19,6 +21,10 @@ public class OrderGetServiceImpl implements IOrderGetService {
 
 	@Resource
 	private IOrderDao orderDaoImpl;
+	
+	@Resource
+	private OrderRepository orderRepository;
+	
 	
 	@Override
 	public PageBean getOrderPageByMap(Map<String,String> map) {
@@ -53,30 +59,41 @@ public class OrderGetServiceImpl implements IOrderGetService {
 
 	@Override
 	public OrderBean getOrderInfoById(long id) {
-		return null;
+		return orderRepository.getOne(id);
 	}
 
 	@Override
-	public int getSubmitInfoByOrderId(long id) {
-		return 0;
+	public PageBean getLoanPage(Map<String,String> map) {
+		List<OrderBean> list =orderDaoImpl.getLoanPage(map);
+		
+		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
+		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	total = orderDaoImpl.getSumLoanPage(map);
+		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
+		map.put("index", pageBean.getIndex()+"");
+	
+		pageBean.setRows(list);
+		pageBean.setPageSize(pageSize);
+		pageBean.setTotal(total);
+
+		return pageBean;
 	}
 
-
-
 	@Override
-	public PageBean getLoanPage(Map map) {
-		List<OrderBean> list=orderDaoImpl.getLoanPage(map);
-		PageBean page=new PageBean();
-		page.setRows(list);
-		return page;
-	}
+	public PageBean getSubmenuPage(Map<String,String> map) {
+		List<OrderBean> list =orderDaoImpl.getSubmenuPage(map);
+		
+		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
+		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	total = orderDaoImpl.getSumSubmenuPage(map);
+		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
+		map.put("index", pageBean.getIndex()+"");
+	
+		pageBean.setRows(list);
+		pageBean.setPageSize(pageSize);
+		pageBean.setTotal(total);
 
-	@Override
-	public PageBean getSubmenuPage(Map map) {
-		List<OrderBean> list=orderDaoImpl.getSubmenuPage(map);
-		PageBean page=new PageBean();
-		page.setRows(list);
-		return page;
+		return pageBean;
 	}
 
 	@Override
@@ -86,7 +103,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		
 		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
 		int pageSize =Integer.parseInt(map.get("pageSize"));
-		int	total = orderDaoImpl.getTotalOrderNumByMap(map);
+		int	total = orderDaoImpl.getSumProcedure(map);
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
 	

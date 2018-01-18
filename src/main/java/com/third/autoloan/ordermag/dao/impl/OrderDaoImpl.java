@@ -62,5 +62,23 @@ public class OrderDaoImpl implements IOrderDao{
 	public List<OrderBean> getProcedurePageBean(Map<String, String> map) {
 		return orderMapper.getProcedurePageBean(map);
 	}
+
+	@Override
+	public int getSumProcedure(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return orderMapper.getSumProcedure(map);
+	}
+
+	@Override
+	public int getSumSubmenuPage(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return orderMapper.getSumSubmenuPage(map);
+	}
+
+	@Override
+	public int getSumLoanPage(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return orderMapper.getSumLoanPage(map);
+	}
 	
 }
