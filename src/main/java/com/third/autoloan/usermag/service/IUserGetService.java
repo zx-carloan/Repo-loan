@@ -14,5 +14,5 @@ public interface IUserGetService {
 	 * @param user
 	 * @return
 	 */
-	public boolean isUser(UserBean user); ;
+	public UserBean getUser(UserBean user); ;
 }
