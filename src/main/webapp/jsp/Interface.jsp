@@ -212,7 +212,7 @@
 			
 			$.ajax({
 				type : "GET",
-				url : "/aotoloan/weather/res",
+				url : "/autoloan/weather/res",
 				async : true,
 				//contentType:"application/json",
 				//data : data,

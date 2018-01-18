@@ -121,7 +121,7 @@
 	</div>
 
 	<table class="easyui-datagrid" style="width: 100%; height: 200px"
-		data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
+		data-options="url:'branchCompany/page',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 		<thead>
 			<tr>
 				<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
@@ -132,22 +132,6 @@
 				<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td style="width: 20px">123</td>
-				<td style="width: 25px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
-			<tr>
-				<td style="width: 20px">12asdf3</td>
-				<td style="width: 25px">12adf3</td>
-				<td style="width: 20px">12adsf3</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
-		</tbody>
 	</table>
 	<div style="text-align: center">
 		<button id="examine" class="btn btn-primary">初审</button>
