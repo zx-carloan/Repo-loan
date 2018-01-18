@@ -17,8 +17,8 @@ import com.third.autoloan.ordermag.service.IOrderService;
 @Controller
 public class IdentityController{
 
-	@Resource
-	private IOrderService orderService;
+	@Resource(name="orderServiceImpl")
+	private IOrderService orderServiceImpl;
 	
 	//通过条件查询订单信息，得到客户身份信息
 	
