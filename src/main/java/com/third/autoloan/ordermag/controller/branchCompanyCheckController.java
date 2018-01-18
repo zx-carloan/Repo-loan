@@ -35,7 +35,7 @@ public class branchCompanyCheckController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			log.error("UserController-----------getUsersByQueryParams()", e);
-		}
+		}  
 	   System.out.println(page);
 	   log.info(page);
 	   return page;
