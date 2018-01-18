@@ -79,6 +79,12 @@ public interface OrderMapper {
 	 * @return
 	 */
 	public List<OrderBean> getLoanPage(Map<String, String> map);
+	/***
+	 *  得到放款业务列表总数
+	 * @param map
+	 * @return
+	 */
+	public int getSumLoanPage(Map<String, String> map);
 	
 	/**
 	 *得到 分单业务列表
@@ -86,6 +92,12 @@ public interface OrderMapper {
 	 * @return
 	 */
 	public List<OrderBean> getSubmenuPage(Map<String, String> map);
+	/***
+	 * 得到 分单业务列表总数
+	 * @param map
+	 * @return
+	 */
+	public int getSumSubmenuPage(Map<String, String> map);
 	
 	/**
 	 * 得到车贷进度业务列表
@@ -93,4 +105,12 @@ public interface OrderMapper {
 	 * @return
 	 */
 	public List<OrderBean> getProcedurePageBean(Map<String, String> map);
+    /***
+     * 得到车贷进度业务列表总数
+     * @param map
+     * @return
+     */
+	public int getSumProcedure(Map<String, String> map);
+	
+	
 }

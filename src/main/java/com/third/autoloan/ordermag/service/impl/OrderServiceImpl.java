@@ -60,9 +60,9 @@ public class OrderServiceImpl implements IOrderService{
 	}
 
 	@Override
-	public void getOrderById(long id) {
+	public OrderBean getOrderById(long id) {
 		// TODO Auto-generated method stub
-		orderRepository.getOne(id);
+		return orderRepository.getOne(id);
 	}
 
 }

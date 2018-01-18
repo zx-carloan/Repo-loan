@@ -57,6 +57,111 @@
  	</select>
  	
  	
+ 	<!--得到放款业务列表总数   -->
+ 	<select id="getSumLoanPage" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	    select count(o.id)  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id 
+ 	    left join t_Contract as con on con.id=o.fk_contract_id 
+ 	    left join t_opinion as op on op.id=o.fk_opinion_id where 1=1
+
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="identity!=null">
+            and  i.identity like '%${identity}%'  
+        </if>
+        <if test="productName!=null">
+            and  p.name = #{productName}
+        </if>
+         <if test="companyName!=null">
+            and  co.name = #{companyName} and co.hq=1
+        </if>
+        <if test="loanStatus!=null">
+            and  o.loanStatus = #{loanStatus} 
+        </if>
+ 	</select>
+ 	
+ 	
+ 	
+ 	<!--得到 分单业务列表总数  -->
+ 	 	<select id="getSumSubmenuPage" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	     select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id  where 1=1
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="identity!=null">
+            and  i.identity like '%${identity}%'  
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus = #{submenuStatus}
+        </if>
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!--得到车贷进度业务列表总和 -->
+ 	 	<select id="getSumProcedure" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	    select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id 
+ 	    left join t_Contract as con on con.id=o.fk_contract_id
+ 	      where 1=1
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="timeStarting_1!=null">
+            and  o.timeStarting&gt;=#{timeStarting_1}
+        </if>
+        <if test="timeStarting_2!=null">
+            and  o.timeStarting&lt;=#{timeStarting_2}
+        </if>
+        <if test="getMoneyTime_1!=null">
+            and  o.timeStarting&gt;=#{getMoneyTime_1}
+        </if>
+        <if test="getMoneyTime_2!=null">
+            and  o.timeStarting&lt;=#{getMoneyTime_2}
+        </if>
+        <if test="productType!=null">
+            and  p.name like '%${productType}%'
+        </if>
+        <if test="companyName!=null">
+            and  co.name like '%${companyName}%' and co.hq=1 
+        </if>
+        <if test="reviewDate!=null">
+            and  o.review like= #{reviewDate}
+        </if>
+         <if test="payDate_1!=null">
+            and  con.payDate like&gt;=#{payDate_1}
+        </if>
+        <if test="payDate_2!=null">
+            and  con.payDate like&lt;=#{payDate_2}
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus = #{submenuStatus}
+        </if>
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
  	<!-- 得到订单车辆信息 -->
  	<select id="listCarInfo" parameterType="long" resultMap="carInfo">
  	     select * from t_order as o left join t_carinfo as c on where o.fk_client_id=c.id where o.id=#{id}

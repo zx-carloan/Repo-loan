@@ -38,7 +38,7 @@ public interface IOrderService {
 	 * 查询订单信息
 	 * @param id
 	 */
-	public void getOrderById(long id);
+	public OrderBean getOrderById(long id);
 
 	/**
 	 * 打印合同
