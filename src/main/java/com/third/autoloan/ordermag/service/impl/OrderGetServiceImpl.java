@@ -11,7 +11,6 @@ import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
-import com.third.autoloan.identitymag.service.IidentityService;
 import com.third.autoloan.ordermag.dao.IOrderDao;
 import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderGetService;
