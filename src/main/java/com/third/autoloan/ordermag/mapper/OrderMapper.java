@@ -28,9 +28,8 @@ public interface OrderMapper {
 	 * 			companyName 分公司名
 	 * 			
 	 */
-
-	
 	public List<OrderBean> getOrderListByMap(Map<String, String> map);
+	
 	/**
 	 * 查询车贷录入业务列表的总数 
 	 * @param map

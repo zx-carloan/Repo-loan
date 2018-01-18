@@ -42,7 +42,6 @@ public class OrderDaoImpl implements IOrderDao{
 	}
 
 	@Override
-
 	public OrderBean getOrderInfoById(long id) {
 		return orderMapper.getOrderInfoById(id);
 
@@ -63,6 +62,5 @@ public class OrderDaoImpl implements IOrderDao{
 	public List<OrderBean> getProcedurePageBean(Map<String, String> map) {
 		return orderMapper.getProcedurePageBean(map);
 	}
-
 	
 }
