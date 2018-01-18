@@ -130,7 +130,7 @@
 	<script type="text/javascript">
 	 $.ajax({
 			type : "GET",
-			url : "/aotoloan/weather/res",
+			url : "weather/res",
 			async : true,
 			//contentType:"application/json",
 			//data : data,
