@@ -94,9 +94,7 @@
 		})
 	</script>
 
-	<span>当前位置：车贷签约>签约列表</span>
-
-	<div id="p" class="easyui-panel" title="查询条件"
+	<div id="p" class="easyui-panel" title="当前位置：车贷签约>签约列表"
 		style="width: 100%; height: 100px; font-weight: bold;">
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post"
