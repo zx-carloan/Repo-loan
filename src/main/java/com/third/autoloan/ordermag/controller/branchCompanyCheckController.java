@@ -31,12 +31,9 @@ public class branchCompanyCheckController {
 		 
 		PageBean page=null;
 		 System.out.println("map="+map);
-		try {
+	
 			  page=orderGetServiceImpl.getOrderPageByMap(map);
-		} catch (Exception e) {
-			// TODO: handle exception
-			log.error("UserController-----------getUsersByQueryParams()", e);
-		}  
+		
 	   System.out.println(page);
 	   log.info(page);
 	   return page;
