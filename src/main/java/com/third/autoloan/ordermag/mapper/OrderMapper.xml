@@ -4,7 +4,7 @@
  <mapper namespace="com.third.autoloan.ordermag.mapper.OrderMapper">
  	
  	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
- 	    select o.id,o.contractNumber,c.name,o.manager,co.name from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
         <if test="contractNumber!=null">
@@ -19,13 +19,15 @@
         <if test="status!=null">
             and  status = #{status}
         </if>
-        <if test=" order!=null">
-                 order by ${order}
+         
+      
+        <if test="sort!=null">
+  			order by	${sort}
         </if>
-         <if test="sort!=null">
-  				 ${sort} 
-        </if>
-          limit ${index},${pageSize};
+         <if test=" order!=null">
+                 ${order}
+        </if>  
+          limit ${index},${rows};
  	</select>
  	<resultMap type="OrderBean" id="getOrderPage">
  	     <id property="id" column="id"></id>
@@ -302,13 +304,13 @@
         <if test="status!=null">
             and  status = #{status}
         </if>
-     	<if test=" order!=null">
-                 order by ${order}
+     	  <if test="sort!=null">
+  			order by	${sort}
         </if>
-         <if test="sort!=null">
-  				 ${sort} 
-        </if>
-          limit ${index},${pageSize};
+         <if test=" order!=null">
+                 ${order}
+        </if>  
+          limit ${index},${rows};
  	</select>
  	
  	<resultMap type="OrderBean" id="getLoan">
@@ -361,13 +363,13 @@
         <if test="submenuStatus!=null">
             and  o.submenuStatus = #{submenuStatus}
         </if>
-    	<if test=" order!=null">
-                 order by ${order}
+    	  <if test="sort!=null">
+  			order by	${sort}
         </if>
-         <if test="sort!=null">
-  				 ${sort} 
-        </if>
-          limit ${index},${pageSize};
+         <if test=" order!=null">
+                 ${order}
+        </if>  
+          limit ${index},${rows};
  	</select>
  	<resultMap type="OrderBean" id="getSub">
  	     <id property="id" column="id"></id>
@@ -438,13 +440,13 @@
         <if test="submenuStatus!=null">
             and  o.submenuStatus = #{submenuStatus}
         </if>
-      	<if test=" order!=null">
-                 order by ${order}
+      	  <if test="sort!=null">
+  			order by	${sort}
         </if>
-         <if test="sort!=null">
-  				 ${sort} 
-        </if>
-          limit ${index},${pageSize};
+         <if test=" order!=null">
+                 ${order}
+        </if>  
+          limit ${index},${rows};
  	</select>
  	
  	<resultMap type="OrderBean" id="getProcedure">

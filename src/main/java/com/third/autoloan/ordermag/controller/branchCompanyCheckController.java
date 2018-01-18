@@ -31,11 +31,11 @@ public class branchCompanyCheckController {
 	public @ResponseBody PageBean getBranchCompanyDate(@RequestParam Map<String,String> map) {
 		 
 		PageBean page=null;
-		 System.out.println("map="+map);
+		/* System.out.println("map="+map);
 	     Map<String,String> map1=new HashMap<String,String>();
 	     map1.put("index", map.get("page"));
-	     map1.put("pageSize", map.get("rows"));
-		 page=orderGetServiceImpl.getOrderPageByMap(map1);
+	     map1.put("pageSize", map.get("rows"));*/
+		 page=orderGetServiceImpl.getOrderPageByMap(map);
 		
 	   System.out.println("pageBean="+page);
 	 

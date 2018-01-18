@@ -124,12 +124,24 @@
 		data-options="url:'branchCompany/page',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 		<thead>
 			<tr>
-				<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-				<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-				<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-				<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
-				<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">业务经理</th>
-				<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
+				<th data-options="field:'ids',checkbox:true,width:20,sortable:'true'"></th>
+				<th data-options="field:'id',width:20,align:'center',sortable:'true'">序号</th>
+				<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+				<th data-options="field:'client',formatter: function(value,row,index){
+                if (value.name){
+                return value.name;
+                } else {
+                return value;
+                }
+               },width:20,align:'center',sortable:'true'">借款人</th>
+				<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+				<th data-options="field:'company',formatter: function(value,row,index){
+                if (value.name){
+                return value.name;
+                } else {
+                return value;
+                }
+               },width:20,align:'center',sortable:'true'">分公司</th>
 			</tr>
 		</thead>
 	</table>
