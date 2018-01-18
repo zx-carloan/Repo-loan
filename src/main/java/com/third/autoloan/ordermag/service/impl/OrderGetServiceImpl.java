@@ -29,8 +29,8 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	public PageBean getOrderPageByMap(Map<String,String> map) {
 		
 		List<OrderBean> list =orderDaoImpl.getOrderListByMap(map);
-		int	pageNumber=Integer.parseInt(map.get("index"));
-		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	pageNumber=Integer.parseInt(map.get("page"));
+		int pageSize =Integer.parseInt(map.get("rows"));
 		
 		int	total = orderDaoImpl.getTotalOrderNumByMap(map);
 		
@@ -66,8 +66,8 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	public PageBean getLoanPage(Map<String,String> map) {
 		List<OrderBean> list =orderDaoImpl.getLoanPage(map);
 		
-		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
-		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	pageNumber=Integer.parseInt(map.get("page"));
+		int pageSize =Integer.parseInt(map.get("rows"));
 		int	total = orderDaoImpl.getSumLoanPage(map);
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
@@ -83,8 +83,8 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	public PageBean getSubmenuPage(Map<String,String> map) {
 		List<OrderBean> list =orderDaoImpl.getSubmenuPage(map);
 		
-		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
-		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	pageNumber=Integer.parseInt(map.get("page"));
+		int pageSize =Integer.parseInt(map.get("rows"));
 		int	total = orderDaoImpl.getSumSubmenuPage(map);
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
@@ -101,8 +101,8 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		
 		List<OrderBean> list =orderDaoImpl.getProcedurePageBean(map);
 		
-		int	pageNumber=Integer.parseInt(map.get("pageNumber"));
-		int pageSize =Integer.parseInt(map.get("pageSize"));
+		int	pageNumber=Integer.parseInt(map.get("page"));
+		int pageSize =Integer.parseInt(map.get("rows"));
 		int	total = orderDaoImpl.getSumProcedure(map);
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
