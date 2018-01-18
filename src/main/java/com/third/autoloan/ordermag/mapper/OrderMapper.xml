@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.third.autoloan.ordermag.mapper.OrderMapper">
  	
- 	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderList">
+ 	<select id="getOrderPageByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
  	    select o.id,o.contractNumber,c.name,o.manager,co.name from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
@@ -19,15 +19,15 @@
         <if test="status!=null">
             and  status = #{status}
         </if>
-        <if test="sort!=null">
-            order by ${sort}
-        </if>
         <if test=" order!=null">
-           
+                 order by ${order}
+        </if>
+         <if test="sort!=null">
+  				 ${sort} 
         </if>
           limit ${index},${pageSize};
  	</select>
- 	<resultMap type="OrderBean" id="getOrderList">
+ 	<resultMap type="OrderBean" id="getOrderPage">
  	     <id property="id" column="id"></id>
  	     <result property="contractNumber" column="contractNumber" />
  	     <result property="returnOpinion" column="returnOpinion" />
@@ -268,7 +268,7 @@
  	</resultMap>
  	
  	<!-- 放款业务列表-->
-  	<select id="getLoanPage" parameterType="java.util.Map" resultType="String" resultMap="getOrderList">
+  	<select id="getcPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
  	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
  	    left join t_identity as i on o.fk_identiry_id=i.id 
@@ -297,15 +297,16 @@
         <if test="status!=null">
             and  status = #{status}
         </if>
-        <if test="sort!=null">
-            order by ${sort}
+     	<if test=" order!=null">
+                 order by ${order}
         </if>
-       <!--  <if test=" order!=null">
-           
-        </if> -->
+         <if test="sort!=null">
+  				 ${sort} 
+        </if>
           limit ${index},${pageSize};
  	</select>
- 	<resultMap type="OrderBean" id="getOrderList">
+ 	
+ 	<resultMap type="OrderBean" id="getLoan">
  	     <id property="id" column="id"></id>
  	     <result property="contractNumber" column="contractNumber" />
  	     <result property="returnOpinion" column="returnOpinion" />
@@ -355,12 +356,12 @@
         <if test="submenuStatus!=null">
             and  o.submenuStatus = #{submenuStatus}
         </if>
-        <if test="sort!=null">
-            order by ${sort}
+    	<if test=" order!=null">
+                 order by ${order}
         </if>
-       <!--  <if test=" order!=null">
-           
-        </if> -->
+         <if test="sort!=null">
+  				 ${sort} 
+        </if>
           limit ${index},${pageSize};
  	</select>
  	<resultMap type="OrderBean" id="getSub">
@@ -432,12 +433,12 @@
         <if test="submenuStatus!=null">
             and  o.submenuStatus = #{submenuStatus}
         </if>
-        <if test="sort!=null">
-            order by ${sort}
+      	<if test=" order!=null">
+                 order by ${order}
         </if>
-       <!--  <if test=" order!=null">
-           
-        </if> -->
+         <if test="sort!=null">
+  				 ${sort} 
+        </if>
           limit ${index},${pageSize};
  	</select>
  	

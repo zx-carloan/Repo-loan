@@ -55,12 +55,6 @@ public interface IOrderDao {
 	public ClientBean getClientInfoByOrderId(long id);
 	
 	
-	/**
-	 * 获取订单信息
-	 * @param id 所对订单的ID\
-	 * 无
-	 */
-	public OrderBean getOrderInfoById(long id);
 		
 	
 	

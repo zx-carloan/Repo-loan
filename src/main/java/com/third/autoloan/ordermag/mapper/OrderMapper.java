@@ -56,17 +56,6 @@ public interface OrderMapper {
 	
 	
 	/**
-	 * 获取订单信息
-	 * @param id 所对订单的ID\
-	 * 无
-	 */
-	public OrderBean getOrderInfoById(long id);
-		
-	
-	
-
-	
-	/**
 	 *  得到放款业务列表
 	 *  
 	 * @param map 条件

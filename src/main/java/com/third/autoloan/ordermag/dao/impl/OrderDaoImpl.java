@@ -41,12 +41,7 @@ public class OrderDaoImpl implements IOrderDao{
 		return orderMapper.getClientInfoByOrderId(id);
 	}
 
-	@Override
-	public OrderBean getOrderInfoById(long id) {
-		return orderMapper.getOrderInfoById(id);
 
-
-	}
 
 	@Override
 	public List<OrderBean> getLoanPage(Map<String, String> map) {
