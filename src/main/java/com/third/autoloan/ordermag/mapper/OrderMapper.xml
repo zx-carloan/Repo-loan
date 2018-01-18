@@ -7,10 +7,10 @@
  	    select o.id,o.contractNumber,c.name,o.manager,co.name from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
-        <if test="contractNumber!=''">
+        <if test="contractNumber!=null">
             and o.contractNumber like '%${contractNumber}%'
         </if>
-        <if test="loanName!=''">
+        <if test="loanName!=null">
             and  c.name like '%${loanName}%'
         </if>
         <if test="companyName!=null">

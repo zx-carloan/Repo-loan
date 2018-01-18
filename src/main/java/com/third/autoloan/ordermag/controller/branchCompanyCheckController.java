@@ -35,10 +35,10 @@ public class branchCompanyCheckController {
 	     Map<String,String> map1=new HashMap<String,String>();
 	     map1.put("index", map.get("page"));
 	     map1.put("pageSize", map.get("rows"));
-			  page=orderGetServiceImpl.getOrderPageByMap(map1);
+		 page=orderGetServiceImpl.getOrderPageByMap(map1);
 		
-	   System.out.println(page);
-	   log.info(page);
+	   System.out.println("pageBean="+page);
+	 
 	   return page;
 	}
 	
