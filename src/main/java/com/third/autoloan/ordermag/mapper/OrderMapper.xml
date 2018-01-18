@@ -22,7 +22,6 @@
        	<if test=" sort!=null">
                  order by ${sort} 
         </if>
-        
          <if test="order!=null">
   				${order} 
         </if>
