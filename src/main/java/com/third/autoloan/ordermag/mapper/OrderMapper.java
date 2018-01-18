@@ -10,6 +10,7 @@ import com.third.autoloan.beans.OrderBean;
 
 
 public interface OrderMapper {
+	
 	/**
 	 * 车贷录入业务列表的分页查询
 	 * @param map
@@ -29,7 +30,7 @@ public interface OrderMapper {
 	 */
 
 	
-	public List<OrderBean> getOrderListByMap(Map map);
+	public List<OrderBean> getOrderListByMap(Map<String, String> map);
 	/**
 	 * 查询车贷录入业务列表的总数 
 	 * @param map
@@ -54,12 +55,43 @@ public interface OrderMapper {
 	 */
 	public ClientBean getClientInfoByOrderId(long id);
 	
-	/**
-	 * 得到客户信用信息
-	 *
-	 * @param id 所对订单的ID
-	 * @return 返回客户信用信息
-	 */
-	public ClientBean getCreditInfoByOrderId(long id);
 	
+	/**
+	 * 获取订单信息
+	 * @param id 所对订单的ID\
+	 * 无
+	 */
+	public OrderBean getOrderInfoById(long id);
+		
+	
+	
+
+	
+	/**
+	 *  得到放款业务列表
+	 *  
+	 * @param map 条件
+	 * contractNumber合同编号
+	 * name借款人 clientBean
+	 * identity 身份证号 identityBean
+	 * name 产品类型 ProductBean表
+	 * name 分公司名
+	 * loanStatus 放款状态
+	 * @return
+	 */
+	public List<OrderBean> getLoanPage(Map<String, String> map);
+	
+	/**
+	 *得到 分单业务列表
+	 * @param map
+	 * @return
+	 */
+	public List<OrderBean> getSubmenuPage(Map<String, String> map);
+	
+	/**
+	 * 得到车贷进度业务列表
+	 * @param map
+	 * @return
+	 */
+	public List<OrderBean> getProcedurePageBean(Map<String, String> map);
 }

@@ -9,20 +9,17 @@ import org.springframework.stereotype.Service;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
-import com.third.autoloan.beans.ContractBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
-import com.third.autoloan.ordermag.mapper.OrderGetMapper;
-import com.third.autoloan.ordermag.mapper.OrderMapper;
+import com.third.autoloan.ordermag.dao.IOrderDao;
 import com.third.autoloan.ordermag.service.IOrderGetService;
 
 @Service
 public class OrderGetServiceImpl implements IOrderGetService {
 
 	@Resource
-	private OrderMapper orderMapper;
-	@Resource
-	private OrderGetMapper orderGetMapper;
+	private IOrderDao orderDaoImpl;
+	
 	@Override
 	public PageBean getOrderPageByMap(Map map, PageBean pageBean) {
 		// TODO Auto-generated method stub
@@ -35,24 +32,15 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	public List<CarInfoBean> listCarInfo(long id) {
 		// TODO Auto-generated method stub
 		
-		return orderMapper.listCarInfo(id);
+		return null;
 	}
 
 	@Override
 	public ClientBean getClientInfoByOrderId(long id) {
 		// TODO Auto-generated method stub
-		return orderMapper.getClientInfoByOrderId(id);
-	}
-
-	@Override
-	public ClientBean getCreditInfoByOrderId(long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-	
 
 	@Override
 	public OrderBean getOrderInfoById(long id) {
@@ -67,16 +55,11 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	}
 
 
-	@Override
-	public ContractBean getContractInfoByOrderId(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public PageBean getLoanPage(Map map) {
 		// TODO Auto-generated method stub
-		List<OrderBean> list=orderGetMapper.getLoanPage(map);
+		List<OrderBean> list=orderDaoImpl.getLoanPage(map);
 		PageBean page=new PageBean();
 		page.setRows(list);
 		return page;
@@ -85,7 +68,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	@Override
 	public PageBean getSubmenuPage(Map map) {
 		// TODO Auto-generated method stub
-		List<OrderBean> list=orderGetMapper.getSubmenuPage(map);
+		List<OrderBean> list=orderDaoImpl.getSubmenuPage(map);
 		PageBean page=new PageBean();
 		page.setRows(list);
 		return page;
@@ -94,7 +77,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	@Override
 	public PageBean getProcedurePageBean(Map map) {
 		// TODO Auto-generated method stub
-		List<OrderBean> list=orderGetMapper.getProcedurePageBean(map);
+		List<OrderBean> list=orderDaoImpl.getProcedurePageBean(map);
 		PageBean page=new PageBean();
 		page.setRows(list);
 		return page;

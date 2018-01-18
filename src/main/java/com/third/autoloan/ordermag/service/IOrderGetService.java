@@ -44,17 +44,6 @@ public interface IOrderGetService {
 	
 	
 	/**
-	 * 得到客户信用信息
-	 *
-	 * @param id 所对订单的ID
-	 * @return 返回客户信用信息
-	 */
-	public ClientBean getCreditInfoByOrderId(long id);
-	
-
-	
-	
-	/**
 	 * 获取订单信息
 	 * @param id 所对订单的ID
 	 */
@@ -67,15 +56,6 @@ public interface IOrderGetService {
 	 */
 	public  int  getSubmitInfoByOrderId(long id);
 		
-	
-	/**
-	 *  
-	 * @param id 所对订单的ID
-	 * @return 查到的签约信息
-	 */
-	public ContractBean getContractInfoByOrderId(long id);
-	
-
 	
 	/**
 	 *  得到放款业务列表

@@ -18,35 +18,46 @@ public class OrderDaoImpl implements IOrderDao{
 
 	@Resource
 	private OrderMapper orderMapper;
-	
+
 	@Override
-	public List<OrderBean> getOrderListByMap(Map map) {
-		// TODO Auto-generated method stub
+	public List<OrderBean> getOrderListByMap(Map<String, String> map) {
 		return orderMapper.getOrderListByMap(map);
 	}
 
 	@Override
-	public int getTotalOrderNumByMap(Map map) {
-		// TODO Auto-generated method stub
+	public int getTotalOrderNumByMap(Map<String, String> map) {
 		return orderMapper.getTotalOrderNumByMap(map);
 	}
 
 	@Override
 	public List<CarInfoBean> listCarInfo(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderMapper.listCarInfo(id);
 	}
 
 	@Override
 	public ClientBean getClientInfoByOrderId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderMapper.getClientInfoByOrderId(id);
 	}
 
 	@Override
-	public ClientBean getCreditInfoByOrderId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public OrderBean getOrderInfoById(long id) {
+		return orderMapper.getOrderInfoById(id);
 	}
 
+	@Override
+	public List<OrderBean> getLoanPage(Map<String, String> map) {
+		return orderMapper.getLoanPage(map);
+	}
+
+	@Override
+	public List<OrderBean> getSubmenuPage(Map<String, String> map) {
+		return orderMapper.getSubmenuPage(map);
+	}
+
+	@Override
+	public List<OrderBean> getProcedurePageBean(Map<String, String> map) {
+		return orderMapper.getProcedurePageBean(map);
+	}
+
+	
 }
