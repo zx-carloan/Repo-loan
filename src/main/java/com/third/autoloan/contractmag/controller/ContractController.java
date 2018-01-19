@@ -5,21 +5,22 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.ordermag.service.IOrderGetService;
 import com.third.autoloan.ordermag.service.IOrderService;
 
 @RequestMapping("/contract")
 @Controller
-public class contractController {
+public class ContractController {
 	
 	
 	@Resource(name="orderGetServiceImpl")
@@ -27,6 +28,7 @@ public class contractController {
 	
 	@Resource(name="orderServiceImpl")
 	private IOrderService orderService;
+	
 	
 	//查询操作
 	@RequestMapping("/query" )
@@ -65,6 +67,18 @@ public class contractController {
 		}
 		return "ok";
 	}
+	/**
+	 * 
+	 * @param map 订单的id 
+	 * @return
+	 */
+	public ModelAndView signInfo(Integer  orderId) {
+		ModelAndView mv = new ModelAndView();
+		OrderBean order=	  orderService.getOrderById(orderId);
+		System.out.println(order);
+		mv.addObject(order);
 	
+		return mv;
+	}
 	
 }
