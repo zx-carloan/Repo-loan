@@ -35,5 +35,4 @@ public interface IidentityService {
 	 */
 	public IdentityBean findIdentityById(long id);
 	
-
 }

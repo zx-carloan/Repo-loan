@@ -8,19 +8,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>身份信息读取</title>
 <link rel="stylesheet" type="text/css"
-	href="/static/easyui/themes/default/easyui.css">
+	href="static/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="/static/easyui/themes/icon.css">
+	href="static/easyui/themes/icon.css">
 <script type="text/javascript"
-	src="/static/easyui/locale/easyui-lang-zh_CN.js"></script>
+	src="static/easyui/locale/easyui-lang-zh_CN.js"></script>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script type="text/javascript" src="/static/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="static/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="static/js/identity.js"></script>
+
 
 <!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 <style type="text/css">
 	
 </style>
@@ -33,14 +35,15 @@
 			style="width: 100%; height: 70px; font-weight: bold;">
 			<span id="span1">&nbsp;</span>
 			<form id="checkup" method="post" style="margin-top: -5px;">
-				<span style="margin-right: 20px;" class="span1">身份证号</span> <input
+				<span style="margin-right: 20px;" class="span1">身份证号</span>
+				 <input  
 					id="contratorNum" class="easyui-textbox" data-options="prompt:'填写'"
 					style="height: 20px"> <span style="margin-right: 20px;"
 					class="span1">&nbsp;</span> <span style="margin-right: 20px;"
 					class="span1">&nbsp;</span>
 
-				<button type="button" id="myButton" data-loading-text="Loading..."
-					class="btn btn-primary" autocomplete="off"
+				<button type="button" id="query" data-loading-text="Loading..."
+					class="btn btn-primary" autocomplete="false"
 					style="margin-top: -20px;">查&nbsp;&nbsp;询</button>
 
 				<button type="button" id="addInfo" data-loading-text="Loading..."
@@ -49,29 +52,25 @@
 			</form>
 
 		</div>
-		<table class="easyui-datagrid" style="width: 100%; height: 200px"
-			data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
+		<table id="tt" class="easyui-datagrid" style="width: 100%; height: 200px"
+			data-options="fitColumns:true,pagination:true,singleSelect:false">
 			<thead>
 				<tr>
-					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">姓名</th>
-					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">性别</th>
-					<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
+					<th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'s',width:20,align:'center'">序号</th>
+					<th data-options="field:'name',width:20,align:'center'">姓名</th>
+					<th data-options="field:'gender',width:20,align:'center'">性别</th>
+					<th data-options="field:'identity',width:20,align:'center'">身份证号</th>
+					<th data-options="field:'id',width:20,align:'center'"></th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr id="1">
-					<td style="width: 25px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
-				<tr id="2">
-					<td style="width: 25px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-
+			<tbody id="tb">
+				<tr >
+					<td  style="width: 25px"></td>
+					<td  style="width: 25px"><span id="num"></span></td>
+					<td  style="width: 20px"><span id="name"></span ></td>
+					<td  style="width: 20px"><span id="gender"></span></td>
+					<td  style="width: 20px"><span id="identity"></span></td>
 				</tr>
 			</tbody>
 		</table>
@@ -102,24 +101,37 @@
 			});
 
 			$("#cancel").click(function() {
-
 				if (id == "") {
 					$.messager.confirm('Confirm', '请选择行', function(r) {
 						if (r) {
 							// exit action;
-
 						}
 					});
-
 				} else {
-
 					$.messager.confirm('Confirm', '是否撤销该客户?', function(r) {
 						if (r) {
-							// exit action;
-						}
-					});
-				}
-			});
+							var ids = [];
+							for(var i = 0 ; i < length; i ++){
+								ids.push(rows[i].id);
+							}
+							$.ajax({
+								   type: "DELETE",
+								   url: "identitys/"+ids,
+								   async:true,
+								   success: function(msg){
+									   $.messager.show({
+											title:'提示信息',
+											msg:msg,
+											timeout:5000,
+											showType:'slide'
+										});
+									   $('#tt').datagrid('reload');
+								   }
+								});
+							}
+						});
+					}
+				});
 
 			$("#addInfo").click(function() {
 				$("#viewDiv").panel({
@@ -131,7 +143,6 @@
 					href : "jsp/customService/informationEntry/addIDInfo.jsp"
 				});
 			});
-
 			$("#addBusiness").click(
 				function() {
 					$("#viewDiv")

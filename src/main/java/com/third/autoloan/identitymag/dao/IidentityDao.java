@@ -1,11 +1,5 @@
 package com.third.autoloan.identitymag.dao;
 
-
-
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultType;
-import org.apache.ibatis.annotations.Select;
-
 import com.third.autoloan.beans.IdentityBean;
 
 public interface IidentityDao {
@@ -14,9 +8,7 @@ public interface IidentityDao {
 	 * 
 	 * @param identity
 	 */
-	@ResultType(value = IdentityBean.class)
-	@Select("SELECT id AS id,name AS name,gender AS gender,ethnic,birthday,address,identity,administration,issueDate,expireDate "
-			+ " FROM t_identity WHERE identity=#{identity};")
-	public IdentityBean getIdentityInfoByIdentityNum(@Param("identity")String identity);
+	
+	public IdentityBean getIdentityInfoByIdentityNum(String id);
 	
 }
