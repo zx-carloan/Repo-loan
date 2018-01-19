@@ -126,7 +126,6 @@ public class CarInfoBean implements Serializable {
 	private String otherAttachment;
 	
 	
-	
 	public CarInfoBean() {
 		super();
 		// TODO Auto-generated constructor stub

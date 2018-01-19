@@ -4,18 +4,19 @@ $(function(){
 	
 	$('#signBtn').click(function(){
 		var row = $('#tt').datagrid('getSelected');
-		var url='jsp/CarLoan/signList/signMessage.jsp';
+		var url='contract/signInfo';
+		
 		if(row){
-			if(length !=null){
+				var orderId= row.id;
+				alert(orderId);
 				$("#viewDiv").panel({
 					iconCls : "icon-add",
 					collapsible : true,
 					minimizable : true,
 					maximizable : true,
 					closable : true,
-					href : url
+					href : url+"?orderId="+orderId
 				});
-			}
 		}else{
 			$.messager.confirm('Confirm', '请选择一行进行操作');
 		}

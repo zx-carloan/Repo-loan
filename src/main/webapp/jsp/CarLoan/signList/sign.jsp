@@ -61,8 +61,8 @@
 			<thead>
 				<tr>
 					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
-					<th id='status' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
-					<th id='rollback' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='status' data-options="field:'status',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='rollback' data-options="field:'rollback',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 					<th data-options="field:'client',width:20,align:'center',sortable:'true',
 						formatter: function(client){return client.name;}">借款人</th>

@@ -72,13 +72,13 @@ public class ContractController {
 	 * @param map 订单的id 
 	 * @return
 	 */
-	public ModelAndView signInfo(Integer  orderId) {
+	@RequestMapping("/signInfo")
+	public ModelAndView signInfo(Long  orderId) {
 		ModelAndView mv = new ModelAndView();
 		OrderBean order=	  orderService.getOrderById(orderId);
 		System.out.println(order);
 		mv.addObject(order);
-	
+		mv.setViewName("jsp/CarLoan/signList/signMessage");
 		return mv;
 	}
-	
 }
