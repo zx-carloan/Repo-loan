@@ -1,9 +1,9 @@
 function login() {
 	$.ajax({
 		url : '/task/usermag/login',
-		type : 'POST', // GET
-		async : true, // 或false,是否异步
-		data : {},
+		type : 'POST', 
+		async : true, 
+		data : datas(),
 		dataType:'text',
 		success : function(msg) {
 			if(msg!='err'){
@@ -19,6 +19,16 @@ function login() {
 		},
 	}) 
 }
+
+function datas(){
+	var loginName =  $('#name').val();
+	var  password=$('#pwd').val();
+	var data ={loginName:loginName,password:password};
+	console.log(data);
+	return data;
+}
+
+
 function clear(){
 	$('#name').val('');
 	$('#pwd').val('');
