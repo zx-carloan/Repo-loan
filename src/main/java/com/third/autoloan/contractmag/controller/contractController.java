@@ -28,7 +28,7 @@ public class contractController {
 	@Resource(name="orderServiceImpl")
 	private IOrderService orderService;
 	
-	
+	//查询操作
 	@RequestMapping("/query" )
 	public @ResponseBody PageBean getContractByQueryParams(@RequestParam Map<String,String> map) {
 		 PageBean page=orderServiceImpl.getOrderPageByMap(map);
@@ -36,6 +36,7 @@ public class contractController {
 	   return page;
 		
 	}
+	//撤销操作
 	@RequestMapping("/delect" )
 	public @ResponseBody String deleteOrderInfoById (Long orderId) {
 		orderService.deleteOrderInfo(orderId);
@@ -43,6 +44,7 @@ public class contractController {
 		
 	}
 	
+	//订单信息上传
 	@RequestMapping("/upload")
 	public @ResponseBody String fileUploadHandler(MultipartFile photo) {
 		if (photo.isEmpty()) {

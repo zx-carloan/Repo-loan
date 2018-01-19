@@ -88,16 +88,16 @@ function pueding() {
 	$("#div1").hide("slow");
 }
 
-$('#ff').form('submit', {   
+});
+  
+
+$('#bankCard').form('submit', {   
     url:"contract/upload",   
     onSubmit: function(){   
-     
+    	   alert('data')  
+    	   return false;
     },   
     success:function(data){   
         alert(data)   
     }   
 });
-
-
-});
-  

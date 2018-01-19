@@ -43,45 +43,39 @@
 				<caption class="caption1">签约基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款合同编号</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text"  readonly="readonly" value="hhhhhh"></td>
 					<td class="td1"><label>借款人</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
-					<td class="td1"><label>借款人手机</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><label>借款人手机号</label></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 					<td class="td1"><label>业务经理</label></td>
-					<td class="td1"><input type="text"></td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>借款用途</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1"><label>职务</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>身份证号</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 					<td class="td1"><label>借款总额</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>额度上限</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 					<td class="td1"><label>产品名称</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>贷款期数</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td class="td1">&nbsp;</td>
+					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><label>借款用途</label></td>
+					<td class="td1"><input type="text" readonly="readonly" value="飘飘乐"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>审批金额</label></td>
 					<td class="td1"><input type="text"></td>
 					<td class="td1"><label>约定放贷日</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="date"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>放款/还款银行</label></td>
@@ -104,8 +98,9 @@
 				<tr class="tr1">
 					<td class="td1"><label>银行卡 <span style="color: red;">*</span></label></td>
 					<td class="td1">
+						<label style="margin-right: 13px;"></label>
 						<form  id="bankCard" enctype="multipart/form-data" method="post"  >
-						<label>选择文件：</label>	<input type="file" name="bankCard" />
+						<label>选择文件：</label>	<input type="file" name="bankCard" /><br>
 						<input type="submit" value="上传" /> </form>
 					</td>
 						
@@ -117,8 +112,8 @@
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
 						<form enctype="multipart/form-data" method="post">
-						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </form> 
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> 
+						<input type="submit" value="上传" /> </form> 
 	
 					</td>
 					<td class="td1"><label>附件大小</label></td>
@@ -129,8 +124,8 @@
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
 						<form enctype="multipart/form-data" method="post">
-						<label>选择文件：</label>	<input type="file" name="file1" /> <input
-								type="submit" value="上传" /> </form> 
+						<label>选择文件：</label>	<input type="file" name="file1" /><br>
+						<input type="submit" value="上传" /> </form> 
 								
 					</td>
 						
@@ -201,19 +196,21 @@
 				<tr class="tr1">
 					<td class="td1"><label>车辆抵押照片<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 13px;"></label>
-						<form enctype="multipart/form-data" method="post" 
-							>
-						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </form> </td>
+						<form enctype="multipart/form-data" method="post" >
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> 
+						<input type="submit" value="上传" /> 
+						</form>
+					 </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆入库照片</label></td>
-					<td class="td1">
+					<td class="td1"><label style="margin-right: 13px;"></label>
 						<form enctype="multipart/form-data" method="post">
-						<label>选择文件：</label><input type="file" name="file1" />
-						<input type="submit" value="上传" /> </form> </td>
+						<label>选择文件：</label><input type="file" name="file1" /> <br>
+										<input type="submit" value="上传" />
+						</form>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>

@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS t_user_role;
 /*==============================================================*/
 CREATE TABLE t_carInfo
 (
-   otherAttachment      VARCHAR(200),
+   otherAttachment      VARCHAR(200) COMMENT '车辆其他附件',
    sali                 VARCHAR(200) COMMENT '保单（交强险)',
    carPic               VARCHAR(200) COMMENT '车辆照片',
    commerceinsurance    VARCHAR(200) COMMENT '保单（商业险）',
