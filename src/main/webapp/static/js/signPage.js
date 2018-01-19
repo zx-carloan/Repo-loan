@@ -77,5 +77,29 @@ function datas (orderId){
 	console.log(datas);
 	return datas;
 }
+
+$("#bankCard")
+
+function Fallback() {
+	$("#div1").toggle();
+}
+function pueding() {
+	$("#div1").hide("slow");
+}
+
+$('#bankCard').form({   
+    url:'contract/delect',   
+    onSubmit: function(){   
+        // do some check   
+        // return false to prevent submit;   
+    },   
+    success:function(data){   
+        alert(data)   
+    }   
+});   
+$('#bankCard').submit();  
+
+
+
 });
 

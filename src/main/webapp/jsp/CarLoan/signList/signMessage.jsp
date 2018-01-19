@@ -103,7 +103,7 @@
 				<tr class="tr1">
 					<td class="td1"><label>银行卡 <span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form enctype="multipart/form-data" method="post"
+						<form  id="bankCard" enctype="multipart/form-data" method="post"
 							action="servlet/FileUploadServlet">
 							选择文件：<input type="file" name="file1" /><br /> <input
 								type="submit" value="上传" /> </a></td>
@@ -146,10 +146,9 @@
 				<tr class="tr1">
 					<td class="td1"><label>授权委托书<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+						<form enctype="multipart/form-data" method="post" action="servlet/FileUploadServlet">
+							选择文件：<input type="file" name="file1" /><br />
+							 <input 	type="submit" value="上传" /> </a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -198,7 +197,7 @@
 				<tr class="tr1">
 					<td class="td1"><label>车辆抵押照片<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 13px;"></label>
-						<form enctype="multipart/form-data" method="post"
+						<form enctype="multipart/form-data" method="post" 
 							action="servlet/FileUploadServlet">
 							选择文件：<input type="file" name="file1" /><br /> <input
 								type="submit" value="上传" /> </a></td>
@@ -276,24 +275,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<script type="text/javascript">
-		function back() {
-			$("#viewDiv").panel({
-				iconCls : "icon-add",
-				collapsible : true,
-				minimizable : true,
-				maximizable : true,
-				closable : true,
-				href : "jsp/CarLoan/signList/sign.jsp"
-			});
-		}
-	
-		function Fallback() {
-			$("#div1").toggle();
-		}
-		function pueding() {
-			$("#div1").hide("slow");
-		}
-	</script>
 </body>
 </html>
