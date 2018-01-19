@@ -61,58 +61,43 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'#',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
+			data-options="url:'submenu/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
-					<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
-					<th data-options="field:'cellphone',width:20,align:'center',sortable:'true'">借款人手机号码</th>
-					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
-					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
-					<th data-options="field:'product.name',width:20,align:'center',sortable:'true'">产品名称</th>
-					<th data-options="field:'num',width:20,align:'center',sortable:'true'">借款期数</th>
-					<th data-options="field:'date',width:20,align:'center',sortable:'true'">进件时间</th>
-					<th data-options="field:'status',width:20,align:'center',sortable:'true'">状态</th>
-					<th data-options="field:'auditor',width:20,align:'center',sortable:'true'">审核人</th>
+					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
+					<th
+						data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th
+						data-options="field:'client',formatter:function(client){return client.name;
+				     },width:20,align:'center',sortable:'true'">借款人</th>
+					<th
+						data-options="field:'identity',formatter:function(identity){return identity.identity;
+				     },width:20,align:'center',sortable:'true'">身份证号</th>
+					<th
+						data-options="field:'client',formatter:function(client){return client.cellphone;
+				     },width:20,align:'center',sortable:'true'">借款人手机号码</th>
+					<th
+						data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+					<th
+						data-options="field:'company',formatter:function(company){return company.name;
+				     },width:20,align:'center',sortable:'true'">分公司</th>
+					<th
+						data-options="field:'product',formatter:function(product){return product.name;
+				     },width:20,align:'center',sortable:'true'">产品名称</th>
+					<th
+						data-options="field:'product',formatter:function(product){return product.periods;
+				     },width:20,align:'center',sortable:'true'">借款期数</th>
+					<th
+						data-options="field:'timeStarting',width:20,align:'center',sortable:'true'">进件时间</th>
+					<th
+						data-options="field:'status',width:20,align:'center',sortable:'true'">状态</th>
+					<th
+						data-options="field:'auditor',width:20,align:'center',sortable:'true'">审核人</th>
 
 				</tr>
 			</thead>
 			<tbody>
-				<tr id="1">
 
-					<td style="width: 20px">123</td>
-					<td style="width: 25px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
-				<tr id="2">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 25px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>

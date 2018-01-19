@@ -92,7 +92,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);
 		pageBean.setTotal(total);
-
+		System.out.println(list+"aaaaaaaaaaaa");
 		return pageBean;
 	}
 

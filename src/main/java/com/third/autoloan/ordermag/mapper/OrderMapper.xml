@@ -376,6 +376,7 @@
  	     <result property="manager" column="manager" />
  	     <result property="timeStarting" column="timeStarting" />
  	     <result property="auditor" column="auditor" />
+ 	      <result property="status" column="STATUS" />
  	     <result property="submenuStatus" column="submenuStatus" />
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
