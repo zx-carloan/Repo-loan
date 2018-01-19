@@ -4,7 +4,7 @@
  <mapper namespace="com.third.autoloan.ordermag.mapper.OrderMapper">
  	
  	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
- 	    select o.id,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select o.*,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
         <if test="contractNumber!=null">
