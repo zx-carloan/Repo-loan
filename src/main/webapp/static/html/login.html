@@ -4,10 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户登录</title>
 <link href="static/css/login.css" rel="stylesheet" type="text/css"></link>
-<script type="text/javascript" src="static/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="static/js/login.js"></script>
-
-
+<script type="text/javascript" src="/task/static/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/task/static/js/login.js"></script>
 </head>
 <body>
 
@@ -22,13 +20,12 @@
 		      <div id="center_left"></div>
 			  <div id="center_middle">
 			       <div id="user">用  户
-			         <input id="name" type="text" value=""/>
+			         <input id="name" type="text" placeholder="请输入账号" name="username"/>
 			       </div>
 				   <div id="password">密   码
-				     <input id="pwd" type="password"  value=""/>
+				     <input id="pwd" type="password"  placeholder="请输入密码" name="password"/>
 				   </div>
-				   <div id="btn"><a id="login1" href="javascript:void(0)">登录</a><a href="javascript:void(0)">清空</a></div>
-			  
+				   <div id="btn"><a href="javascript:login()">登录</a><a href="javascript:clear()">清空</a></div>
 			  </div>
 			  <div id="center_right"></div>		 
 		 </div>

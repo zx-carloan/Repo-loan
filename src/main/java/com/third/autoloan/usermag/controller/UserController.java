@@ -19,13 +19,12 @@ public class UserController {
 @Resource
 private IUserGetService userGetServiceImpl;
 	
-	@RequestMapping(value = "/{id}", method = { RequestMethod.POST }, produces = { "application/json;charset=utf-8" })
+	@RequestMapping(value = "/login", method = { RequestMethod.POST }, produces = { "application/json;charset=utf-8" })
 	public @ResponseBody String login( UserBean user) {
-		String str = "我不是信息";
+		String str = "";
 		if(null!=user.getLoginName()||null!=user.getPassword()) {
 			//数据库中是否有该账户
 			if( userGetServiceImpl.getUser(user)!=null) {
-				System.out.println("进来了");
 				str="/aotoloan/jsp/Interface.jsp";
 			}else {
 				str="err";
