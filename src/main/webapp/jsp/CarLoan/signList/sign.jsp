@@ -59,11 +59,10 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'contract/query',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
+			data-options=" rownumbers:true,striped:true, url:'contract/query',method:'post',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-					<th data-options="field:'id',width:20,align:'center',sortable:'true'">序号</th>
+					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 					<th data-options="field:'client',width:20,align:'center',sortable:'true',
 						formatter: function(client){

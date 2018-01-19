@@ -3,15 +3,10 @@
 $(function(){
 	
 	$('#signBtn').click(function(){
-		var rows = $('#tt').datagrid('getSelections');
 		var row = $('#tt').datagrid('getSelected');
 		var url='jsp/CarLoan/signList/signMessage.jsp';
-		
 		if(row){
-			var length = rows.length;
-			if(length >1){
-				$.messager.confirm('Confirm', '只能选择一行进行签约 ');
-			}else{
+			if(length !=null){
 				$("#viewDiv").panel({
 					iconCls : "icon-add",
 					collapsible : true,
@@ -27,25 +22,27 @@ $(function(){
 	});
 
 $('#cancel').click(function(){
-	var rows = $('#tt').datagrid('getSelections');
 	var row = $('#tt').datagrid('getSelected');
+	console.log(row.id);
 	if(row){
-		var length = rows.length;
-		if(length >1){
-			$.messager.show({
-				title:'提示信息',
-				msg:'每次只能操作一条数据！',
-				timeout:5000,
-				showType:'slide'
+		if(length != null){
+			$.messager.confirm('Confirm', '是否确认要执行改行的撤销操作', function(r){
+				if (r){
+					$.ajax({
+						type:'get',
+						url:'contract/delect?orderId='+row.id,
+						success:function(data){ 
+							$.messager.show({
+								title:'提示信息',
+								msg:data,
+								timeout:5000,
+								showType:'slide'
+							});
+						}
+					})
+					$('#tt').datagrid('reload',datas (row.id));
+				}
 			});
-		}else{
-			$.messager.show({
-				title:'提示信息',
-				msg:'撤销成功！',
-				timeout:5000,
-				showType:'slide'
-			});
-			
 		}
 	}else{
 		$.messager.show({
@@ -72,15 +69,13 @@ $("#query").click(function(){
 	$('#tt').datagrid('load',datas ());
 });
 
-function datas (){
+function datas (orderId){
 	var contratorNum = $('#contratorNum').val();
 	var borrower = $('#borrower').val();
 	var loanStatus = $('#loanStatus').val();
-	var datas = {contratorNum:contratorNum,borrower:borrower,loanStatus:loanStatus};
+	var datas = {contratorNum:contratorNum,borrower:borrower,loanStatus:loanStatus,orderId:orderId};
 	console.log(datas);
 	return datas;
 }
-
-
 });
 
