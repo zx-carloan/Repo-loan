@@ -70,10 +70,11 @@ $("#query").click(function(){
 });
 
 function datas (orderId){
-	var contratorNum = $('#contratorNum').val();
-	var borrower = $('#borrower').val();
-	var loanStatus = $('#loanStatus').val();
-	var datas = {contratorNum:contratorNum,borrower:borrower,loanStatus:loanStatus,orderId:orderId};
+	var contractNumber = $('#contractNumber').val();
+	var loanName = $('#loanName').val();
+	var companyName = $("input[name='companyName']").val();
+	var status =$('#var').val();
+	var datas = {contractNumber:contractNumber,loanName:loanName,companyName:companyName,orderId:orderId,status:status};
 	console.log(datas);
 	return datas;
 }
@@ -87,19 +88,16 @@ function pueding() {
 	$("#div1").hide("slow");
 }
 
-$('#bankCard').form({   
-    url:'contract/delect',   
+$('#ff').form('submit', {   
+    url:"contract/upload",   
     onSubmit: function(){   
-        // do some check   
-        // return false to prevent submit;   
+     
     },   
     success:function(data){   
         alert(data)   
     }   
-});   
-$('#bankCard').submit();  
-
+});
 
 
 });
-
+  

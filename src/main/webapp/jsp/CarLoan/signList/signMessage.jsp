@@ -97,16 +97,18 @@
 					<td class="td1">&nbsp;</td>
 				</tr>
 			</table>
-
+		</form>
+		
 			<table class="table1" border="1">
 				<caption class="caption1">签约附件列表</caption>
 				<tr class="tr1">
 					<td class="td1"><label>银行卡 <span style="color: red;">*</span></label></td>
-					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form  id="bankCard" enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+					<td class="td1">
+						<form  id="bankCard" enctype="multipart/form-data" method="post"  >
+						<label>选择文件：</label>	<input type="file" name="bankCard" />
+						<input type="submit" value="上传" /> </form>
+					</td>
+						
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -114,10 +116,11 @@
 					<td class="td1"><label>机打申请表单 <span
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+						<form enctype="multipart/form-data" method="post">
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> 
+	
+					</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -125,10 +128,12 @@
 					<td class="td1"><label>小额借款服务合同<span
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+						<form enctype="multipart/form-data" method="post">
+						<label>选择文件：</label>	<input type="file" name="file1" /> <input
+								type="submit" value="上传" /> </form> 
+								
+					</td>
+						
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -137,18 +142,18 @@
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
 						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+							>
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>授权委托书<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form enctype="multipart/form-data" method="post" action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br />
-							 <input 	type="submit" value="上传" /> </a></td>
+						<form enctype="multipart/form-data" method="post" >
+						<label>选择文件：</label>	<input type="file" name="file1" /><br />
+							 <input 	type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -156,19 +161,18 @@
 					<td class="td1"><label>还款计划表<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
 						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+							>
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>补充协议<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
-						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+						<form enctype="multipart/form-data" method="post">
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -177,9 +181,9 @@
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
 						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+							>
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -188,9 +192,9 @@
 							style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 20px;"></label>
 						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+							>
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -198,24 +202,23 @@
 					<td class="td1"><label>车辆抵押照片<span style="color: red;">*</span></label></td>
 					<td class="td1"><label style="margin-right: 13px;"></label>
 						<form enctype="multipart/form-data" method="post" 
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+							>
+						<label>选择文件：</label>	<input type="file" name="file1" /><br /> <input
+								type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆入库照片</label></td>
-					<td class="td1"><label style="margin-right: 13px;"></label>
-						<form enctype="multipart/form-data" method="post"
-							action="servlet/FileUploadServlet">
-							选择文件：<input type="file" name="file1" /><br /> <input
-								type="submit" value="上传" /> </a></td>
+					<td class="td1">
+						<form enctype="multipart/form-data" method="post">
+						<label>选择文件：</label><input type="file" name="file1" />
+						<input type="submit" value="上传" /> </form> </td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 			</table>
-		</form>
+
 		<div style="height: 80px;">
 			<div id="div1"
 				style="display: none; margin-left: 400px; width: 300px; background-color: gray;">

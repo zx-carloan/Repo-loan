@@ -21,7 +21,7 @@ public interface IOrderGetService {
 	 * status 订单流程到那步
 	 * @param pageBean 页面约束
 	 * pageNumber 当前页码
-	 * pageSize 每页显示多少行
+	 * rows 每页显示多少行
 	 * sort  排序条件
 	 * order按照谁排序
 	 */

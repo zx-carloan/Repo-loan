@@ -31,21 +31,19 @@
 			<table>
 				<tr>
 					<td>合同编号：</td>
-					<td><input id="contratorNum" class="easyui-textbox"
+					<td><input id="contractNumber" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
 
 					<td>借款人：</td>
-					<td><input id="borrower" class="easyui-textbox"
+					<td><input id="loanName" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
 
 
 					<td>分公司：</td>
-					<td><select id="loanStatus" class="easyui-combobox"
-						name="status" style="width: 150px;">
-							<option value="0">阿里</option>
-							<option value="1">腾讯</option>
+					<td><select id="companyName" class="easyui-combobox"
+						name="companyName" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
 					</select></td>
-					
 					<td><a id="query" href="javascript:void(0)"
 						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 					</td>
@@ -63,16 +61,14 @@
 			<thead>
 				<tr>
 					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='status' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='rollback' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 					<th data-options="field:'client',width:20,align:'center',sortable:'true',
-						formatter: function(client){
-						return client.name;
-					}">借款人</th>
+						formatter: function(client){return client.name;}">借款人</th>
 					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
 					<th data-options="field:'company',width:20,align:'center',sortable:'true',
-					formatter: function(company){
-						return company.name;
-					}">分公司</th>
+					formatter: function(company){return company.name;}">分公司</th>
 				</tr>
 			</thead>
 		</table>

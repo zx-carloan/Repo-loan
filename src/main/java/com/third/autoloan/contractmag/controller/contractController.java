@@ -1,6 +1,7 @@
 package com.third.autoloan.contractmag.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -31,7 +32,7 @@ public class contractController {
 	@RequestMapping("/query" )
 	public @ResponseBody PageBean getContractByQueryParams(@RequestParam Map<String,String> map) {
 		 PageBean page=orderServiceImpl.getOrderPageByMap(map);
-		 System.out.println(page);
+		 System.out.println(map);
 	   return page;
 		
 	}
@@ -43,21 +44,23 @@ public class contractController {
 	}
 	
 	@RequestMapping("/upload")
-	public @ResponseBody String fileUploadHandler(MultipartFile photo, HttpSession session) throws Exception{
+	public @ResponseBody String fileUploadHandler(MultipartFile photo) {
 		if (photo.isEmpty()) {
 			return "null";
 		}
 		// 获取到上传文件的原始文件名
 		String fileName = photo.getOriginalFilename();
-		if(!(fileName.endsWith("jpg") || fileName.endsWith("png"))) {
-			return "errry";
-		}
-		
 		// 指定文件上传到服务端的路径
 		 String path = "c:/loanfile/";
 		File file = new File(path, System.currentTimeMillis() + fileName);
 		// 完成文件上传
-		photo.transferTo(file);
+		try {
+			photo.transferTo(file);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return "ok";
 	}
 	
