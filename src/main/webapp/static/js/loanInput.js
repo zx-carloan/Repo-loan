@@ -2,7 +2,7 @@ $('#infoInput').click(function(){
 		var rows = $('#tt').datagrid('getSelections');
 		var row = $('#tt').datagrid('getSelected');
 		var url='';
-		var role ="定价师";
+		var role ="估价师";
 		if(row){
 			var length = rows.length;
 			if(length >1){
@@ -70,6 +70,29 @@ $('#delete').click(function(){
 		});
 	}
 });
+
+$("#query").click(function(){//点击查询运行的方法
+	var serialize = $("#queryForm").serialize();
+	console.info(serialize);
+	$.ajax({
+		type : "GET",
+		url : "carInfo/page",
+		async : true,
+		data : serialize,
+		success : function(msg) {
+			console.info(msg);
+			/*var content = msg.content;//获取返回Page对象中的显示内容
+			var showRes = "";
+			for(var i = 0; i < content.length; i++){
+				var user = content[i];
+				showRes = showRes + "<tr><td>"+user.name+"</td><td>"+user.password+"</td><td>"+user.birthday+"</td><td>"+user.hometown+"</td></tr>";
+			}
+			console.info(showRes);
+			$("#tablebody").html(showRes);*/
+		}
+	});
+});
+
 function back() {
 	$("#viewDiv").panel({
 		iconCls : "icon-add",
@@ -84,3 +107,4 @@ function back() {
 function Fallback() {
 	$("#div1").toggle();
 }
+

@@ -29,16 +29,15 @@
 			<table>
 				<tr>
 					<td>合同编号：</td>
-					<td><input id="contratorNum" class="easyui-textbox"
+					<td><input id="contractNum" name="contractNum" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
 
 					<td>借款人：</td>
-					<td><input id="borrower" class="easyui-textbox"
+					<td><input id="borrower" name="borrower" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
 
-
 					<td>分公司：</td>
-					<td><select id="loanStatus" class="easyui-combobox"
+					<td><select id="company" name="company" class="easyui-combobox"
 						name="status" style="width: 150px;">
 							<option value="0">阿里</option>
 							<option value="1">腾讯</option>
@@ -56,35 +55,20 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'#',method:'post',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
+			data-options="url:'carInfo/allData',method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
+					<th data-options="field:'ids',checkbox:true,width:20"></th>
+					<th data-options="field:'id',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'client',formatter:function(client){return client.name;
+				     },width:20,align:'center',sortable:'true'">借款人</th>
 					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
-					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
-
+					<th data-options="field:'company',formatter:function(company){return company.name;
+				     },width:20,align:'center',sortable:'true'">分公司</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr id="1">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
-				<tr id="2">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
