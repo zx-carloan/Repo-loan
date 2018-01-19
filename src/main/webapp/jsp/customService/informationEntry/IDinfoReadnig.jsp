@@ -53,15 +53,15 @@
 
 		</div>
 		<table id="tt" class="easyui-datagrid" style="width: 100%; height: 200px"
-			data-options="fitColumns:true,pagination:true,singleSelect:false">
+			data-options="fitColumns:true,pagination:false,singleSelect:true">
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'s',width:20,align:'center'">序号</th>
+					<th data-options="field:'id',width:20,align:'center'">序号</th>
 					<th data-options="field:'name',width:20,align:'center'">姓名</th>
 					<th data-options="field:'gender',width:20,align:'center'">性别</th>
 					<th data-options="field:'identity',width:20,align:'center'">身份证号</th>
-					<th data-options="field:'id',width:20,align:'center'"></th>
+					<!-- <th data-options="field:'id',width:20,align:'center'"></th> -->
 				</tr>
 			</thead>
 			<tbody id="tb">
@@ -71,6 +71,7 @@
 					<td  style="width: 20px"><span id="name"></span ></td>
 					<td  style="width: 20px"><span id="gender"></span></td>
 					<td  style="width: 20px"><span id="identity"></span></td>
+					
 				</tr>
 			</tbody>
 		</table>

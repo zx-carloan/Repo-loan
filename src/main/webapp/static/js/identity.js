@@ -4,15 +4,18 @@ $(function(){
 		var va = $("#contratorNum").val();
 		if(va==null||va==""){
 			alert("请输入身份证号！");
+			$("#num").text("");
+	    	$("#name").text("");
+	    	$("#gender").text("");
+	    	$("#identity").text("");
 		}else{
 			$.get("identitys/"+va,function(data){
 		    	if(data==null||data==""){
-		    		alert("没有该客户信息！")
+		    		alert("没有该客户信息！");
 		    		$("#num").text("");
 			    	$("#name").text("");
 			    	$("#gender").text("");
 			    	$("#identity").text("");
-			    	 $("tt").hide();
 		    	}else{
 		    		add(data);
 		    	}
@@ -30,6 +33,7 @@ $(function(){
 		    		$("#gender").text("未知");
 		    	}
 		    	$("#identity").text(data.identity);
+		    	$
 		    }
-		    
+		   
 });

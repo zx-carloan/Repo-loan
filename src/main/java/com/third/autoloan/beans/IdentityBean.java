@@ -16,9 +16,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 //身份信息类
 @Entity 
 @Table(name="t_identity")
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class IdentityBean implements Serializable {
 
 	/**

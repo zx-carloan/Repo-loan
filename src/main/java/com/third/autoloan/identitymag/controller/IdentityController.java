@@ -24,14 +24,15 @@ public class IdentityController {
 	
 
 	// 根据身份证号码查找客户
-	@RequestMapping(value = "/{identity}", method = { RequestMethod.GET }, produces = {
-			"application/json;charset=utf-8" })
+	@RequestMapping(value = "/{identity}", method = { RequestMethod.GET }, produces = {"application/json;charset=utf-8" })
 	@ResponseBody
 	public IdentityBean findClient(@PathVariable String identity) {
 		IdentityBean id = null;
 		if (identity != null || identity != "") {
 			id = identityServiceImpl.getIdentityInfoByIdentityNum(identity);
 		}
+		System.out.println(id);
+		System.out.println(id.getOrderList());
 		return id;
 	}
 
