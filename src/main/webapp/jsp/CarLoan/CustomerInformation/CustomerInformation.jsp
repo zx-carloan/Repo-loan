@@ -23,9 +23,52 @@
 <script src="static/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body>  
 	<script>
 		$(function() {
+			//按钮单击时执行
+			$("#myButton").click(
+					function() {
+						var contratorNum = $("#contratorNum").val();
+						var borrower = $("#borrower").val();
+						var loanStatus = $("#loanStatus").val();
+						var tbody = window.document
+								.getElementById("tbody-result");
+
+						//Ajax调用处理
+						$.ajax({
+							type : "POST",
+							url : "identity/get",
+							data : {
+								"contratorNum" : contratorNum,
+								"borrower" : borrower,
+								"loanStatus" : loanStatus
+							},
+							success : function(msg) {
+								var data = msg.data;
+
+								var str = "";
+								for (i in data) {
+									str += "<tr id='i'>"
+											+ "<td  style='width: 20px'>"
+											+ data[i].id + "</td>"
+											+ "<td  style='width: 20px'>"
+											+ data[i].contractNumber + "</td>"
+											+ "<td  style='width: 20px'>"
+											+ data[i].contractNumber + "</td>"
+											+ "<td  style='width: 20px'>"
+											+ data[i].contractNumber + "</td>"
+											+ "<td  style='width: 20px'>"
+											+ data[i].contractNumber + "</td>"
+											+ "</tr>";
+								}
+								tbody.innerHTML = str;
+								console.info(str)
+							}
+						});
+
+					});
+
 			/* 定义一个数组用于接收得到的下标 */
 			var id = new Array();
 			$(".easyui-datagrid").datagrid({
@@ -109,7 +152,7 @@
 				class="span1">&nbsp;</span> <span class="span1">分公司</span><select
 				id="loanStatus" class="easyui-combobox" name="status"
 				placeholder="-申请放款-" style="width: 190px; height: 22px;">
-				<option value="0">待放款</option>
+				<option value="a">待放款</option>
 				<option value="1">放款中</option>
 				<option value="2">已放款</option>
 				<option value="3">提现失败</option>
@@ -121,7 +164,8 @@
 	</div>
 
 
-	<table class="easyui-datagrid" style="width: 100%; height: 200px"
+	<table id="table1" class="easyui-datagrid"
+		style="width: 100%; height: 200px"
 		data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 		<thead>
 			<tr>
@@ -138,21 +182,10 @@
 					data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td style="width: 20px">123</td>
-				<td style="width: 25px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
-			<tr>
-				<td style="width: 20px">12asdf3</td>
-				<td style="width: 25px">12adf3</td>
-				<td style="width: 20px">12adsf3</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
+
+		<tbody id="tbody-result">
+
+
 		</tbody>
 	</table>
 	<div style="text-align: center">
