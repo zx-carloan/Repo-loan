@@ -4,7 +4,7 @@
  <mapper namespace="com.third.autoloan.ordermag.mapper.OrderMapper">
  	
  	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
- 	    select o.id,o.contractNumber,c.name,o.manager,co.name from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select o.id,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
         <if test="contractNumber!=null">
@@ -25,7 +25,7 @@
          <if test="order!=null">
   				${order} 
         </if>
-          limit ${index},${pageSize};
+          limit ${index},${rows};
  	</select>
  	<resultMap type="OrderBean" id="getOrderPage">
  	     <id property="id" column="id"></id>
@@ -34,11 +34,11 @@
  	     <result property="manager" column="manager" />
  	     
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
- 	        <result property="name" column="name" />
+ 	        <result property="name" column="clientName" />
  	      </association>
  	      
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
- 	        <result property="name" column="name" />
+ 	        <result property="name" column="companyName" />
  	        <result property="hq" column="hq" />
  	      </association>
  	      
@@ -309,7 +309,7 @@
          <if test="order!=null">
   				${order} 
         </if>
-          limit ${index},${pageSize};
+          limit ${index},${rows};
  	</select>
  	
  	<resultMap type="OrderBean" id="getLoan">
@@ -368,7 +368,7 @@
          <if test="sort!=null">
   				 ${sort} 
         </if>
-          limit ${index},${pageSize};
+          limit ${index},${rows};
  	</select>
  	<resultMap type="OrderBean" id="getSub">
  	     <id property="id" column="id"></id>
@@ -446,7 +446,7 @@
          <if test="order!=null">
   				${order} 
         </if>
-          limit ${index},${pageSize};
+          limit ${index},${rows};
  	</select>
  	
  	<resultMap type="OrderBean" id="getProcedure">

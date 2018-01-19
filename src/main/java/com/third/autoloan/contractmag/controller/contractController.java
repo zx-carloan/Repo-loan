@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.autoloan.beans.PageBean;
+import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderGetService;
+import com.third.autoloan.ordermag.service.IOrderService;
 
 @RequestMapping("/contract")
 @Controller
@@ -20,16 +22,23 @@ public class contractController {
 	
 	@Resource(name="orderGetServiceImpl")
 	private IOrderGetService  orderServiceImpl;
+	
+	@Resource(name="orderServiceImpl")
+	private IOrderService orderService;
+	
 	private Logger log=Logger.getLogger(this.getClass());
 	
 	@RequestMapping("/query" )
 	public @ResponseBody PageBean getContractByQueryParams(@RequestParam Map<String,String> map) {
-		 map.put("pageSize", map.get("rows"));
-		 map.put("index",map.get("page"));
 		 PageBean page=orderServiceImpl.getOrderPageByMap(map);
-		 System.out.println(map);
 		 System.out.println(page);
 	   return page;
+		
+	}
+	@RequestMapping("/delect" )
+	public @ResponseBody String deleteOrderInfoById (Long orderId) {
+		orderService.deleteOrderInfo(orderId);
+		return "Revocation of success";
 		
 	}
 }
