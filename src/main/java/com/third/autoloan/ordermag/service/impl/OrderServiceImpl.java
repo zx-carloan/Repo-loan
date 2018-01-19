@@ -2,12 +2,19 @@ package com.third.autoloan.ordermag.service.impl;
 
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.identitymag.service.IidentityService;
+import com.third.autoloan.ordermag.dao.IOrderDao;
 import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderService;
 
@@ -19,7 +26,10 @@ public class OrderServiceImpl implements IOrderService{
 	
 	@Resource
 	private IidentityService identityServiceImpl;
-
+	
+	@Resource
+	private IOrderDao orderDaoImpl;
+	
 	@Override
 	public void deleteOrderInfo(long id) {
 		// TODO Auto-generated method stub
@@ -51,7 +61,7 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public OrderBean getOrderById(long id) {
 		// TODO Auto-generated method stub
-		return orderRepository.getOne(id);
+		return orderDaoImpl.getOrderInfo(id);
 	}
 
 }

@@ -109,4 +109,10 @@ public interface IOrderDao {
 	 * @return
 	 */
 	public int getSumLoanPage(Map<String, String> map);
+	/***
+	 * 根据id查找订单信息
+	 * @param id
+	 * @return
+	 */
+	public OrderBean getOrderInfo(long id);
 }

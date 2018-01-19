@@ -75,5 +75,11 @@ public class OrderDaoImpl implements IOrderDao{
 		// TODO Auto-generated method stub
 		return orderMapper.getSumLoanPage(map);
 	}
+
+	@Override
+	public OrderBean getOrderInfo(long id) {
+		// TODO Auto-generated method stub
+		return orderMapper.getOrderInfoBuId(id);
+	}
 	
 }

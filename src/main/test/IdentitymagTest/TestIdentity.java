@@ -9,8 +9,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.third.autoloan.beans.IdentityBean;
+import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.identitymag.service.IidentityService;
 import com.third.autoloan.ordermag.service.IOrderGetService;
@@ -24,6 +26,15 @@ public class TestIdentity {
 	private IidentityService identityServiceImpl;
 	@Resource
 	private IOrderGetService orderGetServiceImpl;
+	@Resource
+	private IOrderService orderServiceImpl;
+	
+	//当使用jpa查询时在方法上方添加Transactional注解是为了避免 no session的情况
+	@Test
+	public void getOrderInfo() {
+		OrderBean order=orderServiceImpl.getOrderById(1);
+		System.out.println(order);
+	}
 	
 	@Test
 	public void testCheck1() {

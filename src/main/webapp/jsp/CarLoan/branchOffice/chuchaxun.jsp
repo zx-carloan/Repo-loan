@@ -87,7 +87,8 @@
 						minimizable : true,
 						maximizable : true,
 						closable : true,
-						href : "jsp/CarLoan/branchOffice	/ziliao.jsp"
+						/* href : "branchCompany/detailInfo?id="+id */
+					    href: "/autoloan/jsp/CarLoan/branchOffice/ziliao.jsp"
 					});
 				}
 			});

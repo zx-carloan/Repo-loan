@@ -360,3 +360,4 @@ CREATE TABLE t_user_role
    PRIMARY KEY (id)
 );
 
+ ALTER TABLE t_order ADD COLUMN getMoneyTime DATE

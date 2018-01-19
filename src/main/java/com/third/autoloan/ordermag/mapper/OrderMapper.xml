@@ -474,7 +474,179 @@
  	        <result property="amount" column="amount" />
  	      </association>
  	</resultMap>
- 
+ 	
+ 	
+ 	
+ 	<!-- 通过id查找订单信息 -->
+ 	<select id="getOrderInfoBuId" parameterType="Long" resultType="OrderBean" resultMap="getOrderInfo">
+ 	   SELECT * FROM t_order AS o LEFT JOIN t_client AS c ON o.fk_client_id=c.id 
+             LEFT JOIN t_opinion AS op ON op.id=o.fk_opinion_id
+             LEFT JOIN t_product AS p ON o.fk_product_id=p.id 
+             LEFT JOIN t_Contract AS con ON con.id=o.fk_contract_id
+             LEFT JOIN t_creditinfo AS cre ON cre.id=o.fk_credit_id
+             LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id 
+ 	         LEFT JOIN t_company AS co ON co.id=o.fk_company_id WHERE o.id=#{id};
+ 	</select>
+ 	
+ 	<resultMap type="OrderBean" id="getOrderInfo">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="manager" column="manager" />
+ 	     <result property="timeStarting" column="timeStarting" />
+ 	     <result property="loanStatus" column="loanStatus" />
+ 	     <result property="getMoneyTime" column="getMoneyTime" />
+ 	     <result property="status" column="status" />
+ 	     <result property="review" column="review" />
+ 	     <result property="rollback" column="rollback" />
+ 	     <result property="loanStatus" column="loanStatus" />
+ 	     <result property="submenuStatus" column="submenuStatus" />
+ 	     <result property="submit" column="submit" />
+ 	     <result property="auditor" column="auditor" />
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean"> 
+ 	           <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="education" column="education" />
+ 	           <result property="cellphone" column="cellphone" />
+ 	           <result property="address" column="address" />
+ 	           <result property="tel" column="tel" />
+ 	           <result property="marriage" column="marriage" />
+ 	           <result property="child" column="child" />
+ 	           <result property="house" column="house" />
+ 	           <result property="partner" column="partner" />
+ 	           <result property="currentAddress" column="currentAddress" />
+ 	           <result property="clientType" column="clientType" />
+ 	           <result property="companyName" column="companyName" />
+ 	           <result property="companyAddress" column="companyAddress" />
+ 	           <result property="companyTel" column="companyTel" />
+ 	            <result property="postcode" column="postcode" />
+ 	            <result property="preTime" column="preTime" />
+ 	          <result property="department" column="department" />
+ 	          <result property="position" column="position" />
+ 	          <result property="companySize" column="companySize" />
+ 	          <result property="industryType" column="industryType" />
+ 	          <result property="companyType" column="companyType" />
+ 	          <result property="loanPurpose" column="loanPurpose" />
+ 	          <result property="salary" column="salary" />
+ 	          <result property="maxAffordable" column="maxAffordable" />
+ 	          <result property="maxPaybackTime" column="maxPaybackTime" />
+ 	          <result property="minLoan" column="minLoan" />
+ 	          <result property="maxLoan" column="maxLoan" />
+ 	          <result property="sourceOfInfo" column="sourceOfInfo" />
+ 	          <result property="saler" column="saler" />
+ 	          <result property="valuer" column="valuer" />
+ 	          <result property="applyDate" column="applyDate" />
+ 	          <result property="iDPic" column="iDPic" />
+ 	          <result property="applicationForm" column="applicationForm" />
+ 	           <collection property="contactorList" ofType="com.third.autoloan.beans.ContactorBean">
+                <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="type" column="type" />
+ 	           <result property="relation" column="relation" />
+ 	           <result property="company" column="company" />
+ 	           <result property="address" column="address" />
+ 	           <result property="phone" column="phone" />
+          </collection>
+ 	      </association>
+ 	       <association property="opinion" javaType="com.third.autoloan.beans.OpinionBean">
+ 	           <id property="id" column="id"></id>
+ 	           <result property="loanTime" column="loanTime" />
+ 	           <result property="conclusion" column="conclusion" />
+ 	           <result property="loanAmount" column="loanAmount" />
+ 	           <result property="branchOpinion" column="branchOpinion" />
+ 	           <result property="HQOpinion" column="HQOpinion" />
+ 	       </association>
+ 	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
+ 	           <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="periods" column="periods" />
+ 	           <result property="accrual" column="accrual" />
+ 	      </association>
+ 	      <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
+ 	          <id property="id" column="id"></id>
+ 	          <result property="amount" column="amount" />
+ 	          <result property="payDate" column="payDate" />
+ 	          <result property="bank" column="bank" />
+ 	          <result property="bankAccount" column="bankAccount" />
+ 	          <result property="bankBranch" column="bankBranch" />
+ 	          <result property="bankCard" column="bankCard" />
+ 	          <result property="loanContract" column="loanContract" />
+ 	          <result property="authorizationDeductletter" column="authorizationDeductletter" />
+ 	          <result property="authorisationLetter" column="authorisationLetter" />
+ 	          <result property="repaymentSchedule" column="repaymentSchedule" />
+ 	          <result property="supplementalAgreement" column="supplementalAgreement" />
+ 	          <result property="repurchaseContracts" column="repurchaseContracts" />
+ 	          <result property="carAuthorisationLetter" column="carAuthorisationLetter" />
+ 	          <result property="carMortgagePic" column="carMortgagePic" />
+ 	          <result property="carParkingPic" column="carParkingPic" />
+ 	          <result property="printedForm" column="printedForm" />
+ 	          <result property="signDate" column="signDate" />
+ 	      </association>
+ 	      <association property="creditInfo" javaType="com.third.autoloan.beans.CreditInfoBean">
+ 	          <id property="id" column="id"></id>
+ 	          <result property="hasHouse" column="hasHouse" />
+ 	          <result property="hasHouseLoan" column="hasHouseLoan" />
+ 	          <result property="hasCar" column="hasCar" />
+ 	          <result property="hasCarLoan" column="hasCarLoan" />
+ 	          <result property="maxOverdueMonth" column="maxOverdueMonth" />
+ 	          <result property="maxOverdueNum" column="maxOverdueNum" />
+ 	          <result property="creditUsageRate" column="creditUsageRate" />
+ 	          <result property="enquiriesNumber" column="enquiriesNumber" />
+ 	          <result property="hasOtheLoan" column="hasOtheLoan" />
+ 	          <result property="hasCreditCard" column="hasCreditCard" />
+ 	      </association>
+ 	      
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <id property="id" column="id"></id>
+ 	        <result property="name" column="name" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <id property="id" column="id"></id>
+ 	           <result property="identity" column="identity" />
+ 	          <result property="name" column="name" />
+ 	          <result property="gender" column="gender" />
+ 	          <result property="ethnic" column="ethnic" />
+ 	          <result property="birthday" column="birthday" />
+ 	          <result property="address" column="address" />
+ 	          <result property="administration" column="administration" />
+ 	          <result property="issueDate" column="issueDate" />
+ 	          <result property="expireDate" column="expireDate" />
+ 	      </association>
+ 	      <collection property="carList" ofType="com.third.autoloan.beans.CarInfoBean">
+                <id property="id" column="id"></id>
+ 	           <result property="carId" column="carId" />
+ 	           <result property="brand" column="brand" />
+ 	           <result property="color" column="color" />
+ 	           <result property="registerDate" column="registerDate" />
+ 	           <result property="annualInspection" column="annualInspection" />
+ 	           <result property="vin" column="vin" />
+ 	           <result property="assessmentPrice" column="assessmentPrice" />
+ 	           <result property="xkm" column="xkm" />
+ 	           <result property="getID" column="getID" />
+ 	           <result property="getAfford" column="getAfford" />
+ 	           <result property="getSali" column="getSali" />
+ 	           <result property="getKey" column="getKey" />
+ 	           <result property="keyNumber" column="keyNumber" />
+ 	           <result property="getRegisterLicense" column="getRegisterLicense" />
+ 	            <result property="getInsurance" column="getInsurance" />
+ 	            <result property="getDrivingLicense" column="getDrivingLicense" />
+ 	          <result property="getOriginalInvoice" column="getOriginalInvoice" />
+ 	          <result property="getTaxCertificate" column="getTaxCertificate" />
+ 	          <result property="getImportCertificate" column="getImportCertificate" />
+ 	          <result property="drivingLisense" column="drivingLisense" />
+ 	          <result property="carRegisterForm" column="carRegisterForm" />
+ 	          <result property="carAsseceForm" column="carAsseceForm" />
+ 	          <result property="commerceinsurance" column="commerceinsurance" />
+ 	          <result property="carPic" column="carPic" />
+ 	          <result property="sali" column="sali" />
+ 	          <result property="otherAttachment" column="otherAttachment" />
+ 	           <collection property="itemList" ofType="com.third.autoloan.beans.ItemBean">
+                <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="number" column="number" />
+               </collection>
+          </collection>
+ 	</resultMap>
 
  
  </mapper>

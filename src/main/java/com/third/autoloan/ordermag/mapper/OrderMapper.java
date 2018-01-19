@@ -99,5 +99,11 @@ public interface OrderMapper {
      */
 	public int getSumProcedure(Map<String, String> map);
 	
+	/***
+	 * 查找订单信息
+	 * @param id
+	 * @return
+	 */
+	public OrderBean getOrderInfoBuId(long id);
 	
 }
