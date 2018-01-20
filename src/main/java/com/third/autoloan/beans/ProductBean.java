@@ -30,6 +30,10 @@ public class ProductBean implements Serializable {
 	@Column(length=50)
 	private String accrual;//利息
 	
+	
+	@Column //借款总额
+	private String capital;
+	
 	public ProductBean() {
 		super();
 		// TODO Auto-generated constructor stub

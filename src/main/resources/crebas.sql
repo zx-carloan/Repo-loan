@@ -361,3 +361,4 @@ CREATE TABLE t_user_role
 );
 
  ALTER TABLE t_order ADD COLUMN getMoneyTime DATE
+ alter table t_client add column  identity varchar(20);
