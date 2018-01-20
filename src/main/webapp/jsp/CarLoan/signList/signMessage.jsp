@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"  %>
 <%@ include file="../../header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,65 +11,49 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="static/js/bootstrap.min.js"></script>
 <title>车贷签约详细信息</title>
-<!-- <style>
-   table{
-       cellspacing="0";
-       background-color:#dfe2e2;
-       margin-bottom:10px;
-       
-   }
-   tr{
-     width:100%;
-     height:30px;
-   }
-   td{
-      width:300px;
-      height:30px;
-   }
-   caption{
-     background-color:#cedcde;
-      line-height:30px;
-   }
-   select{
-      width:146px;
-   }
-   
-</style> -->
 </head>
 <body>
+<script type="text/javascript">
+var loc = location.href;
+var n1 = loc.length;//地址的总长度
+var n2 = loc.indexOf("=");//取得=号的位置
+var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+alert(id);
+</script>
+
 	<div class="easyui-panel" style="width: 100%; text-align: center">
-		<form id="vehicleInfo" method="post">
+		<!--<form id="vehicleInfo" method="post">  -->
 			<table class="table1" border="1">
 				<caption class="caption1">签约基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款合同编号</label></td>
-					<td class="td1"><input type="text"  readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" name="contractNumber"  readonly="readonly" value=' ${order}'></td>
 					<td class="td1"><label>借款人</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text"  name="client.loanName" readonly="readonly" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>借款人手机号</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" name="client.cellphone"   readonly="readonly" value="hhhhhh"></td>
 					<td class="td1"><label>业务经理</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text"  name="manager"  readonly="readonly" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>身份证号</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" readonly="readonly" name="client.identity"  value="hhhhhh"></td>
 					<td class="td1"><label>借款总额</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" readonly="readonly"  name="product.capital" value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>额度上限</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" readonly="readonly"  name="product.capital"  value="hhhhhh"></td>
 					<td class="td1"><label>产品名称</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" readonly="readonly" name="product.name"  value="hhhhhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>贷款期数</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="hhhhhh"></td>
+					<td class="td1"><input type="text" readonly="readonly"  name="product.periods" value="hhhhhh"></td>
 					<td class="td1"><label>借款用途</label></td>
-					<td class="td1"><input type="text" readonly="readonly" value="飘飘乐"></td>
+					<td class="td1"><input type="text" readonly="readonly"  value="飘飘乐"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>审批金额</label></td>
@@ -91,7 +75,7 @@
 					<td class="td1">&nbsp;</td>
 				</tr>
 			</table>
-		</form>
+		<!-- </form> -->
 		
 			<table class="table1" border="1">
 				<caption class="caption1">签约附件列表</caption>
@@ -252,7 +236,6 @@
 		</thead>
 		<tbody>
 			<tr id="1">
-
 				<td style="width: 25px">123</td>
 				<td style="width: 20px">123</td>
 				<td style="width: 20px">123</td>
@@ -263,7 +246,6 @@
 				<td style="width: 20px">123</td>
 			</tr>
 			<tr id="2">
-
 				<td style="width: 25px">123</td>
 				<td style="width: 20px">123</td>
 				<td style="width: 20px">123</td>
@@ -275,5 +257,6 @@
 			</tr>
 		</tbody>
 	</table>
+	<script type="text/javascript" src="static/js/signPage/signMessage.js"></script>
 </body>
 </html>

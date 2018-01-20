@@ -4,11 +4,9 @@ $(function(){
 	
 	$('#signBtn').click(function(){
 		var row = $('#tt').datagrid('getSelected');
-		var url='contract/signInfo';
-		
+		var url='jsp/CarLoan/signList/signMessage.jsp';
 		if(row){
 				var orderId= row.id;
-				alert(orderId);
 				$("#viewDiv").panel({
 					iconCls : "icon-add",
 					collapsible : true,
@@ -76,7 +74,6 @@ function datas (orderId){
 	var companyName = $("input[name='companyName']").val();
 	var status =$('#var').val();
 	var datas = {contractNumber:contractNumber,loanName:loanName,companyName:companyName,orderId:orderId,status:status};
-	console.log(datas);
 	return datas;
 }
 });
