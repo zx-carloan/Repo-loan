@@ -119,7 +119,7 @@ public class OrderBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	public long getId() {
 		return id;
 	}
