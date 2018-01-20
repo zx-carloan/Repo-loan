@@ -30,8 +30,8 @@ public class ProductBean implements Serializable {
 	@Column(length=50)
 	private String accrual;//利息
 
-	@Column //借款总额
-	private double capital;
+	@Column   
+	private double capital; //借款总额
 	
 	public ProductBean() {
 		super();

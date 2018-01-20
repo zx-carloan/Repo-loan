@@ -39,9 +39,9 @@ public class ClientBean implements Serializable {
 	@Column
 	private int education;
 	
-	// 身份证号码
+	
 	@Column( length=20)
-	private String idCard;
+	private String idCard;// 身份证号码
 		
 	// 手机号
 	@Column(length=40)

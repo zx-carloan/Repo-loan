@@ -75,7 +75,7 @@ public class ContractController {
 	@RequestMapping("/signInfo")
 	public @ResponseBody OrderBean signInfo(Long  orderId) {
 		OrderBean order=orderService.getOrderById(orderId);
-		System.out.println(order.getClient());
+		System.out.println(order);
 		return order;
 	}
 }
