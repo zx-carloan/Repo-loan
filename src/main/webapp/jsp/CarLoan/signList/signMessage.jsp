@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"  %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,11 +15,7 @@
 </head>
 <body>
 <script type="text/javascript">
-var loc = location.href;
-var n1 = loc.length;//地址的总长度
-var n2 = loc.indexOf("=");//取得=号的位置
-var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-alert(id);
+
 </script>
 
 	<div class="easyui-panel" style="width: 100%; text-align: center">
@@ -27,7 +24,7 @@ alert(id);
 				<caption class="caption1">签约基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款合同编号</label></td>
-					<td class="td1"><input type="text" name="contractNumber"  readonly="readonly" value=' ${order}'></td>
+					<td class="td1"><input type="text" name="contractNumber"  readonly="readonly" value="${page}"></td>
 					<td class="td1"><label>借款人</label></td>
 					<td class="td1"><input type="text"  name="client.loanName" readonly="readonly" value="hhhhhh"></td>
 				</tr>

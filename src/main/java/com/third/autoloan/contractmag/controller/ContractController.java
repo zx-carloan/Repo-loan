@@ -73,13 +73,8 @@ public class ContractController {
 	 * @return
 	 */
 	@RequestMapping("/signInfo")
-	public ModelAndView signInfo(Long  orderId) {
-		ModelAndView mv = new ModelAndView();
-		OrderBean order = orderService.getOrderById(orderId);
-		System.out.println(order);
-		mv.addObject(order);
-		mv.setViewName("jsp/CarLoan/signList/signMessage");
-		return mv;
+	public @ResponseBody OrderBean signInfo(Long  orderId) {
+		OrderBean order=orderService.getOrderById(orderId);
+		return order;
 	}
-	
 }

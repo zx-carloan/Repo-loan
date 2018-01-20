@@ -5,15 +5,15 @@ $(function(){
 	$('#signBtn').click(function(){
 		var row = $('#tt').datagrid('getSelected');
 		var url='jsp/CarLoan/signList/signMessage.jsp';
+		$('#infomation').val(row.id)
 		if(row){
-				var orderId= row.id;
 				$("#viewDiv").panel({
 					iconCls : "icon-add",
 					collapsible : true,
 					minimizable : true,
 					maximizable : true,
 					closable : true,
-					href : url+"?orderId="+orderId
+					href : url,
 				});
 		}else{
 			$.messager.confirm('Confirm', '请选择一行进行操作');

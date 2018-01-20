@@ -151,49 +151,14 @@
 					<th data-options="field:'identity.identity',width:20,align:'center',sortable:'true'">身份证号</th>
 					<th data-options="field:'contract.payDate',width:20,align:'center',sortable:'true'">约定放贷日</th>
 					<th data-options="field:'contract.timeStarting',width:20,align:'center',sortable:'true'">签约日</th>
-					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">合同额</th>
+					<th data-options="field:'contract.capital',width:20,align:'center',sortable:'true'">合同额</th>
 					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">实际放款额</th>
-					<th data-options="field:'periods',width:20,align:'center',sortable:'true'">借款期数</th>
-					<th data-options="field:'name',width:20,align:'center',sortable:'true'">分公司</th>
+					<th data-options="field:'contract.periods',width:20,align:'center',sortable:'true'">借款期数</th>
+					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
 					<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true'">放款状态</th>
-
-
 				</tr>
 			</thead>
-			<tbody>
-				<tr id="1">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 25px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-
-				</tr>
-				<tr id="2">
-
-					<td style="width: 20px">123</td>
-					<td style="width: 25px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-					<td style="width: 20px">123</td>
-
-				</tr>
-			</tbody>
+		
 		</table>
 		<div style="text-align: center">
 			<button id="detail" class="btn btn-primary">详细信息</button>
