@@ -2,6 +2,7 @@ package com.third.autoloan.usermag.controller;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +21,15 @@ public class UserController {
 private IUserGetService userGetServiceImpl;
 	
 	@RequestMapping(value = "/login", method = { RequestMethod.POST }, produces = { "application/json;charset=utf-8" })
-	public @ResponseBody String login( UserBean user) {
-		System.out.println(user);
+	public @ResponseBody String login( UserBean user,HttpSession session) {
 		String str = "";
-		if(null!=user.getLoginName()||null!=user.getPassword()) {
+		UserBean userBean = userGetServiceImpl.getUser(user);
 			//数据库中是否有该账户
-			if( userGetServiceImpl.getUser(user)!=null) {
+		if(userBean  !=null) {
+				session.setAttribute("user", userBean);
 				str="jsp/Interface.jsp";
 			}else {
 				str="err";
-			}
-		}else {
-			str="err";
 		}
 		return str;
 	}

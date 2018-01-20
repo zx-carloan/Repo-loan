@@ -6,16 +6,10 @@ function login() {
 		data : datas(),
 		dataType:'text',
 		success : function(msg) {
-			if(msg!='err'){
-				$(location).attr('href', msg);
-			}else{
+			if(msg='err'){
+				$("#nameT").text("用户或者密码错误");
 				clear();
 			}
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			console.log(XMLHttpRequest.status);
-			console.log(XMLHttpRequest.readyState);
-			console.log(textStatus);
 		},
 	}) 
 }

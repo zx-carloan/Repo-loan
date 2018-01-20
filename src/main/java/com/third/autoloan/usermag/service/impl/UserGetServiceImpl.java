@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.third.autoloan.beans.UserBean;
 import com.third.autoloan.usermag.dao.IUserDao;
 import com.third.autoloan.usermag.service.IUserGetService;
+import com.third.autoloan.util.CTools;
 
 
 @Service
@@ -17,8 +18,10 @@ public class UserGetServiceImpl implements IUserGetService {
 	
 	@Override
 	public UserBean getUser(UserBean user) {
-		// TODO Auto-generated method stub
-		UserBean userBean = userDaoImpl.getUser(user);
-		return userBean;
+		if(CTools.checkStringNull(user.getLoginName()) &&  (CTools.checkStringNull(user.getLoginName()))){
+			UserBean userBean = userDaoImpl.getUser(user);	return userBean;
+		}
+	
+		return null;
 	}
 }
