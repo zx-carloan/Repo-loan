@@ -18,8 +18,11 @@ public class UserGetServiceImpl implements IUserGetService {
 	
 	@Override
 	public UserBean getUser(UserBean user) {
+		System.out.println(user);
 		if(CTools.checkStringNull(user.getLoginName()) &&  (CTools.checkStringNull(user.getLoginName()))){
-			UserBean userBean = userDaoImpl.getUser(user);	return userBean;
+			UserBean userBean = userDaoImpl.getUser(user);	
+			
+			return userBean;
 		}
 	
 		return null;

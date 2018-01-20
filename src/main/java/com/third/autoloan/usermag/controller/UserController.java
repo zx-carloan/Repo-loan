@@ -24,6 +24,7 @@ private IUserGetService userGetServiceImpl;
 	public @ResponseBody String login( UserBean user,HttpSession session) {
 		String str = "";
 		UserBean userBean = userGetServiceImpl.getUser(user);
+		System.out.println(userBean);
 			//数据库中是否有该账户
 		if(userBean  !=null) {
 				session.setAttribute("user", userBean);
