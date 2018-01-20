@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.third.autoloan.beans.ContractBean;
+import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.contractmag.dao.IContractDao;
 import com.third.autoloan.contractmag.service.IContractGetService;
 
@@ -16,8 +17,12 @@ public class ContractGetServiceImpl implements IContractGetService{
 	
 	@Override
 	public ContractBean getContractByOrderId(Long orderId) {
-		// TODO Auto-generated method stub
 		return contractDaoImpl.getContractByOrderBean(orderId);
+	}
+
+	@Override
+	public OrderBean getOrderByOrderId(Long orderId) {
+		return null;
 	}
 
 }

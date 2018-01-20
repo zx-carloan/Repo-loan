@@ -38,9 +38,15 @@ public class ClientBean implements Serializable {
 	// 最高学历
 	@Column
 	private int education;
+	
+	// 身份证号码
+		@Column
+	private int identity;
+		
 	// 手机号
 	@Column(length=40)
 	private String cellphone;
+	
 	// '户籍地址'
 	@Column(length=100)
 	private String address;

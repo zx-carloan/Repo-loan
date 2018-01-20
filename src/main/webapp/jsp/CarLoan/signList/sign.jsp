@@ -80,6 +80,6 @@
 			id="cancel" href="javascript:void(0)" class="easyui-linkbutton"
 			data-options="iconCls:'icon-edit',plain:true">撤销</a>
 	</div>
-	<script type="text/javascript" src="static/js/signPage.js"></script>
+	<script type="text/javascript" src="static/js/signPage/signPage.js"></script>
 </body>
 </html>
