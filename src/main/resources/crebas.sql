@@ -41,6 +41,7 @@ DROP TABLE IF EXISTS t_user_role;
 /*==============================================================*/
 CREATE TABLE t_carInfo
 (
+  id                   BIGINT NOT NULL AUTO_INCREMENT,
    otherAttachment      VARCHAR(200) COMMENT '车辆其他附件',
    sali                 VARCHAR(200) COMMENT '保单（交强险)',
    carPic               VARCHAR(200) COMMENT '车辆照片',
@@ -48,7 +49,6 @@ CREATE TABLE t_carInfo
    carAsseceForm        VARCHAR(200),
    carRegisterForm      VARCHAR(200) COMMENT '车辆登记证书（原件）',
    drivingLisense       VARCHAR(200) COMMENT '车辆行驶证正副本（原件）',
-   id                   BIGINT NOT NULL AUTO_INCREMENT,
    carId                VARCHAR(30) COMMENT '机动车辆号牌',
    brand                VARCHAR(20) COMMENT '厂牌型号',
    engineId             VARCHAR(40) COMMENT '发动机号',
@@ -79,11 +79,11 @@ CREATE TABLE t_carInfo
 /*==============================================================*/
 CREATE TABLE t_client
 (
+   id                   BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
    applicationForm      VARCHAR(200) COMMENT '车贷申请表',
    iDPic                VARCHAR(200) COMMENT '身份证照片',
-   id                   BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-	 identit       VARCHAR(20)  COMMENT '身份证号码',
-   NAME                 VARCHAR(20) COMMENT '申请人姓名
+	idCard       VARCHAR(20)  COMMENT '身份证号码',
+   `name`                 VARCHAR(20) COMMENT '申请人姓名
             ',
    education            INT COMMENT '最高学历
             1 初中及以下
@@ -160,7 +160,7 @@ CREATE TABLE t_contactor
 (
    id                   INT NOT NULL AUTO_INCREMENT,
    NAME                 VARCHAR(20) COMMENT '联系人姓名',
-   TYPE                 INT COMMENT '联系人类型',
+   `type`                 INT COMMENT '联系人关系',
    relation             INT COMMENT '和本人关系',
    company              VARCHAR(20) COMMENT '单位名称',
    address              VARCHAR(100) COMMENT '家庭地址/单位地址',
@@ -174,6 +174,7 @@ CREATE TABLE t_contactor
 /*==============================================================*/
 CREATE TABLE t_contract
 (
+   id                   BIGINT NOT NULL AUTO_INCREMENT,
    carParkingPic        VARCHAR(200) COMMENT '车辆入库照片（非必要）',
    carMortgagePic       VARCHAR(200) COMMENT '车辆抵押照片',
    carAuthorisationLetter VARCHAR(200) COMMENT '授权委托书(车辆处理使用)（直接上传）',
@@ -185,7 +186,6 @@ CREATE TABLE t_contract
    loanContract         VARCHAR(200) COMMENT '小额借款服务合同（系统生成）',
    printedForm          VARCHAR(200),
    bankCard             VARCHAR(200) COMMENT '银行卡',
-   id                   BIGINT NOT NULL AUTO_INCREMENT,
    amount               DOUBLE COMMENT '审批金额',
    payDate              DATE COMMENT '放贷日期',
    bank                 VARCHAR(30) COMMENT '放款/还款银行',
@@ -220,7 +220,7 @@ CREATE TABLE t_creditInfo
 CREATE TABLE t_identity
 (
    id                   BIGINT NOT NULL AUTO_INCREMENT,
-   NAME                 VARCHAR(20) COMMENT '姓名',
+   `name`                 VARCHAR(20) COMMENT '姓名',
    gender               INT COMMENT '性别
             0 女
             1 男',
@@ -240,7 +240,7 @@ CREATE TABLE t_identity
 CREATE TABLE t_item
 (
    id                   BIGINT NOT NULL AUTO_INCREMENT,
-   NAME                 VARCHAR(30) COMMENT '物品名称',
+ 	`name`                 VARCHAR(30) COMMENT '物品名称',
    number               INT COMMENT '物品数量',
    fk_carInfo_id        BIGINT COMMENT '车辆表外键',
    PRIMARY KEY (id)
@@ -292,8 +292,8 @@ CREATE TABLE t_order
    returnOpinion        VARCHAR(100),
    fk_client_id         BIGINT,
    fk_opinion_id        BIGINT,
-   STATUS               VARCHAR(20),
-   ROLLBACK             VARCHAR(20),
+   `status`            VARCHAR(20),
+   `rollback`             VARCHAR(20),
    loanStatus           INT,
    submenuStatus        INT,
    submit               INT,
@@ -317,7 +317,7 @@ CREATE TABLE t_order
 CREATE TABLE t_product
 (
    id                   BIGINT NOT NULL AUTO_INCREMENT,
-   NAME                 VARCHAR(20) COMMENT '产品名',
+   `name`                 VARCHAR(20) COMMENT '产品名',
    periods              VARCHAR(50) COMMENT '期数
             6/12/18/24',
    accrual              VARCHAR(50) COMMENT '利息
@@ -345,7 +345,7 @@ CREATE TABLE t_user
    userName             VARCHAR(20) COMMENT '真实姓名',
    loginName            VARCHAR(20) COMMENT '登陆名',
    fk_branch_id         BIGINT COMMENT '公司表外键',
-   PASSWORD             VARCHAR(30),
+  `password`             VARCHAR(30),
    PRIMARY KEY (id)
 );
 

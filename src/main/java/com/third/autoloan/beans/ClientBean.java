@@ -40,8 +40,8 @@ public class ClientBean implements Serializable {
 	private int education;
 	
 	// 身份证号码
-	@Column(length=20)
-	private String identity;
+	@Column( length=20)
+	private String idCard;
 		
 	// 手机号
 	@Column(length=40)
@@ -147,304 +147,384 @@ public class ClientBean implements Serializable {
 	@OneToOne(fetch=FetchType.LAZY,mappedBy="client")
 	@Cascade(value= {CascadeType.ALL})
 	private OrderBean orderBean;
-	
-	public ClientBean() {
-		super();
-	}
 
+	
 	public long getId() {
 		return id;
 	}
+
 
 	public void setId(long id) {
 		this.id = id;
 	}
 
+
 	public String getName() {
 		return name;
 	}
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
 	public int getEducation() {
 		return education;
 	}
+
 
 	public void setEducation(int education) {
 		this.education = education;
 	}
 
+
+	
+
+
+	public String getIdCard() {
+		return idCard;
+	}
+
+
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
+	}
+
+
 	public String getCellphone() {
 		return cellphone;
 	}
+
 
 	public void setCellphone(String cellphone) {
 		this.cellphone = cellphone;
 	}
 
+
 	public String getAddress() {
 		return address;
 	}
+
 
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+
 	public String getTel() {
 		return tel;
 	}
+
 
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
+
 	public int getMarriage() {
 		return marriage;
 	}
+
 
 	public void setMarriage(int marriage) {
 		this.marriage = marriage;
 	}
 
+
 	public int getChild() {
 		return child;
 	}
+
 
 	public void setChild(int child) {
 		this.child = child;
 	}
 
+
 	public int getHouse() {
 		return house;
 	}
+
 
 	public void setHouse(int house) {
 		this.house = house;
 	}
 
+
 	public int getPartner() {
 		return partner;
 	}
+
 
 	public void setPartner(int partner) {
 		this.partner = partner;
 	}
 
+
 	public String getCurrentAddress() {
 		return currentAddress;
 	}
+
 
 	public void setCurrentAddress(String currentAddress) {
 		this.currentAddress = currentAddress;
 	}
 
+
 	public int getClientType() {
 		return clientType;
 	}
+
 
 	public void setClientType(int clientType) {
 		this.clientType = clientType;
 	}
 
+
 	public String getCompanyName() {
 		return companyName;
 	}
+
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 
+
 	public String getCompanyAddress() {
 		return companyAddress;
 	}
+
 
 	public void setCompanyAddress(String companyAddress) {
 		this.companyAddress = companyAddress;
 	}
 
+
 	public String getCompanyTel() {
 		return companyTel;
 	}
+
 
 	public void setCompanyTel(String companyTel) {
 		this.companyTel = companyTel;
 	}
 
+
 	public String getPostcode() {
 		return postcode;
 	}
+
 
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
 
+
 	public Date getPreTime() {
 		return preTime;
 	}
+
 
 	public void setPreTime(Date preTime) {
 		this.preTime = preTime;
 	}
 
+
 	public String getDepartment() {
 		return department;
 	}
+
 
 	public void setDepartment(String department) {
 		this.department = department;
 	}
 
+
 	public String getPosition() {
 		return position;
 	}
+
 
 	public void setPosition(String position) {
 		this.position = position;
 	}
 
+
 	public String getCompanySize() {
 		return companySize;
 	}
+
 
 	public void setCompanySize(String companySize) {
 		this.companySize = companySize;
 	}
 
+
 	public String getIndustryType() {
 		return industryType;
 	}
+
 
 	public void setIndustryType(String industryType) {
 		this.industryType = industryType;
 	}
 
+
 	public int getCompanyType() {
 		return companyType;
 	}
+
 
 	public void setCompanyType(int companyType) {
 		this.companyType = companyType;
 	}
 
+
 	public String getLoanPurpose() {
 		return loanPurpose;
 	}
+
 
 	public void setLoanPurpose(String loanPurpose) {
 		this.loanPurpose = loanPurpose;
 	}
 
+
 	public double getSalary() {
 		return salary;
 	}
+
 
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
+
 	public double getMaxAffordable() {
 		return maxAffordable;
 	}
+
 
 	public void setMaxAffordable(double maxAffordable) {
 		this.maxAffordable = maxAffordable;
 	}
 
+
 	public int getMaxPaybackTime() {
 		return maxPaybackTime;
 	}
+
 
 	public void setMaxPaybackTime(int maxPaybackTime) {
 		this.maxPaybackTime = maxPaybackTime;
 	}
 
+
 	public double getMinLoan() {
 		return minLoan;
 	}
+
 
 	public void setMinLoan(double minLoan) {
 		this.minLoan = minLoan;
 	}
 
+
 	public double getMaxLoan() {
 		return maxLoan;
 	}
+
 
 	public void setMaxLoan(double maxLoan) {
 		this.maxLoan = maxLoan;
 	}
 
+
 	public int getSourceOfInfo() {
 		return sourceOfInfo;
 	}
+
 
 	public void setSourceOfInfo(int sourceOfInfo) {
 		this.sourceOfInfo = sourceOfInfo;
 	}
 
+
 	public String getSaler() {
 		return saler;
 	}
+
 
 	public void setSaler(String saler) {
 		this.saler = saler;
 	}
 
+
 	public String getValuer() {
 		return valuer;
 	}
+
 
 	public void setValuer(String valuer) {
 		this.valuer = valuer;
 	}
 
+
 	public Date getApplyDate() {
 		return applyDate;
 	}
+
 
 	public void setApplyDate(Date applyDate) {
 		this.applyDate = applyDate;
 	}
 
+
 	public String getiDPic() {
 		return iDPic;
 	}
+
 
 	public void setiDPic(String iDPic) {
 		this.iDPic = iDPic;
 	}
 
+
 	public String getApplicationForm() {
 		return applicationForm;
 	}
 
+
 	public void setApplicationForm(String applicationForm) {
 		this.applicationForm = applicationForm;
 	}
-	
+
+
 	public Set<ContactorBean> getContactorList() {
 		return contactorList;
 	}
+
 
 	public void setContactorList(Set<ContactorBean> contactorList) {
 		this.contactorList = contactorList;
 	}
 
-	
 
-	public String getIdentity() {
-		return identity;
+	public OrderBean getOrderBean() {
+		return orderBean;
 	}
 
-	public void setIdentity(String identity) {
-		this.identity = identity;
+
+	public void setOrderBean(OrderBean orderBean) {
+		this.orderBean = orderBean;
 	}
+
 
 	@Override
 	public String toString() {
-		return "ClientBean [id=" + id + ", name=" + name + ", education=" + education + ", identity=" + identity
+		return "ClientBean [id=" + id + ", name=" + name + ", education=" + education + ", idCard=" + idCard
 				+ ", cellphone=" + cellphone + ", address=" + address + ", tel=" + tel + ", marriage=" + marriage
 				+ ", child=" + child + ", house=" + house + ", partner=" + partner + ", currentAddress="
 				+ currentAddress + ", clientType=" + clientType + ", companyName=" + companyName + ", companyAddress="
@@ -456,7 +536,6 @@ public class ClientBean implements Serializable {
 				+ saler + ", valuer=" + valuer + ", applyDate=" + applyDate + ", iDPic=" + iDPic + ", applicationForm="
 				+ applicationForm + ", contactorList=" + contactorList + ", orderBean=" + orderBean + "]";
 	}
-
-
+	
 	
 }
