@@ -1,4 +1,17 @@
 $(function(){
+    var oderId=$('#infomation').val();
+    $.ajax({
+    		url:'contract/signInfo',
+			type : 'POST', 
+			async : true, 
+			data : oderId=oderId,
+			dataType:'text',
+			success : function(msg) {
+				console.log(msg);
+			},
+    })
+    
+    
 	function Fallback() {
 		$("#div1").toggle();
 	}
@@ -17,5 +30,5 @@ $(function(){
 	    success:function(data){   
 	        alert(data)   
 	    }   
-	
+
 });
