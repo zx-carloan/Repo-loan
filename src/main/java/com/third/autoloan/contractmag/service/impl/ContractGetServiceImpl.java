@@ -19,7 +19,9 @@ public class ContractGetServiceImpl implements IContractGetService{
 	public ContractBean getContractByOrderId(Long orderId) {
 		return contractDaoImpl.getContractByOrderBean(orderId);
 	}
-
+	/**
+	 * 
+	 */
 	@Override
 	public OrderBean getOrderByOrderId(Long orderId) {
 		return null;

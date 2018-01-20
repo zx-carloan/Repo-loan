@@ -21,7 +21,7 @@
 				<caption class="caption1">签约基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款合同编号</label></td>
-					<td class="td1"><input type="text" name="contractNumber"  readonly="readonly" value="${page}"></td>
+					<td class="td1"><input type="text" name="contractNumber"  readonly="readonly" value="hhh"></td>
 					<td class="td1"><label>借款人</label></td>
 					<td class="td1"><input type="text"  name="client.loanName" readonly="readonly" value="hhhhhh"></td>
 				</tr>

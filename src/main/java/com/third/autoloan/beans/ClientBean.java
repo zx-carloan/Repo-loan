@@ -40,8 +40,8 @@ public class ClientBean implements Serializable {
 	private int education;
 	
 	// 身份证号码
-		@Column
-	private int identity;
+	@Column(length=20)
+	private String identity;
 		
 	// 手机号
 	@Column(length=40)
@@ -432,20 +432,31 @@ public class ClientBean implements Serializable {
 		this.contactorList = contactorList;
 	}
 
+	
+
+	public String getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+
 	@Override
 	public String toString() {
-		return "ClientBean [id=" + id + ", name=" + name + ", education=" + education + ", cellphone=" + cellphone
-				+ ", address=" + address + ", tel=" + tel + ", marriage=" + marriage + ", child=" + child + ", house="
-				+ house + ", partner=" + partner + ", currentAddress=" + currentAddress + ", clientType=" + clientType
-				+ ", companyName=" + companyName + ", companyAddress=" + companyAddress + ", companyTel=" + companyTel
-				+ ", postcode=" + postcode + ", preTime=" + preTime + ", department=" + department + ", position="
-				+ position + ", companySize=" + companySize + ", industryType=" + industryType + ", companyType="
-				+ companyType + ", loanPurpose=" + loanPurpose + ", salary=" + salary + ", maxAffordable="
-				+ maxAffordable + ", maxPaybackTime=" + maxPaybackTime + ", minLoan=" + minLoan + ", maxLoan=" + maxLoan
-				+ ", sourceOfInfo=" + sourceOfInfo + ", saler=" + saler + ", valuer=" + valuer + ", applyDate="
-				+ applyDate + ", iDPic=" + iDPic + ", applicationForm=" + applicationForm + ", contactorList="
-				+ contactorList + "]";
+		return "ClientBean [id=" + id + ", name=" + name + ", education=" + education + ", identity=" + identity
+				+ ", cellphone=" + cellphone + ", address=" + address + ", tel=" + tel + ", marriage=" + marriage
+				+ ", child=" + child + ", house=" + house + ", partner=" + partner + ", currentAddress="
+				+ currentAddress + ", clientType=" + clientType + ", companyName=" + companyName + ", companyAddress="
+				+ companyAddress + ", companyTel=" + companyTel + ", postcode=" + postcode + ", preTime=" + preTime
+				+ ", department=" + department + ", position=" + position + ", companySize=" + companySize
+				+ ", industryType=" + industryType + ", companyType=" + companyType + ", loanPurpose=" + loanPurpose
+				+ ", salary=" + salary + ", maxAffordable=" + maxAffordable + ", maxPaybackTime=" + maxPaybackTime
+				+ ", minLoan=" + minLoan + ", maxLoan=" + maxLoan + ", sourceOfInfo=" + sourceOfInfo + ", saler="
+				+ saler + ", valuer=" + valuer + ", applyDate=" + applyDate + ", iDPic=" + iDPic + ", applicationForm="
+				+ applicationForm + ", contactorList=" + contactorList + ", orderBean=" + orderBean + "]";
 	}
+
 
 	
 }

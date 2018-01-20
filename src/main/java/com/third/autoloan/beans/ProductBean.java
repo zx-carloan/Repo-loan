@@ -29,10 +29,9 @@ public class ProductBean implements Serializable {
 	private String periods;//期数
 	@Column(length=50)
 	private String accrual;//利息
-	
-	
+
 	@Column //借款总额
-	private String capital;
+	private double capital;
 	
 	public ProductBean() {
 		super();
@@ -62,9 +61,19 @@ public class ProductBean implements Serializable {
 	public void setAccrual(String accrual) {
 		this.accrual = accrual;
 	}
+
+
+	public double getCapital() {
+		return capital;
+	}
+	public void setCapital(double capital) {
+		this.capital = capital;
+	}
 	@Override
 	public String toString() {
-		return "ProductBean [id=" + id + ", name=" + name + ", periods=" + periods + ", accrual=" + accrual + "]";
+		return "ProductBean [id=" + id + ", name=" + name + ", periods=" + periods + ", accrual=" + accrual
+				+ ", capital=" + capital + "]";
 	}
+	
 	
 }

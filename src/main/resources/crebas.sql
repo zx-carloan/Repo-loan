@@ -82,7 +82,7 @@ CREATE TABLE t_client
    applicationForm      VARCHAR(200) COMMENT '车贷申请表',
    iDPic                VARCHAR(200) COMMENT '身份证照片',
    id                   BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-   fk_identity_id       BIGINT COMMENT '身份证表外键',
+	 identit       VARCHAR(20)  COMMENT '身份证号码',
    NAME                 VARCHAR(20) COMMENT '申请人姓名
             ',
    education            INT COMMENT '最高学历
@@ -305,7 +305,7 @@ CREATE TABLE t_order
    auditor              VARCHAR(30),
    manager              VARCHAR(20),
    timeStarting    DATE COMMENT '进件时间',
-   getMoneyTime    DATE,
+   getMoneyTime    DATE COMMENT '还款时间' ,
    review  DATE COMMENT '复审日期',
    VERSION   INT,
    PRIMARY KEY (id)
@@ -322,7 +322,7 @@ CREATE TABLE t_product
             6/12/18/24',
    accrual              VARCHAR(50) COMMENT '利息
             4/5/6/7',
-   capital              DOUBLE,
+   capital              DOUBLE  COMMENT '借款总额',
    PRIMARY KEY (id)
 );
 
@@ -360,5 +360,3 @@ CREATE TABLE t_user_role
    PRIMARY KEY (id)
 );
 
- ALTER TABLE t_order ADD COLUMN getMoneyTime DATE
- alter table t_client add column  identity varchar(20);
