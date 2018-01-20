@@ -1,5 +1,6 @@
+var oderId=$('#infomation').val();
 $(function(){
-    var oderId=$('#infomation').val();
+	alert(oderId);
     $.ajax({
     		url:'contract/signInfo',
 			type : 'POST', 
@@ -10,7 +11,6 @@ $(function(){
 				console.log(msg);
 			},
     })
-    
     
 	function Fallback() {
 		$("#div1").toggle();

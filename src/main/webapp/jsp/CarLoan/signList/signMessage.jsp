@@ -14,9 +14,6 @@
 <title>车贷签约详细信息</title>
 </head>
 <body>
-<script type="text/javascript">
-
-</script>
 
 	<div class="easyui-panel" style="width: 100%; text-align: center">
 		<!--<form id="vehicleInfo" method="post">  -->
