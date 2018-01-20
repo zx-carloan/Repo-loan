@@ -75,7 +75,7 @@ public class ContractController {
 	@RequestMapping("/signInfo")
 	public ModelAndView signInfo(Long  orderId) {
 		ModelAndView mv = new ModelAndView();
-		OrderBean order=	  orderService.getOrderById(orderId);
+		OrderBean order = orderService.getOrderById(orderId);
 		System.out.println(order);
 		mv.addObject(order);
 		mv.setViewName("jsp/CarLoan/signList/signMessage");

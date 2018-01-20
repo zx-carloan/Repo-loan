@@ -25,7 +25,7 @@ public class CarController {
 	public @ResponseBody PageBean getUsersByQueryParams(String contractNum,String borrower,Integer company) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contractNum", contractNum);
-		map.put("borrower", borrower);
+		map.put("borrower", borrower); 
 		map.put("company", company);
 		System.out.println(map);
 		return null;

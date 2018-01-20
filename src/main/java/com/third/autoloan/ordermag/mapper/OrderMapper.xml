@@ -274,7 +274,7 @@
  	
  	<!-- 放款业务列表-->
   	<select id="getcPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
- 	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select o.(*), co.name as companyName ,i.(*) ,p.(*),con.(*),op.(*) from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
  	    left join t_identity as i on o.fk_identiry_id=i.id 
  	    left join t_product as p on o.fk_product_id=p.id 
@@ -323,7 +323,7 @@
  	        <result property="name" column="name" />
  	      </association>
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
- 	        <result property="name" column="name" />
+ 	        <result property="name" column="companyName" />
  	        <result property="hq" column="hq" />
  	      </association>
  	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">

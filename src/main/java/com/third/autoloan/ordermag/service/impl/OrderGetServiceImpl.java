@@ -71,7 +71,9 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		int	total = orderDaoImpl.getSumLoanPage(map);
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
+		
 		List<OrderBean> list =orderDaoImpl.getLoanPage(map);
+		
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);
 		pageBean.setTotal(total);
@@ -97,10 +99,7 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	}
 
 	@Override
-	public PageBean getProcedurePageBean(Map<String,String> map) {
-		
-	
-		
+	public PageBean getProcedurePageBean(Map<String,String> map) {		
 		int	pageNumber=Integer.parseInt(map.get("page"));
 		int pageSize =Integer.parseInt(map.get("rows"));
 		int	total = orderDaoImpl.getSumProcedure(map);
@@ -110,8 +109,14 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);
 		pageBean.setTotal(total);
-
 		return pageBean;
+	}
+
+
+	@Override
+	public PageBean getAllOrder() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

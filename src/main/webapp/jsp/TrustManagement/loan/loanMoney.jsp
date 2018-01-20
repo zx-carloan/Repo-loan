@@ -106,22 +106,22 @@
 			<span id="span1">&nbsp;</span>
 			<form id="checkup" method="post" style="margin-top: -10px;">
 				<span style="margin-right: 20px;" class="span1">合同编号</span><input
-					id="contratorNum" class="easyui-textbox" data-options="prompt:'填写'"
+					id="contractNumber" class="easyui-textbox" data-options="prompt:'填写'"
 					style="height: 20px"><span style="margin-right: 20px;"
 					class="span1">&nbsp;</span> <span style="margin-right: 20px;"
-					class="span1">借款人</span><input id="borrower" class="easyui-textbox"
+					class="span1">借款人</span><input id="loanName" class="easyui-textbox"
 					data-options="prompt:'填写'" style="height: 20px"><span
 					style="margin-right: 20px;" class="span1">&nbsp;</span> <span
 					style="margin-right: 20px;" class="span1">身份证号</span><input
-					id="identityNumber" class="easyui-textbox"
+					id="identity" class="easyui-textbox"
 					data-options="prompt:'填写'" style="height: 20px"><br> <br>
 				<span style="margin-right: 20px;" class="span1">产品类型</span><input
-					id="produceType" class="easyui-combobox"
-					data-options="valueField:'id',textField:'text',url:'#',method:'get',prompt:'-请选择-'"
+					id="productName" class="easyui-combobox"
+					data-options="valueField:'id',textField:'text',url:'###',method:'get',prompt:'-请选择-'"
 					style="height: 20px; margin-top: -10px;"><span
 					style="margin-right: 20px;" class="span1">&nbsp;</span> <span
 					style="margin-right: 20px;" class="span1">分公司</span><input
-					id="branch" class="easyui-combobox"
+					id="companyName" class="easyui-combobox"
 					data-options="valueField:'id',textField:'text',url:'#',method:'get',prompt:'-请选择-'"
 					style="height: 20px"><span style="margin-right: 20px;"
 					class="span1">&nbsp;</span> <span style="margin-right: 20px;"
@@ -134,7 +134,7 @@
 					<option value="3">提现失败</option>
 				</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span><span
 					style="margin-right: 20px;" class="span1">&nbsp;</span>
-				<button type="button" id="myButton" data-loading-text="Loading..."
+				<button type="button" id="myButton" data-loading-text="Loading..."  id="query"
 					class="btn btn-primary" autocomplete="off"
 					style="margin-top: -20px;">查&nbsp;&nbsp;询</button>
 			</form>
@@ -142,21 +142,20 @@
 		</div>
 
 		<table class="easyui-datagrid" style="width: 100%; height: 200px"
-			data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
+			data-options=" url:'putLoans/page',method:'get',rownumbers:true,fitColumns:true,pagination:true,singleSelect:false">
 			<thead>
 				<tr>
-					<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-					<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-					<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-					<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
-					<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">身份证号</th>
-					<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">约定放贷日</th>
-					<th data-options="field:'SignDate',width:20,align:'center',sortable:'true'">签约日</th>
-					<th data-options="field:'sumPrice',width:20,align:'center',sortable:'true'">合同额</th>
-					<th data-options="field:'actualPrice',width:20,align:'center',sortable:'true'">实际放款额</th>
-					<th data-options="field:'num',width:20,align:'center',sortable:'true'">借款期数</th>
-					<th data-options="field:'branch',width:20,align:'center',sortable:'true'">分公司</th>
-					<th data-options="field:'status',width:20,align:'center',sortable:'true'">放款状态</th>
+					<th data-options="field:'id',hidden:hidden,width:20,sortable:'true'"></th>
+					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'identity.name',width:20,align:'center',sortable:'true'">借款人</th>
+					<th data-options="field:'identity.identity',width:20,align:'center',sortable:'true'">身份证号</th>
+					<th data-options="field:'contract.payDate',width:20,align:'center',sortable:'true'">约定放贷日</th>
+					<th data-options="field:'contract.timeStarting',width:20,align:'center',sortable:'true'">签约日</th>
+					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">合同额</th>
+					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">实际放款额</th>
+					<th data-options="field:'periods',width:20,align:'center',sortable:'true'">借款期数</th>
+					<th data-options="field:'name',width:20,align:'center',sortable:'true'">分公司</th>
+					<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true'">放款状态</th>
 
 
 				</tr>

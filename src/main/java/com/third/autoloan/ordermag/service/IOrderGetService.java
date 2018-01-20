@@ -26,6 +26,10 @@ public interface IOrderGetService {
 	 * order按照谁排序
 	 */
 	public PageBean getOrderPageByMap(Map<String,String> map);
+	
+	
+	
+	public PageBean getAllOrder();
 
 	/**
 	 * 得到订单车辆信息
