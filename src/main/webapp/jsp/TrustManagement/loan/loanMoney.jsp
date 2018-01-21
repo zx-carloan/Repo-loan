@@ -98,6 +98,40 @@
 				}
 			});
 		});
+		
+		$("#query").click(function(){
+			$('#tt').datagrid('load',datas ());
+		});
+		
+		function datas (){
+			var contractNumber = $('#contractNumber').val();
+			var loanName = $('#loanName').val();
+			var identity = $('#identity').val();
+			var productName = $('#productName').val();
+			var companyName = $('#companyName').val();
+			var loanStatus = $('#loanStatus').val();
+			var datas = {contractNumber:contractNumber,loanName:loanName,identity:identity,productName:productName,companyName:companyName,loanStatus:loanStatus};
+			return datas;
+		}
+		
+		//时间转换插件
+		Date.prototype.Format  = function (fmt) { // author: meizz
+		    var o = {
+		        "M+": this.getMonth() + 1, // 月份
+		        "d+": this.getDate(), // 日
+		        "h+": this.getHours(), // 小时
+		        "m+": this.getMinutes(), // 分
+		        "s+": this.getSeconds(), // 秒
+		        "q+": Math.floor((this.getMonth() + 3) / 3), 
+		        "S": this.getMilliseconds() // 毫秒
+		    };
+		    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		    for (var k in o)
+		    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+		    return fmt;
+		}
+		
+		
 	</script>
 	<div id="viewDiv">
 		<span>当前位置：信审业务管理>车贷放款列表</span>
@@ -134,15 +168,15 @@
 					<option value="3">提现失败</option>
 				</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span><span
 					style="margin-right: 20px;" class="span1">&nbsp;</span>
-				<button type="button" id="myButton" data-loading-text="Loading..."  id="query"
+				<button type="button"  data-loading-text="Loading..."  id="query"
 					class="btn btn-primary" autocomplete="off"
 					style="margin-top: -20px;">查&nbsp;&nbsp;询</button>
 			</form>
 
 		</div>
 
-		<table class="easyui-datagrid" style="width: 100%; height: 200px"
-			data-options=" url:'putLoans/page',method:'get',rownumbers:true,fitColumns:true,pagination:true,singleSelect:false">
+		<table class="easyui-datagrid" style="width: 100%; height: 200px"  id="tt"
+			data-options=" url:'putLoans/page',method:'get',rownumbers:true,fitColumns:true,pagination:true,singleSelect:true">
 			<thead>
 				<tr>
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
@@ -161,14 +195,28 @@
 								retVal = date.Format('yyyy-MM-dd');
 							}
 							return retVal;
-							}
-
+						}
 					">约定放贷日</th>
-					<th data-options="field:'contract.timeStarting',width:20,align:'center',sortable:'true'">签约日</th>
-					<th data-options="field:'contract.capital',width:20,align:'center',sortable:'true'">合同额</th>
+					<th data-options="field:'contract',width:20,align:'center',sortable:'true'
+						formatter: function(value){
+							var retVal = '';
+							if(value != ''){
+								var date = new Date(contract.timeStarting);
+								retVal = date.Format('yyyy-MM-dd');
+							}
+							return retVal;
+							}
+					">签约日</th>
+					<th data-options="field:'contract',width:20,align:'center',sortable:'true'
+						formatter: function(contract){return contract.capital}
+					">合同额</th>
 					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">实际放款额</th>
-					<th data-options="field:'contract.periods',width:20,align:'center',sortable:'true'">借款期数</th>
-					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
+					<th data-options="field:'contract',width:20,align:'center',sortable:'true'
+						formatter: function(contract){return contract.periods}
+					">借款期数</th>
+					<th data-options="field:'company',width:20,align:'center',sortable:'true'
+						formatter: function(company){return company.name}
+					">分公司</th>
 					<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true',
 					formatter: function(client){
 					if(0)return '未放款';
@@ -179,7 +227,6 @@
 					">放款状态</th>
 				</tr>
 			</thead>
-		
 		</table>
 		<div style="text-align: center">
 			<button id="detail" class="btn btn-primary">详细信息</button>
