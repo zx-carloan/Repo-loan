@@ -43,9 +43,11 @@
 					<td><select id="companyName" class="easyui-combobox"
 						name="companyName" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
-					</select></td>
-					<td><a id="query" href="javascript:void(0)"
-						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+						<option name="companyName" value="%"></option>
+					</select>
+					</td>
+					<td><a id="query" href="javascript:void(0)" style="width: 70px"
+						class="easyui-linkbutton" data-options="iconCls:'icon-search' ">查询</a>
 					</td>
 				</tr>
 			</table>

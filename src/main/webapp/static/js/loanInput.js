@@ -3,7 +3,7 @@ $('#infoInput').click(function(){
 		var row = $('#tt').datagrid('getSelected');
 		
 		var url='';
-		var role ="估价师";
+		var role ="1";
 		if(row){
 			var length = rows.length;
 			if(length >1){
@@ -87,7 +87,7 @@ $("#query").click(function(){
 	
 	var contratorNum= $("#contractNum").val();
  	var borrower=$("#borrower").val();
-	var company=$("#company").val();
+	var company=$("input[name='companyName']").val();
  
 	var data={ "contractNum":contratorNum , "borrower":borrower,"company":company }
 	

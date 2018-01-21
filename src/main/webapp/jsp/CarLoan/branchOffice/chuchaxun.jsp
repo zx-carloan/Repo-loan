@@ -96,7 +96,7 @@
 		$("#myButton").click(function(){
 			 	var contratorNum= $("#contratorNum").val();
 			 	var borrower=$("#borrower").val();
-				var loanStatus=$("#loanStatus").val();
+				var loanStatus= $("input[name='loanStatus']").val();
 			 
 				var data={ "contratorNum":contratorNum , "borrower":borrower,"loanStatus":loanStatus }
 				console.log(data);
@@ -115,21 +115,25 @@
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post"
 			style="margin-top: -20px; margin-top: 10px;">
-			<span class="span1">合同编号</span><input id="contratorNum" name="contractorNUm"
+			<span class="span1">合同编号</span>
+			<input id="contratorNum" name="contractorNUm"
 				class="easyui-textbox" data-options="prompt:'填写'"
-				style="height: 20px"><span class="span1">&nbsp;</span> <span
-				class="span1">借款人</span><input id="borrower" name="borrower" class="easyui-textbox"
-				data-options="prompt:'填写'" style="height: 20px"><span
-				class="span1">&nbsp;</span> <span class="span1">分公司</span><select
-				id="loanStatus" class="easyui-combobox" name="status"
-				placeholder="-请选择-" style="width: 190px; height: 22px;">
-				<option value="">不选择</option>
-				<option value="1">朗沃一部</option>
-				<option value="2">朗沃二部</option>
-				<option value="3">朗沃三部</option>
-			</select> <span class="span1">&nbsp;</span><span class="span1">&nbsp;</span>
-			<input  type="button" id="myButton" 
-				 style="margin-left: 40px;" value="提交">
+				style="height: 20px"><span class="span1">&nbsp;</span>
+				
+				 <span class="span1">借款人</span>
+				 <input id="borrower" name="borrower" class="easyui-textbox"
+				data-options="prompt:'填写'" style="height: 20px"><span class="span1">&nbsp;</span> 
+				
+				<span class="span1">分公司</span>
+				<select class="easyui-combobox"
+						name="loanStatus" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+						<option name="companyName" value="%">请选择</option>
+					</select> 
+					<span class="span1">&nbsp;</span><span class="span1">&nbsp;</span>
+			<a id="myButton" href="javascript:void(0)"
+						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+	
 		</form>
 	</div>
 

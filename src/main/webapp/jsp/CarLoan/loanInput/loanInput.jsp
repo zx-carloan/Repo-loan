@@ -37,13 +37,12 @@
 						data-options="prompt:'填写'"></td>
 
 					<td>分公司：</td>
-					<td><select id="company" name="company" class="easyui-combobox"
-						name="status" style="width: 150px;">
-							
-							<option value="" selected="selected">-请选择-</option>
-							<option value="0">阿里</option>
-							<option value="1">腾讯</option>
-					</select></td>
+					<td><select id="companyName" class="easyui-combobox"
+						name="companyName" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+						<option name="companyName" value="%">请选择</option>
+					</select>
+					</td>
 					<td><a id="query" href="javascript:void(0)"
 						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 					</td>
