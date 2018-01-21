@@ -273,7 +273,7 @@
  	</resultMap>
  	
  	<!-- 放款业务列表-->
-  	<select id="getcPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
+  	<select id="getLoanPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
  	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
  	    left join t_identity as i on o.fk_identiry_id=i.id 

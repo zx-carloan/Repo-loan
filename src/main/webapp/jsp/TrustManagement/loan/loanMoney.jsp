@@ -145,17 +145,38 @@
 			data-options=" url:'putLoans/page',method:'get',rownumbers:true,fitColumns:true,pagination:true,singleSelect:false">
 			<thead>
 				<tr>
-					<th data-options="field:'id',hidden:hidden,width:20,sortable:'true'"></th>
+					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-					<th data-options="field:'identity.name',width:20,align:'center',sortable:'true'">借款人</th>
-					<th data-options="field:'identity.identity',width:20,align:'center',sortable:'true'">身份证号</th>
-					<th data-options="field:'contract.payDate',width:20,align:'center',sortable:'true'">约定放贷日</th>
+					<th data-options="field:'client',width:20,align:'center',sortable:'true',
+						formatter: function(client){return client.name}
+					">借款人</th>
+					<th data-options="field:'identity',width:20,align:'center',sortable:'true',
+						formatter: function(identity){return identity.identity}
+					">身份证号</th>
+					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
+						formatter: function(value){
+							var retVal = '';
+							if(value != ''){
+								var date = new Date(value.payDate);
+								retVal = date.Format('yyyy-MM-dd');
+							}
+							return retVal;
+							}
+
+					">约定放贷日</th>
 					<th data-options="field:'contract.timeStarting',width:20,align:'center',sortable:'true'">签约日</th>
 					<th data-options="field:'contract.capital',width:20,align:'center',sortable:'true'">合同额</th>
 					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">实际放款额</th>
 					<th data-options="field:'contract.periods',width:20,align:'center',sortable:'true'">借款期数</th>
 					<th data-options="field:'company.name',width:20,align:'center',sortable:'true'">分公司</th>
-					<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true'">放款状态</th>
+					<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true',
+					formatter: function(client){
+					if(0)return '未放款';
+					if(1)return '放款中';	
+					if(2)return '已放款';
+					if(3)return '取款失败';
+					}
+					">放款状态</th>
 				</tr>
 			</thead>
 		
