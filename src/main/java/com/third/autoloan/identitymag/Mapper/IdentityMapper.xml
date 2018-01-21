@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.third.autoloan.identitymag.dao.IidentityDao">
         <select id="getIdentityInfoByIdentityNum" parameterType="String" resultMap="identityMap">
              select * from t_identity left join t_order where identity=#{identity}
