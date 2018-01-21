@@ -8,7 +8,7 @@ import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.clientmag.repository.ClientRepository;
 import com.third.autoloan.clientmag.service.IClientService;
 
-@Service
+@Service("ClientServiceImpl")
 public class ClientServiceImpl implements IClientService {
 
 	@Resource
@@ -36,6 +36,12 @@ public class ClientServiceImpl implements IClientService {
 		
 		clientRepository.saveAndFlush(client);
 
+	}
+
+	@Override
+	public ClientBean getClienInfo(Long id) {
+		// TODO Auto-generated method stub
+		return clientRepository.getOne(id);
 	}
 
 }

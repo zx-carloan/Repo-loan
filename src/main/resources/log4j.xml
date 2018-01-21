@@ -2,7 +2,9 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration>
 	<!-- appender 代表输出，用于指定日志输出的位置 -->
-	<!-- STDOUT 系统启动日志级别 -->
+	<!-- STDOUT 系统启动日志级别 
+	
+	-->
 	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="conversionPattern" value="%c %d{yyyy-MM-dd hh:mm:ss} %p %m%n"/>

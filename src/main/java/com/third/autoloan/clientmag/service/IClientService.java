@@ -11,6 +11,8 @@ public interface IClientService {
 	 */
 	public void addClient(ClientBean client);
 	
+	public ClientBean getClienInfo(Long id);
+	
 	/***
 	 * 删除客户信息
 	 * @param id
