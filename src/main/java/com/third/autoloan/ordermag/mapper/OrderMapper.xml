@@ -4,7 +4,7 @@
  <mapper namespace="com.third.autoloan.ordermag.mapper.OrderMapper">
  	
  	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
- 	    select o.*,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select o.id,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
 
         <if test="contractNumber!=null">
@@ -274,7 +274,7 @@
  	
  	<!-- 放款业务列表-->
   	<select id="getcPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
- 	    select o.(*), co.name as companyName ,i.(*) ,p.(*),con.(*),op.(*) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
  	    left join t_identity as i on o.fk_identiry_id=i.id 
  	    left join t_product as p on o.fk_product_id=p.id 
@@ -323,7 +323,7 @@
  	        <result property="name" column="name" />
  	      </association>
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
- 	        <result property="name" column="companyName" />
+ 	        <result property="name" column="name" />
  	        <result property="hq" column="hq" />
  	      </association>
  	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
@@ -376,7 +376,6 @@
  	     <result property="manager" column="manager" />
  	     <result property="timeStarting" column="timeStarting" />
  	     <result property="auditor" column="auditor" />
- 	      <result property="status" column="STATUS" />
  	     <result property="submenuStatus" column="submenuStatus" />
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
@@ -480,7 +479,7 @@
  	
  	<!-- 通过id查找订单信息 -->
  	<select id="getOrderInfoBuId" parameterType="Long" resultType="OrderBean" resultMap="getOrderInfo">
- 	   SELECT * FROM t_order AS o LEFT JOIN t_client AS c ON o.fk_client_id=c.id 
+ 	   SELECT *,c.name as 'cname',p.name as 'pname',i.name as 'iname',co.name as 'coname'  FROM t_order AS o LEFT JOIN t_client AS c ON o.fk_client_id=c.id 
              LEFT JOIN t_opinion AS op ON op.id=o.fk_opinion_id
              LEFT JOIN t_product AS p ON o.fk_product_id=p.id 
              LEFT JOIN t_Contract AS con ON con.id=o.fk_contract_id
@@ -505,7 +504,7 @@
  	     <result property="auditor" column="auditor" />
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean"> 
  	           <id property="id" column="id"></id>
- 	           <result property="name" column="name" />
+ 	           <result property="name" column="cname" />
  	           <result property="education" column="education" />
  	           <result property="cellphone" column="cellphone" />
  	           <result property="address" column="address" />
@@ -558,7 +557,7 @@
  	       </association>
  	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
  	           <id property="id" column="id"></id>
- 	           <result property="name" column="name" />
+ 	           <result property="name" column="pname" />
  	           <result property="periods" column="periods" />
  	           <result property="accrual" column="accrual" />
  	      </association>
@@ -598,13 +597,13 @@
  	      
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <id property="id" column="id"></id>
- 	        <result property="name" column="name" />
+ 	        <result property="name" column="coname" />
  	        <result property="hq" column="hq" />
  	      </association>
  	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
  	           <id property="id" column="id"></id>
  	           <result property="identity" column="identity" />
- 	          <result property="name" column="name" />
+ 	          <result property="name" column="iname" />
  	          <result property="gender" column="gender" />
  	          <result property="ethnic" column="ethnic" />
  	          <result property="birthday" column="birthday" />

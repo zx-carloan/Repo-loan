@@ -87,12 +87,25 @@
 						minimizable : true,
 						maximizable : true,
 						closable : true,
-						/* href : "branchCompany/detailInfo?id="+id */
-					    href: "/autoloan/jsp/CarLoan/branchOffice/ziliao.jsp"
+						href : "branchCompany/detailInfo?id="+id 
+					   
 					});
 				}
 			});
 		})
+		$("#myButton").click(function(){
+			 	var contratorNum= $("#contratorNum").val();
+			 	var borrower=$("#borrower").val();
+				var loanStatus=$("#loanStatus").val();
+			 
+				var data={ "contratorNum":contratorNum , "borrower":borrower,"loanStatus":loanStatus }
+				console.log(data);
+				$('#ta').datagrid('reload',{
+					url: "branchCompany/page", 
+					queryParams:data, 
+					method: "post"
+					});
+			});
 	</script>
 
 	<span>当前位置：信审管理>分公司信审主页</span>
@@ -102,26 +115,25 @@
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post"
 			style="margin-top: -20px; margin-top: 10px;">
-			<span class="span1">合同编号</span><input id="contratorNum"
+			<span class="span1">合同编号</span><input id="contratorNum" name="contractorNUm"
 				class="easyui-textbox" data-options="prompt:'填写'"
 				style="height: 20px"><span class="span1">&nbsp;</span> <span
-				class="span1">借款人</span><input id="borrower" class="easyui-textbox"
+				class="span1">借款人</span><input id="borrower" name="borrower" class="easyui-textbox"
 				data-options="prompt:'填写'" style="height: 20px"><span
 				class="span1">&nbsp;</span> <span class="span1">分公司</span><select
 				id="loanStatus" class="easyui-combobox" name="status"
-				placeholder="-申请放款-" style="width: 190px; height: 22px;">
-				<option value="0">待放款</option>
-				<option value="1">放款中</option>
-				<option value="2">已放款</option>
-				<option value="3">提现失败</option>
+				placeholder="-请选择-" style="width: 190px; height: 22px;">
+				<option value="">不选择</option>
+				<option value="1">朗沃一部</option>
+				<option value="2">朗沃二部</option>
+				<option value="3">朗沃三部</option>
 			</select> <span class="span1">&nbsp;</span><span class="span1">&nbsp;</span>
-			<button type="button" id="myButton" data-loading-text="Loading..."
-				class="btn btn-primary" autocomplete="off"
-				style="margin-left: 40px;">查&nbsp;&nbsp;询</button>
+			<input  type="button" id="myButton" 
+				 style="margin-left: 40px;" value="提交">
 		</form>
 	</div>
 
-	<table class="easyui-datagrid" style="width: 100%; height: 200px"
+	<table id="ta" class="easyui-datagrid" style="width: 100%; height: 200px"
 		data-options="url:'branchCompany/page',method:'get',fitColumns:true,pagination:true,singleSelect:false">
 		<thead>
 			<tr>

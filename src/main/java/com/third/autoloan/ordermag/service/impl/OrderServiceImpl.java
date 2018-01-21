@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,9 @@ public class OrderServiceImpl implements IOrderService{
 	@Resource
 	private IOrderDao orderDaoImpl;
 	
+	@Resource
+	private SessionFactory sessionFactory;
+	
 	@Override
 	public void deleteOrderInfo(long id) {
 		// TODO Auto-generated method stub
@@ -53,8 +57,7 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public void updateOrderInfo(OrderBean orderBean) {
 		// TODO Auto-generated method stub
-		orderRepository.saveAndFlush(orderBean);
-		
+		sessionFactory.openSession().update(orderBean);
 	}
 
 

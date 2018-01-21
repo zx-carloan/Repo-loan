@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.third.autoloan.identitymag.dao.IidentityDao">
+        <select id="getIdentityInfoByIdentityNum" parameterType="String" resultMap="identityMap">
+             select * from t_identity left join t_order where identity=#{identity}
+        </select>
+        
+        <resultMap id="identityMap" type="com.third.autoloan.beans.IdentityBean">
+            <id property="id" column="id"></id>
+            <result property="name" column="name"></result>
+            <result property="ethnic" column="ethnic"></result>
+            <result property="birthday" column="birthday"></result>
+            <result property="identity" column="identity"></result>
+            <result property="issueDate" column="issueDate"></result>
+            <result property="expireDate" column="expireDate"></result>
+            <collection property="orderList" ofType="com.third.autoloan.beans.OrderBean">
+              <id property="id" column="id"></id>
+              <result property="contractNumber" column="contractNumber"></result>
+              <result property="returnOpinion" column="returnOpinion"></result>
+              <result property="status" column="status"></result>
+              <result property="rollback" column="rollback"></result>
+              <result property="loanStatus" column="loanStatus"></result>
+              <result property="submenuStatus" column="submenuStatus"></result>
+              <result property="manager" column="manager"></result>
+              <result property="submit" column="submit"></result>
+              <result property="auditor" column="auditor"></result>
+		    </collection>
+        </resultMap>
+</mapper>

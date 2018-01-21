@@ -3,6 +3,7 @@ package com.third.autoloan.beans;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -101,7 +102,7 @@ public class CarInfoBean implements Serializable {
 	//车内物品列表
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="carInfo")
 	@Cascade(value= {CascadeType.ALL})
-	private List<ItemBean> itemList;
+	private Set<ItemBean> itemList;
 	
 	//车辆行驶证正副本（原件）
 	@Column(length=200)
@@ -398,13 +399,13 @@ public class CarInfoBean implements Serializable {
 
 
 
-	public List<ItemBean> getItemList() {
+	public Set<ItemBean> getItemList() {
 		return itemList;
 	}
 
 
 
-	public void setItemList(List<ItemBean> itemList) {
+	public void setItemList(Set<ItemBean> itemList) {
 		this.itemList = itemList;
 	}
 

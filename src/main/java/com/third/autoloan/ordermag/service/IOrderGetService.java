@@ -21,15 +21,11 @@ public interface IOrderGetService {
 	 * status 订单流程到那步
 	 * @param pageBean 页面约束
 	 * pageNumber 当前页码
-	 * rows 每页显示多少行
+	 * pageSize 每页显示多少行
 	 * sort  排序条件
 	 * order按照谁排序
 	 */
 	public PageBean getOrderPageByMap(Map<String,String> map);
-	
-	
-	
-	public PageBean getAllOrder();
 
 	/**
 	 * 得到订单车辆信息

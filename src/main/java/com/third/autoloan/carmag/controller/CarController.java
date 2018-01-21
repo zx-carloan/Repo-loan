@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -98,7 +99,7 @@ public class CarController {
 		//首先封装物品对象存入车辆对象中
 		StringBuilder sName = null;
 		StringBuilder sNumber = null;
-		List<ItemBean> itemList = null;
+		Set<ItemBean> itemSet = null;
 		for(int i=0; i < 10; i++) {
 			sName = new StringBuilder("item");
 			sNumber = new StringBuilder("number");
@@ -108,10 +109,10 @@ public class CarController {
 				ItemBean item = new ItemBean();
 				item.setName((String) map.get(sName));
 				item.setNumber((int) map.get(sNumber));
-				itemList.add(item);
+				itemSet.add(item);
 			}
 		}
-		car.setItemList(itemList);
+		car.setItemList(itemSet);
 		car.setAnnualInspection(Integer.parseInt((String)map.get("annualInspection")));
 		car.setBrand((String) map.get("brand"));
 		car.setCarAsseceForm((String) map.get("carAsseceForm"));
