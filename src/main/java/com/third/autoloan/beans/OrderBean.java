@@ -1,8 +1,7 @@
 package com.third.autoloan.beans;
 
 import java.util.Date;
-import java.util.Set;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.OptimisticLockType;
@@ -78,7 +76,7 @@ public class OrderBean {
 	//车辆的集合
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="order")
 	@Cascade(value= {CascadeType.ALL})
-	private Set<CarInfoBean> carList;
+	private List<CarInfoBean> carList;
 	
 	//身份证信息对象
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -97,6 +95,7 @@ public class OrderBean {
 	@Cascade(value= {CascadeType.ALL})
 	@JoinColumn(name="fk_company_id")
 	private CompanyBean company;
+	
 	//审核人的用户名
 	@Column(length=30)
 	private String auditor;
@@ -206,11 +205,11 @@ public class OrderBean {
 	public void setContract(ContractBean contract) {
 		this.contract = contract;
 	}
-	public Set<CarInfoBean> getCarList() {
+	public List<CarInfoBean> getCarList() {
 		return carList;
 	}
 
-	public void setCarList(Set<CarInfoBean> carList) {
+	public void setCarList(List<CarInfoBean> carList) {
 		this.carList = carList;
 	}
 	

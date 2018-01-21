@@ -2,7 +2,7 @@ package com.third.autoloan.beans;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,37 +61,37 @@ public class CarInfoBean implements Serializable {
 	private int xkm;
 	// 身份证是否交付
 	@Column
-	private boolean getID;
+	private int getID;
 	// 车辆购置证/发票是否交付
 	@Column
-	private boolean getAfford;
+	private int getAfford;
 	// 交强保险单是否交付
 	@Column
-	private boolean getSali;
+	private int getSali;
 	// 车辆钥匙是否交付
 	@Column
-	private boolean getKey;
+	private int getKey;
 	// 车辆钥匙几把
 	@Column
 	private int keyNumber;
 	// 机动车登记证是否交付
 	@Column
-	private boolean getRegisterLicense;
+	private int getRegisterLicense;
 	// 商业保险单是否交付
 	@Column
-	private boolean getInsurance;
+	private int getInsurance;
 	// 车辆行驶证是否交付
 	@Column
-	private boolean getDrivingLicense;
+	private int getDrivingLicense;
 	// 车辆原始发票是否交付
 	@Column
-	private boolean getOriginalInvoice;
+	private int getOriginalInvoice;
 	// 车辆完税证是否交付
 	@Column
-	private boolean getTaxCertificate;
+	private int getTaxCertificate;
 	// 进口车辆证明是否交付
 	@Column
-	private boolean getImportCertificate;
+	private int getImportCertificate;
 	//订单表对象
 	@ManyToOne(fetch=FetchType.LAZY)
 	@Cascade(value= {CascadeType.ALL})
@@ -101,7 +101,7 @@ public class CarInfoBean implements Serializable {
 	//车内物品列表
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="carInfo")
 	@Cascade(value= {CascadeType.ALL})
-	private Set<ItemBean> itemList;
+	private List<ItemBean> itemList;
 	
 	//车辆行驶证正副本（原件）
 	@Column(length=200)
@@ -126,15 +126,18 @@ public class CarInfoBean implements Serializable {
 	private String otherAttachment;
 	
 	
+	
 	public CarInfoBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
+
 	public long getId() {
 		return id;
 	}
+
 
 
 	public void setId(long id) {
@@ -251,49 +254,49 @@ public class CarInfoBean implements Serializable {
 
 
 
-	public boolean isGetID() {
+	public int getGetID() {
 		return getID;
 	}
 
 
 
-	public void setGetID(boolean getID) {
+	public void setGetID(int getID) {
 		this.getID = getID;
 	}
 
 
 
-	public boolean isGetAfford() {
+	public int getGetAfford() {
 		return getAfford;
 	}
 
 
 
-	public void setGetAfford(boolean getAfford) {
+	public void setGetAfford(int getAfford) {
 		this.getAfford = getAfford;
 	}
 
 
 
-	public boolean isGetSali() {
+	public int getGetSali() {
 		return getSali;
 	}
 
 
 
-	public void setGetSali(boolean getSali) {
+	public void setGetSali(int getSali) {
 		this.getSali = getSali;
 	}
 
 
 
-	public boolean isGetKey() {
+	public int getGetKey() {
 		return getKey;
 	}
 
 
 
-	public void setGetKey(boolean getKey) {
+	public void setGetKey(int getKey) {
 		this.getKey = getKey;
 	}
 
@@ -311,73 +314,73 @@ public class CarInfoBean implements Serializable {
 
 
 
-	public boolean isGetRegisterLicense() {
+	public int getGetRegisterLicense() {
 		return getRegisterLicense;
 	}
 
 
 
-	public void setGetRegisterLicense(boolean getRegisterLicense) {
+	public void setGetRegisterLicense(int getRegisterLicense) {
 		this.getRegisterLicense = getRegisterLicense;
 	}
 
 
 
-	public boolean isGetInsurance() {
+	public int getGetInsurance() {
 		return getInsurance;
 	}
 
 
 
-	public void setGetInsurance(boolean getInsurance) {
+	public void setGetInsurance(int getInsurance) {
 		this.getInsurance = getInsurance;
 	}
 
 
 
-	public boolean isGetDrivingLicense() {
+	public int getGetDrivingLicense() {
 		return getDrivingLicense;
 	}
 
 
 
-	public void setGetDrivingLicense(boolean getDrivingLicense) {
+	public void setGetDrivingLicense(int getDrivingLicense) {
 		this.getDrivingLicense = getDrivingLicense;
 	}
 
 
 
-	public boolean isGetOriginalInvoice() {
+	public int getGetOriginalInvoice() {
 		return getOriginalInvoice;
 	}
 
 
 
-	public void setGetOriginalInvoice(boolean getOriginalInvoice) {
+	public void setGetOriginalInvoice(int getOriginalInvoice) {
 		this.getOriginalInvoice = getOriginalInvoice;
 	}
 
 
 
-	public boolean isGetTaxCertificate() {
+	public int getGetTaxCertificate() {
 		return getTaxCertificate;
 	}
 
 
 
-	public void setGetTaxCertificate(boolean getTaxCertificate) {
+	public void setGetTaxCertificate(int getTaxCertificate) {
 		this.getTaxCertificate = getTaxCertificate;
 	}
 
 
 
-	public boolean isGetImportCertificate() {
+	public int getGetImportCertificate() {
 		return getImportCertificate;
 	}
 
 
 
-	public void setGetImportCertificate(boolean getImportCertificate) {
+	public void setGetImportCertificate(int getImportCertificate) {
 		this.getImportCertificate = getImportCertificate;
 	}
 
@@ -393,19 +396,24 @@ public class CarInfoBean implements Serializable {
 		this.order = order;
 	}
 
-	
-	public Set<ItemBean> getItemList() {
+
+
+	public List<ItemBean> getItemList() {
 		return itemList;
 	}
 
 
-	public void setItemList(Set<ItemBean> itemList) {
+
+	public void setItemList(List<ItemBean> itemList) {
 		this.itemList = itemList;
 	}
-	
+
+
+
 	public String getDrivingLisense() {
 		return drivingLisense;
 	}
+
 
 
 	public void setDrivingLisense(String drivingLisense) {
@@ -413,9 +421,11 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	public String getCarRegisterForm() {
 		return carRegisterForm;
 	}
+
 
 
 	public void setCarRegisterForm(String carRegisterForm) {
@@ -423,9 +433,11 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	public String getCarAsseceForm() {
 		return carAsseceForm;
 	}
+
 
 
 	public void setCarAsseceForm(String carAsseceForm) {
@@ -433,9 +445,11 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	public String getCommerceinsurance() {
 		return commerceinsurance;
 	}
+
 
 
 	public void setCommerceinsurance(String commerceinsurance) {
@@ -443,9 +457,11 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	public String getCarPic() {
 		return carPic;
 	}
+
 
 
 	public void setCarPic(String carPic) {
@@ -453,9 +469,11 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	public String getSali() {
 		return sali;
 	}
+
 
 
 	public void setSali(String sali) {
@@ -463,9 +481,11 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	public String getOtherAttachment() {
 		return otherAttachment;
 	}
+
 
 
 	public void setOtherAttachment(String otherAttachment) {
@@ -473,15 +493,23 @@ public class CarInfoBean implements Serializable {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "carInfoBean [id=" + id + ", carId=" + carId + ", brand=" + brand + ", engineId=" + engineId + ", color="
+		return "CarInfoBean [id=" + id + ", carId=" + carId + ", brand=" + brand + ", engineId=" + engineId + ", color="
 				+ color + ", registerDate=" + registerDate + ", annualInspection=" + annualInspection + ", vin=" + vin
 				+ ", assessmentPrice=" + assessmentPrice + ", xkm=" + xkm + ", getID=" + getID + ", getAfford="
 				+ getAfford + ", getSali=" + getSali + ", getKey=" + getKey + ", keyNumber=" + keyNumber
 				+ ", getRegisterLicense=" + getRegisterLicense + ", getInsurance=" + getInsurance
 				+ ", getDrivingLicense=" + getDrivingLicense + ", getOriginalInvoice=" + getOriginalInvoice
-				+ ", getTaxCertificate=" + getTaxCertificate + ", getImportCertificate=" + getImportCertificate + "]";
+				+ ", getTaxCertificate=" + getTaxCertificate + ", getImportCertificate=" + getImportCertificate
+				+ ", itemList=" + itemList + ", drivingLisense=" + drivingLisense + ", carRegisterForm="
+				+ carRegisterForm + ", carAsseceForm=" + carAsseceForm + ", commerceinsurance=" + commerceinsurance
+				+ ", carPic=" + carPic + ", sali=" + sali + ", otherAttachment=" + otherAttachment + "]";
 	}
+	
+	
+
+	
 
 }
