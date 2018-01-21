@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,70 +20,148 @@
 				<caption class="caption1">车辆信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>机动车辆号牌</label></td>
-					<td class="td1">111111</td>
+					<td class="td1">${car.carId }</td>
 					<td class="td1"><label>厂牌型号</label></td>
-					<td class="td1">11111</td>
+					<td class="td1">${car.brand }</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>发动机号</label></td>
-					<td class="td1">11111</td>
+					<td class="td1">${car.engineId }</td>
 					<td class="td1"><label>颜色</label></td>
-					<td class="td1">11111</td>
+					<td class="td1">${car.color }</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>初次登录日期</label></td>
-					<td class="td1">111111</td>
+					<td class="td1">${car.registerDate }</td>
 					<td class="td1"><label>年检有限期</label></td>
-					<td class="td1">11111</td>
+					<td class="td1">${car.annualInspection }</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车架号</label></td>
-					<td class="td1">11111</td>
+					<td class="td1">${car.vin }</td>
 					<td class="td1"><label>车辆评估价格</label></td>
 					<td class="td1"><input type="text" ></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>目前已行驶里程</label></td>
-					<td class="td1">11111</td>
+					<td class="td1">${car.xkm }</td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>身份证</label></td>
-					<td class="td1"><label>交付</label>
+					<td class="td1">
+					<c:if test="${car.getID==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getID==1 }">
+					    <label>未交付</label>
+					</c:if>
 					</td>
 					<td class="td1"><label>车辆购置证/发票</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getAfford==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getAfford==1 }">
+					    <label>未交付</label>
+					</c:if>
+					 </td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>强交保险单</label></td>
-					<td class="td1"><label>未交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getSali==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getSali==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 					<td class="td1"><label>车辆钥匙</label></td>
 					<td class="td1">交付2把</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆购置证/发票</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getAfford==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getAfford==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 					<td class="td1" ><label>车辆购置证/发票</label></td>
-					<td class="td1" ><label>交付</label></td>
+					<td class="td1" >
+					<c:if test="${car.getAfford==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getAfford==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>机动车登记证</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getRegisterLicense==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getRegisterLicense==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 					<td class="td1"><label>商业保险单</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getInsurance==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getInsurance==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆行驶证</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getDrivingLicense==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getDrivingLicense==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 					<td class="td1"><label>车辆原始发票</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+
+					<c:if test="${car.getOriginalInvoice==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getOriginalInvoice==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆完税证</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+					<c:if test="${car.getTaxCertificate==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getTaxCertificate==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 					<td class="td1"><label>进口车辆证明</label></td>
-					<td class="td1"><label>交付</label></td>
+					<td class="td1">
+
+					<c:if test="${car.getImportCertificate==0 }">
+					    <label>交付</label>
+					</c:if>
+					<c:if test="${car.getImportCertificate==1 }">
+					    <label>未交付</label>
+					</c:if>
+					</td>
 				</tr>
 			</table>
 

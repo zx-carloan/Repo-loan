@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.third.autoloan.beans.CarInfoBean;
+import com.third.autoloan.carmag.mapper.CarMapper;
 import com.third.autoloan.carmag.repository.ICarServiceRepository;
 import com.third.autoloan.carmag.service.ICarService;
 
@@ -13,6 +14,8 @@ public class CarServiceImpl implements ICarService{
 
 	@Resource
 	private ICarServiceRepository iCarServiceRepository;
+	@Resource
+	private CarMapper carMapper;
 	//添加车辆信息
 	public void addCarInfo(CarInfoBean car) {
 		iCarServiceRepository.save(car);
@@ -28,6 +31,12 @@ public class CarServiceImpl implements ICarService{
 		// TODO Auto-generated method stub
 		System.out.println("业务层拿到的carinfoBean是"+carInfoBean);
 		iCarServiceRepository.delete(carInfoBean);
+	}
+
+	@Override
+	public void addCarInfoByMybatis(CarInfoBean car) {
+		// TODO Auto-generated method stub
+		carMapper.addCarInfoBeanByMybatis(car);
 	}
 
 }

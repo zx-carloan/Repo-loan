@@ -25,7 +25,7 @@
 	<div id="p" class="easyui-panel" title="当前位置：车贷管理>车贷录入业务"
 		style="width: 100%; height: 100px;">
 		<div style="margin: 20px 0;"></div>
-		<form id="queryForm">
+		<form id="queryForm" enctype="multipart/form-data" method="post">
 			<table>
 				<tr>
 					<td>合同编号：</td>
@@ -39,6 +39,8 @@
 					<td>分公司：</td>
 					<td><select id="company" name="company" class="easyui-combobox"
 						name="status" style="width: 150px;">
+							
+							<option value="" selected="selected">-请选择-</option>
 							<option value="0">阿里</option>
 							<option value="1">腾讯</option>
 					</select></td>

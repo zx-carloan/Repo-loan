@@ -23,4 +23,10 @@ public interface ICarService {
 	 */
 	public void updateCarInfo(CarInfoBean car);
 	
+	/**
+	 * 通过mybatis向车辆信息表中添加车辆信息数据
+	 * @param car
+	 */
+	public void addCarInfoByMybatis(CarInfoBean car);
+	
 }

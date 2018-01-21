@@ -1,6 +1,7 @@
 $('#infoInput').click(function(){
 		var rows = $('#tt').datagrid('getSelections');
 		var row = $('#tt').datagrid('getSelected');
+		
 		var url='';
 		var role ="估价师";
 		if(row){
@@ -13,8 +14,18 @@ $('#infoInput').click(function(){
 					showType:'slide'
 				});
 			}else{
+				var id = row.id;
 				if(role=='估价师'){
-					url='jsp/CarLoan/loanInput/valuer.jsp';
+					/*$.ajax({
+						type : "GET",
+						url : "carInfo/"+id,
+						async : true,
+						//data : serialize,
+						success : function(msg) {
+							//console.info(msg.content);
+						}
+					});*/
+					url='carInfo/'+id;
 				}else if(role=='定价师'){
 					url='jsp/CarLoan/loanInput/priced.jsp';
 				}else{
@@ -71,8 +82,21 @@ $('#delete').click(function(){
 	}
 });
 
-$("#query").click(function(){//点击查询运行的方法
-	var serialize = $("#queryForm").serialize();
+//点击查询执行的方法
+$("#query").click(function(){
+	
+	var contratorNum= $("#contractNum").val();
+ 	var borrower=$("#borrower").val();
+	var company=$("#company").val();
+ 
+	var data={ "contractNum":contratorNum , "borrower":borrower,"company":company }
+	
+	$('#tt').datagrid('reload',{
+		url: "carInfo/allData", 
+		queryParams:data, 
+		method: "post"
+		});
+	/*var serialize = $("#queryForm").serialize();
 	console.info(serialize);
 	$.ajax({
 		type : "GET",
@@ -81,16 +105,16 @@ $("#query").click(function(){//点击查询运行的方法
 		data : serialize,
 		success : function(msg) {
 			console.info(msg);
-			/*var content = msg.content;//获取返回Page对象中的显示内容
+			var content = msg.content;//获取返回Page对象中的显示内容
 			var showRes = "";
 			for(var i = 0; i < content.length; i++){
 				var user = content[i];
 				showRes = showRes + "<tr><td>"+user.name+"</td><td>"+user.password+"</td><td>"+user.birthday+"</td><td>"+user.hometown+"</td></tr>";
 			}
 			console.info(showRes);
-			$("#tablebody").html(showRes);*/
+			$("#tablebody").html(showRes);
 		}
-	});
+	});*/
 });
 
 function back() {
@@ -107,4 +131,163 @@ function back() {
 function Fallback() {
 	$("#div1").toggle();
 }
+
+//车辆信息录入页面，点击提交对应的方法
+function Submit(){
+	var id = $("#id").val();
+	var serialize = $("#vehicleInfo").serialize();
+	console.info(id);
+	console.info(serialize);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/"+id,
+		async : true,
+		data : serialize,
+		success : function(msg) {
+			//console.info(msg.content);
+		}
+	});
+}
+
+//点击上传文件执行的方法
+$('#carAsseceFormbtn').click(function(){
+	var formData = new FormData($( "#uploadcarAsseceForm" )[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/carAsseceForm",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+
+$('#carPicbtn').click(function(){
+	var formData = new FormData($("#uploadcarPic")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/carPic",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+//点击上传按钮执行的操作
+$('#carRegisterFormbtn').click(function(){
+	var formData = new FormData($("#uploadcarRegisterForm")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/carRegisterForm",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+
+//点击上传按钮执行的操作
+$('#drivingLisensebtn').click(function(){
+	var formData = new FormData($("#uploadcardrivingLisense")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/drivingLisense",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+
+/*$('#salibtn').click(function(){
+	var formData = new FormData($("#uploadsali")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/sali",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});*/
+
+$('#salibtn').click(function(){
+	var formData = new FormData($("#uploadsali")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/sali",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+
+
+$('#commerceinsurancebtn').click(function(){
+	var formData = new FormData($("#uploadcommerceinsurance")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/commerceinsurance",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+
+
+$('#otherAttachmentbtn').click(function(){
+	var formData = new FormData($("#uploadotherAttachment")[0]);
+	$.ajax({
+		type : "POST",
+		url : "carInfo/otherAttachment",
+		async : true,
+		contentType: false,  
+        processData: false,
+		data : formData,
+		success : function(msg) {
+		}
+	});
+});
+//评估师点击提交执行的方法
+/*$('#submit').click(function(){
+	
+	var id = $('#add-form-id').val();
+	
+	$('#add-form').form({   
+	    url:"users/" + id,   
+	    onSubmit: function(){ 
+	    	return true;
+	    },   
+	    success:function(data){ 
+	    	var data = JSON.parse(data);
+	       if(data.status){
+	    	   $('#add-dialog').dialog('close');
+	    	   $('#tt').datagrid('reload');
+	       }
+	       $.messager.show({
+				title:'提示信息',
+				msg:data.information,
+				timeout:5000,
+				showType:'slide'
+			});
+	    }   
+	});   
+	$('#add-form').submit();  
+});*/
 
