@@ -3,6 +3,8 @@ package com.third.autoloan.ordermag.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
@@ -106,4 +108,18 @@ public interface OrderMapper {
 	 */
 	public OrderBean getOrderInfoBuId(long id);
 	
+	/**
+	 *得到 所有分单审核人为空业务列表
+	 * @param map
+	 * @return
+	 */
+	public List<OrderBean> getSubmenuPageToAuditor(@Param("number")int number);
+	
+	
+	/**
+	 * 修改订单信息
+	 * 
+	 * @param orderBean 
+	 */
+	public void updateOrderInfo(@Param("name")String name,@Param("id")long id);
 }

@@ -126,4 +126,11 @@ public class OrderGetServiceImpl implements IOrderGetService {
 	}
 
 
+	@Override
+	public List<OrderBean> getSubmenuPageToAuditor(int number) {
+		// TODO Auto-generated method stub
+		return orderDaoImpl.getSubmenuPageToAuditor(number);
+	}
+
+
 }

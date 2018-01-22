@@ -39,5 +39,5 @@ public interface IOrderService {
 	 */
 	public OrderBean getOrderById(long id);
 	
-
+	public void updateOrderInfo(String name,long id);
 }

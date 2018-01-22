@@ -656,4 +656,11 @@
                </collection>
           </collection>
  	</resultMap>
+ 	 	<select id="getSubmenuPageToAuditor" resultType="OrderBean">
+ 		SELECT * FROM t_order WHERE auditor IS NULL ORDER BY RAND() LIMIT #{number}
+ 	</select>
+ 	
+ 		<select id="updateOrderInfo" >
+		UPDATE t_order SET auditor = #{name} WHERE id=#{id}
+	</select>
  </mapper>

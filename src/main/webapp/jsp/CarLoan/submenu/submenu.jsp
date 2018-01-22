@@ -37,9 +37,7 @@
 					<td>借款人：</td>
 					<td><input id="loanName" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
-					
-					
-					
+
 					<td>身份证号码：</td>
 					<td><input id="identity" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
@@ -47,7 +45,6 @@
 					<td>状态：</td>
 					<td><select id="submenuStatus" class="easyui-combobox"
 						name="submenuStatus" style="width: 150px;">
-						<option value="%">请选择</option>
 							<option value="0">总公司信审</option>
 							<option value="1">签约复核</option>
 					</select></td>
@@ -67,47 +64,39 @@
 			data-options="url:'submenu/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
+					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
 					<th
 						data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 					<th
-						data-options="field:'client',formatter:function(client){ return client.name; 
-				     },width:20,align:'center',sortable:'true'">借款人</th>
+						data-options="field:'client',formatter:function(client){return client.name;
+				     },width:20,align:'center'">借款人</th>
 					<th
-						data-options="field:'client',formatter:function(identity){ if(client!=null) return client.idCard;
-				     },width:20,align:'center',sortable:'true'
-				     ">身份证号</th>
+						data-options="field:'client',formatter:function(client){return client.idCard;
+				     },width:20,align:'center'">身份证号</th>
 					<th
 						data-options="field:'client',formatter:function(client){return client.cellphone;
-				     },width:20,align:'center',sortable:'true'">借款人手机号码</th>
+				     },width:20,align:'center'">借款人手机号码</th>
 					<th
 						data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
 					<th
 						data-options="field:'company',formatter:function(company){return company.name;
-				     },width:20,align:'center',sortable:'true'">分公司</th>
+				     },width:20,align:'center'">分公司</th>
 					<th
 						data-options="field:'product',formatter:function(product){return product.name;
-				     },width:20,align:'center',sortable:'true'">产品名称</th>
+				     },width:20,align:'center'">产品名称</th>
 					<th
 						data-options="field:'product',formatter:function(product){return product.periods;
-				     },width:20,align:'center',sortable:'true'">借款期数</th>
+				     },width:20,align:'center'">借款期数</th>
 					<th
-						data-options="field:'timeStarting',width:20,align:'center',sortable:'true',
-						formatter: function(value,row,index){
-					var retVal = '';
-					if(value != ''){
-						var date = new Date(value);
-						retVal = date.Format('yyyy-MM-dd');
-					}
-				return retVal;
-			}">进件时间</th>
-					<th data-options="field:'submenuStatus',width:20,align:'center',sortable:'true',
-							formatter: function(value,row,index){
-							if(value=0) return '总部信审';
-							if(value=1)return '签约复核';
-							}">状态</th>
+						data-options="field:'timeStarting',width:20,align:'center'">进件时间</th>
 					<th
-						data-options="field:'auditor',width:20,align:'center',sortable:'true'">审核人</th>
+						data-options="field:'submenuStatus',width:20,align:'center',
+						formatter:function(submenuStatus){ if(submenuStatus==0) return '审核分单' ;else return '签约复核' 
+				     }
+						">状态</th>
+					<th id="auditor"
+						data-options="field:'auditor',width:20,align:'center'">审核人</th>
 
 				</tr>
 			</thead>
@@ -135,19 +124,12 @@
 				<tr>
 				</tr>
 				<tr>
-					<td>上午:</td>
 					<td>审核分单量：</td>
-					<td><input type="text" name="num1" /></td>
+					<td><input  id="Auditlist"  type="text" name="num1" /></td>
 					<td>签约复核分单量：</td>
-					<td><input type="text" name="num2" /></td>
+					<td><input  id="Contractcontract" type="text" name="num2" /></td>
 				</tr>
-				<tr>
-					<td>下午:</td>
-					<td>审核分单量：</td>
-					<td><input type="text" name="num3" /></td>
-					<td>签约复核分单量：</td>
-					<td><input type="text" name="num4" /></td>
-				</tr>
+				
 				<tr>
 					<td><a id="automaticSingle-save" href="javascript:void(0)"
 						class="easyui-linkbutton"
@@ -195,7 +177,7 @@
 			<table>
 				<tr>
 					<td>审核人：</td>
-					<td><input type="text" name="auditor"></td>
+					<td><input id="updateauditor" type="text" name="auditor"></td>
 				</tr>
 				<tr>
 					<td><a id="update-save" href="javascript:void(0)"

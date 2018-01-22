@@ -81,5 +81,17 @@ public class OrderDaoImpl implements IOrderDao{
 		// TODO Auto-generated method stub
 		return orderMapper.getOrderInfoBuId(id);
 	}
+
+	@Override
+	public List<OrderBean> getSubmenuPageToAuditor(int number) {
+		// TODO Auto-generated method stub
+		return orderMapper.getSubmenuPageToAuditor(number);
+	}
+
+	@Override
+	public void updateOrderInfo(String name, long id) {
+		orderMapper.updateOrderInfo(name, id);
+		
+	}
 	
 }

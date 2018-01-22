@@ -67,4 +67,10 @@ public class OrderServiceImpl implements IOrderService{
 		return orderDaoImpl.getOrderInfo(id);
 	}
 
+	@Override
+	public void updateOrderInfo(String name, long id) {
+		orderDaoImpl.updateOrderInfo(name, id);
+		
+	}
+
 }

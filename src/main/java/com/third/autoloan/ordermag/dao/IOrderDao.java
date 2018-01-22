@@ -115,4 +115,18 @@ public interface IOrderDao {
 	 * @return
 	 */
 	public OrderBean getOrderInfo(long id);
+	
+	/**
+	 *得到 所有分单审核人为空业务列表
+	 * @param map
+	 * @return
+	 */
+	public List<OrderBean> getSubmenuPageToAuditor(int number);
+	
+	/**
+	 * 修改订单信息
+	 * 
+	 * @param orderBean 
+	 */
+	public void updateOrderInfo(String name,long id);
 }

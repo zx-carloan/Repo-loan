@@ -2,6 +2,7 @@ package com.third.autoloan.submenu;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -15,21 +16,52 @@ import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.ordermag.service.IOrderGetService;
+import com.third.autoloan.ordermag.service.IOrderService;
 
 @RequestMapping("/submenu")
 @Controller
-public class SubmenuController{
+public class SubmenuController {
 
-	@Resource(name="orderGetServiceImpl")
+	@Resource(name = "orderGetServiceImpl")
 	private IOrderGetService orderGetService;
-	
-	@RequestMapping(value="/page",method= {RequestMethod.POST})
-	public @ResponseBody PageBean getSubmenuPage(@RequestParam Map<String,String> map) {
+
+	@Resource(name = "orderServiceImpl")
+	private IOrderService orderService;
+
+	@RequestMapping(value = "/page", method = { RequestMethod.POST })
+	public @ResponseBody List<OrderBean> getSubmenuPage(@RequestParam Map<String, String> map) {
 		
-		System.out.println(map);
-		PageBean bean=	orderGetService.getSubmenuPage(map);
-		System.out.println(bean);
-		return bean;	
+		PageBean bean = orderGetService.getSubmenuPage(map);
+		List<OrderBean> list = (List<OrderBean>) bean.getRows();
+		System.out.println(list + "这是得到的");
+		return list;
 	}
-	
+
+	// 指派、修改分单人员
+	@RequestMapping(value = "/submenuSave", method = { RequestMethod.POST })
+	public void submenuSave(@RequestParam String name, long id) {// name审核人姓名和id当前订单
+
+		orderService.updateOrderInfo(name, id);
+	}
+ 
+	// 批量分单人员
+	@RequestMapping(value = "/automaticSingleSave", method = { RequestMethod.GET })
+	public void automaticSingleSave(String Auditlister, String Contractcontracter) {
+		System.out.println(Auditlister);
+		System.out.println(Contractcontracter);
+		int Auditlist = Integer.parseInt(Auditlister);// 审核分单量
+		int Contractcontract = Integer.parseInt(Contractcontracter);// 签约复核分单量
+
+		List<OrderBean> list = orderGetService.getSubmenuPageToAuditor(Auditlist);
+		String[] intArray = { "老王", "老蒋" };
+		// 先随机产生一个下标再获取元素
+		String random = "";
+		for (OrderBean orderBean : list) {
+			int index = (int) (Math.random() * intArray.length);
+			random = intArray[index];
+			System.out.println(random + "aaaaaaaaaaaa");
+			this.submenuSave(random, orderBean.getId());
+		}
+
+	}
 }
