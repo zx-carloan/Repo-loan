@@ -337,7 +337,6 @@
  	        <result property="payDate" column="payDate" />
  	        <result property="amount" column="amount" />
  	        <result property="signDate" column="signDate" />
- 	         <result property="amount" column="amount" />
  	      </association>
  	      <association property="opinion" javaType="com.third.autoloan.beans.OpinionBean">
  	        <result property="loanTime" column="loanTime" />

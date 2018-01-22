@@ -70,10 +70,11 @@
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
 					<th
 						data-options="field:'contractNumber',width:10,align:'center',sortable:'true'">合同编号</th>
-						
-					
-						
-						<th data-options="field:'client',width:10,align:'center',sortable:'true',
+
+
+
+					<th
+						data-options="field:'client',width:10,align:'center',sortable:'true',
 					formatter:function(value,row){
 							return row.client.name;
 						}">借款人</th>
@@ -107,7 +108,8 @@
 							return row.product.periods;
 						}
 						">借款期数</th>
-					<th data-options="field:'timeStarting',width:10,align:'center',
+					<th
+						data-options="field:'timeStarting',width:10,align:'center',
 										formatter: function(timeStarting,row,index){
 					var retVal = '';
 					if(timeStarting != null){
@@ -122,6 +124,7 @@
 				     }">状态</th>
 					<th id="auditor" data-options="field:'auditor',width:10,align:'center',
 					formatter:function(auditor){ if(auditor==null || auditor =='') return '无' ;else return auditor ;
+
 				     }
 					">审核人</th>
 				</tr>

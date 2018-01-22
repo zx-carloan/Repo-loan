@@ -70,8 +70,16 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		int	pageNumber=Integer.parseInt(map.get("page"));
 		int pageSize =Integer.parseInt(map.get("rows"));
 		int	total = orderDaoImpl.getSumLoanPage(map);
+		
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
 		map.put("index", pageBean.getIndex()+"");
+	 if( ! CTools.checkStringNull(map.get("contractNumber")))   map.put("contractNumber", null);
+	 if( ! CTools.checkStringNull(map.get("loanName")))   map.put("loanName", null);
+	 if( ! CTools.checkStringNull(map.get("identity")))   map.put("identity", null);
+	 if( ! CTools.checkStringNull(map.get("productName")))   map.put("productName", null);
+	 if( ! CTools.checkStringNull(map.get("companyName")))   map.put("companyName", null);
+	 if( ! CTools.checkStringNull(map.get("loanStatus")))   map.put("loanStatus", null);
+	 
 		List<OrderBean> list =orderDaoImpl.getLoanPage(map);
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);

@@ -72,8 +72,8 @@ $(function() {
 				var contractNumber = $('#contractNumber').val();
 				var loanName = $('#loanName').val();
 				var identity = $('#identity').val();
-				var productName = $('#productName').val();
-				var companyName = $('#companyName').val();
+				var productName = $('input[name=productName]').val();
+				var companyName = $('input[name=companyName]').val();
 				var loanStatus = $('#loanStatus').val();
 				var datas = {contractNumber:contractNumber,loanName:loanName,identity:identity,productName:productName,companyName:companyName,loanStatus:loanStatus};
 				return datas;

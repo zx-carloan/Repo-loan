@@ -50,16 +50,26 @@
 					id="identity" class="easyui-textbox"
 					data-options="prompt:'填写'" style="height: 20px"><br> <br>
 					
-				<span style="margin-right: 20px;" class="span1"> 产品类型</span><input
-					id="productName" class="easyui-combobox"
-					data-options="valueField:'id',textField:'text',url:'###',method:'get',prompt:'-请选择-'"
-					style="height: 20px; margin-top: -10px;"><span
-					style="margin-right: 20px;" class="span1">&nbsp;</span> <span
+				<span style="margin-right: 20px;" class="span1"> 产品类型</span>
+				<select id="productName" class="easyui-combobox"
+						name="productName" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+						<option name="productName" value="%"></option>
+					</select>
+					
+					
+					<span
+					style="margin-right: 20px;" class="span1">&nbsp;</span>
+					
+					 <span
 					style="margin-right: 20px;" class="span1">
-					分公司</span><input
-					id="companyName" class="easyui-combobox"
-					data-options="valueField:'id',textField:'text',url:'#',method:'get',prompt:'-请选择-'"
-					style="height: 20px"><span style="margin-right: 20px;"
+					分公司</span><select id="companyName" class="easyui-combobox"
+						name="companyName" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+						<option name="companyName" value="%"></option>
+					</select>
+					
+					<span style="margin-right: 20px;"
 					class="span1">&nbsp;</span> <span style="margin-right: 20px;"
 					class="span1">
 					放款状态</span><select id="loanStatus"
@@ -84,43 +94,50 @@
 				<tr>
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-						<th data-options="field:'client',formatter:function(client){return client.name;
-				     },width:20,align:'center',sortable:'true'">借款人</th>
-				     <th data-options="field:'client',formatter:function(identity){ if(client!=null) return client.idCard;
-				     },width:20,align:'center',sortable:'true'
-				     ">身份证号</th>
+							<th data-options="field:'row.client.name',width:10,align:'center',sortable:'true',
+					formatter:function(value,row){
+							return row.client.name;
+						}">借款人</th>
+				   		<th
+						data-options="field:'row.client.idCard',width:10,align:'center',
+				formatter:function(value,row){
+							return row.client.idCard;
+						}">身份证号</th>
 				     
-					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
+					<th data-options="field:'row.contract.signDate',width:20,align:'center',sortable:'true',
 								formatter: function(contract,row,index){
 					var retVal = '';
-					if(contract != null){
-						var date = new Date(contract.signDate);
+					if(row.contract != null){
+						var date = new Date(row.contract.signDate);
 						retVal = date.Format('yyyy-MM-dd');
 					}
 				return retVal;
 			}">约定放贷日</th>
 						     
-					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
-								formatter: function(contract,row,index){
+					<th data-options="field:'row.contract.signDate',width:20,align:'center',sortable:'true',
+									formatter: function(contract,row,index){
 					var retVal = '';
-					if(contract!= null){
-						var date = new Date(contract.signDate);
+					if(row.contract != null){
+						var date = new Date(row.contract.signDate);
 						retVal = date.Format('yyyy-MM-dd');
 					}
 				return retVal;
 			}">签约日</th>
-					<th data-options="field:'product',width:20,align:'center',sortable:'true',
-						formatter: function(product){return product.capital
+			
+					<th data-options="field:'row.product.capital',width:20,align:'center',sortable:'true',
+						formatter: function(product,row){return row.product.capital
 						}">合同额</th>
-					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
-					formatter: function(contract){return contract.amount
+						
+					<th data-options="field:'row.contract.amount',width:20,align:'center',sortable:'true',
+					formatter: function(contract,row){ if(row.contract !=null) return  row.contract.amount ;else return 1
 						}">实际放款额</th>
-					<th data-options="field:'product',width:20,align:'center',sortable:'true',
-						formatter: function(product){return product.periods}
+						
+					<th data-options="field:'row.product.periods',width:20,align:'center',sortable:'true',
+						formatter: function(product,row){return row.product.periods}
 					">借款期数</th>
 					
 					<th data-options="field:'company',width:20,align:'center',sortable:'true',
-						formatter: function(company){return company.name}
+						formatter: function(company,row){return  company.name}
 					">分公司</th>
 						<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true',
 					formatter: function(loanStatus){

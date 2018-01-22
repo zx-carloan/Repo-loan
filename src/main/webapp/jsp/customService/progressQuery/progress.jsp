@@ -30,7 +30,44 @@
 </style>
 </head>
 <body>
+
 	<script>
+		// 查询
+		$("#myButton").click(function() {
+			$('#tt').datagrid('load', datas());
+		});
+
+		function datas(orderId) {
+			var contractNumber = $('#contractNumber').val();
+			console.info(contractNumber);
+			var loanName = $('#loanName').val();
+			var timeStarting_1 = $('#timeStarting_1').val();// 进件时间
+			var timeStarting_2 = $('#timeStarting_2').val();// 至
+			var getMoneyTime_1 = $('#getMoneyTime_1').val();// 还款时间
+			var getMoneyTime_2 = $('#getMoneyTime_2').val();// 至
+			var productType = $('#productType').val();// 产品类型
+			var companyName = $("input[name='companyName']").val();// 分公司
+			var reviewDate = $('#reviewDate').val();// 复审日期
+			var payDate_1 = $('#payDate_1').val();// 放款日期
+			var payDate_2 = $('#payDate_2').val();// 至
+			var datas = {
+				contractNumber : contractNumber,
+				loanName : loanName,
+				timeStarting_1 : timeStarting_1,
+				timeStarting_2 : timeStarting_2,
+				getMoneyTime_1 : getMoneyTime_1,
+				getMoneyTime_2 : getMoneyTime_2,
+				productType : productType,
+				companyName : companyName,
+				reviewDate : reviewDate,
+				payDate_1 : payDate_1,
+				payDate_2 : payDate_2,
+				orderId : orderId
+			};
+			console.log(datas);
+			return datas;
+		}
+
 		$(function() {
 			/* 定义一个数组用于接收得到的下标 */
 			var id = new Array();
@@ -78,25 +115,31 @@
 			});
 
 			//详细信息点击事件
-			$("#detail").click(function() {
-				if (id == "") {
-					$.messager.confirm('Confirm', '请选择行', function(r) {
-						if (r) {
-							// exit action;
-						}
-					});
-				} else {
-					$("#viewDiv").panel({
-						iconCls : "icon-add",
-						collapsible : true,
-						minimizable : true,
-						maximizable : true,
-						closable : true,
-						href : "jsp/customService/progressQuery/progressQuery.jsp"
-					});
-					/* window.location.href="/autoloan/static/jsp/loan/vehicleInfo.jsp"; */
-				}
-			});
+			$("#detail")
+					.click(
+							function() {
+								if (id == "") {
+									$.messager.confirm('Confirm', '请选择行',
+											function(r) {
+												if (r) {
+													// exit action;
+												}
+											});
+								} else {
+									$("#viewDiv")
+											.panel(
+													{
+														iconCls : "icon-add",
+														collapsible : true,
+														minimizable : true,
+														maximizable : true,
+														closable : true,
+														href : "jsp/customService/progressQuery/progressQuery.jsp"
+													});
+									/* window.location.href="/autoloan/static/jsp/loan/vehicleInfo.jsp"; */
+								}
+							});
+
 		});
 	</script>
 	<!-- 	<div id="viewDiv"> -->
@@ -106,101 +149,117 @@
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post" style="margin-top: -10px;">
 			<span style="margin-right: 20px;" class="span1">合同编号</span><input
-				id="contratorNum" class="easyui-textbox" data-options="prompt:'填写'"
-				style="height: 20px"><span style="margin-right: 20px;"
-				class="span1">&nbsp;</span> <span style="margin-right: 20px;"
-				class="span1">借款人</span><input id="borrower" class="easyui-textbox"
-				data-options="prompt:'填写'" style="height: 20px"><br> <span
-				style="margin-right: 20px;" class="span1">进件时间</span><input id="dd"
-				type="text" class="easyui-datebox" required="required"> <span
-				style="margin-right: 20px;" class="span1">至</span><input id="dd"
-				type="text" class="easyui-datebox" required="required"><br> <span
-				style="margin-right: 20px;" class="span1">还款时间</span><input id="dd"
-				type="text" class="easyui-datebox" required="required"> <span
-				style="margin-right: 20px;" class="span1">至</span><input id="dd"
-				type="text" class="easyui-datebox" required="required"> <span
+				id="contractNumber" class="easyui-textbox"
+				data-options="prompt:'填写'" style="height: 20px"><span
+				style="margin-right: 20px;" class="span1">&nbsp;</span> <span
+				style="margin-right: 20px;" class="span1">借款人</span><input
+				id="loanName" class="easyui-textbox" data-options="prompt:'填写'"
+				style="height: 20px"><br> <span
+				style="margin-right: 20px;" class="span1">进件时间</span><input
+				id="timeStarting_1" type="text" class="easyui-datebox"
+				required="required"> <span style="margin-right: 20px;"
+				class="span1">至</span><input id="timeStarting_2" type="text"
+				class="easyui-datebox" required="required"><br> <span
+				style="margin-right: 20px;" class="span1">还款时间</span><input
+				id="getMoneyTime_1" type="text" class="easyui-datebox"
+				required="required"> <span style="margin-right: 20px;"
+				class="span1">至</span><input id="getMoneyTime_2" type="text"
+				class="easyui-datebox" required="required"> <span
 				style="margin-right: 20px;" class="span1"></span> <br> <br>
-			<span style="margin-right: 20px;" class="span1">产品类型</span><input
-				id="branch" class="easyui-combobox"
-				data-options="valueField:'id',textField:'text',url:'#',method:'get',prompt:'-请选择-'"
-				style="height: 20px"><span style="margin-right: 20px;"
-				class="span1">&nbsp;</span> <span style="margin-right: 20px;"
-				class="span1">分公司</span><select id="loanStatus"
-				class="easyui-combobox" name="status" placeholder="-请选择-"
-				style="width: 150px; height: 22px;">
-				<option value="0">111</option>
-				<option value="1">222</option>
-				<option value="2">333</option>
-				<option value="3">444</option>
+			<span style="margin-right: 20px;" class="span1">产品类型</span><select
+				id="companyName" class="easyui-combobox" name="companyName"
+				style="width: 150px"
+				data-options="valueField:'text',textField:'text2',url:'company/productType',method:'get'">
+				<option name="companyName" value="%"></option>
+			</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span> <span
+				style="margin-right: 20px;" class="span1">分公司</span><select
+				id="companyName" class="easyui-combobox" name="companyName"
+				style="width: 150px"
+				data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+				<option name="companyName" value="%"></option>
 			</select> <span style="margin-right: 20px;" class="span1">复审日期</span><input
-				id="dd" type="text" class="easyui-datebox" required="required"><br>
-
-			<span style="margin-right: 20px;" class="span1">放款时间</span><input
-				id="dd" type="text" class="easyui-datebox" required="required">
-			<span style="margin-right: 20px;" class="span1">至</span><input
-				id="dd" type="text" class="easyui-datebox" required="required">
-
-			<span style="margin-right: 20px;" class="span1">&nbsp;</span><span
-				style="margin-right: 20px;" class="span1">&nbsp;</span><br><br><br>
+				id="reviewDate" type="text" class="easyui-datebox"
+				required="required"><br> <span
+				style="margin-right: 20px;" class="span1">放款时间</span><input
+				id="payDate_1" type="text" class="easyui-datebox"
+				required="required"> <span style="margin-right: 20px;"
+				class="span1">至</span><input id="payDate_2" type="text"
+				class="easyui-datebox" required="required"> <span
+				style="margin-right: 20px;" class="span1">&nbsp;</span><span
+				style="margin-right: 20px;" class="span1">&nbsp;</span><br> <br>
+			<br>
 			<button type="button" id="myButton" data-loading-text="Loading..."
 				class="btn btn-primary" autocomplete="off"
-				style="margin-top: -20px;margin-left: 400px;">查&nbsp;&nbsp;询</button>
+				style="margin-top: -20px; margin-left: 400px;">查&nbsp;&nbsp;询</button>
 		</form>
 
-	</div><br>
+	</div>
+	<br>
 
 	<table class="easyui-datagrid" style="width: 100%; height: 200px"
-		data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
+		data-options="url:'progress/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 		<thead>
 			<tr>
-				<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-				<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-				<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-				<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
-				<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">业务经理</th>
-				<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
-				<th data-options="field:'SignDate',width:20,align:'center',sortable:'true'">进件时间</th>
-				<th data-options="field:'sumPrice',width:20,align:'center',sortable:'true'">复审日期</th>
-				<th data-options="field:'actualPrice',width:20,align:'center',sortable:'true'">借款金额</th>
-				<th data-options="field:'num',width:20,align:'center',sortable:'true'">借款期数</th>
-				<th data-options="field:'branch',width:20,align:'center',sortable:'true'">还款时间</th>
-				<th data-options="field:'status',width:20,align:'center',sortable:'true'">状态</th>
-
-
+				<th id='orderId'
+					data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true" />
+				<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
+				<th
+					data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+				<th
+					data-options="field:'client',formatter:function(value,row){
+							return row.client.name;
+						},width:20,align:'center',sortable:'true'">借款人</th>
+				<th
+					data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+				<th
+					data-options="field:'company',formatter:function(company){return company.name;
+				     },width:20,align:'center',sortable:'true'">分公司</th>
+				<th
+					data-options="field:'timeStarting',width:20,align:'center',sortable:'true',
+					formatter: function(timeStarting,row,index){
+					var retVal = '';
+					if(timeStarting != null){
+						var date = new Date(timeStarting);
+						retVal = date.Format('yyyy-MM-dd');
+					}
+					return retVal;
+				}">进件时间</th>
+				<th
+					data-options="field:'review',width:20,align:'center',sortable:'true',
+					formatter: function(review,row,index){
+					var retVal = '';
+					if(review != null){
+						var date = new Date(review);
+						retVal = date.Format('yyyy-MM-dd');
+					}
+					return retVal;
+				}">复审日期</th>
+				<th
+					data-options="field:'capital',width:20,align:'center',sortable:'true',
+					formatter:function(value,row){
+							return row.product.capital;
+						}">借款金额</th>
+				<th
+					data-options="field:'periods',width:20,align:'center',sortable:'true',
+					formatter:function(value,row){
+							return row.product.periods;
+						}">借款期数</th>
+				<th
+					data-options="field:'getMoneyTime',width:20,align:'center',sortable:'true',
+					formatter: function(getMoneyTime,row,index){
+					var retVal = '';
+					if(getMoneyTime != null){
+						var date = new Date(getMoneyTime);
+						retVal = date.Format('yyyy-MM-dd');
+						}
+					return retVal;
+				}">还款时间</th>
+				<th
+					data-options="field:'submenuStatus',width:20,align:'center',sortable:'true'">状态</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr id="1">
 
-				<td style="width: 20px">123</td>
-				<td style="width: 25px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-
-			</tr>
-			<tr id="2">
-
-				<td style="width: 20px">123</td>
-				<td style="width: 25px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
 		</tbody>
 	</table>
 	<div style="text-align: center">

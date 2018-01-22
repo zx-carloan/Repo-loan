@@ -6,29 +6,25 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.autoloan.beans.PageBean;
-import com.third.autoloan.ordermag.service.IOrderGetService;
+import com.third.autoloan.putloanmag.service.IPutLoanGetService;
 
 @RequestMapping(value="/putLoans")
 @Controller
 public class PutLoan {
 	
-	@Resource(name="orderGetServiceImpl")
-	private IOrderGetService  orderServiceImpl;
+	@Resource(name="PutLoanGetServiceImpl")
+	private IPutLoanGetService  putLoanGetService;
 	
 	@RequestMapping(value="/page")
 	@ResponseBody
 	public PageBean findOrder(@RequestParam Map<String,String> map) {	
-		System.out.println("哈哈++++++");
-		PageBean page=	orderServiceImpl.getLoanPage(map);
-		System.out.println(page);
+		System.out.println(map);
+		PageBean page=	putLoanGetService.getLoanPage(map);
 		return page;
 	}
-	
-	
 
 }

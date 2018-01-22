@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.autoloan.beans.ComboboxData;
 import com.third.autoloan.beans.CompanyBean;
+import com.third.autoloan.beans.ProductBean;
 import com.third.autoloan.companymag.service.ICompanyGetService;
+import com.third.autoloan.companymag.service.IProductGetService;
 
 
 @Controller
@@ -21,6 +23,9 @@ public class CompanymagController {
 	
 	@Resource(name="companyServiceImpl")
 	private ICompanyGetService companyServiceImpl;
+	
+	@Resource(name="productServiceImpl")
+	private IProductGetService productGetService;
 	
 	@RequestMapping(value="/getName",method= {RequestMethod.GET})
 	public @ResponseBody List<ComboboxData> listCompanyName() {
@@ -33,6 +38,21 @@ public class CompanymagController {
 				datas.add(data);
 			}
 		}
+		return datas;
+	}  
+	
+	@RequestMapping(value="/productType",method= {RequestMethod.GET})
+	public @ResponseBody List<ComboboxData> ListProductTypeName() {
+		List<ComboboxData>	 datas = new ArrayList<ComboboxData>();
+		List<ProductBean> list=productGetService.listProductInfo();
+		datas.add(new ComboboxData("%","--------请输入--------"));
+		if(list != null) {
+			for (ProductBean bean : list) {
+				ComboboxData data = new ComboboxData(bean.getName(), bean.getName());
+				datas.add(data);  
+			}
+		}
+		
 		return datas;
 	}
 
