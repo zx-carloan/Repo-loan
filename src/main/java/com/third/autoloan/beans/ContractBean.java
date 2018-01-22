@@ -194,8 +194,11 @@ public class ContractBean implements Serializable {
 				+ ", authorisationLetter=" + authorisationLetter + ", repaymentSchedule=" + repaymentSchedule
 				+ ", supplementalAgreement=" + supplementalAgreement + ", repurchaseContracts=" + repurchaseContracts
 				+ ", carAuthorisationLetter=" + carAuthorisationLetter + ", carMortgagePic=" + carMortgagePic
-				+ ", carParkingPic=" + carParkingPic + ", printedForm=" + printedForm + ", signDate=" + signDate + "]";
+				+ ", carParkingPic=" + carParkingPic + ", printedForm=" + printedForm + ", signDate=" + signDate
+				+ ", order=" + order + "]";
 	}
+
+	
 	
 	
 }

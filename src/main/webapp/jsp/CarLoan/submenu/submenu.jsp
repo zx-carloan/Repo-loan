@@ -31,20 +31,22 @@
 			<table>
 				<tr>
 					<td>合同编号：</td>
-					<td><input id="contratorNum" class="easyui-textbox"
+					<td><input id="contractNumber" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
 
 					<td>借款人：</td>
-					<td><input id="borrower" class="easyui-textbox"
+					<td><input id="loanName" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
-
+					
+					
+					
 					<td>身份证号码：</td>
 					<td><input id="identity" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
 
 					<td>状态：</td>
-					<td><select id="loanStatus" class="easyui-combobox"
-						name="status" style="width: 150px;">
+					<td><select id="submenuStatus" class="easyui-combobox"
+						name="submenuStatus" style="width: 150px;">
 							<option value="0">总公司信审</option>
 							<option value="1">签约复核</option>
 					</select></td>
@@ -71,8 +73,9 @@
 						data-options="field:'client',formatter:function(client){return client.name;
 				     },width:20,align:'center',sortable:'true'">借款人</th>
 					<th
-						data-options="field:'identity',formatter:function(identity){return identity.identity;
-				     },width:20,align:'center',sortable:'true'">身份证号</th>
+						data-options="field:'client',formatter:function(identity){ if(client!=null) return client.idCard;
+				     },width:20,align:'center',sortable:'true'
+				     ">身份证号</th>
 					<th
 						data-options="field:'client',formatter:function(client){return client.cellphone;
 				     },width:20,align:'center',sortable:'true'">借款人手机号码</th>
@@ -88,9 +91,20 @@
 						data-options="field:'product',formatter:function(product){return product.periods;
 				     },width:20,align:'center',sortable:'true'">借款期数</th>
 					<th
-						data-options="field:'timeStarting',width:20,align:'center',sortable:'true'">进件时间</th>
-					<th
-						data-options="field:'status',width:20,align:'center',sortable:'true'">状态</th>
+						data-options="field:'timeStarting',width:20,align:'center',sortable:'true',
+						formatter: function(value,row,index){
+					var retVal = '';
+					if(value != ''){
+						var date = new Date(value);
+						retVal = date.Format('yyyy-MM-dd');
+					}
+				return retVal;
+			}">进件时间</th>
+					<th data-options="field:'submenuStatus',width:20,align:'center',sortable:'true',
+							formatter: function(value,row,index){
+							if(value=0) return '总部信审';
+							if(value=1)return '签约复核';
+							}">状态</th>
 					<th
 						data-options="field:'auditor',width:20,align:'center',sortable:'true'">审核人</th>
 

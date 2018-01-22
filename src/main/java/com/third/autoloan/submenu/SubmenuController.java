@@ -25,12 +25,11 @@ public class SubmenuController{
 	
 	@RequestMapping(value="/page",method= {RequestMethod.POST})
 	public @ResponseBody PageBean getSubmenuPage(@RequestParam Map<String,String> map) {
+		
+		System.out.println(map);
 		PageBean bean=	orderGetService.getSubmenuPage(map);
-		IdentityBean idn=new IdentityBean();
-		idn.setIdentity("123412431");
-		List<OrderBean> list =	(List<OrderBean>) bean.getRows();
-		System.out.println(list);
-		return bean;
+		System.out.println(bean);
+		return bean;	
 	}
 	
 }

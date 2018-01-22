@@ -5,8 +5,9 @@
  	
  	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
  	    select o.id,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id 
  	    left join t_company as co on co.id=o.fk_company_id where 1=1
-
+   		 
         <if test="contractNumber!=null">
             and o.contractNumber like '%${contractNumber}%'
         </if>
@@ -32,11 +33,13 @@
  	     <result property="contractNumber" column="contractNumber" />
  	     <result property="returnOpinion" column="returnOpinion" />
  	     <result property="manager" column="manager" />
- 	     
+ 	     <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <result property="identity" column="identity" />
+ 	      </association>
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="clientName" />
+ 	          <result property="idCard" column="idCard" />
  	      </association>
- 	      
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <result property="name" column="companyName" />
  	        <result property="hq" column="hq" />
@@ -276,11 +279,11 @@
   	<select id="getLoanPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
  	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
- 	    left join t_identity as i on o.fk_identiry_id=i.id 
  	    left join t_product as p on o.fk_product_id=p.id 
  	    left join t_Contract as con on con.id=o.fk_contract_id 
+ 	     LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id
  	    left join t_opinion as op on op.id=o.fk_opinion_id where 1=1
-
+ 	    	                
         <if test="contractNumber!=null">
             and o.contractNumber like '%${contractNumber}%'
         </if>
@@ -318,21 +321,23 @@
  	     <result property="returnOpinion" column="returnOpinion" />
  	     <result property="manager" column="manager" />
  	     <result property="loanStatus" column="loanStatus" />
- 	    
+ 	      <result property="submenuStatus" column="submenuStatus" />
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
+ 	         <result property="idCard" column="idCard" />
  	      </association>
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <result property="name" column="name" />
  	        <result property="hq" column="hq" />
  	      </association>
- 	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
- 	        <result property="identity" column="identity" />
+ 	         <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <result property="identity" column="identity" />
  	      </association>
  	       <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
  	        <result property="payDate" column="payDate" />
  	        <result property="amount" column="amount" />
  	        <result property="signDate" column="signDate" />
+ 	         <result property="amount" column="amount" />
  	      </association>
  	      <association property="opinion" javaType="com.third.autoloan.beans.OpinionBean">
  	        <result property="loanTime" column="loanTime" />
@@ -341,14 +346,14 @@
  	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
  	        <result property="periods" column="periods" />
  	        <result property="name" column="name" />
+ 	                 <result property="capital" column="capital" />
  	      </association>
  	</resultMap>
  	
  	<!-- 得到 分单业务列表 -->
  	<select id="getSubmenuPage" parameterType="java.util.Map" resultType="String" resultMap="getSub">
- 	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    select *  from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
- 	    left join t_identity as i on o.fk_identiry_id=i.id 
  	    left join t_product as p on o.fk_product_id=p.id  where 1=1
         <if test="contractNumber!=null">
             and o.contractNumber like '%${contractNumber}%'
@@ -357,16 +362,16 @@
             and  c.name like '%${loanName}%'
         </if>
         <if test="identity!=null">
-            and  i.identity like '%${identity}%'  
+            and c.idCard like '%${identity}%'  
         </if>
         <if test="submenuStatus!=null">
             and  o.submenuStatus = #{submenuStatus}
         </if>
-    	<if test=" order!=null">
-                 order by ${order}
+    		<if test=" sort!=null">
+                 order by ${sort} 
         </if>
-         <if test="sort!=null">
-  				 ${sort} 
+         <if test="order!=null">
+  				${order} 
         </if>
           limit ${index},${rows};
  	</select>
@@ -377,20 +382,21 @@
  	     <result property="timeStarting" column="timeStarting" />
  	     <result property="auditor" column="auditor" />
  	     <result property="submenuStatus" column="submenuStatus" />
+ 	     
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
  	        <result property="tel" column="tel" />
+ 	          <result property="idCard" column="idCard" />
  	      </association>
+ 	      
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <result property="name" column="name" />
  	        <result property="hq" column="hq" />
  	      </association>
- 	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
- 	        <result property="identity" column="identity" />
- 	      </association>
  	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
  	        <result property="periods" column="periods" />
  	        <result property="name" column="name" />
+ 	
  	      </association>
  	</resultMap>
   
@@ -399,8 +405,8 @@
  	<select id="getProcedurePageBean" parameterType="java.util.Map" resultType="String" resultMap="getProcedure">
  	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
- 	    left join t_identity as i on o.fk_identiry_id=i.id 
  	    left join t_product as p on o.fk_product_id=p.id 
+ 	                LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id 
  	    left join t_Contract as con on con.id=o.fk_contract_id
  	      where 1=1
         <if test="contractNumber!=null">
@@ -459,13 +465,14 @@
  	     <result property="review" column="review" />
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
+ 	                <result property="idCard" column="idCard" />
+ 	      </association>
+ 	        <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <result property="identity" column="identity" />
  	      </association>
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <result property="name" column="name" />
  	        <result property="hq" column="hq" />
- 	      </association>
- 	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
- 	        <result property="identity" column="identity" />
  	      </association>
  	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
  	        <result property="periods" column="periods" />
@@ -509,6 +516,7 @@
  	           <result property="cellphone" column="cellphone" />
  	           <result property="address" column="address" />
  	           <result property="tel" column="tel" />
+ 	          <result property="idCard" column="idCard" />
  	           <result property="marriage" column="marriage" />
  	           <result property="child" column="child" />
  	           <result property="house" column="house" />
@@ -560,6 +568,7 @@
  	           <result property="name" column="pname" />
  	           <result property="periods" column="periods" />
  	           <result property="accrual" column="accrual" />
+ 	           <result property="capital" column="capital" />
  	      </association>
  	      <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
  	          <id property="id" column="id"></id>
@@ -647,6 +656,4 @@
                </collection>
           </collection>
  	</resultMap>
-
- 
  </mapper>

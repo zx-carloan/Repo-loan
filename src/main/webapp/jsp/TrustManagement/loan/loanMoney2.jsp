@@ -91,32 +91,21 @@
 				     ">身份证号</th>
 				     
 					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
-								formatter: function(contract,row,index){
+								formatter: function(value,row,index){
 					var retVal = '';
-					if(contract != null){
-						var date = new Date(contract.signDate);
+					if(value != ''){
+						var date = new Date(value);
 						retVal = date.Format('yyyy-MM-dd');
 					}
 				return retVal;
 			}">约定放贷日</th>
-						     
+					<th data-options="field:'contract',width:20,align:'center',sortable:'true'">签约日</th>
 					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
-								formatter: function(contract,row,index){
-					var retVal = '';
-					if(contract!= null){
-						var date = new Date(contract.signDate);
-						retVal = date.Format('yyyy-MM-dd');
-					}
-				return retVal;
-			}">签约日</th>
-					<th data-options="field:'product',width:20,align:'center',sortable:'true',
-						formatter: function(product){return product.capital
+						formatter: function(contract){return contract.capital
 						}">合同额</th>
+					<th data-options="field:'amount',width:20,align:'center',sortable:'true'">实际放款额</th>
 					<th data-options="field:'contract',width:20,align:'center',sortable:'true',
-					formatter: function(contract){return contract.amount
-						}">实际放款额</th>
-					<th data-options="field:'product',width:20,align:'center',sortable:'true',
-						formatter: function(product){return product.periods}
+						formatter: function(contract){return contract.periods}
 					">借款期数</th>
 					
 					<th data-options="field:'company',width:20,align:'center',sortable:'true',

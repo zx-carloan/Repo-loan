@@ -1,6 +1,3 @@
-
-
-
 $(function(){
 	$('#automaticSingle-save').click(function(){
 		$.ajax({
@@ -113,8 +110,15 @@ $(function(){
 	
 	
 	$("#query").click(function(){
-	
+		$('#tt').datagrid('load',queryDatas ());
 	});
-
+	function queryDatas (){
+		var contractNumber = $('#contractNumber').val();
+		var loanName = $('#loanName').val();
+		var identity=$('#identity').val();
+		var submenuStatus = $("input[name='submenuStatus']").val();
+		var datas = {contractNumber:contractNumber,loanName:loanName,identity:identity,submenuStatus:submenuStatus};
+		return datas;
+	}
 });
 
