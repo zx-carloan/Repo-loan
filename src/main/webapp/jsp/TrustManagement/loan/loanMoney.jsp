@@ -53,7 +53,7 @@
 				<span style="margin-right: 20px;" class="span1"> 产品类型</span>
 				<select id="productName" class="easyui-combobox"
 						name="productName" style="width: 150px"
-						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+						data-options="valueField:'text',textField:'text2',url:'company/productType',method:'get'">
 						<option name="productName" value="%"></option>
 					</select>
 					
@@ -89,7 +89,7 @@
 		</div>
 
 		<table class="easyui-datagrid" style="width: 100%; height: 200px"  id="tt"
-			data-options=" url:'putLoans/page',method:'get',rownumbers:true,fitColumns:true,pagination:true,singleSelect:true">
+			data-options=" url:'putLoans/page',method:'post',rownumbers:true,fitColumns:true,pagination:true,singleSelect:true">
 			<thead>
 				<tr>
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
@@ -136,8 +136,8 @@
 						formatter: function(product,row){return row.product.periods}
 					">借款期数</th>
 					
-					<th data-options="field:'company',width:20,align:'center',sortable:'true',
-						formatter: function(company,row){return  company.name}
+					<th data-options="field:'row.company.name',width:20,align:'center',sortable:'true',
+						formatter: function(company,row){return  row.company.name}
 					">分公司</th>
 						<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true',
 					formatter: function(loanStatus){

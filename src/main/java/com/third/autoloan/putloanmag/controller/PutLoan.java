@@ -20,8 +20,8 @@ public class PutLoan {
 	private IPutLoanGetService  putLoanGetService;
 	
 	@RequestMapping(value="/page")
-	@ResponseBody
-	public PageBean findOrder(@RequestParam Map<String,String> map) {	
+	
+	public @ResponseBody PageBean findOrder(@RequestParam Map<String,String> map) {	
 		System.out.println(map);
 		PageBean page=	putLoanGetService.getLoanPage(map);
 		return page;
