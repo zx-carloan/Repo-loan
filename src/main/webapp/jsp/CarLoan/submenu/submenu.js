@@ -3,27 +3,36 @@ $(function() {
 	$('#automaticSingle-save').click(function() {
 		var Auditlister = $("#Auditlist").val();// 审核分单量
 		var Contractcontracter = $("#Contractcontract").val();// 签约复核分单量
-		console.info(Auditlister + "  " + Contractcontracter);
-
-		$.ajax({
-			type : 'get',
-			url : 'submenu/automaticSingleSave',
-			data : {
-				"Auditlister" : Auditlister,
-				"Contractcontracter" : Contractcontracter,
-			},
-
-		})
-		if (true) {
-			$('#automaticSingle-dialog').dialog('close');
-			$('#tt').datagrid('reload');
+		if(Auditlist== null || Auditlist==""||Contractcontracter == null ||Contractcontracter== "" ){
+			$.messager.show({
+				title : '提示信息',
+				msg : '有内容没有填完',
+				timeout : 5000,
+				showType : 'slide'
+			});
+		}else {
+			$.ajax({
+				type : 'get',
+				url : 'submenu/automaticSingleSave',
+				data : {
+					"Auditlister" : Auditlister,
+					"Contractcontracter" : Contractcontracter,
+				},
+				success : function(msg) {
+					$('#automaticSingle-dialog').dialog('close');
+					$('#tt').datagrid('reload');
+					$('#tt').datagrid('load', datas());
+					$.messager.show({
+						title : '提示信息',
+						msg : '自动分配成功',
+						timeout : 5000,
+						showType : 'slide'
+					});
+				}
+			})
+			
 		}
-		$.messager.show({
-			title : '提示信息',
-			msg : '自动分配成功',
-			timeout : 5000,
-			showType : 'slide'
-		});
+		
 	});
 
 	$('#automaticSingle').click(function() {
@@ -136,28 +145,35 @@ $(function() {
 		var updateauditor = $("#updateauditor").val();// 得到修改审核人员姓名
 		var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回
 														// null，否则返回记录。
-		console.info(updateauditor);
-		console.info(id);
-		$.ajax({
-			type : 'post',
-			url : 'submenu/submenuSave',
-			data : {
-				"name" : updateauditor,
-				"id" : id
-			},
-			success : function(msg) {
-				$('#tt').datagrid('load', datas());
-				$.messager.show({
-					title : '提示信息',
-					msg : '修改成功',
-					timeout : 5000,
-					showType : 'slide'
-				});
-			}
-		})
-		if (true) {
-			$('#update-dialog').dialog('close');
+		if(updateauditor== null || updateauditor==""){
+			$.messager.show({
+				title : '提示信息',
+				msg : '有内容没有填完',
+				timeout : 5000,
+				showType : 'slide'
+			});
+		}else {
+			$.ajax({
+				type : 'post',
+				url : 'submenu/submenuSave',
+				data : {
+					"name" : updateauditor,
+					"id" : id
+				},
+				success : function(msg) {
+					$('#update-dialog').dialog('close');
+					$('#tt').datagrid('load', datas());
+					$.messager.show({
+						title : '提示信息',
+						msg : '修改成功',
+						timeout : 5000,
+						showType : 'slide'
+					});
+				}
+			})
+			
 		}
+	
 	});
 
 	// 查询

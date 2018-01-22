@@ -117,14 +117,13 @@
 				return retVal;
 			}">进件时间</th>
 					<th
-						data-options="field:'submenuStatus',width:10,align:'center' ">状态</th>
-					<th id="auditor"
-						data-options="field:'auditor',width:10,align:'center',
-							formatter:function(submenuStatus){ if(submenuStatus==0) return '审核分单' ;else return '签约复核' 
-	
+						data-options="field:'submenuStatus',width:10,align:'center' ,
+								formatter:function(submenuStatus){ if(submenuStatus==0) return '审核分单' ;else return '签约复核' 
+				     }">状态</th>
+					<th id="auditor" data-options="field:'auditor',width:10,align:'center',
+					formatter:function(auditor){ if(auditor==null || auditor =='') return '无' ;else return auditor ;
 				     }
-						
-						">审核人</th>
+					">审核人</th>
 				</tr>
 			</thead>
 			<tbody>
