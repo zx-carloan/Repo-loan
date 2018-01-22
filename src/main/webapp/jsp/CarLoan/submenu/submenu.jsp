@@ -71,7 +71,7 @@
 					<th
 						data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 					<th
-						data-options="field:'client',formatter:function(client){return client.name;
+						data-options="field:'client',formatter:function(client){ return client.name; 
 				     },width:20,align:'center',sortable:'true'">借款人</th>
 					<th
 						data-options="field:'client',formatter:function(identity){ if(client!=null) return client.idCard;
