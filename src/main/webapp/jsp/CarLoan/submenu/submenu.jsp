@@ -61,16 +61,22 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'submenu/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
+			data-options="url:'submenu/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='orderId'
+						data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true" />
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
 					<th
 						data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 					<th
-						data-options="field:'client',formatter:function(client){return client.name;
-				     },width:20,align:'center'">借款人</th>
+						data-options="field:'client',formatter:function(client){
+						if (client.name){
+                return client.name;
+                } else {
+                return client;
+                }
+                },width:20,align:'center'">借款人</th>
 					<th
 						data-options="field:'client',formatter:function(client){return client.idCard;
 				     },width:20,align:'center'">身份证号</th>
@@ -88,8 +94,7 @@
 					<th
 						data-options="field:'product',formatter:function(product){return product.periods;
 				     },width:20,align:'center'">借款期数</th>
-					<th
-						data-options="field:'timeStarting',width:20,align:'center'">进件时间</th>
+					<th data-options="field:'timeStarting',width:20,align:'center'">进件时间</th>
 					<th
 						data-options="field:'submenuStatus',width:20,align:'center',
 						formatter:function(submenuStatus){ if(submenuStatus==0) return '审核分单' ;else return '签约复核' 
@@ -125,11 +130,11 @@
 				</tr>
 				<tr>
 					<td>审核分单量：</td>
-					<td><input  id="Auditlist"  type="text" name="num1" /></td>
+					<td><input id="Auditlist" type="text" name="num1" /></td>
 					<td>签约复核分单量：</td>
-					<td><input  id="Contractcontract" type="text" name="num2" /></td>
+					<td><input id="Contractcontract" type="text" name="num2" /></td>
 				</tr>
-				
+
 				<tr>
 					<td><a id="automaticSingle-save" href="javascript:void(0)"
 						class="easyui-linkbutton"

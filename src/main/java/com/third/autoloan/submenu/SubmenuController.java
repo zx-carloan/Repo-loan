@@ -29,18 +29,16 @@ public class SubmenuController {
 	private IOrderService orderService;
 
 	@RequestMapping(value = "/page", method = { RequestMethod.POST })
-	public @ResponseBody List<OrderBean> getSubmenuPage(@RequestParam Map<String, String> map) {
+	public @ResponseBody PageBean getSubmenuPage(@RequestParam Map<String, String> map) {
 		
 		PageBean bean = orderGetService.getSubmenuPage(map);
-		List<OrderBean> list = (List<OrderBean>) bean.getRows();
-		System.out.println(list + "这是得到的");
-		return list;
+		return bean;
 	}
 
 	// 指派、修改分单人员
 	@RequestMapping(value = "/submenuSave", method = { RequestMethod.POST })
-	public void submenuSave(@RequestParam String name, long id) {// name审核人姓名和id当前订单
-
+	public @ResponseBody  void submenuSave(@RequestParam String name, long id) {// name审核人姓名和id当前订单
+		System.out.println("");
 		orderService.updateOrderInfo(name, id);
 	}
  
