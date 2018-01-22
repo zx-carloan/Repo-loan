@@ -112,6 +112,7 @@ $(function(){
 	$("#query").click(function(){
 		$('#tt').datagrid('load',queryDatas ());
 	});
+	
 	function queryDatas (){
 		var contractNumber = $('#contractNumber').val();
 		var loanName = $('#loanName').val();

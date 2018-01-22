@@ -47,6 +47,7 @@
 					<td>状态：</td>
 					<td><select id="submenuStatus" class="easyui-combobox"
 						name="submenuStatus" style="width: 150px;">
+						<option value="%">请选择</option>
 							<option value="0">总公司信审</option>
 							<option value="1">签约复核</option>
 					</select></td>
@@ -207,6 +208,6 @@
 			</table>
 		</form>
 	</div>
-	<script type="text/javascript" src="static/js/submenu.js"></script>
+	<script type="text/javascript" src="jsp/CarLoan/submenu/submenu.js"></script>
 </body>
 </html>

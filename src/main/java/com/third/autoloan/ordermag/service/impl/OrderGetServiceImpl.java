@@ -14,6 +14,7 @@ import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.ordermag.dao.IOrderDao;
 import com.third.autoloan.ordermag.repository.OrderRepository;
 import com.third.autoloan.ordermag.service.IOrderGetService;
+import com.third.autoloan.util.CTools;
 
 @Service("orderGetServiceImpl")
 public class OrderGetServiceImpl implements IOrderGetService {
@@ -86,9 +87,19 @@ public class OrderGetServiceImpl implements IOrderGetService {
 		int pageSize =Integer.parseInt(map.get("rows"));
 		int	total = orderDaoImpl.getSumSubmenuPage(map);
 		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
-		map.put("index", pageBean.getIndex()+"");
-		List<OrderBean> list =orderDaoImpl.getSubmenuPage(map);
 		
+		map.put("index", pageBean.getIndex()+"");
+	
+		
+	 if( ! CTools.checkStringNull(map.get("contractNumber")))   map.put("contractNumber", null);
+	 if( ! CTools.checkStringNull(map.get("loanName")))   map.put("loanName", null);
+	 if( ! CTools.checkStringNull(map.get("submenuStatus")))   map.put("submenuStatus", null);
+	 if( ! CTools.checkStringNull(map.get("identity")))   map.put("identity", null);
+	 
+	 	System.out.println(map.get("submenuStatus"));
+	
+		List<OrderBean> list =orderDaoImpl.getSubmenuPage(map);
+		System.out.println("底层" + list);
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);
 		pageBean.setTotal(total);

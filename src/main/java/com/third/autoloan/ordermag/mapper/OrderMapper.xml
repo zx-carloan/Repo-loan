@@ -355,17 +355,17 @@
  	    select *  from t_order as o left join t_client as c on o.fk_client_id=c.id 
  	    left join t_company as co on co.id=o.fk_company_id 
  	    left join t_product as p on o.fk_product_id=p.id  where 1=1
-        <if test="contractNumber!=null">
-            and o.contractNumber like '%${contractNumber}%'
+      <if test="contractNumber!=null ">
+            and o.contractNumber like '%${contractNumber}%' 
         </if>
         <if test="loanName!=null">
-            and  c.name like '%${loanName}%'
+            and  c.name like '%${loanName}%' 
         </if>
         <if test="identity!=null">
-            and c.idCard like '%${identity}%'  
+            and c.idCard like '%${identity}%'   
         </if>
         <if test="submenuStatus!=null">
-            and  o.submenuStatus = #{submenuStatus}
+            and  o.submenuStatus like  '%${submenuStatus}%'   
         </if>
     		<if test=" sort!=null">
                  order by ${sort} 
