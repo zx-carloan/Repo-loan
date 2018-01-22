@@ -4,31 +4,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户登录</title>
 <link href="static/css/login.css" rel="stylesheet" type="text/css"></link>
+<link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css"></link>
+<link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css"></link>
 <script type="text/javascript" src="static/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+
 </head>
 <body>
-
     <div id="login">
 	     <div id="top">
 		      <div id="top_left"><img src="static/images/login_03.gif" /></div>
 			  <div id="top_center"></div>
 		 </div>
-		 
 		 <div id="center">
 		      <div id="center_left"></div>
-		    
 			  <div id="center_middle">
-		
 			       <div id="user">
 			       <span id="nameT" style="color: red;"></span><br />
-			       用  户
-			         <input id="name" type="text" placeholder="请输入账号" name="username"/>
+			       账  号
+			         <input id="name"  class="easyui-textbox" placeholder="请输入账号" name="username"  data-options="required:true,missingMessage:'请填写登录名'" />
 			       </div>
-			      
 				   <div id="password">密   码
-				     <input id="pwd" type="password"  placeholder="请输入密码" name="password"/>
+				     <input id="pwd"  class="easyui-passwordbox"  placeholder="请输入密码" name="password"  data-options="required:true,missingMessage:'请填写登录密码'"/>
 				   </div>
-				   <div id="btn"><a href="javascript:login()">登录</a><a href="javascript:clear()">清空</a></div>
+				   <table style="margin-top: 20px">
+					   	 <tr> 
+		                    <td>验证码：</td>
+		                    <td><input id="loginCode"  class="easyui-textbox" name="code" style ="width:70px" data-options=""/></td>
+		                    <td><img id="codeImg" alt="验证码" src="usermag/code" onclick="changeImg()"/></td>     
+		                </tr> 
+	                </table>
+	               <div>
+	          			<span id="yanzheng" style="margin-left:20px;color: red;"></span> 
+	               </div>
 			  </div>
 			  <div id="center_right"></div>		 
 		 </div>
@@ -39,12 +47,11 @@
 					   <span class="copyright">车贷管理信息系统 v3</span>
 			      </div>
 			  </div>
-			  <div id="down_center"></div>		 
+			  <div id="down_center" >
+				   <div style="margin-top:10px" id="btn"><a class="easyui-linkbutton" href="javascript:login()">登录</a><a class="easyui-linkbutton" href="javascript:clear()">清空</a></div>
+			  </div>		 
 		 </div>
-
 	</div>
-	<script type="text/javascript" src="static/js/login.js">
-
-</script>
+	<script type="text/javascript" src="static/js/login.js"></script>
 </body>
 </html>
