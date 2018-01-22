@@ -386,9 +386,9 @@
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
  	        <result property="name" column="name" />
  	        <result property="tel" column="tel" />
+ 	        <result property="cellphone" column="cellphone" />
  	          <result property="idCard" column="idCard" />
  	      </association>
- 	      
  	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
  	        <result property="name" column="name" />
  	        <result property="hq" column="hq" />
