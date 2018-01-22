@@ -94,7 +94,7 @@ public class branchCompanyCheckController {
 		System.out.println("order="+order);
 		 List<CarInfoBean> list=carGetServiceImpl.getCarInfoByOrderId(id_1);
 		 
-		 Set<ItemBean> item=null;
+		 List<ItemBean> item=null;
 		 for (CarInfoBean carInfoBean : list) {
 			 item=carInfoBean.getItemList();
 			 System.out.println(carInfoBean.getId());

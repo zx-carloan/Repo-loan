@@ -16,6 +16,9 @@
 				style="width: 100%; ">
 		<center>
 		<form id="vehicleInfo" method="post">
+			<input type="hidden" name="id" value="${car.id }">
+			<input type="hidden" name="orderId" value="${order.id }">
+			<input type="hidden" name="version" value=50>
 			<table class="table1" border="1">
 				<caption class="caption1">车辆信息</caption>
 				<tr class="tr1">
@@ -40,7 +43,7 @@
 					<td class="td1"><label>车架号</label></td>
 					<td class="td1">${car.vin }</td>
 					<td class="td1"><label>车辆评估价格</label></td>
-					<td class="td1"><input type="text" ></td>
+					<td class="td1"><input type="text" name="valuePrice"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>目前已行驶里程</label></td>
@@ -200,59 +203,102 @@
 				<tr class="tr1">
 					<td class="td1"><label>抵押车辆评估表</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件1</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.carAsseceForm!=null}">
+						<a href="carInfo/download?filename=${car.carAsseceForm}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆照片</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件2</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.carPic!=null}">
+						<a href="carInfo/download?filename=${car.carPic}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆登记证书（原件）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件3</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.carRegisterForm!=null}">
+						<a href="carInfo/download?filename=${car.carRegisterForm}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆行驶证正副本（原件）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件4</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.drivingLisense!=null}">
+						<a href="carInfo/download?filename=${car.drivingLisense}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>保单（交强险）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件5</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.sali!=null}">
+						<a href="carInfo/download?filename=${car.sali}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>保单（商业险）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件6</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.commerceinsurance!=null}">
+						<a href="carInfo/download?filename=${car.commerceinsurance}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>其他车辆附件</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件7</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<c:if test="${car.otherAttachment!=null}">
+						<a href="carInfo/download?filename=${car.otherAttachment}">
+						下载
+						</a>
+						</c:if>
+						</td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 			</table>
 		</form>
-
-	<button class="btn btn-primary" onclick="Preservation()">保存</button>
-		<button class="btn btn-primary" onclick="Submit()">提交</button>
+		<button class="btn btn-primary" onclick="Preservation()">保存</button>
+		<button class="btn btn-primary" onclick="SubmitPrice()">提交</button>
 		<button class="btn btn-primary" onclick="back()">返回</button>
-			<button class="btn btn-primary" onclick="Fallback()">回退</button>
+		<button class="btn btn-primary" onclick="Fallback()">回退</button>
+		<div id="rollbackBlock" style="border: 1px;width: 200px;height: 100px;background-color:aqua;display: none;">
+			<form action="carInfo/rollback">
+				<input type="hidden" id="rollbackCarId" value="${order.id }">
+				<label style="margin-top: 100px;">请输入回退意见</label>
+				<input type="text" id="rollbackOpinion">
+				<button type="button" id="rollbackbtn">提交</button>
+				<button type="button" id="closeRollback">关闭</button>
+			</form>
+		</div>
 	</center>
 		
 	</div>

@@ -52,6 +52,16 @@
 		#{getInsurance},#{getDrivingLicense},#{getOriginalInvoice},#{getTaxCertificate},#{getImportCertificate},#{order.id}
 		)
 	</insert>
+	
+	<update id="updateCarInfoBeanByMybatis" parameterType="CarInfoBean">
+		update t_carinfo set otherAttachment=#{otherAttachment},sali=#{sali},carPic=#{carPic},commerceinsurance=#{commerceinsurance},
+		carAsseceForm=#{carAsseceForm},carRegisterForm=#{carRegisterForm},drivingLisense=#{drivingLisense},carId=#{carId},
+		brand=#{brand},engineId=#{engineId},color=#{color},registerDate=#{registerDate},annualInspection=#{annualInspection},
+		vin=#{vin},assessmentPrice=#{assessmentPrice},xkm=#{xkm},getID=#{getID},getAfford=#{getAfford},getSali=#{getSali},getKey=#{getKey},
+		keyNumber=#{keyNumber},getRegisterLicense=#{getRegisterLicense},getInsurance=#{getInsurance},getDrivingLicense=#{getDrivingLicense},
+		getOriginalInvoice=#{getOriginalInvoice},getTaxCertificate=#{getTaxCertificate},getImportCertificate=#{getImportCertificate},fk_order_id=#{order.id}
+		 where id = #{id}
+	</update>
 	<!-- <resultMap id="itemMap" type="ItemBean">
 		<id property="id" column="id"></id>
 		<result property="name" column="name"></result>

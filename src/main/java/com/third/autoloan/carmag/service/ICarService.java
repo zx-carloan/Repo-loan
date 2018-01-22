@@ -29,4 +29,7 @@ public interface ICarService {
 	 */
 	public void addCarInfoByMybatis(CarInfoBean car);
 	
+	//更新车辆信息
+	public void updateCarInfoBeanByMybatis(CarInfoBean car);
+	
 }

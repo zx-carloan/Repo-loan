@@ -102,7 +102,7 @@ public class CarInfoBean implements Serializable {
 	//车内物品列表
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="carInfo")
 	@Cascade(value= {CascadeType.ALL})
-	private Set<ItemBean> itemList;
+	private List<ItemBean> itemList;
 	
 	//车辆行驶证正副本（原件）
 	@Column(length=200)
@@ -399,13 +399,16 @@ public class CarInfoBean implements Serializable {
 
 
 
-	public Set<ItemBean> getItemList() {
+
+
+
+	public List<ItemBean> getItemList() {
 		return itemList;
 	}
 
 
 
-	public void setItemList(Set<ItemBean> itemList) {
+	public void setItemList(List<ItemBean> itemList) {
 		this.itemList = itemList;
 	}
 

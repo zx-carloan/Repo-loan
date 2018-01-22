@@ -15,4 +15,7 @@ public interface CarMapper {
 	
 	//保存车辆信息
 	public void addCarInfoBeanByMybatis(CarInfoBean car);
+	
+	//更新车辆信息
+	public void updateCarInfoBeanByMybatis(CarInfoBean car);
 }

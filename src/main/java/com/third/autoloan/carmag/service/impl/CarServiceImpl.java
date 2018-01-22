@@ -39,4 +39,10 @@ public class CarServiceImpl implements ICarService{
 		carMapper.addCarInfoBeanByMybatis(car);
 	}
 
+	@Override
+	public void updateCarInfoBeanByMybatis(CarInfoBean car) {
+		// TODO Auto-generated method stub
+		carMapper.updateCarInfoBeanByMybatis(car);
+	}
+
 }

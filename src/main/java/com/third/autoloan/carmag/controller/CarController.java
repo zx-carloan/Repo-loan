@@ -2,13 +2,23 @@ package com.third.autoloan.carmag.controller;
 
 import java.io.File;
 import java.text.ParseException;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +31,7 @@ import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ItemBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
+import com.third.autoloan.carmag.service.ICarGetService;
 import com.third.autoloan.carmag.service.ICarService;
 import com.third.autoloan.ordermag.service.IOrderGetService;
 import com.third.autoloan.ordermag.service.IOrderService;
@@ -41,29 +52,44 @@ public class CarController {
 	@Resource
 	private ICarService carServiceImpl;
 	@Resource
+	private ICarGetService carGetServiceImpl;
+	@Resource
 	private IOrderGetService orderGetServiceImpl;
 	@Resource
 	private IOrderService orderServiceImpl;
 	//通过页面传来的id查询订单信息
 	@RequestMapping(value="/{id}",method= {RequestMethod.GET})
-	public ModelAndView getOrderById(@PathVariable("id")Integer id) {
+	public ModelAndView getOrderById(@PathVariable("id")Long id) {
 		//System.out.println("id是"+id);
+		List<CarInfoBean> carList = carGetServiceImpl.getCarInfoByOrderId(id);
+		
 		OrderBean order = orderServiceImpl.getOrderById(id);
 		order.setReturnOpinion("车辆信息请重新录入");
-		List<CarInfoBean> carList = order.getCarList();
-		System.out.println(order);
-		//查出order对象后将其存入MV对象中
+		//List<CarInfoBean> carList = order.getCarList();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("order", order);
-		mv.addObject("userPower", "评估师");//将评估师角色存入mv对象中
+		mv.addObject("userPower", "估价师");//将评估师角色存入mv对象中
 		Map<String,Object> map = mv.getModel();
 		String userPower = (String) map.get("userPower");
 		System.out.println("userPower是"+userPower);
+		if(carList.size()!=0) {
+			System.out.println("查到的车辆信息是"+carList.get(0));
+			try {
+				Date newDateFormat = DateUtils.shortStr2Date(DateUtils.date2ShortString(carList.get(0).getRegisterDate()));
+				System.out.println("newDateFormat"+newDateFormat);
+				carList.get(0).setRegisterDate(newDateFormat);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			mv.addObject("car", carList.get(0));
+		}
+		//System.out.println(order.getCarList());
+		//查出order对象后将其存入MV对象中
 		//根据角色权限跳转对应的页面
 		if(userPower.equals("评估师")) {
 			mv.setViewName("jsp/CarLoan/loanInput/valuer");
 		}else if(userPower.equals("估价师")) {
-			mv.addObject("car", carList.get(0));
 			mv.setViewName("jsp/CarLoan/loanInput/priced");
 		}
 		return mv;
@@ -99,7 +125,7 @@ public class CarController {
 		//首先封装物品对象存入车辆对象中
 		StringBuilder sName = null;
 		StringBuilder sNumber = null;
-		Set<ItemBean> itemSet = null;
+		List<ItemBean> itemList = null;
 		for(int i=0; i < 10; i++) {
 			sName = new StringBuilder("item");
 			sNumber = new StringBuilder("number");
@@ -109,10 +135,11 @@ public class CarController {
 				ItemBean item = new ItemBean();
 				item.setName((String) map.get(sName));
 				item.setNumber((int) map.get(sNumber));
-				itemSet.add(item);
+				itemList.add(item);
 			}
 		}
-		car.setItemList(itemSet);
+		car.setItemList(itemList);
+		car.setCarId((String)map.get("carId"));
 		car.setAnnualInspection(Integer.parseInt((String)map.get("annualInspection")));
 		car.setBrand((String) map.get("brand"));
 		car.setCarAsseceForm((String) map.get("carAsseceForm"));
@@ -161,7 +188,7 @@ public class CarController {
 
 	@RequestMapping(value = "/carAsseceForm", method = { RequestMethod.POST })
 	public void uploadCarAsseceForm(@RequestParam("carAsseceForm")CommonsMultipartFile carAsseceForm) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -183,7 +210,7 @@ public class CarController {
 	
 	@RequestMapping(value = "/carPic", method = { RequestMethod.POST })
 	public void uploadCarPic(@RequestParam("carPic")CommonsMultipartFile carPic) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -203,7 +230,7 @@ public class CarController {
 	
 	@RequestMapping(value = "/carRegisterForm", method = { RequestMethod.POST })
 	public void uploadCarRegisterForm(@RequestParam("carRegisterForm") CommonsMultipartFile carRegisterForm) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -223,7 +250,7 @@ public class CarController {
 	
 	@RequestMapping(value = "/drivingLisense", method = { RequestMethod.POST })
 	public void uploadDrivingLisense(@RequestParam("drivingLisense")CommonsMultipartFile drivingLisense) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -243,7 +270,7 @@ public class CarController {
 	
 	@RequestMapping(value = "/sali", method = { RequestMethod.POST })
 	public void uploadSali(@RequestParam("sali")CommonsMultipartFile sali) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -263,7 +290,7 @@ public class CarController {
 	
 	@RequestMapping(value = "/commerceinsurance", method = { RequestMethod.POST })
 	public void uploadCommerceinsurance(@RequestParam("commerceinsurance")CommonsMultipartFile commerceinsurance) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -283,7 +310,7 @@ public class CarController {
 	
 	@RequestMapping(value = "/otherAttachment", method = { RequestMethod.POST })
 	public void uploadOtherAttachment(@RequestParam("otherAttachment")CommonsMultipartFile otherAttachment) {
-		String path = "C://carloan";//文件保存路径
+		String path = "D://files";//文件保存路径
 		File dir = new File(path);
 		if(!dir.exists()) {
 			dir.mkdir();
@@ -300,4 +327,57 @@ public class CarController {
 			}
 		}
 	}
+	
+	//文件下载控制器
+	@RequestMapping(value="/download")
+    public ResponseEntity<byte[]> download(HttpServletRequest request,
+            @RequestParam("filename") String filename,
+            Model model)throws Exception {
+    	System.out.println("进入下载器"+filename);
+       //下载文件路径
+       String path = "D://files";//文件保存路径
+       //String path = request.getServletContext().getRealPath("/images/");
+       File file = new File(filename);
+       HttpHeaders headers = new HttpHeaders();  
+       //下载显示的文件名，解决中文名称乱码问题  
+       String downloadFielName = new String(filename.getBytes("UTF-8"),"iso-8859-1");
+       //通知浏览器以attachment（下载方式）打开图片
+       headers.setContentDispositionFormData("attachment", downloadFielName); 
+       //application/octet-stream ： 二进制流数据（最常见的文件下载）。
+       headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+       return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),    
+               headers, HttpStatus.CREATED);  
+    }
+    
+    @RequestMapping(value = "/updatePrice", method = { RequestMethod.POST })
+	public void uploadCarPrice(@RequestParam Map<String,Object> map) {
+    	System.out.println("进入控制器！");
+//    	System.out.println("id"+id);
+//    	System.out.println("valuePrice"+valuePrice);
+    	OrderBean order = orderServiceImpl.getOrderById(Long.parseLong((String)map.get("orderId")));
+    	//order.setVersion(Integer.parseInt((String)map.get("version")));
+    	CarInfoBean carInfo = carGetServiceImpl.getCarInfoById(Long.parseLong((String)map.get("id")));
+    	carInfo.setAssessmentPrice(Double.parseDouble((String)map.get("valuePrice")));
+    	carInfo.setOrder(order);
+    	System.out.println(carInfo);
+    	carServiceImpl.updateCarInfoBeanByMybatis(carInfo);
+    }
+    
+    //撤销订单控制器
+    @RequestMapping(value="delete/{id}",method= {RequestMethod.GET})
+	public ModelAndView deleteOrderByOrder(@PathVariable("id")Long id) {
+    	System.out.println("需要删除的订单id是"+id);
+    	orderServiceImpl.deleteOrderInfo(id);
+    	ModelAndView mv = new ModelAndView();
+    	mv.setViewName("jsp/CarLoan/loanInput/loanInput");
+    	return mv;
+    }
+    
+    //提交回退意见控制器
+    @RequestMapping(value="/rollback",method= {RequestMethod.POST})
+    public ModelAndView submitRollBackOpinion(@RequestParam Map<String,Object> map) {
+    	orderServiceImpl.getReturnOpinion(map);
+    	System.out.println("进入控制器"+map);
+    	return null;
+    }
 }
