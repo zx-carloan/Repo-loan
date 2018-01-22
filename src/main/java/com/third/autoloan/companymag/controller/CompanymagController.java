@@ -39,7 +39,7 @@ public class CompanymagController {
 			}
 		}
 		return datas;
-	}
+	}  
 	
 	@RequestMapping(value="/productType",method= {RequestMethod.GET})
 	public @ResponseBody List<ComboboxData> ListProductTypeName() {
