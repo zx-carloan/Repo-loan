@@ -49,7 +49,7 @@ public class CompanymagController {
 		if(list != null) {
 			for (ProductBean bean : list) {
 				ComboboxData data = new ComboboxData(bean.getName(), bean.getName());
-				datas.add(data);
+				datas.add(data);  
 			}
 		}
 		
