@@ -45,6 +45,7 @@
 					<td>状态：</td>
 					<td><select id="submenuStatus" class="easyui-combobox"
 						name="submenuStatus" style="width: 150px;">
+							<option value="">请选择</option>
 							<option value="0">总公司信审</option>
 							<option value="1">签约复核</option>
 					</select></td>
@@ -61,48 +62,69 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'submenu/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
+			data-options="url:'submenu/page', rownumbers:true,striped:true,method:'GET',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
 			<thead>
 				<tr>
 					<th id='orderId'
 						data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true" />
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
 					<th
-						data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+						data-options="field:'contractNumber',width:10,align:'center',sortable:'true'">合同编号</th>
+						
+					
+						
+						<th data-options="field:'client',width:10,align:'center',sortable:'true',
+					formatter:function(value,row){
+							return row.client.name;
+						}">借款人</th>
 					<th
-						data-options="field:'client',formatter:function(client){
-						if (client.name){
-                return client.name;
-                } else {
-                return client;
-                }
-                },width:20,align:'center'">借款人</th>
+						data-options="field:'client1',width:10,align:'center',
+				formatter:function(value,row){
+							return row.client.idCard;
+						}">身份证号</th>
 					<th
-						data-options="field:'client',formatter:function(client){return client.idCard;
-				     },width:20,align:'center'">身份证号</th>
+						data-options="field:'client2',width:10,align:'center',
+					formatter:function(value,row){
+							return row.client.cellphone;
+						}">借款人手机号码</th>
 					<th
-						data-options="field:'client',formatter:function(client){return client.cellphone;
-				     },width:20,align:'center'">借款人手机号码</th>
+						data-options="field:'manager',width:10,align:'center',sortable:'true'">业务经理</th>
 					<th
-						data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+						data-options="field:'company',width:10,align:'center',
+							formatter:function(value,row){
+							return row.company.name;
+						}
+						">分公司</th>
 					<th
-						data-options="field:'company',formatter:function(company){return company.name;
-				     },width:20,align:'center'">分公司</th>
+						data-options="field:'product',width:10,align:'center',
+							formatter:function(value,row){
+							return row.product.name;
+						}
+						">产品名称</th>
 					<th
-						data-options="field:'product',formatter:function(product){return product.name;
-				     },width:20,align:'center'">产品名称</th>
+						data-options="field:'product2',width:10,align:'center',
+							formatter:function(value,row){
+							return row.product.periods;
+						}
+						">借款期数</th>
+					<th data-options="field:'timeStarting',width:10,align:'center',
+										formatter: function(timeStarting,row,index){
+					var retVal = '';
+					if(timeStarting != null){
+						var date = new Date(timeStarting);
+						retVal = date.Format('yyyy-MM-dd');
+					}
+				return retVal;
+			}">进件时间</th>
 					<th
-						data-options="field:'product',formatter:function(product){return product.periods;
-				     },width:20,align:'center'">借款期数</th>
-					<th data-options="field:'timeStarting',width:20,align:'center'">进件时间</th>
-					<th
-						data-options="field:'submenuStatus',width:20,align:'center',
-						formatter:function(submenuStatus){ if(submenuStatus==0) return '审核分单' ;else return '签约复核' 
-				     }
-						">状态</th>
+						data-options="field:'submenuStatus',width:10,align:'center' ">状态</th>
 					<th id="auditor"
-						data-options="field:'auditor',width:20,align:'center'">审核人</th>
-
+						data-options="field:'auditor',width:10,align:'center',
+							formatter:function(submenuStatus){ if(submenuStatus==0) return '审核分单' ;else return '签约复核' 
+	
+				     }
+						
+						">审核人</th>
 				</tr>
 			</thead>
 			<tbody>
