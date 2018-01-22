@@ -2,7 +2,6 @@ package com.third.autoloan.submenu;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.ordermag.service.IOrderGetService;
@@ -28,9 +26,9 @@ public class SubmenuController {
 	@Resource(name = "orderServiceImpl")
 	private IOrderService orderService;
 
-	@RequestMapping(value = "/page", method = { RequestMethod.POST })
+	@RequestMapping(value = "/page", method = { RequestMethod.GET})
 	public @ResponseBody PageBean getSubmenuPage(@RequestParam Map<String, String> map) {
-		
+		System.out.println(map);
 		PageBean bean = orderGetService.getSubmenuPage(map);
 		return bean;
 	}
@@ -44,7 +42,7 @@ public class SubmenuController {
  
 	// 批量分单人员
 	@RequestMapping(value = "/automaticSingleSave", method = { RequestMethod.GET })
-	public void automaticSingleSave(String Auditlister, String Contractcontracter) {
+	public  @ResponseBody void automaticSingleSave(String Auditlister, String Contractcontracter) {
 		System.out.println(Auditlister);
 		System.out.println(Contractcontracter);
 		int Auditlist = Integer.parseInt(Auditlister);// 审核分单量
