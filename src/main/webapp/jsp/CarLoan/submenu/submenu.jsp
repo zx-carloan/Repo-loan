@@ -154,9 +154,9 @@
 				</tr>
 				<tr>
 					<td>审核分单量：</td>
-					<td><input id="Auditlist" type="text" name="num1" /></td>
+					<td><input id="auditlist" type="text" name="num1" /></td>
 					<td>签约复核分单量：</td>
-					<td><input id="Contractcontract" type="text" name="num2" /></td>
+					<td><input id="contractcontract" type="text" name="num2" /></td>
 				</tr>
 
 				<tr>
@@ -180,11 +180,20 @@
 			<table>
 				<tr>
 					<td>审核人：</td>
-					<td><select class="easyui-combobox" name="auditor"
-						style="width: 150px;">
-							<option value="老王">老王</option>
-							<option value="老蒋">老蒋</option>
-					</select></td>
+					<td  id="submenu-dialog1" style="display: none">
+						<select  class="easyui-combobox"
+						name="auditor" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=0',method:'get'">
+						<option name="auditor" value="%"></option>
+					</select>
+					</td>
+					<td  id="submenu-dialog2 " style="display: none;" >
+						<select class="easyui-combobox"
+						name="auditor" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=1',method:'get'">
+						<option name="auditor" value="%"></option>
+					</select>
+					</td>
 				</tr>
 				<tr>
 					<td><a id="submenu-save" href="javascript:void(0)"
@@ -206,7 +215,22 @@
 			<table>
 				<tr>
 					<td>审核人：</td>
-					<td><input id="updateauditor" type="text" name="auditor"></td>
+					<td id="update-dialog1" style="display: none">
+						
+						<select class="easyui-combobox"
+						name="updateauditor" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=0',method:'get'">
+						<option name="auditor" value="%"></option>							
+					</select></td>
+					<td id="update-dialog2" style="display: none;">
+						<select class="easyui-combobox"
+						name="updateauditor" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=1',method:'get'">
+						<option name="auditor" value="%"></option>
+					</select>
+					</td>
+					
+				
 				</tr>
 				<tr>
 					<td><a id="update-save" href="javascript:void(0)"

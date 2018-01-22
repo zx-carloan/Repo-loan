@@ -26,5 +26,9 @@ public class PutLoan {
 		PageBean page=	putLoanGetService.getLoanPage(map);
 		return page;
 	}
+	public@ResponseBody String getMoney(Long orderId) {
+		return null;
+		
+	} 
 
 }

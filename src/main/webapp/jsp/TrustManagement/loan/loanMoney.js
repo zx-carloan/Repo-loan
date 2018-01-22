@@ -42,7 +42,37 @@ $(function() {
 					});
 				}
 			});
-
+			//放款
+			$("#loan").click(function(){
+				var row = $('#tt').datagrid('getSelected');
+				if(row){
+					$.messager.confirm('Confirm', '是否确认放款', function(r) {
+						if (r) {
+							$.ajax({
+								type:'get',
+								url:'putLoan/getMoney?orderId='+row.id,
+								success:function(data){ 
+									$.messager.show({
+										title:'提示信息',
+										msg:data,
+										timeout:5000,
+										showType:'slide'
+									});
+								}
+							})
+						}
+					});
+				}else{
+					$.messager.show({
+						title:'提示信息',
+						msg:'请选择行',
+						timeout:5000,
+						showType:'slide'
+					});
+				}
+				
+			});
+			
 			//详细信息点击事件
 			$("#detail").click(function() {
 				if (id == "") {

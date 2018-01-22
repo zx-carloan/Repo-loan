@@ -83,15 +83,63 @@ public class OrderDaoImpl implements IOrderDao{
 	}
 
 	@Override
-	public List<OrderBean> getSubmenuPageToAuditor(int number) {
+	public void updateOrderInfo(Map<String,Object> map) {
 		// TODO Auto-generated method stub
-		return orderMapper.getSubmenuPageToAuditor(number);
+		orderMapper.updateOrderInfo(map);
 	}
 
 	@Override
-	public void updateOrderInfo(String name, long id) {
-		orderMapper.updateOrderInfo(name, id);
-		
+	public void deleteOrderInfo(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteOrderInfo(id);
+	}
+
+	@Override
+	public void deleteProduct(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteProduct(id);
+	}
+
+	@Override
+	public void deleteClient(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteClient(id);
+	}
+
+	@Override
+	public void deleteCompany(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteCompany(id);
+	}
+
+	@Override
+	public void deleteContract(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteContract(id);
+	}
+
+	@Override
+	public void deleteCredit(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteCredit(id);
+	}
+
+	@Override
+	public void deleteIdentity(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteIdentity(id);
+	}
+
+	@Override
+	public void deleteOpinion(long id) {
+		// TODO Auto-generated method stub
+		orderMapper.deleteOpinion(id);
+	}
+
+	@Override
+	public void returnOpinion(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		orderMapper.returnOpinion(map);
 	}
 	
 }

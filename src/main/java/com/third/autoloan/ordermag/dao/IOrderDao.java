@@ -115,18 +115,54 @@ public interface IOrderDao {
 	 * @return
 	 */
 	public OrderBean getOrderInfo(long id);
-	
-	/**
-	 *得到 所有分单审核人为空业务列表
-	 * @param map
-	 * @return
-	 */
-	public List<OrderBean> getSubmenuPageToAuditor(int number);
-	
-	/**
+	/***
 	 * 修改订单信息
-	 * 
-	 * @param orderBean 
+	 * @param order
 	 */
-	public void updateOrderInfo(String name,long id);
+	public void updateOrderInfo(Map<String,Object> map);
+	/***
+	 * 删除订单信息
+	 * @param id
+	 */
+	public void deleteOrderInfo(long id);
+	/***
+	 * 删除产品信息
+	 * @param id
+	 */
+	public void deleteProduct(long id);
+	/***
+	 * 删除客户信息
+	 * @param id
+	 */
+	public void deleteClient(long id);
+	/***
+	 * 删除公司信息
+	 * @param id
+	 */
+	public void deleteCompany(long id);
+	/***
+	 * 删除合同信息
+	 * @param id
+	 */
+	public void deleteContract(long id);
+	/***
+	 * 删除信用信息
+	 * @param id
+	 */
+	public void deleteCredit(long id);
+	/***
+	 * 删除身份信息
+	 * @param id
+	 */
+	public void deleteIdentity(long id);
+	/***
+	 * 删除身份信息
+	 * @param id
+	 */
+	public void deleteOpinion(long id);
+	/***
+	 * 修改回退意见
+	 * @param map
+	 */
+	public void returnOpinion(Map<String,Object> map);
 }

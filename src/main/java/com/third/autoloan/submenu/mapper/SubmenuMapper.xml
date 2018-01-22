@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.third.autoloan.submenu.mapper.SubmenuMapper">
+ 	<!--得到 分单业务列表总数  -->
+ 	 	<select id="getSumSubmenuPage" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	     select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id  where 1=1
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="identity!=null">
+            and  i.identity like '%${identity}%'  
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus = #{submenuStatus}
+        </if>
+ 	</select>
+ 	
+ 	<!-- 得到 分单业务列表 -->
+ 	<select id="getSubmenuPage" parameterType="java.util.Map" resultType="String" resultMap="getSub">
+ 	    select *  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_product as p on o.fk_product_id=p.id  where 1=1
+      <if test="contractNumber!=null ">
+            and o.contractNumber like '%${contractNumber}%' 
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%' 
+        </if>
+        <if test="identity!=null">
+            and c.idCard like '%${identity}%'   
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus like  '%${submenuStatus}%'   
+        </if>
+    		<if test=" sort!=null">
+                 order by ${sort} 
+        </if>
+         <if test="order!=null">
+  				${order} 
+        </if>
+          limit ${index},${rows};
+ 	</select>
+ 	
+ 	<resultMap type="OrderBean" id="getSub">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="manager" column="manager" />
+ 	     <result property="timeStarting" column="timeStarting" />
+ 	     <result property="auditor" column="auditor" />
+ 	     <result property="submenuStatus" column="submenuStatus" />
+ 	     
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
+ 	        <result property="name" column="name" />
+ 	        <result property="tel" column="tel" />
+ 	        <result property="cellphone" column="cellphone" />
+ 	          <result property="idCard" column="idCard" />
+ 	      </association>
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <result property="name" column="name" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
+ 	        <result property="periods" column="periods" />
+ 	        <result property="name" column="name" />
+ 	      </association>
+ 	</resultMap>
+ 	      
+ 	     <!-- 得到 所有分单审核人为空业务列表 -->
+ 	  <select id="getSubmenuPageToAuditor" resultType="OrderBean">
+ 		SELECT * FROM t_order WHERE auditor IS NULL ORDER BY RAND() LIMIT '${number}'
+ 	</select>
+	<!-- 修改订单信息 -->
+ 	<select id="updateOrderInfo" >
+		UPDATE t_order SET auditor ='${name}' WHERE id='${id}'
+	</select>
+	
+	<select id="listAuditorName"  parameterType="String"  resultMap="listAuditor"  >
+		SELECT userName FROM t_user AS u LEFT JOIN t_user_role  ON u.id= userId 
+					 LEFT JOIN t_role AS r ON r.id=roleId 
+					 where 1=1
+				<if test="_parameter != null">
+					and r.role like '%${_parameter}%' 
+				</if>	 
+				
+	</select>
+	<resultMap type="UserBean" id="listAuditor">
+		 <result property="userName" column="userName" />
+	</resultMap>
+ </mapper>

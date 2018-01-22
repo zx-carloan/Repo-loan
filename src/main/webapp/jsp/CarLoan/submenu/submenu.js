@@ -1,9 +1,9 @@
 $(function() {
 
 	$('#automaticSingle-save').click(function() {
-		var Auditlister = $("#Auditlist").val();// 审核分单量
-		var Contractcontracter = $("#Contractcontract").val();// 签约复核分单量
-		if(Auditlist== null || Auditlist==""||Contractcontracter == null ||Contractcontracter== "" ){
+		var auditlister = $("#auditlist").val();// 审核分单量
+		var contractcontracter = $("#contractcontract").val();// 签约复核分单量
+		if(auditlister== null || auditlister==""||contractcontracter == null ||contractcontracter== "" ){
 			$.messager.show({
 				title : '提示信息',
 				msg : '有内容没有填完',
@@ -15,8 +15,8 @@ $(function() {
 				type : 'get',
 				url : 'submenu/automaticSingleSave',
 				data : {
-					"Auditlister" : Auditlister,
-					"Contractcontracter" : Contractcontracter,
+					"auditlister" : auditlister,
+					"auditlister" : auditlister,
 				},
 				success : function(msg) {
 					$('#automaticSingle-dialog').dialog('close');
@@ -45,40 +45,47 @@ $(function() {
 		var id = $('#submenu-form-id').val();
 		var auditor = $("input[name='auditor']").val();// 得到选中的审核人名字
 		var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回
-														// null，否则返回记录。
-		$.ajax({
-			type : 'post',
-			url : 'submenu/submenuSave',
-			data : {
-				"name" : auditor,
-				"id" : id
-			},
-		})
-		if (true) {
+		
+		if(id == null){
+			$.messager.show({
+				title : '提示信息',
+				msg : '请选中目标',
+				timeout : 5000,
+				showType : 'slide'
+			});
+		}else{
+			$.ajax({
+				type : 'post',
+				url : 'submenu/submenuSave',
+				data : {
+					"name" : auditor,
+					"id" : id
+				},
+			})
+			if (true) {
 
-			$('#submenu-dialog').dialog('close');
+				$('#submenu-dialog').dialog('close');
+			}
+			$.messager.show({
+				title : '提示信息',
+				msg : '分单成功',
+				timeout : 5000,
+				showType : 'slide'
+			});
+			$('#tt').datagrid('load', datas());
 		}
-		$.messager.show({
-			title : '提示信息',
-			msg : '分单成功',
-			timeout : 5000,
-			showType : 'slide'
-		});
+		// null，否则返回记录。
+	
 
 	});
 
-	// 指定分单员后，再查询一次更新表格
-	$("#submenu-save").click(function() {
-		$('#tt').datagrid('load', datas());
-	});
 
 	$('#submenu').click(function() {
 		var rows = $('#tt').datagrid('getSelections');// 取得所有选中行数据，返回元素记录的数组数据。
 		var row = $('#tt').datagrid('getSelected');// ：取得第一个选中行数据，如果没有选中行，则返回
 													// null，否则返回记录。
-		console.info(row.auditor);
 
-		if (row.auditor==null) {
+		if (row.auditor== '' || row.auditor== null) {
 			if (row) {
 				var length = rows.length;
 				if (length > 1) {
@@ -89,8 +96,14 @@ $(function() {
 						showType : 'slide'
 					});
 				} else {
+					if(row.submenuStatus ==0){
+						$("#submenu-dialog1").show();
+						$("#submenu-dialog2").hide();
+					}else{
+						$("#submenu-dialog2").show();
+						$("#submenu-dialog1").hide();
+					}
 					$('#submenu-dialog').dialog('open');
-
 				}
 			} else {
 				$.messager.show({
@@ -127,6 +140,13 @@ $(function() {
 					showType : 'slide'
 				});
 			} else {
+				if(row.submenuStatus ==0){
+					$("#update-dialog1").show();
+					$("#update-dialog2").hide();
+				}else{
+					$("#update-dialog2").show();
+					$("#update-dialog1").hide();
+				}
 				$('#update-dialog').dialog('open');
 
 			}
@@ -142,7 +162,7 @@ $(function() {
 
 	$('#update-save').click(function() {
 		var id = $('#update-form-id').val();
-		var updateauditor = $("#updateauditor").val();// 得到修改审核人员姓名
+		var updateauditor = $("input[name='updateauditor']").val();// 得到修改审核人员姓名
 		var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回
 														// null，否则返回记录。
 		if(updateauditor== null || updateauditor==""){

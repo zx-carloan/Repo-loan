@@ -124,7 +124,7 @@
 				return retVal;
 			}">签约日</th>
 			
-					<th data-options="field:'row.product.capital',width:20,align:'center',sortable:'true',
+					<th data-options="field:'232',width:20,align:'center',sortable:'true',
 						formatter: function(product,row){return row.product.capital
 						}">合同额</th>
 						
@@ -154,7 +154,7 @@
 			<button id="detail" class="btn btn-primary">详细信息</button>
 			<span style="margin-right: 50px"></span>
 			<button id="cancel" class="btn btn-primary">撤销</button>
-			<span style="margin-right: 50px"></span>
+			<span style="margin-right: 50px" id="loan"></span>
 			<button class="btn btn-primary">提交放款</button>
 		</div>
 	</div>

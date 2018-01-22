@@ -1,6 +1,8 @@
 package com.third.autoloan.ordermag.service;
 
 
+import java.util.Map;
+
 import com.third.autoloan.beans.OrderBean;
 
 /**
@@ -32,12 +34,16 @@ public interface IOrderService {
 	 * 
 	 * @param orderBean 
 	 */
-	public void updateOrderInfo(OrderBean orderBean);
+	public void updateOrderInfo(Map<String,Object> map);
 	/***
 	 * 查询订单信息
 	 * @param id
 	 */
 	public OrderBean getOrderById(long id);
-	
-	public void updateOrderInfo(String name,long id);
+     /**
+      * 修改回退意见
+      * @param map
+      */
+	public void getReturnOpinion(Map<String,Object> map);
+
 }

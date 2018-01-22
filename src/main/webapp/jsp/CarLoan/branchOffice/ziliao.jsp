@@ -176,19 +176,19 @@
 				<tr class="tr1">
 					<td class="td1"><label>身份证</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getID=='false' }">
+					<c:if test="${carLists.getID==1 }">
 					   <label>未交付</label><label>原件</label>
 					</c:if>
-					<c:if test="${carLists.getID=='true' }">
+					<c:if test="${carLists.getID==0 }">
 					    <label>交付</label>
 					</c:if>
 					</td>
 					<td class="td1"><label>车辆购置证/发票</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getAfford==true }">
+					<c:if test="${carLists.getAfford==1 }">
 					<label>交付</label>
 				    </c:if>
-				    <c:if test="${carLists.getAfford==false }">
+				    <c:if test="${carLists.getAfford==0 }">
 					<label>未交付</label>
 				    </c:if>
 					</td>
@@ -196,21 +196,21 @@
 				<tr class="tr1">
 					<td class="td1"><label>强交保险单</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getSali==true }">
+					<c:if test="${carLists.getSali==1 }">
 					   <label>交付</label>
 					</c:if>
-					<c:if test="${carLists.getSali==false }">
+					<c:if test="${carLists.getSali==0 }">
 						<label>未交付</label>
 					</c:if>
 				   </td>
 				   
 					<td class="td1"><label>车辆钥匙</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getKey==false }">
+					<c:if test="${carLists.getKey==1 }">
 					<label>未交付</label><input type="text"
 					   value="${carLists.keyNumber }" name="keyNumber"	readonly="readonly" style="width: 30px;"><label>把</label>
 					</c:if>	
-					<c:if test="${carLists.getKey==true }">
+					<c:if test="${carLists.getKey==0 }">
 		            <label>交付</label>
 					<input type="text" name="keyNumber" value="${carLists.keyNumber }"
 					readonly="readonly"	style="width: 30px;"><label>把</label>
@@ -220,19 +220,19 @@
 				<tr class="tr1">
 					<td class="td1"><label>机动车登记证</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getRegisterLicense==true }">
+					<c:if test="${carLists.getRegisterLicense==1 }">
 				   <label>交付</label>
 					</c:if>
-					<c:if test="${carLists.getRegisterLicense==false }">
+					<c:if test="${carLists.getRegisterLicense==0 }">
 					<label>未交付</label>
 					</c:if>
 					</td>
 					<td class="td1"><label>商业保险单</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getInsurance==false }">
+					<c:if test="${carLists.getInsurance==0 }">
 					<label>未交付</label>
 					</c:if>
-					<c:if test="${carLists.getInsurance==true }">
+					<c:if test="${carLists.getInsurance==1 }">
 					<label>交付</label>
 					</c:if>
 					</td>
@@ -240,19 +240,19 @@
 				<tr class="tr1">
 					<td class="td1"><label>车辆行驶证</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getDrivingLicense==false }">
+					<c:if test="${carLists.getDrivingLicense==0 }">
 				     <label>未交付</label>
 					</c:if>
-					<c:if test="${carLists.getDrivingLicense==true }">
+					<c:if test="${carLists.getDrivingLicense==1 }">
 					<label>交付</label>
 					</c:if>
 					</td>
 					<td class="td1"><label>车辆原始发票</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getOriginalInvoice==false }">
+					<c:if test="${carLists.getOriginalInvoice==0 }">
 				     <label>未交付</label>
 					</c:if>
-					<c:if test="${carLists.getOriginalInvoice==true }">
+					<c:if test="${carLists.getOriginalInvoice==1 }">
 					<label>交付</label>
 					</c:if>
 					</td>
@@ -260,19 +260,19 @@
 				<tr class="tr1">
 					<td class="td1"><label>车辆完税证</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getTaxCertificate==false}">
+					<c:if test="${carLists.getTaxCertificate==0}">
 				     <label>未交付</label>
 					</c:if>
-					<c:if test="${carLists.getTaxCertificate==true }">
+					<c:if test="${carLists.getTaxCertificate==1 }">
 					<label>交付</label>
 					</c:if>
 					</td>
 					<td class="td1"><label>进口车辆证明</label></td>
 					<td class="td1">
-					<c:if test="${carLists.getImportCertificate==true }">
+					<c:if test="${carLists.getImportCertificate==1 }">
 					<label>交付</label>
 					</c:if>
-					<c:if test="${carLists.getImportCertificate==false }">
+					<c:if test="${carLists.getImportCertificate==0 }">
 					<label>未交付</label>
 					</c:if>
 					</td>
@@ -388,21 +388,21 @@
 				<tr class="tr1">
 					<td class="td1"><label>身份证（原件）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件1</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=1.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车贷申请表</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件2</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=2.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>其他附件</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件3</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=3.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -414,49 +414,49 @@
 				<tr class="tr1">
 					<td class="td1"><label>抵押车辆评估表</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件1</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=4.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆照片</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件2</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=5.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆登记证书（原件）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件3</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=6.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>车辆行驶证正副本（原件）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件4</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=7.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>保单（交强险）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件5</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=8.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>保单（商业险）</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件6</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=9.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>其他车辆附件</label></td>
 					<td class="td1"><label style="margin-right: 20px;">附件7</label>
-						<a href="#" download="文件名.txt"><button>下载</button></a></td>
+						<a href="branchCompany/download?filename=10.txt">下载</a></td>
 					<td class="td1"><label>附件大小</label></td>
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
@@ -498,14 +498,22 @@
 			<div id="div1"
 				style="display: none; margin-left: 400px;width: 300px;background-color:gray ;"><br>
 				<label>回退意见</label>
-				<input type="text"><br><br>
+				<input id="advice" type="text"><br><br>
 				<button id="pueding" onclick="pueding()">确定</button>
+			</div>
+	   <div style="height: 80px;">
+			<div 
+				style="display: none; margin-left: 400px;width: 300px;background-color:gray ;"><br>
+				<label>回退意见</label>
+				<input id="advice_1" type="text"><br><br>
+				<button id="pueding" onclick="pueding_1()">确定</button>
 			</div>
 		</div>
 		<button class="btn btn-primary" onclick="Preservation()">保存</button>
 		<button class="btn btn-primary" onclick="Submit()">提交</button>
 		<button class="btn btn-primary" onclick="back()">返回</button>
-		<button class="btn btn-primary" onclick="Fallback()">回退</button>
+		<button class="btn btn-primary" onclick="clientFallback()">客户基本信息回退</button>
+		<button class="btn btn-primary" onclick="vehicleFallback()">车辆基本信息回退</button>
 	</div>
 
 	<script type="text/javascript">
@@ -525,11 +533,43 @@
 		}
 		
 
-		function Fallback() {
+		function clientFallback() {
 			$("#div1").toggle();
 		}
+		
+		function vehicleFallback() {
+			$("#div1").toggle();
+		}
+		
+		
 		function pueding() {
-			$("#div1").hide("slow");
+			/* $("#div1").hide("slow"); */
+			      var advice=$("#advice").val();
+			      var id=$("#id").val();
+		          console.log("advice="+advice);
+					$("#viewDiv").panel({
+						iconCls : "icon-add",
+						collapsible : true,
+						minimizable : true,
+						maximizable : true,
+						closable : true,
+						href : "branchCompany/returnAdviceToClient?advice="+advice+"&id="+id 
+					});
+		}
+		
+		function pueding_1() {
+			/* $("#div1").hide("slow"); */
+			      var advice=$("#advice_1").val();
+			      var id=$("#id").val();
+		          console.log("advice="+advice);
+					$("#viewDiv").panel({
+						iconCls : "icon-add",
+						collapsible : true,
+						minimizable : true,
+						maximizable : true,
+						closable : true,
+						href : "branchCompany/returnAdviceToClient?returnAdviceToVehicle="+advice+"&id="+id
+					});
 		}
 		
 		

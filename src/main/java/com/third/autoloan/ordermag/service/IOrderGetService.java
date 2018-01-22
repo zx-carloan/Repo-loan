@@ -69,12 +69,4 @@ public interface IOrderGetService {
 	 * @return
 	 */
 	public PageBean getProcedurePageBean(Map<String,String> map);
-	
-	
-	/**
-	 *得到 所有分单审核人为空业务列表
-	 * @param map
-	 * @return
-	 */
-	public List<OrderBean> getSubmenuPageToAuditor(int number);
  }
