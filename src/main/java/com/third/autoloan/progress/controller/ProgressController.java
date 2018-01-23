@@ -33,7 +33,7 @@ public class ProgressController {
 	
 	//客户信息信息
 	@Resource(name = "creditGetServiceImpl") 
-	private ICreditGetService creditGetService;
+	private ICreditGetService creditGetService; 
 
 	// 查询全部信息
 	@RequestMapping(value = "/page", method = { RequestMethod.POST })
