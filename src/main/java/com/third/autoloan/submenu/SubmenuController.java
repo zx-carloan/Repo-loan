@@ -66,7 +66,6 @@ public class SubmenuController {
 		}
 		List<ComboboxData>	 datas = new ArrayList<ComboboxData>();
 		List<UserBean> list=submenuSercvice.listAuditorName(submenu.toString());
-		datas.add(new ComboboxData("%","--------请选择--------"));
 		if(list != null) {
 			for (UserBean bean : list) {
 				ComboboxData data = new ComboboxData(bean.getUserName(), bean.getUserName());

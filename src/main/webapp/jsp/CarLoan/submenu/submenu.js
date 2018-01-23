@@ -8,7 +8,7 @@ $(function() {
 				title : '提示信息',
 				msg : '有内容没有填完',
 				timeout : 5000,
-				showType : 'slide'
+				showType : 'slide'  
 			});
 		}else {
 			$.ajax({
@@ -42,24 +42,20 @@ $(function() {
 
 	// 审核指派分单人员
 	$('#submenu-save').click(function() {
-		var id = $('#submenu-form-id').val();
-		var auditor = $("input[name='auditor']").val();// 得到选中的审核人名字
-		var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回
-		
-		if(id == null){
-			$.messager.show({
-				title : '提示信息',
-				msg : '请选中目标',
-				timeout : 5000,
-				showType : 'slide'
-			});
+		var row = $('#tt').datagrid('getSelected');
+		var auditor="";
+		if(row.submenuStatus ==0){
+			auditor = $("input[name='auditor1']").val();
 		}else{
+			auditor = $("input[name='auditor2']").val();
+		}
+		console.log("auditor="+auditor);
 			$.ajax({
 				type : 'post',
 				url : 'submenu/submenuSave',
 				data : {
 					"name" : auditor,
-					"id" : id
+					"id" : row.id
 				},
 			})
 			if (true) {
@@ -73,8 +69,6 @@ $(function() {
 				showType : 'slide'
 			});
 			$('#tt').datagrid('load', datas());
-		}
-		// null，否则返回记录。
 	
 
 	});
@@ -96,12 +90,13 @@ $(function() {
 						showType : 'slide'
 					});
 				} else {
+					console.log(row.submenuStatus)
 					if(row.submenuStatus ==0){
-						$("#submenu-dialog1").show();
-						$("#submenu-dialog2").hide();
+						$("#submenu1").show();
+						$("#submenu2").hide();
 					}else{
-						$("#submenu-dialog2").show();
-						$("#submenu-dialog1").hide();
+						$("#submenu2").show();
+						$("#submenu1").hide();
 					}
 					$('#submenu-dialog').dialog('open');
 				}
@@ -129,7 +124,6 @@ $(function() {
 	$('#update').click(function() {
 		var rows = $('#tt').datagrid('getSelections');
 		var row = $('#tt').datagrid('getSelected');
-
 		if (row) {
 			var length = rows.length;
 			if (length > 1) {
@@ -140,12 +134,13 @@ $(function() {
 					showType : 'slide'
 				});
 			} else {
+				console.log(row.submenuStatus)
 				if(row.submenuStatus ==0){
-					$("#update-dialog1").show();
-					$("#update-dialog2").hide();
+					$("#updateauditor1").show();
+					$("#updateauditor2").hide();
 				}else{
-					$("#update-dialog2").show();
-					$("#update-dialog1").hide();
+					$("#updateauditor2").show();
+					$("#updateauditor1").hide();
 				}
 				$('#update-dialog').dialog('open');
 
@@ -162,9 +157,15 @@ $(function() {
 
 	$('#update-save').click(function() {
 		var id = $('#update-form-id').val();
-		var updateauditor = $("input[name='updateauditor']").val();// 得到修改审核人员姓名
-		var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回
+	
+		var row = $('#tt').datagrid('getSelected');// ：取得第一个选中行数据，如果没有选中行，则返回
 														// null，否则返回记录。
+		var updateauditor="";
+		if(row.submenuStatus ==0){
+			updateauditor = $("input[name='updateauditor']").val();// 得到修改审核人员姓名
+		}else{
+			updateauditor = $("input[name='updateauditor2']").val();
+		}
 		if(updateauditor== null || updateauditor==""){
 			$.messager.show({
 				title : '提示信息',
@@ -178,7 +179,7 @@ $(function() {
 				url : 'submenu/submenuSave',
 				data : {
 					"name" : updateauditor,
-					"id" : id
+					"id" :row.id
 				},
 				success : function(msg) {
 					$('#update-dialog').dialog('close');

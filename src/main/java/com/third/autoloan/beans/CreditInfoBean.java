@@ -225,16 +225,5 @@ public class CreditInfoBean implements Serializable {
 		this.orderBean = orderBean;
 	}
 
-
-
-
-	@Override
-	public String toString() {
-		return "CreditInfoBean [id=" + id + ", hasHouse=" + hasHouse + ", hasHouseLoan=" + hasHouseLoan + ", hasCar="
-				+ hasCar + ", hasCarLoan=" + hasCarLoan + ", maxOverdueMonth=" + maxOverdueMonth + ", maxOverdueNum="
-				+ maxOverdueNum + ", creditUsageRate=" + creditUsageRate + ", enquiriesNumber=" + enquiriesNumber
-				+ ", hasOtheLoan=" + hasOtheLoan + ", hasCreditCard=" + hasCreditCard + ", orderBean=" + orderBean
-				+ "]";
-	}
-
+	
 }
