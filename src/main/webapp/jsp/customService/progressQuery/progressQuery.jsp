@@ -49,7 +49,7 @@
 <body>
 	<div class="easyui-panel" style="width: 100%; text-align: center">
 		<form id="vehicleInfo" method="post">
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">个人基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>申请人姓名</label></td>
@@ -95,7 +95,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">工作信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>工作单位全称</label></td>
@@ -117,7 +117,7 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>进入该单位时间</label></td>
-					<td class="td1">${ClientBean.preTime}</td>
+					<td class="td1"><fmt:formatDate value='${order.client.preTime }' pattern='yyyy-MM-dd' /></td>
 					<td class="td1"><label>所在部门</label></td>
 					<td class="td1">${ClientBean.department}</td>
 				</tr>
@@ -135,7 +135,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产</label></td>
@@ -151,7 +151,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">信用信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>信用卡、贷款最大逾期状况（24个月内）</label></td>
@@ -174,7 +174,7 @@
 			</table>
 
 			<c:forEach items="${contactorBean}" var="item">
-				<table class="table1" border="1">
+				<table class="table table-striped table-bordered" >
 
 
 					<caption class="caption1">家庭联系人信息</caption>
@@ -205,7 +205,7 @@
 
 				</table>
 
-				<table class="table1" border="1">
+				<table class="table table-striped table-bordered" >
 					<caption class="caption1">紧急联系人信息</caption>
 					<tr class="tr1">
 						<td class="td1"><label>姓名</label></td>
@@ -234,7 +234,7 @@
 				</table>
 			</c:forEach>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">借款需求</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款详细用途</label></td>
@@ -268,7 +268,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">签约信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款总额</label></td>
@@ -302,7 +302,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">综合意见</caption>
 				<tr class="tr1">
 					<td class="td1"><label>产品类别 <span style="color: red;">*</span></label></td>
@@ -328,7 +328,7 @@
 
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">基本信息附件表</caption>
 				<tr class="tr1">
 					<td class="td1"><label>身份证（原件）</label></td>
@@ -354,7 +354,7 @@
 			</table>
 
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">车辆信息附件表</caption>
 				<tr class="tr1">
 					<td class="td1"><label>抵押车辆评估表</label></td>
@@ -407,7 +407,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">签约附件列表</caption>
 				<tr class="tr1">
 					<td class="td1"><label>银行卡 <span style="color: red;">*</span></label></td>

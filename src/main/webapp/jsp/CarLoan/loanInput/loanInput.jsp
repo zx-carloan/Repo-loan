@@ -54,8 +54,7 @@
 	</div>
 
 
-	<div id="p" class="easyui-panel" title="车贷录入列表"
-		style="width: 99%; height: 340px;">
+	
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
 			data-options="url:'carInfo/allData/2',rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
@@ -73,7 +72,6 @@
 			<tbody>
 			</tbody>
 		</table>
-	</div>
 
 	<div id="tb">
 		<a id="infoInput" href="javascript:void(0)" class="easyui-linkbutton"

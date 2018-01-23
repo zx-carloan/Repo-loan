@@ -156,7 +156,7 @@
 	<!-- 	<div id="viewDiv"> -->
 	<span>当前位置：车贷进度查询列表</span>
 	<div id="p" class="easyui-panel" title="查询条件"
-		style="width: 100%; font-weight: bold;">
+		style="width: 95%; ">
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post" style="margin-top: -10px;">
 			<span style="margin-right: 20px;" class="span1">合同编号</span><input
@@ -165,7 +165,7 @@
 				style="margin-right: 20px;" class="span1">&nbsp;</span> <span
 				style="margin-right: 20px;" class="span1">借款人</span><input
 				id="loanName" class="easyui-textbox" data-options="prompt:'填写'"
-				style="height: 20px"><br> <span
+				style="height: 20px"><span
 				style="margin-right: 20px;" class="span1">进件时间</span><input
 				id="timeStarting_1" type="text" class="easyui-datebox"
 				required="required"> <span style="margin-right: 20px;"
@@ -176,13 +176,14 @@
 				required="required"> <span style="margin-right: 20px;"
 				class="span1">至</span><input id="getMoneyTime_2" type="text"
 				class="easyui-datebox" required="required"> <span
-				style="margin-right: 20px;" class="span1"></span> <br> <br>
+				style="margin-right: 20px;" class="span1"></span> 
 			<span style="margin-right: 20px;" class="span1">产品类型</span><select
 				id="productType" class="easyui-combobox" name="productType"
 				style="width: 150px"
 				data-options="valueField:'text',textField:'text2',url:'company/productType',method:'get'">
 				<option name="productType" value="%"></option>
-			</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span> <span
+			</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span><br>
+			 <span
 				style="margin-right: 20px;" class="span1">分公司</span><select
 				id="companyName" class="easyui-combobox" name="companyName"
 				style="width: 150px"
@@ -190,18 +191,20 @@
 				<option name="companyName" value="%"></option>
 			</select> <span style="margin-right: 20px;" class="span1">复审日期</span><input
 				id="reviewDate" type="text" class="easyui-datebox"
-				required="required"><br> <span
+				required="required"> <span
 				style="margin-right: 20px;" class="span1">放款时间</span><input
 				id="payDate_1" type="text" class="easyui-datebox"
 				required="required"> <span style="margin-right: 20px;"
 				class="span1">至</span><input id="payDate_2" type="text"
 				class="easyui-datebox" required="required"> <span
 				style="margin-right: 20px;" class="span1">&nbsp;</span><span
-				style="margin-right: 20px;" class="span1">&nbsp;</span><br> <br>
+				style="margin-right: 20px;" class="span1">&nbsp;</span><br>
 			<br>
 			<td><a id="myButton" href="javascript:void(0)"
-				class="easyui-linkbutton" data-options="iconCls:'icon-search'">查&nbsp;&nbsp;询</a>
+				class="easyui-linkbutton" data-options="iconCls:'icon-search'">查&nbsp;&nbsp;询</a>	<span style="margin-right: 50px"></span></td>
 			</td>
+			<td><button id="detail" class="btn btn-primary">信息查看</button>
+		<span style="margin-right: 50px"></span></td>
 		</form>
 
 	</div>
@@ -274,11 +277,6 @@
 
 		</tbody>
 	</table>
-	<div style="text-align: center">
-		<button id="detail" class="btn btn-primary">信息查看</button>
-		<span style="margin-right: 50px"></span>
-
-	</div>
-	</div>
+	
 </body>
 </html>
