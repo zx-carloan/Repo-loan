@@ -91,11 +91,12 @@
 //点击查询执行的方法
 	$("#query").click(function(){
 		
+		var status = $("#status").val();
 		var contratorNum= $("#contractNum").val();
 		var borrower=$("#borrower").val();
 		var company=$("#company").val();
 		
-		var data={ "contractNum":contratorNum , "borrower":borrower,"company":company }
+		var data={ "contractNum":contratorNum , "borrower":borrower,"company":company,"status":status};
 		
 		$('#tt').datagrid('reload',{
 			url: "carInfo/allData", 
@@ -364,3 +365,17 @@
 		});
 	}
 });*/
+	
+	//提交客户信用信息的方法
+	function SubmitCredit() {
+		var serialize = $("#creditInfo").serialize();
+		$.ajax({
+			type : "POST",
+			url : "carInfo/saveCreditInfo",
+			async : true,
+			data : serialize,
+			success : function(msg) {
+				alert("提交成功");
+			}
+		});
+	}

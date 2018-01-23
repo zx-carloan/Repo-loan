@@ -31,7 +31,7 @@ public class CompanymagController {
 	public @ResponseBody List<ComboboxData> listCompanyName() {
 		List<ComboboxData>	 datas = new ArrayList<ComboboxData>();
 		List<CompanyBean> list=companyServiceImpl.listCompanyInfo();
-		datas.add(new ComboboxData("%","--------请输入--------"));
+		datas.add(new ComboboxData("%","请输入"));
 		if(list != null) {
 			for (CompanyBean bean : list) {
 				ComboboxData data = new ComboboxData(bean.getName(), bean.getName());
@@ -45,7 +45,7 @@ public class CompanymagController {
 	public @ResponseBody List<ComboboxData> ListProductTypeName() {
 		List<ComboboxData>	 datas = new ArrayList<ComboboxData>();
 		List<ProductBean> list=productGetService.listProductInfo();
-		datas.add(new ComboboxData("%","--------请输入--------"));
+		datas.add(new ComboboxData("%","请输入"));
 		if(list != null) {
 			for (ProductBean bean : list) {
 				ComboboxData data = new ComboboxData(bean.getName(), bean.getName());

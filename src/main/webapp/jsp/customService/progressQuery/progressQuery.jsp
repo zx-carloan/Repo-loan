@@ -139,7 +139,7 @@
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产</label></td>
-					<td class="td1">${creditInfoBean.companyType == 1 ?'有房产' : '无房产'}</td>
+					<td class="td1">${creditInfoBean.hasHouse == 1 ?'有房产' : '无房产'}</td>
 					<td class="td1">有无房贷</td>
 					<td class="td1">${creditInfoBean.hasHouseLoan == 1 ?'有房贷' : '无房贷'}</td>
 				</tr>
@@ -155,141 +155,116 @@
 				<caption class="caption1">信用信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>信用卡、贷款最大逾期状况（24个月内）</label></td>
-<<<<<<< HEAD
 					<td class="td1">${creditInfoBean.maxOverdueMonth}</td>
-=======
-					<td class="td1">${ClientBean.maxOverdueMonth}</td>
->>>>>>> branch 'feature' of https://github.com/zx-carloan/Repo-loan.git
 					<td class="td1">信用卡、贷款累计逾期状况（24个月内）</td>
-<<<<<<< HEAD
 					<td class="td1">${creditInfoBean.maxOverdueNum}</td>
-=======
-					<td class="td1">${ClientBean.maxOverdueNum}</td>
->>>>>>> branch 'feature' of https://github.com/zx-carloan/Repo-loan.git
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>信用卡额度使用率</label></td>
-<<<<<<< HEAD
 					<td class="td1">${creditInfoBean.creditUsageRate}</td>
-=======
-					<td class="td1">${ClientBean.creditUsageRate}</td>
->>>>>>> branch 'feature' of https://github.com/zx-carloan/Repo-loan.git
 					<td class="td1">信用卡、贷款审批查询次数（6个月内）</td>
-<<<<<<< HEAD
 					<td class="td1">${creditInfoBean.enquiriesNumber}</td>
-=======
-					<td class="td1">${ClientBean.enquiriesNumber}</td>
->>>>>>> branch 'feature' of https://github.com/zx-carloan/Repo-loan.git
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>有无其他信用贷款</label></td>
-<<<<<<< HEAD
-					<td class="td1">${creditInfoBean.hasOtheLoan == 1 ?'有其它贷款' : '无其它贷款'}/td>
-=======
-					<td class="td1">${creditInfoBean.hasOtheLoan == 1 ?'有贷款' : '无贷款'}/td>
->>>>>>> branch 'feature' of https://github.com/zx-carloan/Repo-loan.git
+					<td class="td1">${creditInfoBean.hasOtheLoan == 1 ?'有其它贷款' : '无其它贷款'}</td>
 					<td class="td1">有无信用卡</td>
 					<td class="td1">${creditInfoBean.hasCreditCard == 1 ?'有信用卡' : '无信用卡'}</td>
 				</tr>
 			</table>
 
+			<c:forEach items="${contactorBean}" var="item">
+				<table class="table1" border="1">
 
-			<table class="table1" border="1">
-				<caption class="caption1">家庭联系人信息</caption>
-				<tr class="tr1">
-					<td class="td1"><label>姓名</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td class="td1">&nbsp;</td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>联系人类型</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">和本人关系</td>
-					<td class="td1"><select id="relation" class="select1"
-						name="relations">
-							<option value="0">亲属</option>
-					</select></td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>单位名称</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>家庭地址/单位地址</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td class="td1">&nbsp;</td>
-				</tr>
-			</table>
 
-			<table class="table1" border="1">
-				<caption class="caption1">紧急联系人信息</caption>
-				<tr class="tr1">
-					<td class="td1"><label>姓名</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td class="td1">&nbsp;</td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>联系人类型</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">和本人关系</td>
-					<td class="td1"><select id="relation" class="select1"
-						name="relations">
-							<option value="0">亲属</option>
-					</select></td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>单位名称</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td class="td1">&nbsp;</td>
-				</tr>
-				<tr class="tr1">
-					<td class="td1"><label>家庭地址/单位地址</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1">&nbsp;</td>
-					<td class="td1">&nbsp;</td>
-				</tr>
-			</table>
+					<caption class="caption1">家庭联系人信息</caption>
+					<tr class="tr1">
+						<td class="td1"><label>姓名</label></td>
+						<td class="td1">${item.name}</td>
+						<td class="td1">&nbsp;</td>
+						<td class="td1">&nbsp;</td>
+					</tr>
+					<tr class="tr1">
+						<td class="td1"><label>联系人类型</label></td>
+						<td class="td1">${item.type == 1 ?'朋友' : '亲戚'}</td>
+						<td class="td1">和本人关系</td>
+						<td class="td1">${item.relation == 1 ?'父子' : '母子'}</td>
+					</tr>
+					<tr class="tr1">
+						<td class="td1"><label>单位名称</label></td>
+						<td class="td1">${item.company}</td>
+						<td class="td1">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr class="tr1">
+						<td class="td1"><label>家庭地址/单位地址</label></td>
+						<td class="td1">${item.address}</td>
+						<td class="td1">&nbsp;</td>
+						<td class="td1">&nbsp;</td>
+					</tr>
+
+				</table>
+
+				<table class="table1" border="1">
+					<caption class="caption1">紧急联系人信息</caption>
+					<tr class="tr1">
+						<td class="td1"><label>姓名</label></td>
+						<td class="td1">${item.name}</td>
+						<td class="td1">&nbsp;</td>
+						<td class="td1">&nbsp;</td>
+					</tr>
+					<tr class="tr1">
+						<td class="td1"><label>联系人类型</label></td>
+						<td class="td1">${item.type == 1 ?'朋友' : '亲戚'}</td>
+						<td class="td1">和本人关系</td>
+						<td class="td1">${item.relation == 1 ?'父子' : '母子'}</td>
+					</tr>
+					<tr class="tr1">
+						<td class="td1"><label>单位名称</label></td>
+						<td class="td1">${item.company}</td>
+						<td class="td1">&nbsp;</td>
+						<td class="td1">&nbsp;</td>
+					</tr>
+					<tr class="tr1">
+						<td class="td1"><label>家庭地址/单位地址</label></td>
+						<td class="td1">${item.address}</td>
+						<td class="td1">&nbsp;</td>
+						<td class="td1">&nbsp;</td>
+					</tr>
+				</table>
+			</c:forEach>
 
 			<table class="table1" border="1">
 				<caption class="caption1">借款需求</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款详细用途</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.loanPurpose}</td>
 					<td class="td1"><label>月收入</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.salary}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>可以承受的月还款额</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.maxAffordable}</td>
 					<td class="td1">希望申请最长还款期限</td>
-					<td class="td1"><select id="relation" class="select1"
-						name="relations">
-							<option value="0">亲属</option>
-					</select></td>
+					<td class="td1">${ClientBean.maxPaybackTime}</td>
 				</tr>
 				<tr class="tr1">
-					<td class="td1"><label>希望申请借款额度</label></td>
-					<td class="td1"><input type="text"></td>
-					<td class="td1"><label>希望申请借款额度</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><label>希望申请最低借款额度</label></td>
+					<td class="td1">${ClientBean.minLoan}</td>
+					<td class="td1"><label>希望申请最高借款额度</label></td>
+					<td class="td1">${ClientBean.maxLoan}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>您从何处得知正合普惠</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.sourceOfInfo}</td>
 					<td class="td1"><label>申请日期</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.applyDate}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>业务员姓名</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.saler}</td>
 					<td class="td1"><label>车贷专员</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.valuer}</td>
 				</tr>
 			</table>
 
@@ -297,36 +272,33 @@
 				<caption class="caption1">签约信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>借款总额</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.amount}</td>
 					<td class="td1"><label>咨询服务费</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">20</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>月还款额</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.maxAffordable}</td>
 					<td class="td1">贷款期数</td>
-					<td class="td1"><select id="period" class="select1"
-						name="periods">
-							<option value="0">亲属</option>
-					</select></td>
+					<td class="td1">${productBean.periods}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>产品名称</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${productBean.name}</td>
 					<td class="td1"><label>审批金额</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.amount}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>约定放贷日</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.payDate}</td>
 					<td class="td1"><label>放款/还款银行</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.bank}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>放款/还款账号</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.bankAccount}</td>
 					<td class="td1"><label>放款/还款开户银行(支行)</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.bankBranch}</td>
 				</tr>
 			</table>
 
@@ -334,31 +306,27 @@
 				<caption class="caption1">综合意见</caption>
 				<tr class="tr1">
 					<td class="td1"><label>产品类别 <span style="color: red;">*</span></label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${contractBean.bankBranch}</td>
 					<td class="td1"><label>批准期数<span style="color: red;">*</span></label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${opinionBean.loanTime}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>结论 <span style="color: red;">*</span></label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${opinionBean.conclusion}</td>
 					<td class="td1">审批额度 <span style="color: red;">*</span></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${opinionBean.loanAmount}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>分公司信审意见</label></td>
-					<td class="td1" colspan="3"><textarea row="3" cols="60">
-               </textarea></td>
+					<td class="td1" colspan="3">${opinionBean.branchOpinion}</td>
 
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>总公司信审意见</label></td>
-					<td class="td1" colspan="3"><textarea row="3" cols="60">
-               
-               </textarea></td>
+					<td class="td1" colspan="3">${opinionBean.HQOpinion}</td>
 				</tr>
 
 			</table>
-
 
 			<table class="table1" border="1">
 				<caption class="caption1">基本信息附件表</caption>

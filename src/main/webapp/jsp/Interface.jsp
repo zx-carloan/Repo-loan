@@ -16,54 +16,19 @@
 <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript"
 	src="static/easyui/locale/easyui-lang-zh_CN.js"></script>
-<!-- vehicleInfo.jsp样式 -->
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="static/js/bootstrap.min.js"></script>
+
 <style type="text/css">
-#bg {
-	width: 400px;
-	margin-top: -12px;
-	text-align: center;
-}
-
-#bg td {
-	width: 150px;
-	height: 25px;
-}
-
-#btn {
-	width: 140px;
-}
-
-.table1 {cellspacing ="0";
-	background-color: #dfe2e2;
-	margin-bottom: 10px;
-}
-
-.tr1 {
-	width: 100%;
-	height: 30px;
-}
-
-.td1 {
-	width: 300px;
-	height: 30px;
-}
-
-.caption1 {
-	background-color: #cedcde;
-	line-height: 30px;
-}
-
-.select1 {
-	width: 146px;
-}
 </style>
 </head>
 <body style="height: 100%;">
+	<div style="margin: 20px"></div>
 	<input type="hidden" id="infomation" value=""></input>
-	<div style="margin: 20px 0;"></div>
-	<div class="easyui-layout" style="width: 100%; height: 600px;">
-		<div data-options="region:'north'"
-			style="height: 70px; overflow: 'hidden'">
+	
+		<div style="height: 110px; overflow: 'hidden'">
 			<img alt="图片加载中" src="static/images/logo.jpg"
 				style="width: 100px; float: left;">
 			<h1 style="float: left;">科技有限公司</h1>
@@ -101,41 +66,63 @@
 			<a style="float: right; margin-top: 45px; text-decoration: none;"
 				href="#">退出</a>
 		</div>
-		<div data-options="region:'south',split:true" style="height: 50px;"></div>
-		<div data-options="region:'west',split:true" title="菜单栏"
-			style="width: 170px; background-image: url('static/images/123.jpg');">
-			<div class="easyui-accordion" data-options="fit:false,border:false">
-				<div title="客户信息管理" style="padding: 10px;">
-					<a id="btn" class="easyui-linkbutton" onclick="IDinfoReadnig('jsp/customService/informationEntry/IDinfoReadnig.jsp')">身份证信息读取</a><br>
-					<br> <a id="btn" class="easyui-linkbutton"
-						onclick="progress()">车贷申请进度查询</a>
-				</div>
-				<div title="信审业务管理" style="padding: 10px;">
-					<a id="btn" class="easyui-linkbutton" onClick="TheLetter();">总公司信审</a><br>
-					<br> <a id="btn" class="easyui-linkbutton"
-						onclick="contractReview()">车贷签约复核</a><br> <br> <a
-						id="btn" class="easyui-linkbutton" onClick="loan()">车贷放款</a><br>
-					<br>
-				</div>
-				<div title="车贷管理" style="padding: 10px">
-					<a id="btn" class="easyui-linkbutton" onclick="loanInput()">车贷录入</a><br>
-					<br> <a id="btn" class="easyui-linkbutton"
-						onclick="chuchaxun()">分公司信审</a><br> <br> <a id="btn"
-						class="easyui-linkbutton" onclick="sign()">车贷签约</a><br> <br>
-					<a id="btn" class="easyui-linkbutton" onclick="submenu()">审核分单</a><br>
-					<br> <a id="btn" class="easyui-linkbutton"
-						onclick="CustomerInformation()">客户身份证信息</a><br>
-
-				</div>
-			</div>
-
-		</div>
-		<div data-options="region:'center',title:'信息区域',iconCls:'icon-ok'">
+		
+		
+<div  title="菜单栏" style="width: 15%;float: left; height: 100%">
+	<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#">车贷什么鬼哦</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				 <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
+					客户信息管理 <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+				</a>
+			</li>
+			<li>
+			 <ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+					<li><a role="menuitem"  style="cursor:pointer"  id="btn" onclick="IDinfoReadnig('jsp/customService/informationEntry/IDinfoReadnig.jsp')">身份证信息读取</a></li>
+					<li><a style="cursor:pointer" id="btn"  onclick="CustomerInformation()">客户身份证信息</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				 <a href="#systemSetting2" class="nav-header collapsed" data-toggle="collapse">
+					信审业务管理 <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+				</a>
+					 <ul id="systemSetting2" class="nav nav-list collapse secondmenu" style="height: 0px;">
+					<li><a style="cursor:pointer" id="btn" onClick="TheLetter();">总公司信审</a></li>
+					<li><a style="cursor:pointer" id="btn"  onclick="contractReview()">车贷签约复核</a></li>
+					<li><a style="cursor:pointer" id="btn" onClick="loan()">车贷放款</a></li>
+				</ul>
+			</li>
+			
+			
+			<li class="dropdown">
+					 <a href="#systemSetting3" class="nav-header collapsed" data-toggle="collapse">
+					  车贷业务管理<span class="pull-right glyphicon glyphicon-chevron-toggle"></span>	</a>
+			 <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height: 0px;">
+					<li><a style="cursor:pointer" id="btn" onclick="loanInput()">车贷录入</a></li>
+					<li><a style="cursor:pointer" id="btn" onclick="chuchaxun()">分公司信审</a></li>
+					<li><a style="cursor:pointer" id="btn" onclick="progress()">车贷申请进度查询</a></li>
+					<li><a  style="cursor:pointer" id="btn" onclick="sign()">车贷签约</a></li>
+					<li><a style="cursor:pointer"  id="btn" onclick="submenu()">审核分单</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</div>
+</nav>
+</div>
+	
+		<div style="float: left;width: 85%">
 			<div id="viewDiv" style="width: 100%;">
 				<img alt="" src="static/images/111.jpg">
 			</div>
 		</div>
-	</div>
+	
 	<script type="text/javascript" src="jsp/TrustManagement/interface.js">
 	
 	</script>

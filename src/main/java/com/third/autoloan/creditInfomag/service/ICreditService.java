@@ -18,4 +18,12 @@ public interface ICreditService {
 		 * @param id 所对订单的id
 		 */
 		public void updeteCreditInfo(CreditInfoBean creditInfo,long id);
+		
+		public void addCreditInfoByMybatis(CreditInfoBean creditInfo);
+		
+		/***
+		 * 查找最新的一条creditInfoBean的Id
+		 * @return
+		 */
+		public long findLatestCreditInfoId();
 }

@@ -23,4 +23,6 @@ public interface IPutLoanGetService {
 	 */
 	public PageBean getLoanPage(Map<String,String> map);
 	
+	public void UpdateLoanStatus(Long id, String loanStatus);
+	
  }

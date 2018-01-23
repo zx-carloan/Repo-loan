@@ -3,6 +3,9 @@ package com.third.autoloan.putloanmag.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+
 import com.third.autoloan.beans.OrderBean;
 
 
@@ -38,4 +41,12 @@ public interface PutLoanMapper {
 	 * @return
 	 */
 	public OrderBean getOrderInfoBuId(long id);
+	
+	/**
+	 * 修改借贷状态
+	 * @param id
+	 * @param loanStatus
+	 */
+	@Update("update t_order set loanStatus=${loanStatus} where id=${id}")
+	public void UpdateLoanStatus(@Param("id") Long id, @Param("loanStatus") String loanStatus); 
 }

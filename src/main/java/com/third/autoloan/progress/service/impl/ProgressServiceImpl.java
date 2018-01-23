@@ -5,10 +5,12 @@ import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
+import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.identitymag.service.IidentityService;
 import com.third.autoloan.progress.dao.IProgressDao;
+import com.third.autoloan.progress.repository.ClientBeanRepository;
 import com.third.autoloan.progress.repository.ProgressRepository;
 import com.third.autoloan.progress.service.IProgressService;
 
@@ -17,6 +19,9 @@ public class ProgressServiceImpl implements IProgressService{
 
 	@Resource
 	private ProgressRepository progressRepository;
+	
+	@Resource
+	private ClientBeanRepository clientBeanRepository;
 	
 	@Resource
 	private IidentityService identityServiceImpl;
@@ -33,6 +38,8 @@ public class ProgressServiceImpl implements IProgressService{
 		progressRepository.delete(id);
 	}
 
+	
+	
 	@Override
 	public void saveOrederInfo(OrderBean orderBean, long id) {
 		// TODO Auto-generated method stub
@@ -64,5 +71,11 @@ public class ProgressServiceImpl implements IProgressService{
 	public void updateOrderInfo(String name, long id) {
 		progressDao.updateOrderInfo(name, id);
 		
+	}
+
+	@Override
+	public ClientBean getClientInfoByOrderId(long id) {
+		// TODO Auto-generated method stub
+		return clientBeanRepository.getOne(id);
 	}
 }

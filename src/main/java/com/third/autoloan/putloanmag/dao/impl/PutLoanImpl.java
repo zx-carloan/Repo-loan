@@ -32,4 +32,10 @@ public class PutLoanImpl implements IPutLoanDao{
 		// TODO Auto-generated method stub
 		return putLoanMapper.getOrderInfoBuId(id);
 	}
+
+	@Override
+	public void UpdateLoanStatus(Long id, String loanStatus) {
+		putLoanMapper.UpdateLoanStatus(id, loanStatus);
+		
+	}
 }

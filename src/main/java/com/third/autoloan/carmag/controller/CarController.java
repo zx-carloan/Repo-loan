@@ -3,6 +3,7 @@ package com.third.autoloan.carmag.controller;
 import java.io.File;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +29,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.third.autoloan.beans.CarInfoBean;
+import com.third.autoloan.beans.CreditInfoBean;
 import com.third.autoloan.beans.ItemBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.carmag.service.ICarGetService;
 import com.third.autoloan.carmag.service.ICarService;
+import com.third.autoloan.creditInfomag.service.ICreditService;
+import com.third.autoloan.ordermag.mapper.OrderMapper;
 import com.third.autoloan.ordermag.service.IOrderGetService;
 import com.third.autoloan.ordermag.service.IOrderService;
 import com.third.autoloan.util.DateUtils;
@@ -57,6 +61,10 @@ public class CarController {
 	private IOrderGetService orderGetServiceImpl;
 	@Resource
 	private IOrderService orderServiceImpl;
+	@Resource
+	private ICreditService creditServiceImpl;
+	@Resource
+	private OrderMapper orderMapper;
 	//通过页面传来的id查询订单信息
 	@RequestMapping(value="/{id}",method= {RequestMethod.GET})
 	public ModelAndView getOrderById(@PathVariable("id")Long id) {
@@ -68,7 +76,7 @@ public class CarController {
 		//List<CarInfoBean> carList = order.getCarList();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("order", order);
-		mv.addObject("userPower", "估价师");//将评估师角色存入mv对象中
+		mv.addObject("userPower", "");//将评估师角色存入mv对象中
 		Map<String,Object> map = mv.getModel();
 		String userPower = (String) map.get("userPower");
 		System.out.println("userPower是"+userPower);
@@ -91,12 +99,14 @@ public class CarController {
 			mv.setViewName("jsp/CarLoan/loanInput/valuer");
 		}else if(userPower.equals("估价师")) {
 			mv.setViewName("jsp/CarLoan/loanInput/priced");
+		}else {
+			mv.setViewName("jsp/CarLoan/loanInput/credit");
 		}
 		return mv;
 	}
 	
-	@RequestMapping(value="/allData")
-	public @ResponseBody PageBean getUsersByQueryParams(@RequestParam Map<String,String> map) {
+	@RequestMapping(value="/allData/{status}")
+	public @ResponseBody PageBean getUsersByQueryParams(@RequestParam Map<String,String> map,@PathVariable("status")String status) {
 		//System.out.println("map是"+map);
 		/*Map<String,String> map1 = new HashMap<String,String>();
 		map1.put("pageNumber", map.get("page"));
@@ -105,6 +115,11 @@ public class CarController {
 		map.put("contractNumber", map.get("queryParams[contractNum]"));
 		map.put("loanName",map.get("queryParams[borrower]"));
 		map.put("companyName",map.get("queryParams[company]"));
+		if(map.get("queryParams[status]")==null) {
+			map.put("status", status);
+		}else {
+			map.put("status",map.get("queryParams[status]"));
+		}
 		System.out.println(map);
 		PageBean pageBean = orderGetServiceImpl.getOrderPageByMap(map);
 		//System.out.println(pageBean.getRows().get(0));
@@ -378,6 +393,34 @@ public class CarController {
     public ModelAndView submitRollBackOpinion(@RequestParam Map<String,Object> map) {
     	orderServiceImpl.getReturnOpinion(map);
     	System.out.println("进入控制器"+map);
+    	return null;
+    }
+    
+    //提交客户信用信息
+    @RequestMapping(value="/saveCreditInfo")
+	public ModelAndView addCreditInfo(@RequestParam Map<String,String> map) {
+    	OrderBean order = orderServiceImpl.getOrderById(Long.parseLong((map.get("orderId"))));
+    	CreditInfoBean c = new CreditInfoBean();
+    	c.setCreditUsageRate(Integer.parseInt(map.get("creditUsageRate")));
+    	c.setEnquiriesNumber(Integer.parseInt(map.get("enquiriesNumber")));
+    	c.setHasCar(Integer.parseInt(map.get("hasCar")));
+    	c.setHasCarLoan(Integer.parseInt(map.get("hasCarLoan")));
+    	c.setHasCreditCard(Integer.parseInt(map.get("hasCreditCard")));
+    	c.setHasHouse(Integer.parseInt(map.get("hasHouse")));
+    	c.setHasHouseLoan(Integer.parseInt(map.get("hasHouseLoan")));
+    	c.setHasOtheLoan(Integer.parseInt(map.get("hasOtheLoan")));
+    	c.setMaxOverdueMonth(Integer.parseInt(map.get("maxOverdueMonth")));
+    	c.setMaxOverdueNum(Integer.parseInt(map.get("maxOverdueNum")));
+    	System.out.println("orderId是"+map.get("orderId"));
+    	System.out.println(c);
+    	//c.setOrderBean(order);
+    	creditServiceImpl.addCreditInfoByMybatis(c);
+    	Map<String,Object> updateMapper = new HashMap<String,Object>();
+    	updateMapper.put("creditId", creditServiceImpl.findLatestCreditInfoId());
+    	updateMapper.put("id", Long.parseLong((map.get("orderId"))));
+    	orderMapper.updateCreditForeignKey(updateMapper);
+    	//order.setCreditInfo(creditInfo);
+    	
     	return null;
     }
 }

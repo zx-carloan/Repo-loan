@@ -30,66 +30,63 @@
 </style>
 </head>
 <body>
-	<div id="viewDiv">
-		<span>当前位置：信审业务管理>车贷放款列表</span>
-		<div id="p" class="easyui-panel" title="查询条件"
-			style="width: 100%; height: 100px; font-weight: bold;">
-			<span id="span1">&nbsp;</span>
-			<form id="checkup" method="post" style="margin-top: -10px;">
-				<span style="margin-right: 20px;" class="span1"> 合同编号</span><input
-					id="contractNumber" class="easyui-textbox"
-					data-options="prompt:'填写'" style="height: 20px"><span
-					style="margin-right: 20px;" class="span1">&nbsp;</span> 
-					
-					<span style="margin-right: 20px;" class="span1"> 借款人</span>
-					<input id="loanName" class="easyui-textbox"
-					data-options="prompt:'填写'" style="height: 20px"><span
-					style="margin-right: 20px;" class="span1">&nbsp;</span> 
-					<span style="margin-right: 20px;" class="span1">身份证号</span>
-					<input
-					id="identity" class="easyui-textbox"
-					data-options="prompt:'填写'" style="height: 20px"><br> <br>
-					
-				<span style="margin-right: 20px;" class="span1"> 产品类型</span>
-				<select id="productName" class="easyui-combobox"
+		<div id="p" class="easyui-panel" title="当前位置：信审业务管理>车贷放款列表" style="width: 100%; ">
+		<div style="margin: 20px 0;"></div>
+			<input type="hidden"  name="status" value="8">
+			<table>
+			
+				<tr>
+					<td>合同编号：</td>
+					<td><input id="contractNumber" class="easyui-textbox"
+						data-options="prompt:'填写'"></td>
+			
+					<td>借款人：</td>
+					<td><input id="loanName" class="easyui-textbox"
+						data-options="prompt:'填写'"></td>
+						
+						<td>身份证号：</td>
+						<td><input id="identity" class="easyui-textbox"
+						data-options="prompt:'填写'"></td>
+					<tr>	
+						<td>产品类型：</td>
+					<td><select id="productName" class="easyui-combobox"
 						name="productName" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'company/productType',method:'get'">
 						<option name="productName" value="%"></option>
 					</select>
-					
-					
-					<span
-					style="margin-right: 20px;" class="span1">&nbsp;</span>
-					
-					 <span
-					style="margin-right: 20px;" class="span1">
-					分公司</span><select id="companyName" class="easyui-combobox"
+					</td>
+			
+						<td>分公司：</td>
+					<td><select id="companyName" class="easyui-combobox"
 						name="companyName" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
 						<option name="companyName" value="%"></option>
 					</select>
-					
-					<span style="margin-right: 20px;"
-					class="span1">&nbsp;</span> <span style="margin-right: 20px;"
-					class="span1">
-					放款状态</span><select id="loanStatus"
-					class="easyui-combobox" name="status" placeholder="-申请放款-"
+				</td>
+						
+					<td>	放款状态：</td>
+					<td><select id="loanStatus"
+					class="easyui-combobox" name="status" 
 					style="width: 150px; height: 22px;">
 					<option value="0">待放款</option>
 					<option value="1">放款中</option>
 					<option value="2">已放款</option>
 					<option value="3">提现失败</option>
-				</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span><span
-					style="margin-right: 20px;" class="span1">&nbsp;</span>
-				<button type="button"  data-loading-text="Loading..."  id="query"
-					class="btn btn-primary" autocomplete="off"
-					style="margin-top: -20px;">查&nbsp;&nbsp;询</button>
-			</form>
+				</select>
+				</td>
+				
+		
 
-		</div>
+			<td><a id="query" href="javascript:void(0)"
+						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a><span style="margin-right: 50px">
+					</td>
+			<td>	<button id="detail" class="btn btn-primary">详细信息</button><span style="margin-right: 50px"></td>
+			<td><button class="btn btn-primary"  id="loan">提交放款</button><span style="margin-right: 50px"></td>
+		</tr>
+		</table>
+</div>
 
-		<table class="easyui-datagrid" style="width: 100%; height: 200px"  id="tt"
-			data-options=" url:'putLoans/page',method:'post',rownumbers:true,fitColumns:true,pagination:true,singleSelect:true">
+		<table id="tt" class="easyui-datagrid" style="width: 100%;height: 400px;" data-options=" url:'putLoans/page',method:'post',rownumbers:true,fitColumns:true,pagination:true,singleSelect:true">
 			<thead>
 				<tr>
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
@@ -150,14 +147,7 @@
 				</tr>
 			</thead>
 		</table>
-		<div style="text-align: center">
-			<button id="detail" class="btn btn-primary">详细信息</button>
-			<span style="margin-right: 50px"></span>
-			<!--  <button id="cancel" class="btn btn-primary">撤销</button>-->
-			<span style="margin-right: 50px" id="loan"></span>
-			<button class="btn btn-primary">提交放款</button>
-		</div>
-	</div>
+	
 	<script type="text/javascript" src="jsp/TrustManagement/loan/loanMoney.js"> </script>
 </body>
 </html>

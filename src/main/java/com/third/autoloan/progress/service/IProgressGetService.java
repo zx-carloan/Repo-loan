@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 
@@ -77,4 +78,18 @@ public interface IProgressGetService {
 	 * @return
 	 */
 	public List<OrderBean> getSubmenuPageToAuditor(int number);
+	
+	/***
+	 * 得到联系人信息
+	 * @param id
+	 */
+	public ClientBean getContactor(long id);
+	/***
+	 * 得到贷款历史信息
+	 * @param id
+	 * @return
+	 */
+	public IdentityBean getLoanHistory(long id);
+	
+	
  }

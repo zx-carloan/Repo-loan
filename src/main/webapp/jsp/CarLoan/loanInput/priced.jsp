@@ -43,7 +43,7 @@
 					<td class="td1"><label>车架号</label></td>
 					<td class="td1">${car.vin }</td>
 					<td class="td1"><label>车辆评估价格</label></td>
-					<td class="td1"><input type="text" name="valuePrice"></td>
+					<td class="td1"><input type="text" id="valuePrice" name="valuePrice"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>目前已行驶里程</label></td>
@@ -287,7 +287,7 @@
 			</table>
 		</form>
 		<button class="btn btn-primary" onclick="Preservation()">保存</button>
-		<button class="btn btn-primary" onclick="SubmitPrice()">提交</button>
+		<button class="btn btn-primary" id="SubmitPrice" onclick="SubmitPrice()">提交</button>
 		<button class="btn btn-primary" onclick="back()">返回</button>
 		<button class="btn btn-primary" onclick="Fallback()">回退</button>
 		<div id="rollbackBlock" style="border: 1px;width: 200px;height: 100px;background-color:aqua;display: none;">
@@ -303,5 +303,33 @@
 		
 	</div>
 <script type="text/javascript" src="static/js/loanInput.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var flag = null;
+		var reg1 = new RegExp("^[1-9][0-9]7$");
+		function check1(){
+			$("#valuePrice").mouseout(function(){
+				$("#SubmitPrice").attr("disabled",false);
+			});
+			if($("#valuePrice").val()==null||!reg1.test($("#valuePrice").val())){
+				return false;
+			}else{
+				return true;
+			}
+		}
+		
+		$("#SubmitPrice").mouseover(function(){
+			flag = check1();
+			console.log(flag);
+			if(!flag){
+				alert("请按照要求输入");
+				$("#SubmitPrice").attr("disabled",true);
+				$("#valuePrice").text("");
+				flag=true;
+			}
+		}); 
+	});
+</script>
 </body>
 </html>

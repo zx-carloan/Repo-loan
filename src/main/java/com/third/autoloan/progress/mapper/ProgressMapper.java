@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 
 public interface ProgressMapper {
@@ -122,4 +123,16 @@ public interface ProgressMapper {
 	 * @param orderBean 
 	 */
 	public void updateOrderInfo(@Param("name")String name,@Param("id")long id);
+	
+	/***
+	 * 得到联系人信息
+	 * @param id
+	 */
+	public ClientBean getContactor(long id);
+	/***
+	 * 得到贷款历史信息
+	 * @param id
+	 * @return
+	 */
+	public IdentityBean getLoanHistory(long id);
 }

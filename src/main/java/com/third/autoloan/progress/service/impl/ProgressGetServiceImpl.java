@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.ordermag.dao.IOrderDao;
@@ -58,7 +59,7 @@ public class ProgressGetServiceImpl implements IProgressGetService {
 
 	@Override
 	public OrderBean getOrderInfoById(long id) {
-		return progressRepository.getOne(id);
+		return progressDaoImpl.getOrderInfo(id);
 	}
 
 	@Override
@@ -110,10 +111,7 @@ public class ProgressGetServiceImpl implements IProgressGetService {
 		if (!CTools.checkStringNull(map.get("identity")))
 			map.put("identity", null);
 
-		System.out.println(map.get("submenuStatus"));
-
 		List<OrderBean> list = progressDaoImpl.getSubmenuPage(map);
-		System.out.println("底层" + list);
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);
 		pageBean.setTotal(total);
@@ -123,14 +121,8 @@ public class ProgressGetServiceImpl implements IProgressGetService {
 
 	@Override
 	public PageBean getProcedurePageBean(Map<String, String> map) {
-
-		int pageNumber = Integer.parseInt(map.get("page"));
-		int pageSize = Integer.parseInt(map.get("rows"));
-		int total = progressDaoImpl.getSumProcedure(map);
-		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
-		map.put("index", pageBean.getIndex() + "");
-		List<OrderBean> list = progressDaoImpl.getProcedurePageBean(map);
-
+		
+		
 		if (!CTools.checkStringNull(map.get("contractNumber")))
 			map.put("contractNumber", null);
 		if (!CTools.checkStringNull(map.get("loanName")))
@@ -157,15 +149,20 @@ public class ProgressGetServiceImpl implements IProgressGetService {
 		if (map.get("payDate_1")=="") {
 			
 			map.put("payDate_1", null);
-			System.out.println(map.get("payDate_1")+"11111");
 		}
 		
 		if (map.get("payDate_2")=="") {
 			
 			map.put("payDate_2", null);
-			System.out.println(map.get("payDate_2")+"111W");
 		}
-		
+
+		int pageNumber = Integer.parseInt(map.get("page"));
+		int pageSize = Integer.parseInt(map.get("rows"));
+		int total = progressDaoImpl.getSumProcedure(map);
+		PageBean pageBean = new PageBean(pageNumber, pageSize, map.get("sort"), map.get("order"));
+		map.put("index", pageBean.getIndex() + "");
+		List<OrderBean> list = progressDaoImpl.getProcedurePageBean(map);
+
 		pageBean.setRows(list);
 		pageBean.setPageSize(pageSize);
 		pageBean.setTotal(total);
@@ -177,5 +174,17 @@ public class ProgressGetServiceImpl implements IProgressGetService {
 	public List<OrderBean> getSubmenuPageToAuditor(int number) {
 		// TODO Auto-generated method stub
 		return progressDaoImpl.getSubmenuPageToAuditor(number);
+	}
+
+	@Override
+	public ClientBean getContactor(long id) {
+		// TODO Auto-generated method stub
+		return progressDaoImpl.getContactor(id);
+	}
+
+	@Override
+	public IdentityBean getLoanHistory(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

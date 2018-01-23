@@ -1,6 +1,7 @@
 package com.third.autoloan.progress.service;
 
 
+import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 
 /**
@@ -40,4 +41,13 @@ public interface IProgressService {
 	public OrderBean getOrderById(long id);
 	
 	public void updateOrderInfo(String name,long id);
+	
+	/**
+	 * JAP查询
+	 * 得到客户基本信息
+	 * @param id 所对订单的ID
+	 * @return 返回客户基本信息
+	 */
+	public ClientBean getClientInfoByOrderId(long id);
+	
 }

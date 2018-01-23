@@ -26,6 +26,7 @@
 		style="width: 100%; height: 100px;">
 		<div style="margin: 20px 0;"></div>
 		<form id="queryForm" enctype="multipart/form-data" method="post">
+			<input type="hidden" id="status" value="2">
 			<table>
 				<tr>
 					<td>合同编号：</td>
@@ -57,7 +58,7 @@
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
 			style="width: auto; height: 100%"
-			data-options="url:'carInfo/allData',method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
+			data-options="url:'carInfo/allData/2',method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 			<thead>
 				<tr>
 					<th data-options="field:'ids',checkbox:true,width:20"></th>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.third.autoloan.creditInfomag.mapper.CreditMapper">
+	<insert id="addCreditInfoByMybatis" parameterType="CreditInfoBean">
+		insert into t_creditinfo (hasHouse,hasHouseLoan,hasCar,hasCarLoan,maxOverdueMonth,maxOverdueNum,creditUsageRate,enquiriesNumber,hasOtheLoan,hasCreditCard)
+		values (${hasHouse},${hasHouse},${hasCar},${hasCarLoan},${maxOverdueMonth},${maxOverdueNum},${creditUsageRate},${enquiriesNumber},${hasOtheLoan},${hasCreditCard})
+	</insert>
+	
+	<select id="findAllCreditInfo" resultMap="resMap">
+		select * from t_creditinfo;
+	</select>
+	<resultMap type="CreditInfoBean" id="resMap">
+		<id column="id" property="id"/>
+	</resultMap>
+</mapper>

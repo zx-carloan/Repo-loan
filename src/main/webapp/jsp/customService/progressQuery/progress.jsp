@@ -33,9 +33,12 @@
 
 	<script>
 
+		
+	
 		// 查询
 		$("#myButton").click(function() {
 			$('#tt').datagrid('load', datas());
+			
 		});
 
 		function datas(orderId) {
@@ -46,8 +49,17 @@
 			var timeStarting_2 = $('#timeStarting_2').val();// 至
 			var getMoneyTime_1 = $('#getMoneyTime_1').val();// 还款时间
 			var getMoneyTime_2 = $('#getMoneyTime_2').val();// 至
-			var productType = $('#productType').val();// 产品类型
+			var productType = $("input[name='productType']").val();// 产品类型
+			if(productType=="%"){
+				productType=null;
+			}
+			
+			console.info(productType)
 			var companyName = $("input[name='companyName']").val();// 分公司
+			if(companyName=="%"){
+				companyName=null;
+			}
+			console.info(companyName)
 			var reviewDate = $('#reviewDate').val();// 复审日期
 			var payDate_1 = $('#payDate_1').val();// 放款日期
 			var payDate_2 = $('#payDate_2').val();// 至
@@ -166,10 +178,10 @@
 				class="easyui-datebox" required="required"> <span
 				style="margin-right: 20px;" class="span1"></span> <br> <br>
 			<span style="margin-right: 20px;" class="span1">产品类型</span><select
-				id="productType" class="easyui-combobox" name="companyName"
+				id="productType" class="easyui-combobox" name="productType"
 				style="width: 150px"
 				data-options="valueField:'text',textField:'text2',url:'company/productType',method:'get'">
-				<option name="companyName" value="%"></option>
+				<option name="productType" value="%"></option>
 			</select> <span style="margin-right: 20px;" class="span1">&nbsp;</span> <span
 				style="margin-right: 20px;" class="span1">分公司</span><select
 				id="companyName" class="easyui-combobox" name="companyName"

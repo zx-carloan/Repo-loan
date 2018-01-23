@@ -60,6 +60,7 @@ public class PutLoan {
 		 for (CarInfoBean carInfoBean : list) {
 			 item=carInfoBean.getItemList();
 			 System.out.println(carInfoBean.getId());
+			 System.out.println("速度大大");
 		}
 		 
 		//得到联系人信息
@@ -77,6 +78,13 @@ public class PutLoan {
 		mv.setViewName("jsp/TrustManagement/loan/vehicleInfo");
 		System.out.println(contactor);
 		return mv;
+	}
+	
+	@RequestMapping(value="/updateLoanStatus",produces = "application/json;charset=utf-8")
+	public @ResponseBody String updateLoanStatus(@RequestParam String loanStatus,Long orderId) {
+		
+		putLoanGetService.UpdateLoanStatus(orderId, loanStatus);
+		return "放款成功";
 	}
 	
 }

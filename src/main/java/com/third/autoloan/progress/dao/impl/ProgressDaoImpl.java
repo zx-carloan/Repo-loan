@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.progress.dao.IProgressDao;
 import com.third.autoloan.progress.mapper.ProgressMapper;
@@ -55,6 +56,10 @@ public class ProgressDaoImpl implements IProgressDao{
 
 	@Override
 	public List<OrderBean> getProcedurePageBean(Map<String, String> map) {
+		
+		System.out.println(map.get("payDate_1")+"===类型====");
+		
+		System.out.println(map.get("payDate_2")+"==================分公司======");
 		return progressMapper.getProcedurePageBean(map);
 	}
 
@@ -92,6 +97,18 @@ public class ProgressDaoImpl implements IProgressDao{
 	public void updateOrderInfo(String name, long id) {
 		progressMapper.updateOrderInfo(name, id);
 		
+	}
+
+	@Override
+	public ClientBean getContactor(long id) {
+		// TODO Auto-generated method stub
+		return progressMapper.getContactor(id);
+	}
+
+	@Override
+	public IdentityBean getLoanHistory(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

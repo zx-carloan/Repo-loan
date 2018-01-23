@@ -3,6 +3,7 @@ package com.third.autoloan.putloanmag.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
@@ -36,5 +37,7 @@ public interface IPutLoanDao {
 	 * @return
 	 */
 	public OrderBean getOrderInfo(long id);
+	
+	public void UpdateLoanStatus( Long id, String loanStatus);
 
 }

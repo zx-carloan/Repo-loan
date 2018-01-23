@@ -47,4 +47,9 @@ public class PutLoanServiceImpl implements IPutLoanGetService {
 	public OrderBean getOrderInfoById(long id) {
 		return putLoanImpl.getOrderInfo(id);
 	}
+	@Override
+	public void UpdateLoanStatus(Long id, String loanStatus) {
+		putLoanImpl.UpdateLoanStatus(id, loanStatus);
+		
+	}
 }

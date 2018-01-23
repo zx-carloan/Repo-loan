@@ -49,16 +49,23 @@ $(function() {
 					$.messager.confirm('Confirm', '是否确认放款', function(r) {
 						if (r) {
 							$.ajax({
-								type:'get',
-								url:'putLoan/getMoney?orderId='+row.id,
+								type:'post',
+								url:'putLoans/updateLoanStatus',
+								data:{
+									loanStatus:1,orderId:row.id
+								},
 								success:function(data){ 
+						
+								
 									$.messager.show({
 										title:'提示信息',
-										msg:data,
+										msg:'放款成功',
 										timeout:5000,
 										showType:'slide'
 									});
+									$('#tt').datagrid('load',datas ());
 								}
+								
 							})
 						}
 					});
@@ -97,6 +104,7 @@ $(function() {
 			
 			
 			$("#query").click(function(){
+				console.log("zzzzz")
 				$('#tt').datagrid('load',datas ());
 			});
 			
