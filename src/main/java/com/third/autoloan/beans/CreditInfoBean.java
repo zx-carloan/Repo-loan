@@ -28,13 +28,13 @@ public class CreditInfoBean implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column
-	private boolean hasHouse;// 有无房产
+	private int hasHouse;// 有无房产
 	@Column
-	private boolean hasHouseLoan;// 有无房贷
+	private int hasHouseLoan;// 有无房贷
 	@Column
-	private boolean hasCar;// 有无车产
+	private int hasCar;// 有无车产
 	@Column
-	private boolean hasCarLoan;// 有无车贷
+	private int hasCarLoan;// 有无车贷
 	@Column
 	private int maxOverdueMonth;// 信用卡、贷款最大逾期状况（24个月内）
 	@Column
@@ -44,9 +44,9 @@ public class CreditInfoBean implements Serializable {
 	@Column
 	private int enquiriesNumber;// '信用卡/贷款审批查询次数（6个月内）',
 	@Column
-	private boolean hasOtheLoan;// 有无其他信用贷款
+	private int hasOtheLoan;// 有无其他信用贷款
 	@Column
-	private boolean hasCreditCard;// 有无信用卡
+	private int hasCreditCard;// 有无信用卡
 
 	@OneToOne(fetch=FetchType.LAZY,mappedBy="creditInfo")
 	@Cascade(value= {CascadeType.ALL})
@@ -65,37 +65,7 @@ public class CreditInfoBean implements Serializable {
 		this.id = id;
 	}
 
-	public boolean isHasHouse() {
-		return hasHouse;
-	}
-
-	public void setHasHouse(boolean hasHouse) {
-		this.hasHouse = hasHouse;
-	}
-
-	public boolean isHasHouseLoan() {
-		return hasHouseLoan;
-	}
-
-	public void setHasHouseLoan(boolean hasHouseLoan) {
-		this.hasHouseLoan = hasHouseLoan;
-	}
-
-	public boolean isHasCar() {
-		return hasCar;
-	}
-
-	public void setHasCar(boolean hasCar) {
-		this.hasCar = hasCar;
-	}
-
-	public boolean isHasCarLoan() {
-		return hasCarLoan;
-	}
-
-	public void setHasCarLoan(boolean hasCarLoan) {
-		this.hasCarLoan = hasCarLoan;
-	}
+	
 
 	public int getMaxOverdueMonth() {
 		return maxOverdueMonth;
@@ -129,19 +99,53 @@ public class CreditInfoBean implements Serializable {
 		this.enquiriesNumber = enquiriesNumber;
 	}
 
-	public boolean isHasOtheLoan() {
+	
+
+	public int getHasHouse() {
+		return hasHouse;
+	}
+
+	public void setHasHouse(int hasHouse) {
+		this.hasHouse = hasHouse;
+	}
+
+	public int getHasHouseLoan() {
+		return hasHouseLoan;
+	}
+
+	public void setHasHouseLoan(int hasHouseLoan) {
+		this.hasHouseLoan = hasHouseLoan;
+	}
+
+	public int getHasCar() {
+		return hasCar;
+	}
+
+	public void setHasCar(int hasCar) {
+		this.hasCar = hasCar;
+	}
+
+	public int getHasCarLoan() {
+		return hasCarLoan;
+	}
+
+	public void setHasCarLoan(int hasCarLoan) {
+		this.hasCarLoan = hasCarLoan;
+	}
+
+	public int getHasOtheLoan() {
 		return hasOtheLoan;
 	}
 
-	public void setHasOtheLoan(boolean hasOtheLoan) {
+	public void setHasOtheLoan(int hasOtheLoan) {
 		this.hasOtheLoan = hasOtheLoan;
 	}
 
-	public boolean isHasCreditCard() {
+	public int getHasCreditCard() {
 		return hasCreditCard;
 	}
 
-	public void setHasCreditCard(boolean hasCreditCard) {
+	public void setHasCreditCard(int hasCreditCard) {
 		this.hasCreditCard = hasCreditCard;
 	}
 
