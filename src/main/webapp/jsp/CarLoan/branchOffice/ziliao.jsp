@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8" %>
 	<!-- 激活el表达式 -->
 	<%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../header.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -90,7 +91,7 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>进入该单位时间</label></td>
-					<td class="td1"><input type="text" name="preTime" value="${order.client.preTime }" readonly="readonly"></td>
+					<td class="td1"><input type="text" name="preTime" value="<fmt:formatDate value='${order.client.preTime }' pattern='yyyy-MM-dd' />"  readonly="readonly"></td>
 					<td class="td1"><label>所在部门</label></td>
 					<td class="td1"><input type="text" name="department" value="${order.client.department }" readonly="readonly"></td>
 				</tr>
@@ -129,8 +130,11 @@
 					<td class="td1"><input type="text" name="sourceOfInfo" value="${order.client.sourceOfInfo }" readonly="readonly"></td>
 				</tr>
 				<tr class="tr1">
-					<td class="td1">申请日期</td>
-					<td class="td1"><input type="text" name="applyDate" value="${order.client.applyDate }"></td>
+					<td class="td1">申请日期</td> 
+					<td class="td1">
+					
+					<input type="text" name="applyDate" value="<fmt:formatDate value='${order.client.applyDate }' pattern='yyyy-MM-dd' />" readonly="readonly">
+					</td>
 					<td class="td1">业务员姓名</td>
 					<td class="td1"><input type="text" name="saler" value="${order.client.saler }" readonly="readonly"></td>
 				</tr>
@@ -139,7 +143,6 @@
 					<td class="td1"><input type="text" name="valuer" value="${order.client.valuer }" readonly="readonly"></td>
 				</tr>
 			</table>
-
 		 <c:forEach items="${list }" var="carLists">
 			<table class="table1" border="1">
 				<caption class="caption1">车辆信息</caption>
@@ -157,7 +160,7 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>初次登录日期</label></td>
-					<td class="td1"><input type="text" name="registerDate" value="${carLists.registerDate }" readonly="readonly"></td>
+					<td class="td1"><input type="text" name="registerDate" value="<fmt:formatDate value='${carLists.registerDate }' pattern='yyyy-MM-dd' />" readonly="readonly"></td>
 					<td class="td1"><label>年检有限期</label></td>
 					<td class="td1"><input type="text" name="annualInspection" value="${carLists.annualInspection }" readonly="readonly"></td>
 				</tr>
@@ -304,15 +307,68 @@
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产 <span style="color: red;">*</span></label></td>
-					<td  class="td1"><input type="text" id="hasHouse" name="hasHouse" value="${order.creditInfo.hasHouse }"></td>
+					<c:if test="${order.creditInfo.hasHouse==0 }"> 
+					<td  class="td1">
+					<select style="width:147px" id="hasHouse" name="hasHouse">
+					     <option value="0" selected="selected">无</option>
+					     <option value="1">有</option>
+					</select>
+					 </c:if>
+					 <c:if test="${order.creditInfo.hasHouse==1 }"> 
+					   <td  class="td1">
+					   <select style="width:147px" id="hasHouse" name="hasHouse">
+					     <option value="0" selected="selected">无</option>
+					     <option value="1">有</option>
+				     	</select>
+					 </c:if>
+					 
 					<td class="td1"><label>有无房贷 <span style="color: red;">*</span></label></td>
-					<td class="td1"><input type="text" id="hasHouseLoan" name="hasHouseLoan" value="${order.creditInfo.hasHouseLoan }"></td>
+					<td class="td1">
+					<c:if test="${order.creditInfo.hasHouseLoan==0 }"> 
+					   <select style="width:147px" id="hasHouseLoan" name="hasHouseLoan">
+					       <option value="0" selected="selected">无</option>
+					       <option value="1">有</option>
+					   </select>
+				  </c:if>
+					<c:if test="${order.creditInfo.hasHouseLoan==1 }">
+					   <select style="width:147px" id=hasHouseLoan name="hasHouseLoan">
+					       <option value="0">无</option>
+					       <option value="1" selected="selected">有</option>
+					    </select>
+					</c:if>  
+					</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>有无车产 <span style="color: red;">*</span></label></td>
-					<td><input type="text" id="hasCar" name="hasCar" value="${order.creditInfo.hasCar }" ></td>
+					<td>
+					<c:if test="${order.creditInfo.hasCar==0 }">
+					    <select style="width:147px" id=hasCar name="hasCar">
+					       <option value="0"  selected="selected">无</option>
+					       <option value="1">有</option>
+					    </select>
+					 </c:if>
+					<c:if test="${order.creditInfo.hasCar==1 }">
+					   <select style="width:147px" id=hasCar name="hasCar">
+					       <option value="0">无</option>
+					       <option value="1"  selected="selected">有</option>
+					    </select>
+					</c:if> 
+					</td>
 					<td class="td1"><label>有无车贷 <span style="color: red;">*</span></label></td>
-					<td><input type="text" id="hasCarLoan" name="hasCarLoan" value="${order.creditInfo.hasCarLoan }"></td>
+					<td>
+					<c:if test="${order.creditInfo.hasCarLoan==0 }">
+					    <select style="width:147px" id=hasCarLoan name="hasCarLoan">
+					       <option value="0"  selected="selected">无</option>
+					       <option value="1">有</option>
+					    </select>
+					</c:if>
+					<c:if test="${order.creditInfo.hasCarLoan==1 }">
+					    <select style="width:147px" id=hasCarLoan name="hasCarLoan">
+					       <option value="0">无</option>
+					       <option value="1" selected="selected">有</option>
+					    </select>
+					</c:if> 
+					</td>
 				</tr>
 			</table>
 			<table class="table1" border="1">
@@ -337,7 +393,7 @@
 				</tr>
 			</table>
           
-            <c:forEach items="${order.client.contactorList }" var="contactorList">
+            <c:forEach items="${Contactor }" var="contactorList">
 			<table class="table1" border="1">
 				<caption class="caption1">联系人信息(信息不能重复)</caption>
 				<tr class="tr1">
@@ -461,7 +517,9 @@
 					<td class="td1"><span>&nbsp;</span></td>
 				</tr>
 			</table>
-
+            <c:if test="${loanHistory!=null }">
+               <p><span style="color:red;">该客户已有借款记录：${loanHistory.loanType }</span></p>
+            </c:if>
 			<table class="table1" border="1">
 				<caption class="caption1">综合意见</caption>
 				<tr class="tr1">
@@ -515,7 +573,7 @@
 		<button class="btn btn-primary" onclick="clientFallback()">客户基本信息回退</button>
 		<button class="btn btn-primary" onclick="vehicleFallback()">车辆基本信息回退</button>
 	</div>
-
+</div>
 	<script type="text/javascript">
 	var isFalse_1=false;
 	var isFalse_2=false;

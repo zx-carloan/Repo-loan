@@ -90,13 +90,14 @@
 				} else if (id.length >= 2) {
 					$.messager.confirm('Confirm', '只能选择一行进行初审');
 				} else {
+					console.log("初审="+value);
 					$("#viewDiv").panel({
 						iconCls : "icon-add",
 						collapsible : true,
 						minimizable : true,
 						maximizable : true,
 						closable : true,
-						href : "branchCompany/detailInfo?id="+id 
+						href : "branchCompany/detailInfo?id="+value 
 					   
 					});
 				}
