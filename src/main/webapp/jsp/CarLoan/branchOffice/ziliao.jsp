@@ -303,6 +303,7 @@
 			       </td>
 				</tr>
 			</table>
+			
             <table class="table1" border="1">
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
@@ -371,6 +372,7 @@
 					</td>
 				</tr>
 			</table>
+			
 			<table class="table1" border="1">
 				<caption class="caption1">信用信息</caption>
 				<tr class="tr1">

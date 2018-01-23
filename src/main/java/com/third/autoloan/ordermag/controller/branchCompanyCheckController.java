@@ -112,7 +112,7 @@ public class branchCompanyCheckController {
 		mv.addObject("order", order);
 		mv.addObject("item", item);
 		mv.addObject("list", list);
-		mv.addObject("Conta ctor", Contactor);
+		mv.addObject("Contactor", Contactor);
 		mv.addObject("loanHistory", loanHistory);
 		mv.setViewName("jsp/CarLoan/branchOffice/ziliao");
 		return mv;

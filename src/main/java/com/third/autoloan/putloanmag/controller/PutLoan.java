@@ -64,7 +64,7 @@ public class PutLoan {
 		 
 		//得到联系人信息
 		ClientBean client=orderServiceImpl.getContactorInfo(order.getClient().getId());
-		Set<ContactorBean> Contactor=client.getContactorList();
+		Set<ContactorBean>contactor=client.getContactorList();
 		//得到借款历史信息
 		LoanHistoryBean loanHistory=orderServiceImpl.getLoanHistoryInfo(order.getIdentity().getId());
 		System.out.println("identityBean="+order.getIdentity().getId()+",loanHistory="+loanHistory);
@@ -72,9 +72,10 @@ public class PutLoan {
 		mv.addObject("order", order);
 		mv.addObject("item", item);
 		mv.addObject("list", list);
-		mv.addObject("Conta ctor", Contactor);
+		mv.addObject("contactor", contactor);
 		mv.addObject("loanHistory", loanHistory);
 		mv.setViewName("jsp/TrustManagement/loan/vehicleInfo");
+		System.out.println(contactor);
 		return mv;
 	}
 	

@@ -98,10 +98,8 @@ var orderId=$("#infomation").val();
 //		
 //	},
 //})
-
 $(function(){
-	
-	function but() {
+	function back() {
 		$("#viewDiv").panel({
 			iconCls : "icon-add",
 			collapsible : true,
