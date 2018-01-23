@@ -126,16 +126,16 @@
 												}
 											});
 								} else {
-									var auditor = $("input[name='auditor']").val();// 得到选中的审核人名字
 									var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回// null，否则返回记录。
 									console.info(id)
-									$.ajax({
-										type : 'post',
-										url : 'progress/findOrderBean',
-										data : {
-											"id" : id
-										},
-									})
+									$("#viewDiv").panel({
+										iconCls : "icon-add",
+										collapsible : true,
+										minimizable : true,
+										maximizable : true,
+										closable : true,
+										href : "progress/findOrderBean/"+id
+									});
 								}
 							});
 

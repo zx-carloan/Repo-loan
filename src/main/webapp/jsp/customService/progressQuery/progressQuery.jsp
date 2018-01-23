@@ -59,39 +59,37 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>最高学历</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.education}</td>
 					<td class="td1"><label>申请人手机号码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.cellphone}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>户籍地址</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.address}</td>
 					<td class="td1"><label>申请人电话号码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.tel}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>婚姻状态</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.child == 1 ?'已婚' : '未婚'}</td>
 					<td class="td1"><label>有无子女</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.child == 1 ?'有' : '无'}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>房产状态</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.child == 1 ?'有' : '无'}</td>
 					<td class="td1"><label>共同居住者</label></td>
-					<td><select class="select1" id="partner" name="partners">
-							<option value="0">配偶及其子女</option>
-					</select>
+					<td>${ClientBean.child == 1 ?'配偶及其子女' : '无'}</td>
 				</tr>
 				<tr>
 					<td class="td1"><label>现住址</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.currentAddress}</td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>客户类型</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.clientType == 1 ?'工程师' : '老师'}</td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
@@ -101,42 +99,39 @@
 				<caption class="caption1">工作信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>工作单位全称</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyName}</td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>工作单位地址</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyAddress}</td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>单位电话</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyTel}</td>
 					<td class="td1"><label>邮政编码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.postcode}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>进入该单位时间</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.preTime}</td>
 					<td class="td1"><label>所在部门</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.department}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>担任职务</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.position}</td>
 					<td class="td1"><label>公司规模</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companySize}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>行业类别</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.industryType}</td>
 					<td class="td1"><label>单位性质</label></td>
-					<td class="td1"><select id="property" class="select1"
-						name="unit">
-							<option value="0">个体户</option>
-					</select></td>
+					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
 				</tr>
 			</table>
 
@@ -144,15 +139,15 @@
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
 					<td class="td1">有无房贷</td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>有无车产</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
 					<td class="td1">有无车贷</td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
 				</tr>
 			</table>
 
