@@ -40,8 +40,7 @@
 					class="span1">&nbsp;</span>
 
 				<button type="button" id="query" data-loading-text="Loading..."
-					class="btn btn-primary" autocomplete="false"
-					">查&nbsp;&nbsp;询</button>
+					class="btn btn-primary" autocomplete="false">查&nbsp;&nbsp;询</button>
 
 				<button type="button" id="addInfo" data-loading-text="Loading..."
 					class="btn btn-primary" autocomplete="off"
