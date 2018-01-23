@@ -19,7 +19,7 @@
 			<input type="hidden" name="id" value="${car.id }">
 			<input type="hidden" name="orderId" value="${order.id }">
 			<input type="hidden" name="version" value=50>
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">车辆信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>机动车辆号牌</label></td>
@@ -168,7 +168,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">车辆物品祥单</caption>
 				<tr class="tr1">
 					<td class="td1"><label>物品名称</label></td>
@@ -198,7 +198,7 @@
 				</tr>
 			</table>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">车辆信息附件表</caption>
 				<tr class="tr1">
 					<td class="td1"><label>抵押车辆评估表</label></td>

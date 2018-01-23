@@ -18,13 +18,13 @@
 		<center>
 			<form id="vehicleInfo" method="post">
 				<input type="hidden" id="id" name="id" value="${order.id }">
-				<table class="table1" border="1">
+				<table class="table table-striped table-bordered" >
 					<tr class="tr1">
 						<td class="td1"><label>回退意见</label></td>
 						<td class="td1" style="width: 900px"><span>${order.returnOpinion }</span></td>
 					</tr>
 				</table>
-				<table class="table1" border="1">
+				<table class="table table-striped table-bordered" >
 					<caption class="caption1">车辆信息</caption>
 					<tr class="tr1">
 						<td class="td1"><label>机动车辆号牌</label></td>
@@ -102,7 +102,7 @@
 					</tr>
 				</table>
 
-				<table class="table1" border="1">
+				<table class="table table-striped table-bordered" >
 					<caption class="caption1">车辆物品祥单</caption>
 					<tr class="tr1">
 						<td class="td1"><label>物品名称</label></td>
@@ -136,7 +136,7 @@
 				
 			</form>
 
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 					<caption class="caption1">车辆信息附件表</caption>
 					<tr class="tr1">
 						<td class="td1"><label>抵押车辆评估表</label></td>

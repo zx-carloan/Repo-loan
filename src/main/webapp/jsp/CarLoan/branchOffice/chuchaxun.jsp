@@ -118,10 +118,8 @@
 			});
 	</script>
 
-	<span>当前位置：信审管理>分公司信审主页</span>
 
-	<div id="p" class="easyui-panel" title="查询条件"
-		style="width: 100%; height: 100px; font-weight: bold;">
+	<div id="p" class="easyui-panel" title="当前位置：信审管理>分公司信审主页" style="width: 95%; ">
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post"
 			style="margin-top: -20px; margin-top: 10px;">
@@ -143,16 +141,19 @@
 					<span class="span1">&nbsp;</span><span class="span1">&nbsp;</span>
 			<a id="myButton" href="javascript:void(0)"
 						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
-	
+		<span style="margin-right: 50px"></span>
+		<button id="examine" class="btn btn-primary">初审</button>
+		<span style="margin-right: 50px"></span>
+		<button id="cancel" class="btn btn-primary">撤销</button>
+		<span style="margin-right: 50px"></span>
 		</form>
 	</div>
 
 	<table id="ta" class="easyui-datagrid" style="width: 100%; height: 200px"
-		data-options="url:'branchCompany/page',method:'get',fitColumns:true,pagination:true,singleSelect:false">
+		data-options="url:'branchCompany/page' ,rownumbers:true,striped:true,method:'get',fitColumns:true,pagination:true,singleSelect:true">
 		<thead>
 			<tr>
-				<th data-options="field:'ids',checkbox:true,width:20,sortable:'true'"></th>
-				<th data-options="field:'id',width:20,align:'center',sortable:'true'">序号</th>
+					<th data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true" />
 				<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
 				<th data-options="field:'client',formatter: function(value,row,index){
                 if (value.name){
@@ -172,12 +173,5 @@
 			</tr>
 		</thead>
 	</table>
-	<div style="text-align: center">
-		<button id="examine" class="btn btn-primary">初审</button>
-		<span style="margin-right: 50px"></span>
-		<button id="cancel" class="btn btn-primary">撤销</button>
-		<span style="margin-right: 50px"></span>
-	</div>
-
 </body>
 </html>

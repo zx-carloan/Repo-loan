@@ -16,7 +16,7 @@
 				<center>
 		<form id="creditInfo" method="post" >
 		<input type="hidden" name="orderId" value="${order.id }">
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产 <span style="color: red;">*</span></label></td>
@@ -43,7 +43,7 @@
 					</select></td>
 				</tr>
 			</table>
-			<table class="table1" border="1">
+			<table class="table table-striped table-bordered" >
 				<caption class="caption1">信用信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>信用卡、贷款最大逾期状况(24个月内)</label></td>

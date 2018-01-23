@@ -24,7 +24,7 @@
 <body>
 
 	<div id="p" class="easyui-panel" title="当前位置：车贷管理>车贷审核分单业务"
-		style="width: 100%; height: 100px;">
+		style="width: 95%; ">
 
 		<div style="margin: 20px 0;"></div>
 		<form id="queryForm">

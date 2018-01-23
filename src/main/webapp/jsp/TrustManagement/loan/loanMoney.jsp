@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-		<div id="p" class="easyui-panel" title="当前位置：信审业务管理>车贷放款列表" style="width: 100%; ">
+		<div id="p" class="easyui-panel" title="当前位置：信审业务管理>车贷放款列表" style="width: 95%; ">
 		<div style="margin: 20px 0;"></div>
 			<input type="hidden"  name="status" value="8">
 			<table>
