@@ -30,33 +30,29 @@
 <body>
 
 	<div id="viewDiv">
-		<span>当前位置：客户信息管理>身份信息读取</span>
-		<div id="p" class="easyui-panel" title="查询条件"
-			style="width: 100%; height: 70px; font-weight: bold;">
-			<span id="span1">&nbsp;</span>
-			<form id="checkup" method="post" style="margin-top: -5px;">
+		<div id="p" class="easyui-panel" title="当前位置：客户信息管理>身份信息读取"
+			style="width: 95%;">
 				<span style="margin-right: 20px;" class="span1">身份证号</span>
 				 <input  
 					id="contratorNum" class="easyui-textbox" data-options="prompt:'填写'"
-					style="height: 20px"> <span style="margin-right: 20px;"
+					style="height: 30px"> <span style="margin-right: 20px;"
 					class="span1">&nbsp;</span> <span style="margin-right: 20px;"
 					class="span1">&nbsp;</span>
 
 				<button type="button" id="query" data-loading-text="Loading..."
 					class="btn btn-primary" autocomplete="false"
-					style="margin-top: -20px;">查&nbsp;&nbsp;询</button>
+					">查&nbsp;&nbsp;询</button>
 
 				<button type="button" id="addInfo" data-loading-text="Loading..."
 					class="btn btn-primary" autocomplete="off"
-					style="margin-top: -20px; margin-left: 10px;">新增身份信息</button>
-			</form>
-
+					style=" margin-left: 10px;">新增身份信息</button>
+					
+			<button  style=" margin-left: 10px; id="addBusiness" class="btn btn-primary">办理车贷业务</button>
 		</div>
 		<table id="tt" class="easyui-datagrid" style="width: 100%; height: 200px"
-			data-options="fitColumns:true,pagination:false,singleSelect:true">
+			data-options="  rownumbers:true,striped:true,fitColumns:true,pagination:false,singleSelect:true">
 			<thead>
 				<tr>
-					<th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:'id',width:20,align:'center'">序号</th>
 					<th data-options="field:'name',width:20,align:'center'">姓名</th>
 					<th data-options="field:'gender',width:20,align:'center'">性别</th>
@@ -78,7 +74,7 @@
 		<div style="text-align: center">
 			<button id="cancel" class="btn btn-primary">撤销</button>
 			<span style="margin-right: 50px"></span>
-			<button id="addBusiness" class="btn btn-primary">车贷业务</button>
+			<button id="addBusiness" class="btn btn-primary">办理车贷业务</button>
 		</div>
 	</div>
 	<script>

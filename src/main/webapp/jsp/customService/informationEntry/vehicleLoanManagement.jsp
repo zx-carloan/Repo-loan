@@ -8,10 +8,8 @@
 <title>车贷业务</title>
 </head>
 <body>
-     <div id="viewDiv">
-		<span>当前位置：车贷管理>车贷业务</span>
-		<div id="p" class="easyui-panel" title="查询条件"
-			style="width: 100%; height: 100px; font-weight: bold;">
+		<div id="p" class="easyui-panel" title="当前位置：车贷管理>车贷业务"
+			style="width: 95%;">
 			<span id="span1">&nbsp;</span>
 			<form id="checkup" method="post" style="margin-top: -10px;">
 				<span style="margin-right: 20px;" class="span1">合同编号</span><input
@@ -32,6 +30,10 @@
 				<button type="button" id="myButton" data-loading-text="Loading..."
 					class="btn btn-primary" autocomplete="off"
 					style="margin-top: -20px;">查&nbsp;&nbsp;询</button>
+					<span style="margin-right: 50px"></span>
+				<button id="cancel" class="btn btn-primary">撤销</button>
+			<span style="margin-right: 50px"></span>
+			<button id="loanApplication" class="btn btn-primary">车贷申请</button>
 			</form>
 
 		</div>
@@ -63,12 +65,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<div style="text-align: center">
-			<button id="cancel" class="btn btn-primary">撤销</button>
-			<span style="margin-right: 50px"></span>
-			<button id="loanApplication" class="btn btn-primary">车贷申请</button>
-		</div>
-	</div>
 	<script type="text/javascript">
 	    $(function(){
 	    	/* 定义一个数组用于接收得到的下标 */
