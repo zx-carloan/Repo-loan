@@ -167,7 +167,7 @@ public interface OrderMapper {
 	 */
 	public ClientBean getContactor(long id);
 	/***
-	 * 得到贷款信息
+	 * 得到贷款历史信息
 	 * @param id
 	 * @return
 	 */
