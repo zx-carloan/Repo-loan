@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!--输出,条件,迭代标签库-->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--数据格式化标签库-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="sql"%>
 <!--数据库相关标签库-->
@@ -117,7 +117,7 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>进入该单位时间</label></td>
-					<td class="td1"></td>
+					<td class="td1"><fmt:formatDate value='${order.client.preTime }' pattern='yyyy-MM-dd' ></fmt:formatDate></td>
 					<td class="td1"><label>所在部门</label></td>
 					<td class="td1">${ClientBean.department}</td>
 				</tr>
@@ -258,7 +258,7 @@
 					<td class="td1"><label>您从何处得知正合普惠</label></td>
 					<td class="td1">${ClientBean.sourceOfInfo}</td>
 					<td class="td1"><label>申请日期</label></td>
-					<td class="td1">${ClientBean.applyDate}</td>
+					<td class="td1"><fmt:formatDate value='${ClientBean.applyDate}'  pattern='yyyy-MM-dd' /></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>业务员姓名</label></td>
@@ -290,7 +290,7 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>约定放贷日</label></td>
-					<td class="td1">${contractBean.payDate}</td>
+					<td class="td1"><fmt:formatDate value='${contractBean.payDate}'  pattern='yyyy-MM-dd' /></td>
 					<td class="td1"><label>放款/还款银行</label></td>
 					<td class="td1">${contractBean.bank}</td>
 				</tr>
