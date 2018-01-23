@@ -138,9 +138,11 @@
 	<div id="tb">
 		<a id="automaticSingle" href="javascript:void(0)"
 			class="easyui-linkbutton"
-			data-options="iconCls:'icon-edit',plain:true">自动分单</a> <a
+			data-options="iconCls:'icon-edit',plain:true">自动分单</a>
+			 <a
 			id="submenu" href="javascript:void(0)" class="easyui-linkbutton"
-			data-options="iconCls:'icon-edit',plain:true">指派分单</a> <a id="update"
+			data-options="iconCls:'icon-edit',plain:true">指派分单</a> 
+			<a id="update"
 			href="javascript:void(0)" class="easyui-linkbutton"
 			data-options="iconCls:'icon-edit',plain:true">修改审核人</a>
 	</div>
@@ -175,26 +177,24 @@
 	<div id="submenu-dialog" class="easyui-dialog" title="请指定分配审单员"
 		style="width: 400px; height: 150px;"
 		data-options="iconCls:'icon-edit',resizable:true,modal:true,closed:true">
-		<form id="submenu-form" method="post">
-			<input type="hidden" name="id" id="submenu-form-id" />
 			<table>
 				<tr>
-					<td>审核人：</td>
-					<td  id="submenu-dialog1" style="display: none">
-						<select  class="easyui-combobox"
-						name="auditor" style="width: 150px"
+					<td id="submenu1" style="display: none" >
+						<select   class="easyui-combobox" id="auditor1" 
+						name="auditor1" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=0',method:'get'">
-						<option name="auditor" value="%"></option>
 					</select>
-					</td>
-					<td  id="submenu-dialog2 " style="display: none;" >
-						<select class="easyui-combobox"
-						name="auditor" style="width: 150px"
+					
+					</td >
+						<td id="submenu2" style="display: none" >
+						<select   class="easyui-combobox" id="auditor2"
+						name="auditor2" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=1',method:'get'">
-						<option name="auditor" value="%"></option>
 					</select>
 					</td>
 				</tr>
+				
+				
 				<tr>
 					<td><a id="submenu-save" href="javascript:void(0)"
 						class="easyui-linkbutton"
@@ -204,7 +204,6 @@
 						data-options="iconCls:'icon-cancel',plain:true">取消</a></td>
 				</tr>
 			</table>
-		</form>
 	</div>
 
 	<div id="update-dialog" class="easyui-dialog" title="修改审单员"
@@ -215,22 +214,20 @@
 			<table>
 				<tr>
 					<td>审核人：</td>
-					<td id="update-dialog1" style="display: none">
-						
-						<select class="easyui-combobox"
+					<td id="updateauditor1" style="display: none" >
+						<select   class="easyui-combobox" id="updateauditor"
 						name="updateauditor" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=0',method:'get'">
-						<option name="auditor" value="%"></option>							
-					</select></td>
-					<td id="update-dialog2" style="display: none;">
-						<select class="easyui-combobox"
-						name="updateauditor" style="width: 150px"
+					</select>
+					
+					</td >
+						<td id="updateauditor2" style="display: none" >
+						<select   class="easyui-combobox" id="updateauditor2"
+						name="updateauditor2" style="width: 150px"
 						data-options="valueField:'text',textField:'text2',url:'submenu/getSubmenuName?submenuStatus=1',method:'get'">
-						<option name="auditor" value="%"></option>
 					</select>
 					</td>
 					
-				
 				</tr>
 				<tr>
 					<td><a id="update-save" href="javascript:void(0)"
