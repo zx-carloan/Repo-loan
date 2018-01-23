@@ -137,10 +137,9 @@
 		})
 	</script>
 
-	<span>当前位置：车贷管理>客户身份证信息</span>
 
-	<div id="p" class="easyui-panel" title="查询条件"
-		style="width: 100%; height: 100px; font-weight: bold;">
+	<div id="p" class="easyui-panel" title="当前位置：车贷管理>客户身份证信息"
+		style="width: 95%;">
 		<span id="span1">&nbsp;</span>
 		<form id="checkup" method="post"
 			style="margin-top: -20px; margin-top: 10px;">
@@ -160,6 +159,11 @@
 			<button type="button" id="myButton" data-loading-text="Loading..."
 				class="btn btn-primary" autocomplete="off"
 				style="margin-left: 40px;">查&nbsp;&nbsp;询</button>
+						<span style="margin-right: 50px"></span>
+				<button id="add" class="btn btn-primary">新增车贷申请</button>
+		<span style="margin-right: 50px"></span>
+		<button id="cancel" class="btn btn-primary">撤销</button>
+		<span style="margin-right: 50px"></span>
 		</form>
 	</div>
 
@@ -182,18 +186,6 @@
 					data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
 			</tr>
 		</thead>
-
-		<tbody id="tbody-result">
-
-
-		</tbody>
 	</table>
-	<div style="text-align: center">
-		<button id="add" class="btn btn-primary">新增车贷申请</button>
-		<span style="margin-right: 50px"></span>
-		<button id="cancel" class="btn btn-primary">撤销</button>
-		<span style="margin-right: 50px"></span>
-	</div>
-
 </body>
 </html>

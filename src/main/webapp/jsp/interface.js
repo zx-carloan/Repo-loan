@@ -203,7 +203,7 @@
 								minimizable : true,
 								maximizable : true,
 								closable : true,
-								href : "jsp/CarLoan/CustomerInformation/CustomerInformation.jsp"
+								href : "jsp/customService/informationEntry/vehicleLoanManagement.jsp"
 							});
 		}
 		function sign() {

@@ -46,7 +46,7 @@
 					class="btn btn-primary" autocomplete="off"
 					style=" margin-left: 10px;">新增身份信息</button>
 					
-			<button  style=" margin-left: 10px; id="addBusiness" class="btn btn-primary">办理车贷业务</button>
+			<button  style=" margin-left: 10px;"  id="addBusiness " class="btn btn-primary">办理车贷业务</button>
 		</div>
 		<table id="tt" class="easyui-datagrid" style="width: 100%; height: 200px"
 			data-options="  rownumbers:true,striped:true,fitColumns:true,pagination:false,singleSelect:true">
@@ -70,11 +70,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<div style="text-align: center">
-			<button id="cancel" class="btn btn-primary">撤销</button>
-			<span style="margin-right: 50px"></span>
-			<button id="addBusiness" class="btn btn-primary">办理车贷业务</button>
-		</div>
 	</div>
 	<script>
 		$(function() {
@@ -141,6 +136,7 @@
 			});
 			$("#addBusiness").click(
 				function() {
+					alert("123");
 					$("#viewDiv")
 						.panel(
 							{
