@@ -45,20 +45,18 @@
 				<tr class="tr1">
 					<td class="td1"><label>房产状态</label></td>
 					<td class="td1"><input type="text" name="client.house"  readonly="readonly" value="hhh"></td>
-					<td class="td1"><label>共同居住者</label></td>
-					<td><select class="select1" id="partner" name="partners">
-							<option value="0">配偶及其子女</option>
-					</select>
+					<td class="td1"><label>共同居住者</label><input type="text" name="client.partner"  readonly="readonly" value="hhh"></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td class="td1"><label>现住址</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.currentAddress"  readonly="readonly" value="hhh"></td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>客户类型</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.clientType"  readonly="readonly" value="hhh"></td>
 					<td class="td1">&nbsp;</td>
 					<td class="td1">&nbsp;</td>
 				</tr>
