@@ -139,11 +139,7 @@
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产</label></td>
-<<<<<<< HEAD
-					<td class="td1">${creditInfoBean.hasHouse == 1 ?'有房产' : '无房产'}</td>
-=======
 					<td class="td1">${creditInfoBean.companyType == 1 ?'有房产' : '无房产'}</td>
->>>>>>> branch 'feature' of https://github.com/zx-carloan/Repo-loan.git
 					<td class="td1">有无房贷</td>
 					<td class="td1">${creditInfoBean.hasHouseLoan == 1 ?'有房贷' : '无房贷'}</td>
 				</tr>

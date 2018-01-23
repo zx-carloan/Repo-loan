@@ -85,7 +85,7 @@ $(function() {
 						minimizable : true,
 						maximizable : true,
 						closable : true,
-						href : "jsp/TrustManagement/loan/vehicleInfo.jsp"
+						href : "putLoans/detailInfo?id="+row.id
 					});
 				} else {
 					$.messager.confirm('Confirm', '请选择行', function(r) {

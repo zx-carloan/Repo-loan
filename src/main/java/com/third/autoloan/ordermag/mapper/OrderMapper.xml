@@ -480,7 +480,7 @@
  	<!-- 通过id查找订单信息 -->
  	<select id="getOrderInfoBuId" parameterType="Long" resultType="OrderBean" resultMap="getOrderInfo">
  	   SELECT o.* ,
- 	   c.id as c_id,c.name as c_name,c.education as c_education,c.cellphone as c_cellphone,c.address as c_address,c.tel as c_tel,c.marriage as c_marriage,c.child as c_child,
+ 	   c.id as c_id,c.name as c_name,c.education as c_education,c.cellphone as c_cellphone,c.address as c_address,c.tel as c_tel,c.marriage as c_marriage,c.child as c_child,  c.idCard as c_idCard,
  	   c.house as c_house,c.partner as c_partner,c.currentAddress as c_currentAddress,c.clientType as c_clientType,c.companyName as c_companyName,c.companyAddress as c_companyAddress,
  	   c.companyTel as c_companyTel,c.postcode as c_postcode,c.preTime as c_preTime,c.department as c_department,
  	   op.id as op_id,c.position as c_position,c.companySize as c_companySize,c.industryType as c_indudtryType,c.companyType as c_companyType,c.loanPurpose as c_loanPurpose,
@@ -524,6 +524,7 @@
  	      <association property="client" javaType="com.third.autoloan.beans.ClientBean"> 
  	           <id property="id" column="c_id"></id>
  	           <result property="name" column="c_name" />
+ 	           <result property="idCard" column="c_idCard" />
  	           <result property="education" column="c_education" />
  	           <result property="cellphone" column="c_cellphone" />
  	           <result property="address" column="c_address" />
@@ -554,6 +555,7 @@
  	          <result property="saler" column="c_saler" />
  	          <result property="valuer" column="c_valuer" />
  	          <result property="applyDate" column="c_applyDate" />
+ 	          
  	          <result property="iDPic" column="c_iDPic" />
  	          <result property="applicationForm" column="c_applicationForm" />
  	           <collection property="contactorList" ofType="com.third.autoloan.beans.ContactorBean">

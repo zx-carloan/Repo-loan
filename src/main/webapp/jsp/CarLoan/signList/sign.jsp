@@ -62,7 +62,7 @@
 			data-options=" rownumbers:true,striped:true, url:'contract/query',method:'post',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='orderId' data-options="field:'id',width:0,align:'center',sortable:'true' ,hidden:true"/>
 					<th id='status' data-options="field:'status',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th id='rollback' data-options="field:'rollback',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
