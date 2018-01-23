@@ -24,139 +24,63 @@
 
 </head>
 <body>
-	<script>
-		$(function() {
-			/* 定义一个数组用于接收得到的下标 */
-			var id = new Array();
-			$(".easyui-datagrid").datagrid({
-				onClickRow : function(rowIndex, rowData) {
-					id.push(rowIndex);
-					for (var i = 0; i < id.length; i++) {
-						for (var j = i + 1; j < id.length; j++) {
-							if (id[i] == id[j]) {
-								id.splice(j, 1);
-								id.splice(i, 1);
-							}
-							;
+		<div id="p" class="easyui-panel" title="当前位置：信审业务管理>车贷签约复核"
+		style="width: 100%; height: 100px;">
+		<div style="margin: 20px 0;"></div>
+		<form id="queryForm">
+			<table>
+				<tr>
+					<td>合同编号：</td>
+					<td><input id="contractNumber" class="easyui-textbox"
+						data-options="prompt:'填写'"></td>
 
-						}
-					}
-					if (id == "") {
+					<td>借款人：</td>
+					<td><input id="loanName" class="easyui-textbox"
+						data-options="prompt:'填写'"></td>
 
-					} else {
 
-					}
-				}
-			});
-
-			$("#cancel").click(function() {
-
-				if (id == "") {
-					$.messager.confirm('Confirm', '请选择行', function(r) {
-						if (r) {
-							// exit action;
-
-						}
-					});
-
-				} else {
-
-					$.messager.confirm('Confirm', '是否撤销该客户?', function(r) {
-						if (r) {
-							// exit action;
-						}
-					});
-				}
-			});
-			
-			$("#sign").click(function() {
-
-				if (id == "") {
-					$.messager.confirm('Confirm', '请选择行', function(r) {
-						if (r) {
-							// exit action;
-						}
-					});
-
-				} else if (id.length >= 2) {
-					$.messager.confirm('Confirm', '只能选择一行进行复核 ');
-				} else {
-					$("#viewDiv").panel({
-						iconCls : "icon-add",
-						collapsible : true,
-						minimizable : true,
-						maximizable : true,
-						closable : true,
-						href : "jsp/TrustManagement/contractReview/ToReview.jsp"
-					});
-				}
-			});
-		})
-	</script>
-
-	<span>当前位置：信审业务管理>签约复核列表</span>
-
-	<div id="p" class="easyui-panel" title="查询条件"
-		style="width: 100%; height: 100px; font-weight: bold;">
-		<span id="span1">&nbsp;</span>
-		<form id="checkup" method="post"
-			style="margin-top: -20px; margin-top: 10px;">
-			<span class="span1">合同编号</span><input id="contratorNum"
-				class="easyui-textbox" data-options="prompt:'填写'"
-				style="height: 20px"><span class="span1">&nbsp;</span> <span
-				class="span1">借款人</span><input id="borrower" class="easyui-textbox"
-				data-options="prompt:'填写'" style="height: 20px"><span
-				class="span1">&nbsp;</span> <span class="span1">分公司</span><select
-				id="loanStatus" class="easyui-combobox" name="status"
-				placeholder="-1111-" style="width: 190px; height: 22px;">
-				<option value="0">123</option>
-				<option value="1">456</option>
-				<option value="2">789</option>
-				<option value="3">192</option>
-			</select> <span class="span1">&nbsp;</span><span class="span1">&nbsp;</span>
-			<button type="button" id="myButton" data-loading-text="Loading..."
-				class="btn btn-primary" autocomplete="off"
-				style="margin-left: 40px;">查&nbsp;&nbsp;询</button>
+					<td>分公司：</td>
+					<td><select id="companyName" class="easyui-combobox"
+						name="companyName" style="width: 150px"
+						data-options="valueField:'text',textField:'text2',url:'company/getName',method:'get'">
+						<option name="companyName" value="%"></option>
+					</select>
+					</td>
+					<td><a id="query" href="javascript:void(0)" style="width: 70px"
+						class="easyui-linkbutton" data-options="iconCls:'icon-search' ">查询</a>
+					</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 
-	<table class="easyui-datagrid" style="width: 100%; height: 200px"
-		data-options="url:'#',method:'get',fitColumns:true,pagination:true,singleSelect:false">
-		<thead>
-			<tr>
-				<th data-options="field:'id',checkbox:true,width:20,sortable:'true'"></th>
-				<th data-options="field:'order',width:20,align:'center',sortable:'true'">序号</th>
-				<th data-options="field:'contractorNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-				<th data-options="field:'borrower',width:20,align:'center',sortable:'true'">借款人</th>
-				<th data-options="field:'identityNumber',width:20,align:'center',sortable:'true'">业务经理</th>
-				<th data-options="field:'loanDate',width:20,align:'center',sortable:'true'">分公司</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr id="1">
-				<td style="width: 20px">123</td>
-				<td style="width: 25px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
-			<tr id="2">
-
-				<td style="width: 20px">123</td>
-				<td style="width: 25px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-				<td style="width: 20px">123</td>
-			</tr>
-		</tbody>
-	</table>
-	<div style="text-align: center">
-		<button id="sign" class="btn btn-primary">复核</button>
-		<span style="margin-right: 50px"></span>
-		<button id="cancel" class="btn btn-primary">撤销</button>
-		<span style="margin-right: 50px"></span>
+	
+	<div id="p" class="easyui-panel" title="车贷签约列表"
+		style="width: 99%; height: 340px;">
+		<table id="tt" class="easyui-datagrid"
+			style="width: auto; height: 100%"
+			data-options=" rownumbers:true,striped:true, url:'contract/query',method:'post',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
+			<thead>
+				<tr>
+					<th id='orderId' data-options="field:'id',width:0,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='status' data-options="field:'status',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='rollback' data-options="field:'rollback',width:20,align:'center',sortable:'true' ,hidden:true"/>
+					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
+					<th data-options="field:'client',width:20,align:'center',sortable:'true',
+						formatter: function(client){return client.name;}">借款人</th>
+					<th data-options="field:'manager',width:20,align:'center',sortable:'true'">业务经理</th>
+					<th data-options="field:'company',width:20,align:'center',sortable:'true',
+					formatter: function(company){return company.name;}">分公司</th>
+				</tr>
+			</thead>
+		</table>
 	</div>
+	<div id="tb">
+		<a id="fuhe" href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-edit',plain:true">复核</a> <a
+			id="cancel" href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-edit',plain:true">撤销</a>
+	</div>
+	<script type="text/javascript" src="jsp/TrustManagement/contractReview/contractjs.js"></script>
 </body>
 </html>
