@@ -93,18 +93,18 @@
 			<thead>
 				<tr>
 					<th data-options="field:'id',hidden:true,width:20,sortable:'true'"></th>
-					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
-							<th data-options="field:'row.client.name',width:10,align:'center',sortable:'true',
+					<th data-options="field:'contractNumber',width:120,align:'center',sortable:'true'">合同编号</th>
+							<th data-options="field:'name',width:100,align:'center',sortable:'true',
 					formatter:function(value,row){
 							return row.client.name;
 						}">借款人</th>
 				   		<th
-						data-options="field:'row.client.idCard',width:10,align:'center',
+						data-options="field:'idCard',width:120,align:'center',
 				formatter:function(value,row){
 							return row.client.idCard;
 						}">身份证号</th>
 				     
-					<th data-options="field:'row.contract.signDate',width:20,align:'center',sortable:'true',
+					<th data-options="field:'signDate',width:120,align:'center',sortable:'true',
 								formatter: function(contract,row,index){
 					var retVal = '';
 					if(row.contract != null){
@@ -114,7 +114,7 @@
 				return retVal;
 			}">约定放贷日</th>
 						     
-					<th data-options="field:'row.contract.signDate',width:20,align:'center',sortable:'true',
+					<th data-options="field:'signDate',width:120,align:'center',sortable:'true',
 									formatter: function(contract,row,index){
 					var retVal = '';
 					if(row.contract != null){
@@ -124,22 +124,22 @@
 				return retVal;
 			}">签约日</th>
 			
-					<th data-options="field:'232',width:20,align:'center',sortable:'true',
+					<th data-options="field:'capital',width:120,align:'center',sortable:'true',
 						formatter: function(product,row){return row.product.capital
 						}">合同额</th>
 						
-					<th data-options="field:'row.contract.amount',width:20,align:'center',sortable:'true',
+					<th data-options="field:'amount',width:120,align:'center',sortable:'true',
 					formatter: function(contract,row){ if(row.contract !=null) return  row.contract.amount ;else return 1
 						}">实际放款额</th>
 						
-					<th data-options="field:'row.product.periods',width:20,align:'center',sortable:'true',
+					<th data-options="field:'periods',width:120,align:'center',sortable:'true',
 						formatter: function(product,row){return row.product.periods}
 					">借款期数</th>
 					
-					<th data-options="field:'row.company.name',width:20,align:'center',sortable:'true',
+					<th data-options="field:'name1',width:120,align:'center',sortable:'true',
 						formatter: function(company,row){return  row.company.name}
 					">分公司</th>
-						<th data-options="field:'loanStatus',width:20,align:'center',sortable:'true',
+						<th data-options="field:'loanStatus',width:120,align:'center',sortable:'true',
 					formatter: function(loanStatus){
 					if(loanStatus ==0)return '未放款';
 					if(loanStatus ==1)return '放款中';	
@@ -153,7 +153,7 @@
 		<div style="text-align: center">
 			<button id="detail" class="btn btn-primary">详细信息</button>
 			<span style="margin-right: 50px"></span>
-			<button id="cancel" class="btn btn-primary">撤销</button>
+			<!--  <button id="cancel" class="btn btn-primary">撤销</button>-->
 			<span style="margin-right: 50px" id="loan"></span>
 			<button class="btn btn-primary">提交放款</button>
 		</div>

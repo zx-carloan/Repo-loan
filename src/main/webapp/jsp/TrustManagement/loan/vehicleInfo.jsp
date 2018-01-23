@@ -11,30 +11,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="static/js/bootstrap.min.js"></script>
 <title>车贷放款详细信息</title>
-<!-- <style>
-   table{
-       cellspacing="0";
-       background-color:#dfe2e2;
-       margin-bottom:10px;
-       
-   }
-   tr{
-     width:100%;
-     height:30px;
-   }
-   td{
-      width:300px;
-      height:30px;
-   }
-   caption{
-     background-color:#cedcde;
-      line-height:30px;
-   }
-   select{
-      width:146px;
-   }
-   
-</style> -->
+
 </head>
 <body>
 	<div class="easyui-panel" style="width: 100%; text-align: center">
@@ -502,17 +479,7 @@
 		</form>
 		<button class="btn btn-primary" onclick="but()">返回</button>
 	</div>
-	<script type="text/javascript">
-		function but() {
-			$("#viewDiv").panel({
-				iconCls : "icon-add",
-				collapsible : true,
-				minimizable : true,
-				maximizable : true,
-				closable : true,
-				href : "jsp/TrustManagement/loan/loanMoney.jsp"
-			});
-		}
+	<script type="text/javascript" src="jsp/TrustManagement/loan/vehicleInfo.js">
 	</script>
 </body>
 </html>

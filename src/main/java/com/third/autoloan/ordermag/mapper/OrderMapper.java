@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 
 public interface OrderMapper {
@@ -160,5 +161,16 @@ public interface OrderMapper {
 	 * @param map
 	 */
 	public void returnOpinion(Map<String,Object> map);
+	/***
+	 * 得到联系人信息
+	 * @param id
+	 */
+	public ClientBean getContactor(long id);
+	/***
+	 * 得到贷款信息
+	 * @param id
+	 * @return
+	 */
+	public IdentityBean getLoanHistory(long id);
 }
 

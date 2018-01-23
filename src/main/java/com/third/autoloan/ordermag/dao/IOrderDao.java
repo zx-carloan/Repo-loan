@@ -165,4 +165,9 @@ public interface IOrderDao {
 	 * @param map
 	 */
 	public void returnOpinion(Map<String,Object> map);
+	/***
+	 * 查联系人信息
+	 * @param id
+	 */
+	public ClientBean getContactorInfo(long id);
 }

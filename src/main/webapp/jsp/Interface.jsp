@@ -64,7 +64,6 @@
 	<div class="easyui-layout" style="width: 100%; height: 600px;">
 		<div data-options="region:'north'"
 			style="height: 70px; overflow: 'hidden'">
-
 			<img alt="图片加载中" src="static/images/logo.jpg"
 				style="width: 100px; float: left;">
 			<h1 style="float: left;">科技有限公司</h1>

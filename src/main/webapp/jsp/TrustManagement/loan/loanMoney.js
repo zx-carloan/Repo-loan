@@ -75,13 +75,10 @@ $(function() {
 			
 			//详细信息点击事件
 			$("#detail").click(function() {
-				if (id == "") {
-					$.messager.confirm('Confirm', '请选择行', function(r) {
-						if (r) {
-							// exit action;
-						}
-					});
-				} else {
+				var row = $('#tt').datagrid('getSelected');
+				
+				if (row) {
+					$('#infomation').val(row.id);
 					$("#viewDiv").panel({
 						iconCls : "icon-add",
 						collapsible : true,
@@ -89,6 +86,11 @@ $(function() {
 						maximizable : true,
 						closable : true,
 						href : "jsp/TrustManagement/loan/vehicleInfo.jsp"
+					});
+				} else {
+					$.messager.confirm('Confirm', '请选择行', function(r) {
+						if (r) {
+						}
 					});
 				}
 			});

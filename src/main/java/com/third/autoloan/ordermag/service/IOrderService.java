@@ -3,6 +3,7 @@ package com.third.autoloan.ordermag.service;
 
 import java.util.Map;
 
+import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.OrderBean;
 
 /**
@@ -45,5 +46,8 @@ public interface IOrderService {
       * @param map
       */
 	public void getReturnOpinion(Map<String,Object> map);
+	
+	
+	public ClientBean getContactorInfo(long id);
 
 }

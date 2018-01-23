@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.IdentityBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.carmag.service.ICarService;
@@ -125,6 +126,12 @@ public class OrderServiceImpl implements IOrderService{
 	public void getReturnOpinion(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		orderDaoImpl.returnOpinion(map);
+	}
+
+	@Override
+	public ClientBean getContactorInfo(long id) {
+		// TODO Auto-generated method stub
+		return orderDaoImpl.getContactorInfo(id);
 	}
 
 }

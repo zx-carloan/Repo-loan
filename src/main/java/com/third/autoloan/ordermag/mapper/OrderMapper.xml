@@ -767,4 +767,19 @@
     <delete id="deleteOpinion" parameterType="Long">
           delete from t_opinion where id=#{id}
     </delete>
+    
+    <select id="getContactor" parameterType="Long" resultMap="Contactor">
+        select t_contactor.* from t_client left join t_contactor on t_client.id=t_contactor.id where t_client.id=#{id}
+    </select>
+    <resultMap type="ClientBean" id="Contactor">
+        <collection property="contactorList" ofType="com.third.autoloan.beans.ContactorBean">
+                <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="type" column="type" />
+ 	           <result property="relation" column="relation" />
+ 	           <result property="company" column="company" />
+ 	           <result property="address" column="address" />
+ 	           <result property="phone" column="phone" />
+          </collection>
+    </resultMap>
  </mapper>

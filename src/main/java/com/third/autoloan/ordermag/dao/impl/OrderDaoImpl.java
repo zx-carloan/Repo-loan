@@ -141,5 +141,10 @@ public class OrderDaoImpl implements IOrderDao{
 		// TODO Auto-generated method stub
 		orderMapper.returnOpinion(map);
 	}
-	
+
+	@Override
+	public ClientBean getContactorInfo(long id) {
+		// TODO Auto-generated method stub
+		return orderMapper.getContactor(id);
+	}
 }

@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.ContactorBean;
 import com.third.autoloan.beans.CreditInfoBean;
 import com.third.autoloan.beans.ItemBean;
 import com.third.autoloan.beans.OpinionBean;
@@ -35,6 +36,7 @@ import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
 import com.third.autoloan.carmag.service.ICarGetService;
 import com.third.autoloan.clientmag.service.IClientGetService;
+import com.third.autoloan.clientmag.service.IClientService;
 import com.third.autoloan.creditInfomag.service.ICreditService;
 import com.third.autoloan.opinionmag.service.IOpinionGetService;
 import com.third.autoloan.opinionmag.service.IOpinionService;
@@ -53,7 +55,7 @@ public class branchCompanyCheckController {
 	@Resource
 	private ICarGetService carGetServiceImpl;
 	@Resource
-	private IClientGetService clientGetServiceImpl;
+	private IClientService clientServiceImpl;
 	@Resource
 	private IOpinionGetService opinionGetServiceImpl;
 	@Resource
@@ -67,10 +69,7 @@ public class branchCompanyCheckController {
 		 System.out.println("map="+map);
 		 
 		 PageBean page=null;
-		/* System.out.println("map="+map);
-	     Map<String,String> map1=new HashMap<String,String>();
-	     map1.put("index", map.get("page"));
-	     map1.put("pageSize", map.get("rows"));*/
+		
 		 map.put("contractNumber", map.get("queryParams[contratorNum]"));
 		 map.put("loanName", map.get("queryParams[borrower]"));
 		 map.put("companyName", map.get("queryParams[loanStatus]"));
@@ -88,7 +87,7 @@ public class branchCompanyCheckController {
 	}
 	@RequestMapping(value="/detailInfo")
 	public ModelAndView getBranchCompanyInfo(Long id) {
-		Long id_1=id+1;
+		Long id_1=id;
 		System.out.println("===================id="+id_1);
 		OrderBean order=orderServiceImpl.getOrderById(id_1);
 		System.out.println("order="+order);
@@ -102,13 +101,14 @@ public class branchCompanyCheckController {
 		 
 		 System.out.println("item="+item);
 		 System.out.println("id_1="+id_1);
-		/* ClientBean orderClient=clientGetServiceImpl.getClientInfoByOrderId(id);
-		 System.out.println("orderClient="+orderClient);*/
+		//得到联系人信息
+		ClientBean client=orderServiceImpl.getContactorInfo(order.getClient().getId());
+		Set<ContactorBean> Contactor=client.getContactorList();
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("order", order);
 		mv.addObject("item", item);
 		mv.addObject("list", list);
-		/*mv.addObject("orderClient", orderClient);*/
+		mv.addObject("Conta ctor", Contactor);
 		mv.setViewName("jsp/CarLoan/branchOffice/ziliao");
 		return mv;
 	}
