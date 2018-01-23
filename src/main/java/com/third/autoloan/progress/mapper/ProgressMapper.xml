@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.third.autoloan.progress.mapper.ProgressMapper">
+ 	
+ 	<select id="getOrderListByMap" parameterType="java.util.Map" resultType="String" resultMap="getOrderPage">
+ 	    select o.id,o.contractNumber,c.name as clientName  ,o.manager  ,co.name  as companyName  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id 
+ 	    left join t_company as co on co.id=o.fk_company_id where 1=1
+   		 
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="companyName!=null">
+            and  co.name like '%${companyName}%' and co.hq=1 
+        </if>
+        <if test="status!=null">
+            and  status = #{status}
+        </if>
+       	<if test=" sort!=null">
+                 order by ${sort} 
+        </if>
+         <if test="order!=null">
+  				${order} 
+        </if>
+          limit ${index},${rows};
+ 	</select>
+ 	<resultMap type="OrderBean" id="getOrderPage">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="returnOpinion" column="returnOpinion" />
+ 	     <result property="manager" column="manager" />
+ 	     <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <result property="identity" column="identity" />
+ 	      </association>
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
+ 	        <result property="name" column="clientName" />
+ 	          <result property="idCard" column="idCard" />
+ 	      </association>
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <result property="name" column="companyName" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	      
+ 	</resultMap>
+ 	<!--查询车贷录入业务列表的总数   -->
+ 	<select id="getTotalOrderNumByMap" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	    select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id where 1=1
+
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=mull">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="companyName!=null">
+            and  co.name like '%${companyName}%' and co.hq=1 
+        </if>
+ 	</select>
+ 	
+ 	
+ 	<!--得到放款业务列表总数   -->
+ 	<select id="getSumLoanPage" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	    select count(o.id)  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id 
+ 	    left join t_Contract as con on con.id=o.fk_contract_id 
+ 	    left join t_opinion as op on op.id=o.fk_opinion_id where 1=1
+
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="identity!=null">
+            and  i.identity like '%${identity}%'  
+        </if>
+        <if test="productName!=null">
+            and  p.name = #{productName}
+        </if>
+         <if test="companyName!=null">
+            and  co.name = #{companyName} and co.hq=1
+        </if>
+        <if test="loanStatus!=null">
+            and  o.loanStatus = #{loanStatus} 
+        </if>
+ 	</select>
+ 	
+ 	
+ 	
+ 	<!--得到 分单业务列表总数  -->
+ 	 	<select id="getSumSubmenuPage" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	     select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id  where 1=1
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="identity!=null">
+            and  i.identity like '%${identity}%'  
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus = #{submenuStatus}
+        </if>
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!--得到车贷进度业务列表总和 -->
+ 	 	<select id="getSumProcedure" parameterType="java.util.Map"  resultType="java.lang.Integer">
+ 	    select count(o.id) from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_identity as i on o.fk_identiry_id=i.id 
+ 	    left join t_product as p on o.fk_product_id=p.id 
+ 	    left join t_Contract as con on con.id=o.fk_contract_id
+ 	      where 1=1
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <!-- <if test="timeStarting_1!=null">
+            and  o.timeStarting&gt;=#{timeStarting_1}
+        </if>
+        <if test="timeStarting_2!=null">
+            and  o.timeStarting&lt;=#{timeStarting_2}
+        </if>
+        <if test="getMoneyTime_1!=null">
+            and  o.timeStarting&gt;=#{getMoneyTime_1}
+        </if>
+        <if test="getMoneyTime_2!=null">
+            and  o.timeStarting&lt;=#{getMoneyTime_2}
+        </if>
+        <if test="productType!=null">
+            and  p.name like '%${productType}%'
+        </if>
+        <if test="companyName!=null">
+            and  co.name like '%${companyName}%' and co.hq=1 
+        </if>
+        <if test="reviewDate!=null">
+            and  o.review like= #{reviewDate}
+        </if> 
+       <if test="payDate_1!=null">
+            and  con.payDate like&gt;=#{payDate_1}
+        </if>
+        <if test="payDate_2!=null">
+            and  con.payDate like&lt;=#{payDate_2}
+        </if> 
+      <if test="submenuStatus!=null">
+            and  o.submenuStatus = #{submenuStatus}
+        </if> -->
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 得到订单车辆信息 -->
+ 	<select id="listCarInfo" parameterType="long" resultMap="carInfo">
+ 	     select * from t_order as o left join t_carinfo as c on where o.fk_client_id=c.id where o.id=#{id}
+ 	</select>
+ 	<resultMap type="CarInfoBean" id="carInfo">
+ 	    <id property="id" column="id"></id>
+        <result property="carId" column="carId" />
+        <result property="brand" column="brand" />
+        <result property="engineId" column="engineId" />
+        <result property="color" column="color" />
+        <result property="registerDate" column="registerDate" />
+        <result property="annualInspection" column="annualInspection" />
+        <result property="vin" column="vin" />
+        <result property="assessmentPrice" column="assessmentPrice" />
+        <result property="xkm" column="xkm" />
+        <result property="getID" column="getID" />
+        <result property="getAfford" column="getAfford" />
+        <result property="getSali" column="getSali" />
+        <result property="getKey" column="getKey" />
+        <result property="keyNumber" column="keyNumber" />
+        <result property="getRegisterLicense" column="getRegisterLicense" />
+        <result property="getInsurance" column="getInsurance" />
+        <result property="getDrivingLicense" column="getDrivingLicense" />
+        <result property="getOriginalInvoice" column="getOriginalInvoice" />
+        <result property="getTaxCertificate" column="getTaxCertificate" />
+        <result property="getImportCertificate" column="getImportCertificate" />
+        <result property="drivingLisense" column="drivingLisense" />
+        <result property="carRegisterForm" column="carRegisterForm" />
+        <result property="carAsseceForm" column="carAsseceForm" />
+        <result property="commerceinsurance" column="commerceinsurance" />
+        <result property="carPic" column="carPic" />
+        <result property="sali" column="otherAttachment" />
+        <result property="otherAttachment" column="sali" />
+        
+        <association property="order" javaType="com.third.autoloan.beans.OrderBean">
+             <id property="id" column="id"></id>
+             <result property="contractNumber" column="contractNumber" />
+             <result property="contractNumber" column="contractNumber" />
+             <result property="returnOpinion" column="returnOpinion" />
+             <result property="status" column="status" />
+             <result property="rollback" column="rollback" />
+             <result property="loanStatus" column="loanStatus" />
+             <result property="submenuStatus" column="submenuStatus" />
+             <result property="manager" column="manager" />
+             <result property="submit" column="submit" />
+        </association>
+        
+         <collection property="itemList" ofType="com.third.autoloan.beans.ItemBean">
+             <id property="id" column="id"></id>
+             <result property="name" column="name" />
+             <result property="number" column="number" />
+             <result property="number" column="number" />
+         </collection>
+        
+ 	</resultMap>
+ 	
+ 	<!-- 得到客户基本信息 -->
+ 	<select id="getClientInfoByOrderId" parameterType="long" resultMap="ClientInfo">
+ 	  select * from t_order as o left join t_client as c on o.fk_client_id=c.id where o.id=#{id} 
+ 	</select>
+ 	<resultMap type="ClientBean" id="ClientInfo">
+         <id property="id" column="id"></id>
+         <result property="name" column="name" />
+         <result property="education" column="education" />
+         <result property="cellphone" column="cellphone" />
+         <result property="address" column="address" />
+         <result property="tel" column="tel" />
+         <result property="marriage" column="marriage" />
+         <result property="child" column="child" />
+         <result property="house" column="house" />
+         <result property="partner" column="partner" />
+         <result property="currentAddress" column="currentAddress" />
+         <result property="clientType" column="clientType" />
+         <result property="companyName" column="companyName" />
+         <result property="companyAddress" column="companyAddress" />
+         <result property="companyTel" column="companyTel" />
+         <result property="postcode" column="postcode" />
+         <result property="preTime" column="preTime" />
+         <result property="department" column="department" />
+         <result property="position" column="position" />
+         <result property="companySize" column="companySize" />
+         <result property="industryType" column="industryType" />
+         <result property="companyType" column="companyType" />
+         <result property="loanPurpose" column="loanPurpose" />
+         <result property="salary" column="salary" />
+         <result property="maxAffordable" column="maxAffordable" />
+         <result property="maxPaybackTime" column="maxPaybackTime" />
+         <result property="minLoan" column="minLoan" />
+         <result property="maxLoan" column="maxLoan" />
+         <result property="sourceOfInfo" column="sourceOfInfo" />
+         <result property="saler" column="saler" />
+         <result property="valuer" column="valuer" />
+         <result property="applyDate" column="applyDate" />
+         <result property="iDPic" column="iDPic" />
+         <result property="applicationForm" column="applicationForm" />
+         <collection property="contactorList" ofType="com.third.autoloan.beans.ContactorBean">
+              <id property="id" column="id"></id>
+              <result property="name" column="name" />
+              <result property="type" column="type" />
+              <result property="relation" column="relation" />
+              <result property="company" column="company" />
+              <result property="address" column="address" />
+              <result property="phone" column="phone" />
+              <result property="phone" column="phone" />
+         </collection>
+ 	</resultMap>
+ 	
+ 	<!-- 放款业务列表-->
+  	<select id="getLoanPage" parameterType="java.util.Map" resultType="String" resultMap="getLoan">
+ 	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_product as p on o.fk_product_id=p.id 
+ 	    left join t_Contract as con on con.id=o.fk_contract_id 
+ 	     LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id
+ 	    left join t_opinion as op on op.id=o.fk_opinion_id where 1=1
+ 	    	                
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+        <if test="identity!=null">
+            and  i.identity like '%${identity}%'  
+        </if>
+        <if test="productName!=null">
+            and  p.name = #{productName}
+        </if>
+         <if test="companyName!=null">
+            and  co.name = #{companyName} and co.hq=1
+        </if>
+        <if test="loanStatus!=null">
+            and  o.loanStatus = #{loanStatus} 
+        </if>
+        <if test="status!=null">
+            and  status = #{status}
+        </if>
+     	<if test=" sort!=null">
+                 order by ${sort} 
+        </if>
+        
+         <if test="order!=null">
+  				${order} 
+        </if>
+          limit ${index},${rows};
+ 	</select>
+ 	
+ 	<resultMap type="OrderBean" id="getLoan">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="returnOpinion" column="returnOpinion" />
+ 	     <result property="manager" column="manager" />
+ 	     <result property="loanStatus" column="loanStatus" />
+ 	      <result property="submenuStatus" column="submenuStatus" />
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
+ 	        <result property="name" column="name" />
+ 	         <result property="idCard" column="idCard" />
+ 	      </association>
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <result property="name" column="name" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	         <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <result property="identity" column="identity" />
+ 	      </association>
+ 	       <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
+ 	        <result property="payDate" column="payDate" />
+ 	        <result property="amount" column="amount" />
+ 	        <result property="signDate" column="signDate" />
+ 	      </association>
+ 	      <association property="opinion" javaType="com.third.autoloan.beans.OpinionBean">
+ 	        <result property="loanTime" column="loanTime" />
+ 	        <result property="loanAmount" column="loanAmount" />
+ 	      </association>
+ 	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
+ 	        <result property="periods" column="periods" />
+ 	        <result property="name" column="name" />
+ 	                 <result property="capital" column="capital" />
+ 	      </association>
+ 	</resultMap>
+ 	
+ 	<!-- 得到 分单业务列表 -->
+ 	<select id="getSubmenuPage" parameterType="java.util.Map" resultType="String" resultMap="getSub">
+ 	    select *  from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_product as p on o.fk_product_id=p.id  where 1=1
+      <if test="contractNumber!=null ">
+            and o.contractNumber like '%${contractNumber}%' 
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%' 
+        </if>
+        <if test="identity!=null">
+            and c.idCard like '%${identity}%'   
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus like  '%${submenuStatus}%'   
+        </if>
+    		<if test=" sort!=null">
+                 order by ${sort} 
+        </if>
+         <if test="order!=null">
+  				${order} 
+        </if>
+          limit ${index},${rows};
+ 	</select>
+ 	<resultMap type="OrderBean" id="getSub">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="manager" column="manager" />
+ 	     <result property="timeStarting" column="timeStarting" />
+ 	     <result property="auditor" column="auditor" />
+ 	     <result property="submenuStatus" column="submenuStatus" />
+ 	     
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
+ 	        <result property="name" column="name" />
+ 	        <result property="tel" column="tel" />
+ 	        <result property="cellphone" column="cellphone" />
+ 	          <result property="idCard" column="idCard" />
+ 	      </association>
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <result property="name" column="name" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
+ 	        <result property="periods" column="periods" />
+ 	        <result property="name" column="name" />
+ 	
+ 	      </association>
+ 	</resultMap>
+  
+  
+    <!-- 得到车贷进度业务列表 -->
+ 	<select id="getProcedurePageBean" parameterType="java.util.Map" resultType="String" resultMap="getProcedure">
+ 	    select * from t_order as o left join t_client as c on o.fk_client_id=c.id 
+ 	    left join t_company as co on co.id=o.fk_company_id 
+ 	    left join t_product as p on o.fk_product_id=p.id 
+ 	                LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id 
+ 	    left join t_Contract as con on con.id=o.fk_contract_id
+ 	      where 1=1
+        <if test="contractNumber!=null">
+            and o.contractNumber like '%${contractNumber}%'
+        </if>
+        <if test="loanName!=null">
+            and  c.name like '%${loanName}%'
+        </if>
+      <if test="timeStarting_1!=null">
+            and  o.timeStarting&gt;=#{timeStarting_1}
+        </if>
+        <if test="timeStarting_2!=null">
+            and  o.timeStarting&lt;=#{timeStarting_2}
+        </if>
+        <if test="getMoneyTime_1!=null">
+            and  o.timeStarting&gt;=#{getMoneyTime_1}
+        </if>
+        <if test="getMoneyTime_2!=null">
+            and  o.timeStarting&lt;=#{getMoneyTime_2}
+        </if>
+        <if test="productType!=null">
+            and  p.name like '%${productType}%'
+        </if>
+        <if test="companyName!=null">
+            and  co.name like '%${companyName}%' and co.hq=1 
+        </if>
+        <if test="reviewDate!=null">
+            and  o.review like= #{reviewDate}
+        </if>
+         <if test="payDate_1!=null">
+            and  con.payDate like&gt;=#{payDate_1}
+        </if>
+        <if test="payDate_2!=null">
+            and  con.payDate like&lt;=#{payDate_2}
+        </if>
+        <if test="submenuStatus!=null">
+            and  o.submenuStatus = #{submenuStatus}
+        </if> 
+      	<if test=" sort!=null">
+                 order by ${sort} 
+        </if>
+        
+         <if test="order!=null">
+  				${order} 
+        </if>
+          limit ${index},${rows};
+ 	</select>
+ 	
+ 	<resultMap type="OrderBean" id="getProcedure">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="manager" column="manager" />
+ 	     <result property="timeStarting" column="timeStarting" />
+ 	     <result property="loanStatus" column="loanStatus" />
+ 	     <result property="getMoneyTime" column="getMoneyTime" />
+ 	     <result property="review" column="review" />
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean">
+ 	        <result property="name" column="name" />
+ 	                <result property="idCard" column="idCard" />
+ 	      </association>
+ 	        <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <result property="identity" column="identity" />
+ 	      </association>
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <result property="name" column="name" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
+ 	        <result property="periods" column="periods" />
+ 	      </association>
+ 	       <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
+ 	        <result property="amount" column="amount" />
+ 	      </association>
+ 	</resultMap>
+ 	
+ 	
+ 	
+ 	<!-- 通过id查找订单信息 -->
+ 	<select id="getOrderInfoBuId" parameterType="Long" resultType="OrderBean" resultMap="getOrderInfo">
+ 	   SELECT *,c.name as 'cname',p.name as 'pname',i.name as 'iname',co.name as 'coname'  FROM t_order AS o LEFT JOIN t_client AS c ON o.fk_client_id=c.id 
+             LEFT JOIN t_opinion AS op ON op.id=o.fk_opinion_id
+             LEFT JOIN t_product AS p ON o.fk_product_id=p.id 
+             LEFT JOIN t_Contract AS con ON con.id=o.fk_contract_id
+             LEFT JOIN t_creditinfo AS cre ON cre.id=o.fk_credit_id
+             LEFT JOIN t_identity AS i ON o.fk_identiry_id=i.id 
+ 	         LEFT JOIN t_company AS co ON co.id=o.fk_company_id WHERE o.id=#{id};
+ 	</select>
+ 	
+ 	<resultMap type="OrderBean" id="getOrderInfo">
+ 	     <id property="id" column="id"></id>
+ 	     <result property="contractNumber" column="contractNumber" />
+ 	     <result property="manager" column="manager" />
+ 	     <result property="timeStarting" column="timeStarting" />
+ 	     <result property="loanStatus" column="loanStatus" />
+ 	     <result property="getMoneyTime" column="getMoneyTime" />
+ 	     <result property="status" column="status" />
+ 	     <result property="review" column="review" />
+ 	     <result property="rollback" column="rollback" />
+ 	     <result property="loanStatus" column="loanStatus" />
+ 	     <result property="submenuStatus" column="submenuStatus" />
+ 	     <result property="submit" column="submit" />
+ 	     <result property="auditor" column="auditor" />
+ 	      <association property="client" javaType="com.third.autoloan.beans.ClientBean"> 
+ 	           <id property="id" column="id"></id>
+ 	           <result property="name" column="cname" />
+ 	           <result property="education" column="education" />
+ 	           <result property="cellphone" column="cellphone" />
+ 	           <result property="address" column="address" />
+ 	           <result property="tel" column="tel" />
+ 	          <result property="idCard" column="idCard" />
+ 	           <result property="marriage" column="marriage" />
+ 	           <result property="child" column="child" />
+ 	           <result property="house" column="house" />
+ 	           <result property="partner" column="partner" />
+ 	           <result property="currentAddress" column="currentAddress" />
+ 	           <result property="clientType" column="clientType" />
+ 	           <result property="companyName" column="companyName" />
+ 	           <result property="companyAddress" column="companyAddress" />
+ 	           <result property="companyTel" column="companyTel" />
+ 	            <result property="postcode" column="postcode" />
+ 	            <result property="preTime" column="preTime" />
+ 	          <result property="department" column="department" />
+ 	          <result property="position" column="position" />
+ 	          <result property="companySize" column="companySize" />
+ 	          <result property="industryType" column="industryType" />
+ 	          <result property="companyType" column="companyType" />
+ 	          <result property="loanPurpose" column="loanPurpose" />
+ 	          <result property="salary" column="salary" />
+ 	          <result property="maxAffordable" column="maxAffordable" />
+ 	          <result property="maxPaybackTime" column="maxPaybackTime" />
+ 	          <result property="minLoan" column="minLoan" />
+ 	          <result property="maxLoan" column="maxLoan" />
+ 	          <result property="sourceOfInfo" column="sourceOfInfo" />
+ 	          <result property="saler" column="saler" />
+ 	          <result property="valuer" column="valuer" />
+ 	          <result property="applyDate" column="applyDate" />
+ 	          <result property="iDPic" column="iDPic" />
+ 	          <result property="applicationForm" column="applicationForm" />
+ 	           <collection property="contactorList" ofType="com.third.autoloan.beans.ContactorBean">
+                <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="type" column="type" />
+ 	           <result property="relation" column="relation" />
+ 	           <result property="company" column="company" />
+ 	           <result property="address" column="address" />
+ 	           <result property="phone" column="phone" />
+          </collection>
+ 	      </association>
+ 	       <association property="opinion" javaType="com.third.autoloan.beans.OpinionBean">
+ 	           <id property="id" column="id"></id>
+ 	           <result property="loanTime" column="loanTime" />
+ 	           <result property="conclusion" column="conclusion" />
+ 	           <result property="loanAmount" column="loanAmount" />
+ 	           <result property="branchOpinion" column="branchOpinion" />
+ 	           <result property="HQOpinion" column="HQOpinion" />
+ 	       </association>
+ 	       <association property="product" javaType="com.third.autoloan.beans.ProductBean">
+ 	           <id property="id" column="id"></id>
+ 	           <result property="name" column="pname" />
+ 	           <result property="periods" column="periods" />
+ 	           <result property="accrual" column="accrual" />
+ 	           <result property="capital" column="capital" />
+ 	      </association>
+ 	      <association property="contract" javaType="com.third.autoloan.beans.ContractBean">
+ 	          <id property="id" column="id"></id>
+ 	          <result property="amount" column="amount" />
+ 	          <result property="payDate" column="payDate" />
+ 	          <result property="bank" column="bank" />
+ 	          <result property="bankAccount" column="bankAccount" />
+ 	          <result property="bankBranch" column="bankBranch" />
+ 	          <result property="bankCard" column="bankCard" />
+ 	          <result property="loanContract" column="loanContract" />
+ 	          <result property="authorizationDeductletter" column="authorizationDeductletter" />
+ 	          <result property="authorisationLetter" column="authorisationLetter" />
+ 	          <result property="repaymentSchedule" column="repaymentSchedule" />
+ 	          <result property="supplementalAgreement" column="supplementalAgreement" />
+ 	          <result property="repurchaseContracts" column="repurchaseContracts" />
+ 	          <result property="carAuthorisationLetter" column="carAuthorisationLetter" />
+ 	          <result property="carMortgagePic" column="carMortgagePic" />
+ 	          <result property="carParkingPic" column="carParkingPic" />
+ 	          <result property="printedForm" column="printedForm" />
+ 	          <result property="signDate" column="signDate" />
+ 	      </association>
+ 	      <association property="creditInfo" javaType="com.third.autoloan.beans.CreditInfoBean">
+ 	          <id property="id" column="id"></id>
+ 	          <result property="hasHouse" column="hasHouse" />
+ 	          <result property="hasHouseLoan" column="hasHouseLoan" />
+ 	          <result property="hasCar" column="hasCar" />
+ 	          <result property="hasCarLoan" column="hasCarLoan" />
+ 	          <result property="maxOverdueMonth" column="maxOverdueMonth" />
+ 	          <result property="maxOverdueNum" column="maxOverdueNum" />
+ 	          <result property="creditUsageRate" column="creditUsageRate" />
+ 	          <result property="enquiriesNumber" column="enquiriesNumber" />
+ 	          <result property="hasOtheLoan" column="hasOtheLoan" />
+ 	          <result property="hasCreditCard" column="hasCreditCard" />
+ 	      </association>
+ 	      
+ 	      <association property="company" javaType="com.third.autoloan.beans.CompanyBean">
+ 	        <id property="id" column="id"></id>
+ 	        <result property="name" column="coname" />
+ 	        <result property="hq" column="hq" />
+ 	      </association>
+ 	       <association property="identity" javaType="com.third.autoloan.beans.IdentityBean">
+ 	           <id property="id" column="id"></id>
+ 	           <result property="identity" column="identity" />
+ 	          <result property="name" column="iname" />
+ 	          <result property="gender" column="gender" />
+ 	          <result property="ethnic" column="ethnic" />
+ 	          <result property="birthday" column="birthday" />
+ 	          <result property="address" column="address" />
+ 	          <result property="administration" column="administration" />
+ 	          <result property="issueDate" column="issueDate" />
+ 	          <result property="expireDate" column="expireDate" />
+ 	      </association>
+ 	      <collection property="carList" ofType="com.third.autoloan.beans.CarInfoBean">
+                <id property="id" column="id"></id>
+ 	           <result property="carId" column="carId" />
+ 	           <result property="brand" column="brand" />
+ 	           <result property="color" column="color" />
+ 	           <result property="registerDate" column="registerDate" />
+ 	           <result property="annualInspection" column="annualInspection" />
+ 	           <result property="vin" column="vin" />
+ 	           <result property="assessmentPrice" column="assessmentPrice" />
+ 	           <result property="xkm" column="xkm" />
+ 	           <result property="getID" column="getID" />
+ 	           <result property="getAfford" column="getAfford" />
+ 	           <result property="getSali" column="getSali" />
+ 	           <result property="getKey" column="getKey" />
+ 	           <result property="keyNumber" column="keyNumber" />
+ 	           <result property="getRegisterLicense" column="getRegisterLicense" />
+ 	            <result property="getInsurance" column="getInsurance" />
+ 	            <result property="getDrivingLicense" column="getDrivingLicense" />
+ 	          <result property="getOriginalInvoice" column="getOriginalInvoice" />
+ 	          <result property="getTaxCertificate" column="getTaxCertificate" />
+ 	          <result property="getImportCertificate" column="getImportCertificate" />
+ 	          <result property="drivingLisense" column="drivingLisense" />
+ 	          <result property="carRegisterForm" column="carRegisterForm" />
+ 	          <result property="carAsseceForm" column="carAsseceForm" />
+ 	          <result property="commerceinsurance" column="commerceinsurance" />
+ 	          <result property="carPic" column="carPic" />
+ 	          <result property="sali" column="sali" />
+ 	          <result property="otherAttachment" column="otherAttachment" />
+ 	           <collection property="itemList" ofType="com.third.autoloan.beans.ItemBean">
+                <id property="id" column="id"></id>
+ 	           <result property="name" column="name" />
+ 	           <result property="number" column="number" />
+               </collection>
+          </collection>
+ 	</resultMap>
+ 	 	<select id="getSubmenuPageToAuditor" resultType="OrderBean">
+ 		SELECT * FROM t_order WHERE auditor IS NULL ORDER BY RAND() LIMIT #{number}
+ 	</select>
+ 	
+ 		<select id="updateOrderInfo" >
+		UPDATE t_order SET auditor = #{name} WHERE id=#{id}
+	</select>
+ </mapper>
