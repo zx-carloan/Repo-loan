@@ -32,7 +32,7 @@ public class ProgressController {
 	private IProgressService progressService;
 	
 	//客户信息信息
-	@Resource(name = "progressServiceImpl")
+	@Resource(name = "creditGetServiceImpl")
 	private ICreditGetService creditGetService;
 
 	// 查询全部信息

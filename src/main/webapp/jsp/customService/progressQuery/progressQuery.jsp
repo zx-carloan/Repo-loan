@@ -139,15 +139,15 @@
 				<caption class="caption1">资产信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>有无房产</label></td>
-					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
+					<td class="td1">${creditInfoBean.companyType == 1 ?'有房产' : '无房产'}</td>
 					<td class="td1">有无房贷</td>
-					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
+					<td class="td1">${creditInfoBean.hasHouseLoan == 1 ?'有房贷' : '无房贷'}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>有无车产</label></td>
-					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
+					<td class="td1">${creditInfoBean.hasCar == 1 ?'有车产' : '无车产'}</td>
 					<td class="td1">有无车贷</td>
-					<td class="td1">${ClientBean.companyType == 1 ?'个体户' : '公司'}</td>
+					<td class="td1">${creditInfoBean.hasCarLoan == 1 ?'有车贷' : '无车贷'}</td>
 				</tr>
 			</table>
 
@@ -155,21 +155,21 @@
 				<caption class="caption1">信用信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>信用卡、贷款最大逾期状况（24个月内）</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.maxOverdueMonth}</td>
 					<td class="td1">信用卡、贷款累计逾期状况（24个月内）</td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.maxOverdueNum}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>信用卡额度使用率</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.creditUsageRate}</td>
 					<td class="td1">信用卡、贷款审批查询次数（6个月内）</td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.enquiriesNumber}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>有无其他信用贷款</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${creditInfoBean.hasOtheLoan == 1 ?'有贷款' : '无贷款'}/td>
 					<td class="td1">有无信用卡</td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${creditInfoBean.hasCreditCard == 1 ?'有信用卡' : '无信用卡'}</td>
 				</tr>
 			</table>
 
