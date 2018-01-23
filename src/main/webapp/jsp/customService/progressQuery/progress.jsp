@@ -32,6 +32,7 @@
 <body>
 
 	<script>
+
 		// 查询
 		$("#myButton").click(function() {
 			$('#tt').datagrid('load', datas());
@@ -82,7 +83,6 @@
 							}
 							;
 						}
-						console.log(id[i] + "<br />")
 					}
 					if (id == "") {
 
@@ -126,17 +126,16 @@
 												}
 											});
 								} else {
-									$("#viewDiv")
-											.panel(
-													{
-														iconCls : "icon-add",
-														collapsible : true,
-														minimizable : true,
-														maximizable : true,
-														closable : true,
-														href : "jsp/customService/progressQuery/progressQuery.jsp"
-													});
-									/* window.location.href="/autoloan/static/jsp/loan/vehicleInfo.jsp"; */
+									var auditor = $("input[name='auditor']").val();// 得到选中的审核人名字
+									var id = $('#tt').datagrid('getSelected').id;// ：取得第一个选中行数据，如果没有选中行，则返回// null，否则返回记录。
+									console.info(id)
+									$.ajax({
+										type : 'post',
+										url : 'progress/findOrderBean',
+										data : {
+											"id" : id
+										},
+									})
 								}
 							});
 
@@ -167,7 +166,7 @@
 				class="easyui-datebox" required="required"> <span
 				style="margin-right: 20px;" class="span1"></span> <br> <br>
 			<span style="margin-right: 20px;" class="span1">产品类型</span><select
-				id="companyName" class="easyui-combobox" name="companyName"
+				id="productType" class="easyui-combobox" name="companyName"
 				style="width: 150px"
 				data-options="valueField:'text',textField:'text2',url:'company/productType',method:'get'">
 				<option name="companyName" value="%"></option>
@@ -188,15 +187,16 @@
 				style="margin-right: 20px;" class="span1">&nbsp;</span><span
 				style="margin-right: 20px;" class="span1">&nbsp;</span><br> <br>
 			<br>
-			<button type="button" id="myButton" data-loading-text="Loading..."
-				class="btn btn-primary" autocomplete="off"
-				style="margin-top: -20px; margin-left: 400px;">查&nbsp;&nbsp;询</button>
+			<td><a id="myButton" href="javascript:void(0)"
+				class="easyui-linkbutton" data-options="iconCls:'icon-search'">查&nbsp;&nbsp;询</a>
+			</td>
 		</form>
 
 	</div>
 	<br>
 
-	<table class="easyui-datagrid" style="width: 100%; height: 200px"
+	<table id="tt" class="easyui-datagrid"
+		style="width: 100%; height: 200px"
 		data-options="url:'progress/page', rownumbers:true,striped:true,method:'POST',fitColumns:true,pagination:true,singleSelect:false,toolbar:'#tb'">
 		<thead>
 			<tr>

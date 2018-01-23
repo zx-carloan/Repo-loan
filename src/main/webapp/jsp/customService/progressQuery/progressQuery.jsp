@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!--输出,条件,迭代标签库-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
+<!--数据格式化标签库-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="sql"%>
+<!--数据库相关标签库-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+<!--常用函数标签库-->
+<%@ page isELIgnored="false"%>
+<!--支持EL表达式，不设的话，EL表达式不会解析-->
 <%@ include file="../../header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,9 +53,9 @@
 				<caption class="caption1">个人基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>申请人姓名</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.name}</td>
 					<td class="td1"><label>身份证号码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1">${ClientBean.idCard}</td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>最高学历</label></td>
