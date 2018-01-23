@@ -50,7 +50,7 @@ public class ProgressController {
 	}
 
 	// 订单信息查询
-	@RequestMapping(value = "/findOrderBean/{id}")
+	@RequestMapping(value = "/findOrderBean/{id}") 
 	public String FindOrderBeanById(@PathVariable("id")Long id, ModelMap model) {
 		System.out.println("进来了" + id);
 		ClientBean bean = progressGetServiceImpl.getClientInfoByOrderId(id);
