@@ -52,6 +52,7 @@
 					<td><a id="query" href="javascript:void(0)"
 						class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
 					</td>
+					<td><input type="hidden"   name=" status"  value="6"></td>
 				</tr>
 			</table>
 		</form>
@@ -77,7 +78,7 @@
 						data-options="field:'client',width:10,align:'center',sortable:'true',
 					formatter:function(value,row){
 							return row.client.name;
-						}">借款人</th>
+						}">借款人</th>  
 					<th
 						data-options="field:'client1',width:10,align:'center',
 				formatter:function(value,row){

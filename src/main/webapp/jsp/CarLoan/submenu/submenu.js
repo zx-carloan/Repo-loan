@@ -8,7 +8,7 @@ $(function() {
 				title : '提示信息',
 				msg : '有内容没有填完',
 				timeout : 5000,
-				showType : 'slide'
+				showType : 'slide'  
 			});
 		}else {
 			$.ajax({
