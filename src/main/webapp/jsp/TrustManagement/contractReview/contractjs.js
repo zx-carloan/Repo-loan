@@ -2,11 +2,9 @@
 $(function(){
 	
 	$('#fuhe').click(function(){
-		var row = $('#tt').datagrid('getSelected');
-		var url='jsp/TrustManagement/contractReview/ToReview.jsp';
-		
-		if(row){
-			$('#infomation').val(row.id)
+		var  id = $('#tt').datagrid('getSelected').id;
+		var url='fuhe/info?id='+id;
+		if(id!=null){
 				$("#viewDiv").panel({
 					iconCls : "icon-add",
 					collapsible : true,
@@ -22,14 +20,13 @@ $(function(){
 
 $('#cancel').click(function(){
 	var row = $('#tt').datagrid('getSelected');
-	console.log(row.id);
 	if(row){
 		if(length != null){
 			$.messager.confirm('Confirm', '是否确认要执行改行的撤销操作', function(r){
 				if (r){
 					$.ajax({
 						type:'get',
-						url:'contract/delect?orderId='+row.id,
+						url:'fuhe/delect?orderId='+row.id,
 						success:function(data){ 
 							$.messager.show({
 								title:'提示信息',
@@ -53,17 +50,7 @@ $('#cancel').click(function(){
 	}
 });
 
-function back() {
-	$("#viewDiv").panel({
-		iconCls : "icon-add",
-		collapsible : true,
-		minimizable : true,
-		maximizable : true,
-		closable : true,
-		href : "jsp/TrustManagement/contractReview/ToReview.jsp"
-	});
-}
-
+//查询
 $("#query").click(function(){
 	$('#tt').datagrid('load',datas ());
 });

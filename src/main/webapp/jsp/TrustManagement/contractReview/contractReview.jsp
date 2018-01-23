@@ -24,7 +24,7 @@
 
 </head>
 <body>
-		<div id="p" class="easyui-panel" title="当前位置：信审业务管理>车贷签约复核"
+	<div id="p" class="easyui-panel" title="当前位置：车贷管理>车贷签约业务"
 		style="width: 100%; height: 100px;">
 		<div style="margin: 20px 0;"></div>
 		<form id="queryForm">
@@ -37,7 +37,6 @@
 					<td>借款人：</td>
 					<td><input id="loanName" class="easyui-textbox"
 						data-options="prompt:'填写'"></td>
-
 
 					<td>分公司：</td>
 					<td><select id="companyName" class="easyui-combobox"
@@ -54,7 +53,6 @@
 		</form>
 	</div>
 
-	
 	<div id="p" class="easyui-panel" title="车贷签约列表"
 		style="width: 99%; height: 340px;">
 		<table id="tt" class="easyui-datagrid"
@@ -75,12 +73,13 @@
 			</thead>
 		</table>
 	</div>
-	<div id="tb">
+
+<div id="tb">
 		<a id="fuhe" href="javascript:void(0)" class="easyui-linkbutton"
 			data-options="iconCls:'icon-edit',plain:true">复核</a> <a
 			id="cancel" href="javascript:void(0)" class="easyui-linkbutton"
 			data-options="iconCls:'icon-edit',plain:true">撤销</a>
-	</div>
+</div>
 	<script type="text/javascript" src="jsp/TrustManagement/contractReview/contractjs.js"></script>
 </body>
 </html>
