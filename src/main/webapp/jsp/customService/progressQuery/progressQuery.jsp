@@ -117,7 +117,7 @@
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>进入该单位时间</label></td>
-					<td class="td1"><fmt:formatDate value='${order.client.preTime }' pattern='yyyy-MM-dd' /></td>
+					<td class="td1"></td>
 					<td class="td1"><label>所在部门</label></td>
 					<td class="td1">${ClientBean.department}</td>
 				</tr>
