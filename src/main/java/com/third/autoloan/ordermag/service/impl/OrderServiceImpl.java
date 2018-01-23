@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.IdentityBean;
+import com.third.autoloan.beans.LoanHistoryBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.carmag.service.ICarService;
 import com.third.autoloan.clientmag.service.IClientService;
@@ -132,6 +133,12 @@ public class OrderServiceImpl implements IOrderService{
 	public ClientBean getContactorInfo(long id) {
 		// TODO Auto-generated method stub
 		return orderDaoImpl.getContactorInfo(id);
+	}
+
+	@Override
+	public LoanHistoryBean getLoanHistoryInfo(long id) {
+		// TODO Auto-generated method stub
+		return orderDaoImpl.getLoanHistoryInfo(id);
 	}
 
 }

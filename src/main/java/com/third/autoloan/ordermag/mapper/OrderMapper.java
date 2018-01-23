@@ -6,6 +6,7 @@ import java.util.Map;
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.IdentityBean;
+import com.third.autoloan.beans.LoanHistoryBean;
 import com.third.autoloan.beans.OrderBean;
 
 public interface OrderMapper {
@@ -171,6 +172,11 @@ public interface OrderMapper {
 	 * @param id
 	 * @return
 	 */
-	public IdentityBean getLoanHistory(long id);
+	public LoanHistoryBean getLoanHistory(long id);
+	/***
+	 * 更新订单表的信用信息
+	 * @param map
+	 */
+	public void updateCreditForeignKey(Map<String,Object> map);
 }
 

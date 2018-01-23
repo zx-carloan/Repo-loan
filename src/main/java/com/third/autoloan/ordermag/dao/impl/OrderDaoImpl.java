@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
+import com.third.autoloan.beans.LoanHistoryBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.ordermag.dao.IOrderDao;
 import com.third.autoloan.ordermag.mapper.OrderMapper;
@@ -146,5 +148,11 @@ public class OrderDaoImpl implements IOrderDao{
 	public ClientBean getContactorInfo(long id) {
 		// TODO Auto-generated method stub
 		return orderMapper.getContactor(id);
+	}
+
+	@Override
+	public LoanHistoryBean getLoanHistoryInfo(long id) {
+		// TODO Auto-generated method stub
+		return orderMapper.getLoanHistory(id);
 	}
 }

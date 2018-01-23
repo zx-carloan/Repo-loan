@@ -729,8 +729,8 @@
     <update id="returnOpinion" parameterType="java.util.Map" flushCache="true">
           update t_order
       <set> 
-         <if test="returnOpinion!=''">
-            returnOpinion=#{returnOpinion},
+         <if test="returnAdvice!=null">
+            returnOpinion=#{returnAdvice}
           </if>
        </set>
        where id=#{id}
@@ -781,5 +781,16 @@
  	           <result property="address" column="address" />
  	           <result property="phone" column="phone" />
           </collection>
+    </resultMap>
+    
+    <update id="updateCreditForeignKey" parameterType="java.util.Map" flushCache="true">
+    	update t_order set fk_credit_id = #{creditId} where id = #{id}
+    </update>
+    
+    <select id="getLoanHistory" parameterType="Long" resultMap="LoanHistory">
+          select * from t_loanhistory where fk_indentity_id=#{id}
+    </select>
+    <resultMap type="LoanHistoryBean" id="LoanHistory">
+         <result property="loanType" column="loanType" />
     </resultMap>
  </mapper>

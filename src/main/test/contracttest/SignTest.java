@@ -16,8 +16,11 @@ public class SignTest {
 	@Resource
 	private ContractController contractController;
 	
+
+	
 	@Test
 	public void signInfo() {
 		contractController.signInfo(1L);
 	}
+
 }

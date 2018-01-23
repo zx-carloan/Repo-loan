@@ -4,6 +4,7 @@ package com.third.autoloan.ordermag.service;
 import java.util.Map;
 
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.LoanHistoryBean;
 import com.third.autoloan.beans.OrderBean;
 
 /**
@@ -49,5 +50,7 @@ public interface IOrderService {
 	
 	
 	public ClientBean getContactorInfo(long id);
+	
+	public LoanHistoryBean getLoanHistoryInfo(long id);
 
 }

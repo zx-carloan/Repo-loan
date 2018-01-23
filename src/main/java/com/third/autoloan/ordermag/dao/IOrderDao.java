@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.third.autoloan.beans.CarInfoBean;
 import com.third.autoloan.beans.ClientBean;
+import com.third.autoloan.beans.IdentityBean;
+import com.third.autoloan.beans.LoanHistoryBean;
 import com.third.autoloan.beans.OrderBean;
 
 public interface IOrderDao {
@@ -170,4 +172,10 @@ public interface IOrderDao {
 	 * @param id
 	 */
 	public ClientBean getContactorInfo(long id);
+	/***
+	 * 
+	 * @param id 为loanhistory类的外键
+	 * @return
+	 */
+	public LoanHistoryBean getLoanHistoryInfo(long id);
 }

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
+import com.third.autoloan.ordermag.service.IOrderService;
 import com.third.autoloan.putloanmag.service.IPutLoanGetService;
 
 @RequestMapping(value="/putLoans")
@@ -18,6 +20,9 @@ public class PutLoan {
 	
 	@Resource(name="PutLoanGetServiceImpl")
 	private IPutLoanGetService  putLoanGetService;
+	
+	@Resource
+	private IOrderService orderServiceImpl;
 	
 	@RequestMapping(value="/page")
 	
@@ -30,5 +35,15 @@ public class PutLoan {
 		return null;
 		
 	} 
-
+	/**
+	 * 查询订单
+	 */
+	@RequestMapping("/putLoanInfo")
+	public @ResponseBody OrderBean signInfo(Long  orderId) {
+		OrderBean order=orderServiceImpl.getOrderById(orderId);
+		System.out.println(order);
+		return order;
+	}
+	
+	
 }

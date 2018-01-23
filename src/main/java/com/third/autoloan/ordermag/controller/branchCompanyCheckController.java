@@ -31,6 +31,7 @@ import com.third.autoloan.beans.ClientBean;
 import com.third.autoloan.beans.ContactorBean;
 import com.third.autoloan.beans.CreditInfoBean;
 import com.third.autoloan.beans.ItemBean;
+import com.third.autoloan.beans.LoanHistoryBean;
 import com.third.autoloan.beans.OpinionBean;
 import com.third.autoloan.beans.OrderBean;
 import com.third.autoloan.beans.PageBean;
@@ -104,11 +105,15 @@ public class branchCompanyCheckController {
 		//得到联系人信息
 		ClientBean client=orderServiceImpl.getContactorInfo(order.getClient().getId());
 		Set<ContactorBean> Contactor=client.getContactorList();
+		//得到借款历史信息
+		LoanHistoryBean loanHistory=orderServiceImpl.getLoanHistoryInfo(order.getIdentity().getId());
+		System.out.println("identityBean="+order.getIdentity().getId()+",loanHistory="+loanHistory);
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("order", order);
 		mv.addObject("item", item);
 		mv.addObject("list", list);
 		mv.addObject("Conta ctor", Contactor);
+		mv.addObject("loanHistory", loanHistory);
 		mv.setViewName("jsp/CarLoan/branchOffice/ziliao");
 		return mv;
 	}
@@ -235,6 +240,7 @@ public class branchCompanyCheckController {
 	    	Map<String,Object> map=new HashMap<String,Object>();
 	    	map.put("returnAdvice", advice);
 	    	map.put("id", id);
+	    	System.out.println("returnInfo="+map);
 	    	orderServiceImpl.getReturnOpinion(map);
 	    	mv.setViewName("jsp/CarLoan/loanInput/valuer");
 			return mv;

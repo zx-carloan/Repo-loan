@@ -20,31 +20,31 @@
 				<caption class="caption1">个人基本信息</caption>
 				<tr class="tr1">
 					<td class="td1"><label>申请人姓名</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.name"  readonly="readonly" value="hhh"></td>
 					<td class="td1"><label>身份证号码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.idCard"  readonly="readonly" value="hhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>最高学历</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.education"  readonly="readonly" value="hhh"></td>
 					<td class="td1"><label>申请人手机号码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.cellphone"  readonly="readonly" value="hhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>户籍地址</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.address"  readonly="readonly" value="hhh"></td>
 					<td class="td1"><label>申请人电话号码</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.tel"  readonly="readonly" value="hhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>婚姻状态</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.marriage"  readonly="readonly" value="hhh"></td>
 					<td class="td1"><label>有无子女</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.child"  readonly="readonly" value="hhh"></td>
 				</tr>
 				<tr class="tr1">
 					<td class="td1"><label>房产状态</label></td>
-					<td class="td1"><input type="text"></td>
+					<td class="td1"><input type="text" name="client.house"  readonly="readonly" value="hhh"></td>
 					<td class="td1"><label>共同居住者</label></td>
 					<td><select class="select1" id="partner" name="partners">
 							<option value="0">配偶及其子女</option>
