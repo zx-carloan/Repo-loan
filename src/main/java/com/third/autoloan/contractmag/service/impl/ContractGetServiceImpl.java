@@ -1,5 +1,7 @@
 package com.third.autoloan.contractmag.service.impl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +27,11 @@ public class ContractGetServiceImpl implements IContractGetService{
 	@Override
 	public OrderBean getOrderByOrderId(Long orderId) {
 		return null;
+	}
+	@Override
+	public void updateContractorInfo(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		contractDaoImpl.updateContractInfo(map);
 	}
 
 }

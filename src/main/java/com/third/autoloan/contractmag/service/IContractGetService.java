@@ -1,6 +1,8 @@
 package com.third.autoloan.contractmag.service;
 
 
+import java.util.Map;
+
 import com.third.autoloan.beans.ContractBean;
 import com.third.autoloan.beans.OrderBean;
 
@@ -22,4 +24,6 @@ public interface IContractGetService {
  * @return
  */
 	public OrderBean getOrderByOrderId(Long orderId);
+	
+	public void updateContractorInfo(Map<String,Object> map);
 }

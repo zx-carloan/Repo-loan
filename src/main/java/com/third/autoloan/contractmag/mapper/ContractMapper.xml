@@ -25,4 +25,26 @@
 		<result property="bankAccount" column="bankAccount"></result>
 		<result property="bankBranch" column="bankBranch"></result>
 	</resultMap> 
+	
+	<update id="updateContractInfo" parameterType="java.util.Map" flushCache="true">
+	      update t_order  as o left  join t_Contract as c on o.fk_contract_id=c.id
+	      <set>
+	          <if test="amount!=null">
+	               c.amount=${amount},
+	          </if>
+	          <if test="bank!=null">
+	               c.bank=#{bank},
+	          </if>
+	          <if test="bankBranch!=null">
+	               c.bankBranch=#{bankBranch},
+	          </if>
+	          <if test="payDate!=null">
+	               c.payDate=#{payDate},
+	          </if>
+	          <if test="bankAccount!=null">
+	               c.bankAccount=#{bankAccount}
+	          </if>
+	      </set>
+	      where  o.id=#{id}
+	</update>
 </mapper>

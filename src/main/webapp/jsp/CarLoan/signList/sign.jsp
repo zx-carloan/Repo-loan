@@ -62,7 +62,7 @@
 			data-options=" rownumbers:true,striped:true, url:'contract/query',method:'post',fitColumns:true,pagination:true,singleSelect:true,toolbar:'#tb'">
 			<thead>
 				<tr>
-					<th id='orderId' data-options="field:'id',width:0,align:'center',sortable:'true' ,hidden:true"/>
+					<th id='orderId' data-options="field:'id',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th id='status' data-options="field:'status',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th id='rollback' data-options="field:'rollback',width:20,align:'center',sortable:'true' ,hidden:true"/>
 					<th data-options="field:'contractNumber',width:20,align:'center',sortable:'true'">合同编号</th>
@@ -83,5 +83,40 @@
 			data-options="iconCls:'icon-edit',plain:true">撤销</a>
 	</div>
 	<script type="text/javascript" src="static/js/signPage/signPage.js"></script>
+	<script>
+	    /* 定义一个数组用于接收得到的下标 */
+	    var id = new Array();
+	    var value=0;
+	    $(function(){
+			$(".easyui-datagrid").datagrid({
+				onClickRow : function(rowIndex, rowData) {
+					id.push(rowIndex);
+					
+					for (var i = 0; i < id.length; i++) {
+						for (var j = i + 1; j < id.length; j++) {
+							if (id[i] == id[j]) {
+								id.splice(j, 1);
+								id.splice(i, 1);
+							}
+						}
+					}
+					value=rowData.id;
+					console.log(value);
+				}
+			});
+	    });
+	    $("#cancel").click(function(){
+	    	
+	    	console.log("id="+value);
+	    	$("#viewDiv").panel({
+				iconCls : "icon-add",
+				collapsible : true,
+				minimizable : true,
+				maximizable : true,
+				closable : true,
+				href : "contract/cancelOrder?id="+value
+			});
+	    });
+	</script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.third.autoloan.contractmag.dao.impl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
@@ -18,5 +20,11 @@ public class ContractDaoImpl implements IContractDao{
 	public ContractBean getContractByOrderBean(Long orderId) {
 		// TODO Auto-generated method stub
 		return contractMapper.getContractByOrderId(orderId);
+	}
+
+	@Override
+	public void updateContractInfo(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		contractMapper.updateContractInfo(map);
 	}
 }
